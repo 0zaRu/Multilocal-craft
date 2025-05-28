@@ -13,7 +13,8 @@ NET SESSION >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     powershell -Command "Write-Host 'ERROR: Necesitas permisos de administrador para continuar.' -ForegroundColor Red"
     powershell -Command "Write-Host 'Por favor, cierra esta ventana, haz clic derecho sobre el archivo ''iniciar.bat'' y selecciona ''Ejecutar como administrador''.' -ForegroundColor Red"
-    
+    powershell -Command "Write-Host 'Puulse cualquier tecla para cerrar la ventana' -ForegroundColor Yellow"
+    pause >nul
     goto :EOF
 )
 
@@ -124,5 +125,6 @@ powershell -Command "Write-Host '(El servidor de Minecraft estara completamente 
 
 :EOF
 
-pause
-endlocal
+powershell -Command "Write-Host 'Puulse cualquier tecla para cerrar la ventana' -ForegroundColor Cyan"
+pause >nul
+powershell -Command "exit"
