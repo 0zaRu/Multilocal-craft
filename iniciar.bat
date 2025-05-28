@@ -46,14 +46,14 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b 1
 )
 
-git reset --hard origin/main >nul 2>&1
-if %ERRORLEVEL% NEQ 0 (
-    powershell -Command "Write-Host 'ERROR: No se pudo aplicar los últimos cambios de GitHub.' -ForegroundColor Red"
-    pause
-    exit /b 1
-) else (
-    powershell -Command "Write-Host 'Datos del mundo actualizados correctamente desde GitHub.' -ForegroundColor Green"
-)
+@REM git reset --hard origin/main >nul 2>&1
+@REM if %ERRORLEVEL% NEQ 0 (
+@REM     powershell -Command "Write-Host 'ERROR: No se pudo aplicar los últimos cambios de GitHub.' -ForegroundColor Red"
+@REM     pause
+@REM     exit /b 1
+@REM ) else (
+@REM     powershell -Command "Write-Host 'Datos del mundo actualizados correctamente desde GitHub.' -ForegroundColor Green"
+@REM )
 
 :: --- Activar IP flotante en la interfaz ZeroTier ---
 powershell -Command "$interface = Get-NetAdapter | Where-Object { $_.InterfaceDescription -like '*ZeroTier*' } | Select-Object -First 1; if ($interface) { New-NetIPAddress -IPAddress '%IPFLOTANTE%' -InterfaceIndex $interface.ifIndex -PrefixLength 16 -AddressFamily IPv4 -ErrorAction Stop | Out-Null } else { Write-Host 'ERROR: No se encontró ninguna interfaz ZeroTier.' -ForegroundColor Red; exit 1 }"
