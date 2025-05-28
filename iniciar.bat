@@ -8,77 +8,121 @@ cd /d "%~dp0"
 set IPFLOTANTE=172.25.254.254
 
 :: --- Mensaje de inicio y verificación de privilegios ---
-powershell -Command "Write-Host 'Iniciando script de despliegue de servidor ZeroTier...' -ForegroundColor Green"
+powershell -Command "Write-Host 'Iniciando el asistente para el servidor de Minecraft...' -ForegroundColor Green"
 NET SESSION >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
-    powershell -Command "Write-Host 'ERROR: Este script debe ejecutarse como administrador.' -ForegroundColor Red"
-    powershell -Command "Write-Host 'Por favor, haga clic derecho en el archivo .bat y seleccione ''Ejecutar como administrador''.' -ForegroundColor Red"
-    pause
-    exit /b 1
-)
-
-:: --- Verificar si la IP flotante está en uso ---
-powershell -Command "Write-Host 'Verificando si la IP flotante %IPFLOTANTE% ya está en uso...' -ForegroundColor Yellow"
-ping -n 1 %IPFLOTANTE% | findstr /C:"TTL=" > nul
-if %ERRORLEVEL% EQU 0 (
-    powershell -Command "Write-Host 'Servidor ya desplegado en otro nodo (IP %IPFLOTANTE% responde a ping).' -ForegroundColor Yellow"
-    powershell -Command "Write-Host 'Saliendo sin realizar cambios.' -ForegroundColor Yellow"
-    pause
-    exit /b 0
-) else (
-    powershell -Command "Write-Host 'IP flotante %IPFLOTANTE% no está en uso. Procediendo...' -ForegroundColor Green"
+    powershell -Command "Write-Host 'ERROR: Necesitas permisos de administrador para continuar.' -ForegroundColor Red"
+    powershell -Command "Write-Host 'Por favor, cierra esta ventana, haz clic derecho sobre el archivo ''iniciar.bat'' y selecciona ''Ejecutar como administrador''.' -ForegroundColor Red"
+    
+    goto :EOF
 )
 
 :: --- Verificar si hay un docker-compose.yml en paralelo al script ---
 if not exist "docker-compose.yml" (
-    powershell -Command "Write-Host 'ERROR: No se encontró el archivo docker-compose.yml en el directorio actual.' -ForegroundColor Red"
-    powershell -Command "Write-Host 'Ruta actual: %CD%' -ForegroundColor Red"
-    pause
-    exit /b 1
+    powershell -Command "Write-Host 'ERROR: Falta un archivo importante (docker-compose.yml) para iniciar el servidor.' -ForegroundColor Red"
+    powershell -Command "Write-Host 'Asegurate de que ''docker-compose.yml'' este en la misma carpeta que este programa: %CD%' -ForegroundColor Red"
+    goto :EOF
+)
+
+set ASIGNEDIP=0
+
+:: --- Verificar si la IP flotante está en uso ---
+powershell -Command "Write-Host 'Comprobando la configuracion de red para el servidor (IP: %IPFLOTANTE%)...' -ForegroundColor Yellow"
+ping -n 1 %IPFLOTANTE% | findstr /C:"TTL=" > nul
+if %ERRORLEVEL% EQU 0 (
+    :: Comprobar si la IP está asignada a la máquina local
+    powershell -Command "$localIPs = Get-NetIPAddress -AddressFamily IPv4 | Select-Object -ExpandProperty IPAddress; if ($localIPs -contains '%IPFLOTANTE%') { Write-Host 'La configuracion de red (IP: %IPFLOTANTE%) ya esta lista en este ordenador.' -ForegroundColor Yellow; exit 0 } else { Write-Host 'ERROR: La direccion de red %IPFLOTANTE% esta siendo usada por otro ordenador. Si el servidor ya esta iniciado en otra maquina, puedes conectarte directamente. Si quieres iniciar el servidor aqui, apaga el otro servidor primero o revisa la configuracion de red.' -ForegroundColor Red; exit 1 }"
+    if %ERRORLEVEL% EQU 0 (
+        set ASIGNEDIP=1
+    ) else (
+        goto :EOF
+    )
+) else (
+    powershell -Command "Write-Host 'La configuracion de red (IP: %IPFLOTANTE%) esta disponible. Preparando para activarla.' -ForegroundColor Green"
 )
 
 :: --- Actualizar datos del mundo desde GitHub ---
-powershell -Command "Write-Host 'Sincronizando datos del mundo desde GitHub (rama main)...' -ForegroundColor Cyan"
-git fetch origin main >nul 2>&1
-if %ERRORLEVEL% NEQ 0 (
-    powershell -Command "Write-Host 'ERROR: No se pudo obtener información del repositorio remoto.' -ForegroundColor Red"
-    pause
-    exit /b 1
+set DOCKERUP=0
+
+::Comprobar que mc-server no está en ejecución
+docker ps -q --filter "name=mc-server" > temp.txt
+set /p RESULTADO=<temp.txt
+del temp.txt
+
+if "%RESULTADO%"=="" (
+    powershell -Command "Write-Host 'Buscando actualizaciones para el mundo del servidor en internet...' -ForegroundColor Cyan"
+
+) else (
+    powershell -Command "Write-Host 'El servidor de Minecraft ya esta en marcha. No se buscaran actualizaciones del mundo para no interrumpir.' -ForegroundColor Yellow"
+    set DOCKERUP=1
+
+    :: SI asignedip y dockerup, goto eof
+    if "%DOCKERUP%"=="1" (
+        if "%ASIGNEDIP%"=="1" (
+            powershell -Command "Write-Host '¡Todo listo! El servidor de Minecraft esta en linea y configurado en este ordenador. Ya puedes entrar a jugar.' -ForegroundColor Green"
+            goto :EOF
+        
+        ) else (
+            powershell -Command "Write-Host 'El servidor de Minecraft ya esta en marcha. Se omitio la busqueda de actualizaciones.' -ForegroundColor Yellow"
+            goto :IPACTIVATE
+        )
+    )
 )
 
-@REM git reset --hard origin/main >nul 2>&1
-@REM if %ERRORLEVEL% NEQ 0 (
-@REM     powershell -Command "Write-Host 'ERROR: No se pudo aplicar los últimos cambios de GitHub.' -ForegroundColor Red"
-@REM     pause
-@REM     exit /b 1
-@REM ) else (
-@REM     powershell -Command "Write-Host 'Datos del mundo actualizados correctamente desde GitHub.' -ForegroundColor Green"
-@REM )
-
-:: --- Activar IP flotante en la interfaz ZeroTier ---
-powershell -Command "$interface = Get-NetAdapter | Where-Object { $_.InterfaceDescription -like '*ZeroTier*' } | Select-Object -First 1; if ($interface) { New-NetIPAddress -IPAddress '%IPFLOTANTE%' -InterfaceIndex $interface.ifIndex -PrefixLength 16 -AddressFamily IPv4 -ErrorAction Stop | Out-Null } else { Write-Host 'ERROR: No se encontró ninguna interfaz ZeroTier.' -ForegroundColor Red; exit 1 }"
+git fetch origin main >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
-    powershell -Command "Write-Host 'ERROR: Falló la activación de la IP flotante. Verifique permisos o la interfaz ZeroTier.' -ForegroundColor Red"
-    pause
-    exit /b 1
+    powershell -Command "Write-Host 'ERROR: No se pudo conectar a internet para buscar actualizaciones del mundo.' -ForegroundColor Red"
+    goto :EOF
+)
+
+git reset --hard origin/main >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    powershell -Command "Write-Host 'ERROR: Hubo un problema al descargar o aplicar las actualizaciones del mundo.' -ForegroundColor Red"
+    goto :EOF
+
 ) else (
-    powershell -Command "Write-Host 'IP flotante %IPFLOTANTE% activada con éxito.' -ForegroundColor Green"
+    powershell -Command "Write-Host '¡Mundo actualizado! Se descargaron los ultimos cambios del servidor.' -ForegroundColor Green"
+)
+
+:IPACTIVATE
+:: --- Activar IP flotante en la interfaz ZeroTier ---
+if "%ASIGNEDIP%"=="1" (
+    powershell -Command "Write-Host 'La configuracion de red (IP: %IPFLOTANTE%) ya esta activada. Iniciando el servidor de Minecraft...' -ForegroundColor Yellow"
+    goto :dockerComposeUp
+)
+
+powershell -Command "$interface = Get-NetAdapter | Where-Object { $_.InterfaceDescription -like '*ZeroTier*' } | Select-Object -First 1; if ($interface) { New-NetIPAddress -IPAddress '%IPFLOTANTE%' -InterfaceIndex $interface.ifIndex -PrefixLength 16 -AddressFamily IPv4 -ErrorAction Stop | Out-Null } else { Write-Host 'ERROR: No se encontro el programa de red ZeroTier necesario. Asegurate de que ZeroTier este instalado y en ejecucion.' -ForegroundColor Red; exit 1 }"
+if %ERRORLEVEL% NEQ 0 (
+    powershell -Command "Write-Host 'ERROR: No se pudo activar la configuracion de red (IP: %IPFLOTANTE%). Comprueba que ZeroTier este funcionando correctamente y que tienes permisos de administrador.' -ForegroundColor Red"
+    goto :EOF
+) else (
+    powershell -Command "Write-Host 'Configuracion de red (IP: %IPFLOTANTE%) activada correctamente.' -ForegroundColor Green"
+)
+
+:dockerComposeUp
+
+if "%DOCKERUP%"=="1" (
+    powershell -Command "Write-Host 'El servidor de Minecraft ya esta en marcha. No es necesario iniciarlo de nuevo.' -ForegroundColor Yellow"
+    goto :EOF
 )
 
 :: --- Lanzar servidor Docker Compose ---
-powershell -Command "Write-Host 'Iniciando el mundo (Docker Compose)...' -ForegroundColor Magenta -BackgroundColor Black"
+powershell -Command "Write-Host 'Iniciando el servidor de Minecraft...' -ForegroundColor Magenta -BackgroundColor Black"
+
 echo.
 docker compose up -d
+
 if %ERRORLEVEL% NEQ 0 (
-    powershell -Command "Write-Host 'ERROR: Falló el comando docker compose up -d.' -ForegroundColor Red"
-    powershell -Command "Write-Host 'Asegúrese de que Docker esté funcionando y que el archivo docker-compose.yml sea válido.' -ForegroundColor Red"
-    pause
-    exit /b 1
+    powershell -Command "Write-Host 'ERROR: Hubo un problema al intentar iniciar el servidor de Minecraft con Docker.' -ForegroundColor Red"
+    powershell -Command "Write-Host 'Asegurate de que Docker Desktop este abierto y funcionando correctamente.' -ForegroundColor Red"
+    goto :EOF
 ) else (
-    powershell -Command "Write-Host 'Docker Compose iniciado con éxito en segundo plano.' -ForegroundColor Green"
+    powershell -Command "Write-Host '¡Servidor de Minecraft iniciado con exito!' -ForegroundColor Green"
 )
 echo.
-powershell -Command "Write-Host '(El terminal de minecraft tardará 1 minuto en estar disponible a partir de que el servidor arranque).' -ForegroundColor Magenta -BackgroundColor Black"
+powershell -Command "Write-Host '(El servidor de Minecraft estara completamente listo para jugar en aproximadamente 1 minuto).' -ForegroundColor Magenta -BackgroundColor Black"
+
+:EOF
 
 pause
 endlocal
