@@ -81,25 +81,35 @@ if %DOCKER_MC_RUNNING% EQU 1 (
         powershell -Command "Write-Host 'El servidor de Minecraft ya esta en marcha, pero la IP %IPFLOTANTE% no esta en este PC. Se intentara activar...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
         goto :IPACTIVATE
     )
-)
-
-:: Si el Docker no esta corriendo, intentamos actualizar desde Git
-powershell -Command "Write-Host 'Buscando actualizaciones para el mundo del servidor en internet (GitHub)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-git fetch origin main >nul 2>&1
-if %ERRORLEVEL% NEQ 0 (
-    powershell -Command "Write-Host 'ADVERTENCIA: No se pudo conectar a internet (GitHub) para buscar actualizaciones del mundo.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Se continuara con los datos locales. Si es la primera vez, podria faltar el mundo.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    REM No es un error fatal, podemos intentar iniciar con los datos locales.
 ) else (
-    powershell -Command "Write-Host 'Comprobacion de actualizaciones finalizada.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-
-    powershell -Command "Write-Host 'Aplicando actualizaciones del mundo desde GitHub (descartando cambios locales no subidos)...' -ForegroundColor Yellow"
-    git reset --hard origin/main >nul 2>&1
-    if %ERRORLEVEL% NEQ 0 (
-        powershell -Command "Write-Host 'ERROR: Hubo un problema al descargar o aplicar las actualizaciones del mundo.' -ForegroundColor Red"
-        goto :END
+    :: Docker NO está corriendo (DOCKER_MC_RUNNING es 0)
+    if %ASIGNEDIP_HERE% EQU 1 (
+        :: NUEVO CASO: IP activa, Docker NO activo. No actualizar, iniciar Docker.
+        powershell -Command "Write-Host 'INFORMACION: La IP del servidor (%IPFLOTANTE%) ya esta activa en este ordenador, pero el servidor de Minecraft (Docker) no.' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+        powershell -Command "Write-Host 'Se procedera a iniciar el servidor de Minecraft directamente, sin actualizar desde GitHub.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+        goto :dockerComposeUp
     ) else (
-        powershell -Command "Write-Host 'Mundo actualizado. Se descargaron los ultimos cambios del servidor.' -ForegroundColor Green"
+        :: CASO ORIGINAL (Docker NO activo, IP NO activa): Actualizar desde Git, luego activar IP.
+        powershell -Command "Write-Host 'Buscando actualizaciones para el mundo del servidor en internet (GitHub)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+        git fetch origin main >nul 2>&1
+        if %ERRORLEVEL% NEQ 0 (
+            powershell -Command "Write-Host 'ADVERTENCIA: No se pudo conectar a internet (GitHub) para buscar actualizaciones del mundo.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+            powershell -Command "Write-Host 'Se continuara con los datos locales. Si es la primera vez, podria faltar el mundo.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+            REM No es un error fatal, podemos intentar iniciar con los datos locales.
+        ) else (
+            powershell -Command "Write-Host 'Comprobacion de actualizaciones finalizada.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+
+            powershell -Command "Write-Host 'Aplicando actualizaciones del mundo desde GitHub (descartando cambios locales no subidos)...' -ForegroundColor Yellow"
+            git reset --hard origin/main >nul 2>&1
+            if %ERRORLEVEL% NEQ 0 (
+                powershell -Command "Write-Host 'ERROR: Hubo un problema al descargar o aplicar las actualizaciones del mundo.' -ForegroundColor Red"
+                goto :END
+            ) else (
+                powershell -Command "Write-Host 'Mundo actualizado. Se descargaron los ultimos cambios del servidor.' -ForegroundColor Green"
+            )
+        )
+        :: Despues de actualizar (o no) desde Git, proceder a activar la IP
+        goto :IPACTIVATE
     )
 )
 
