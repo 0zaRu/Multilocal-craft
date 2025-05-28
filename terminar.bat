@@ -34,32 +34,30 @@ goto :EOF
 
 :guardarMundo
     powershell -Command "Write-Host 'Guardando el progreso del mundo de Minecraft...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    docker exec -i mc-server rcon-cli save-all flush > temp_rcon.txt 2>&1
-    findstr /C:"Failed to connect to RCON" /C:"connection refused" /C:"No such container" temp_rcon.txt > nul
-    if %ERRORLEVEL% EQU 0 (
-        del temp_rcon.txt >nul 2>&1
-        powershell -Command "Write-Host 'ERROR: No se pudo conectar con el servidor de Minecraft para guardar el mundo.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-        powershell -Command "Write-Host 'Esto puede pasar si el servidor no estaba completamente iniciado o hay un problema interno. El progreso podria no guardarse.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-        set MUNDO_GUARDADO_EXITO=1
-        goto :EOF
-    )
-    del temp_rcon.txt >nul 2>&1
-    powershell -Command "Write-Host 'Comando de guardado enviado. Verificando que todo se haya guardado bien...' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
     
-    timeout /t 3 > nul :: Dar tiempo a que el log se actualice
-    docker logs --tail 30 mc-server 2>&1 | findstr /C:"Saved the game" /C:"Guardado completo" > nul
-    if %ERRORLEVEL% NEQ 0 (
-        timeout /t 5 > nul :: Segundo intento con mas tiempo y logs mas amplios
-        docker logs --since 2m mc-server 2>&1 | findstr /C:"Saved the game" /C:"Guardado completo" > nul
-        if %ERRORLEVEL% NEQ 0 (
-            powershell -Command "Write-Host 'ERROR: No se pudo confirmar que el mundo de Minecraft se haya guardado correctamente.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-            powershell -Command "Write-Host 'Es recomendable revisar los registros del servidor manualmente si el progreso es importante.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-            set MUNDO_GUARDADO_EXITO=1
-            goto :EOF
+    :: Enviar comando de guardado
+    docker exec -i mc-server rcon-cli save-all flush > nul 2>&1
+    
+    :: Esperar y verificar logs
+    powershell -Command "Write-Host 'Comando de guardado enviado. Verificando...' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+    timeout /t 5 > nul
+    
+    :: Buscar confirmación de guardado - ENFOQUE SIMPLE
+    docker logs --tail 50 mc-server | findstr "Saved the game" > nul
+    if %ERRORLEVEL% EQU 0 (
+        powershell -Command "Write-Host 'Progreso del mundo de Minecraft guardado con exito.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+        exit /b 0
+    ) else (
+        :: Un segundo intento con más líneas de log
+        docker logs --since 1m mc-server | findstr "Saved the game" > nul
+        if %ERRORLEVEL% EQU 0 (
+            powershell -Command "Write-Host 'Progreso del mundo de Minecraft guardado con exito.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+            exit /b 0
+        ) else (
+            powershell -Command "Write-Host 'ERROR: No se pudo confirmar que el mundo se haya guardado correctamente.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+            exit /b 1
         )
     )
-    powershell -Command "Write-Host 'Progreso del mundo de Minecraft guardado con exito.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-    set MUNDO_GUARDADO_EXITO=0
 goto :EOF
 
 :detenerServidorDocker
@@ -190,8 +188,14 @@ goto :EOF
             powershell -Command "Write-Host 'Detectado: La IP del servidor (%IPFLOTANTE%) esta configurada en este ordenador y el servidor de Minecraft esta funcionando.' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
             powershell -Command "Write-Host 'Iniciando apagado completo: Guardar progreso, desactivar IP, apagar servidor y hacer copia de seguridad.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
             
+            :: Inicializamos explícitamente para depuración
+            set MUNDO_GUARDADO_EXITO=1
+            
+            :: Guardado del mundo - VERSIÓN SIMPLIFICADA
             call :guardarMundo
-            if %MUNDO_GUARDADO_EXITO% NEQ 0 (
+            if %ERRORLEVEL% EQU 0 (
+                powershell -Command "Write-Host 'Continuando con el proceso de apagado...' -ForegroundColor Green -ErrorAction SilentlyContinue"
+            ) else (
                 powershell -Command "Write-Host 'CRITICO: El progreso del mundo de Minecraft no se guardo correctamente.' -ForegroundColor Red -ErrorAction SilentlyContinue"
                 powershell -Command "Write-Host 'Para evitar perdida de datos, se aborta el resto del proceso. Por favor, revisa el servidor y los logs manualmente.' -ForegroundColor Red -ErrorAction SilentlyContinue"
                 powershell -Command "Write-Host 'Vuelve a intentarlo cuando el problema de guardado este solucionado.' -ForegroundColor Red -ErrorAction SilentlyContinue"
