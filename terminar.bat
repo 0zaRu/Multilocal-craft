@@ -63,6 +63,7 @@ goto :EOF
 :detenerServidorDocker
     powershell -Command "Write-Host 'Apagando el servidor de Minecraft de forma segura...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
     docker exec -i mc-server rcon-cli stop >nul 2>&1
+    timeout /t 5 > nul
     if %ERRORLEVEL% NEQ 0 (
         powershell -Command "Write-Host 'ADVERTENCIA: No se pudo usar el comando normal para apagar el servidor (puede que ya estuviera apagado o hubiera un problema).' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
         powershell -Command "Write-Host 'Intentando apagarlo directamente...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
