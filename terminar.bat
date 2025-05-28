@@ -7,82 +7,84 @@ cd /d "%~dp0"
 :: --- Configuración ---
 set IPFLOTANTE=172.25.254.254
 
-:: --- Mensaje de inicio y verificación de privilegios ---
+:: --- Verificación de privilegios ---
 NET SESSION >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     powershell -Command "Write-Host 'ERROR: Este script debe ejecutarse como administrador.' -ForegroundColor Red"
-    powershell -Command "Write-Host 'Por favor, haga clic derecho en el archivo .bat y seleccione ''Ejecutar como administrador''.' -ForegroundColor Red"
-    pause
-    exit /b 1
+    goto :pushBackup
 )
 
 echo Guardando el mundo...
 
 :: --- Verificar conexión RCON y ejecutar comando de guardado ---
 docker exec -i mc-server rcon-cli save-all flush > temp.txt 2>&1
-
 findstr /C:"Failed to connect to RCON" /C:"connection refused" temp.txt > nul
 if %ERRORLEVEL% EQU 0 (
+    powershell -Command "Write-Host 'ERROR: Falló la conexión RCON con el servidor.' -ForegroundColor Red"
     del temp.txt
-    powershell -Command "Write-Host 'ERROR: Falló la conexión RCON con el servidor. Asegúrese de que el servidor está en ejecución y RCON configurado correctamente.' -ForegroundColor Red"
-    powershell -Command "Write-Host 'Debe terminar de cargar el mundo para poder hacer un cierre seguro.' -ForegroundColor Magenta -BackgroundColor Black"
-    pause
-    exit /b
+    goto :pushBackup
 )
+del temp.txt
 
 :: --- Desactivar IP flotante ---
 powershell -Command "Write-Host 'Conexión RCON establecida. Desactivando IP flotante %IPFLOTANTE% para liberarla...' -ForegroundColor Yellow"
 powershell -Command "$interface = Get-NetAdapter | Where-Object { $_.InterfaceDescription -like '*ZeroTier*' } | Select-Object -First 1; if ($interface) { Remove-NetIPAddress -IPAddress '%IPFLOTANTE%' -InterfaceIndex $interface.ifIndex -ErrorAction SilentlyContinue | Out-Null } else { Write-Host 'ADVERTENCIA: No se encontró la interfaz ZeroTier para desactivar la IP.' -ForegroundColor Yellow }"
 if %ERRORLEVEL% NEQ 0 (
-    powershell -Command "Write-Host 'ADVERTENCIA: Falló la desactivación de la IP flotante. Puede que ya no estuviera activa o que no se encontrara la interfaz.' -ForegroundColor Yellow"
+    powershell -Command "Write-Host 'ADVERTENCIA: No se pudo desactivar la IP.' -ForegroundColor Yellow"
+    goto :pushBackup
 ) else (
-    powershell -Command "Write-Host 'IP flotante %IPFLOTANTE% desactivada con éxito.' -ForegroundColor Green"
+    powershell -Command "Write-Host 'IP flotante %IPFLOTANTE% desactivada correctamente.' -ForegroundColor Green"
 )
 
-del temp.txt
-
-:: --- Verificación del guardado ---
+:: --- Verificación del guardado en logs de Docker ---
 docker logs --tail 20 mc-server | findstr "Saved the game" > nul
 if %ERRORLEVEL% NEQ 0 (
     timeout /t 3 > nul
     docker logs --tail 20 mc-server | findstr "Saved the game" > nul
+    if %ERRORLEVEL% NEQ 0 (
+        powershell -Command "Write-Host 'ERROR: El servidor no confirmó el guardado.' -ForegroundColor Red"
+        goto :pushBackup
+    )
 )
 
-echo Guardado completado. Cerrando el servidor...
-docker exec -i mc-server rcon-cli stop
-echo.
-powershell -Command "Write-Host 'Cerrado correctamente.' -ForegroundColor Magenta -BackgroundColor Black"
+echo Cerrando el servidor...
+docker exec -i mc-server rcon-cli stop >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    powershell -Command "Write-Host 'ERROR: No se pudo detener el servidor.' -ForegroundColor Red"
+    goto :pushBackup
+)
 
-:: --- Subir cambios a GitHub ---
-powershell -Command "Write-Host 'Subiendo cambios del mundo a GitHub...' -ForegroundColor Cyan"
+powershell -Command "Write-Host 'Cerrado correctamente.' -ForegroundColor Magenta"
 
-:: Si NO existe el repo Git, mostrar advertencia y saltar backup
+:: --- Flujo normal de backup en GitHub ---
+:pushBackup
+powershell -Command "Write-Host 'Iniciando backup GitHub...' -ForegroundColor Cyan"
+
+:: Asegurar que estamos en main
+git checkout main       >nul 2>&1
+git pull origin main    >nul 2>&1
+
 if not exist ".git" (
-    powershell -Command "Write-Host 'No se encontró repositorio Git en el directorio del script. Omisión del backup.' -ForegroundColor Red"
+    powershell -Command "Write-Host 'No hay repositorio Git. Omisión del backup.' -ForegroundColor Yellow"
     goto :EOF
 )
 
-git add . >nul 2>&1
-
-set "CHANGES=0"
-for /f %%i in ('git status --porcelain') do (
-    set "CHANGES=1"
-    goto :commit
-)
-
-:commit
-if "%CHANGES%"=="1" (
-    set TIMESTAMP=%DATE% %TIME%
-    git commit -m "Backup automático del mundo: %TIMESTAMP%" >nul 2>&1
-    git push origin main >nul 2>&1
+git add -A >nul 2>&1
+git status --porcelain | findstr . >nul 2>&1
+if %ERRORLEVEL% EQU 0 (
+    for /f "tokens=1-2 delims= " %%A in ('echo %DATE%_%TIME%') do set TS=%%A_%%B
+    git commit -m "Backup automático: %TS%" >nul 2>&1
+    git push origin main             >nul 2>&1
     if %ERRORLEVEL% EQU 0 (
-        powershell -Command "Write-Host 'Cambios subidos correctamente a GitHub.' -ForegroundColor Green"
+        powershell -Command "Write-Host 'Backup subido correctamente.' -ForegroundColor Green"
     ) else (
-        powershell -Command "Write-Host 'ERROR: Falló el push a GitHub. Verifique conexión o autenticación.' -ForegroundColor Red"
+        powershell -Command "Write-Host 'Error al subir el backup.' -ForegroundColor Red"
     )
 ) else (
-    powershell -Command "Write-Host 'No hay cambios para subir a GitHub.' -ForegroundColor Yellow"
+    powershell -Command "Write-Host 'No hay cambios para subir.' -ForegroundColor Yellow"
 )
+
+:EOF
 
 pause
 endlocal
