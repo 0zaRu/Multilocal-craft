@@ -133,7 +133,7 @@ if %DOCKER_MC_RUNNING% EQU 1 (
             ) else (
                 powershell -Command "Write-Host 'Mundo actualizado. Se descargaron los ultimos cambios del servidor.' -ForegroundColor Green"
             )
-        }
+        )
         :: Despues de actualizar (o no) desde Git, proceder a activar la IP
         goto :IPACTIVATE
     )
