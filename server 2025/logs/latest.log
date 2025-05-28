@@ -112,3 +112,44 @@
 [15:59:53] [Craft Scheduler Thread - 2 - Essentials/INFO]: [Essentials] Fetching version information...
 [15:59:53] [Craft Scheduler Thread - 2 - Essentials/WARN]: [Essentials] You're 35 EssentialsX dev build(s) out of date!
 [15:59:53] [Craft Scheduler Thread - 2 - Essentials/WARN]: [Essentials] Download it here: https://essentialsx.net/downloads.html
+[16:02:13] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
+[16:02:14] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[16:02:14] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[16:02:14] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[16:02:14] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[16:02:14] [Server thread/INFO]: [Rcon: Saved the game]
+[16:02:14] [RCON Client /0:0:0:0:0:0:0:1 #2/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
+[16:02:17] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
+[16:02:17] [Server thread/INFO]: [Rcon: Stopping the server]
+[16:02:17] [RCON Client /0:0:0:0:0:0:0:1 #3/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
+[16:02:17] [Server thread/INFO]: Stopping server
+[16:02:17] [Server thread/INFO]: [Essentials] Disabling Essentials v2.21.0-dev+180-fe27182
+[16:02:17] [Server thread/INFO]: [LoginSecurity] Disabling LoginSecurity v3.3.0
+[16:02:17] [Server thread/INFO]: [LoginSecurity] Waiting for queued tasks...
+[16:02:17] [Server thread/INFO]: [LoginSecurity] ExecutorService shut down, ready to disable.
+[16:02:17] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.6.4
+[16:02:17] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.4.131
+[16:02:17] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
+[16:02:17] [Server thread/INFO]: [LuckPerms] Closing storage...
+[16:02:17] [Server thread/INFO]: [LuckPerms] Goodbye!
+[16:02:18] [Server thread/INFO]: Saving players
+[16:02:18] [Server thread/INFO]: Saving worlds
+[16:02:18] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 8 entity chunks, 0 poi chunks in world 'world' in 0.04s
+[16:02:18] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 20 entity chunks, 0 poi chunks in world 'world_nether' in 0.02s
+[16:02:18] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[16:02:18] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 2 entity chunks, 0 poi chunks in world 'world_the_end' in 0.01s
+[16:02:18] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[16:02:18] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[16:02:18] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[16:02:18] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
