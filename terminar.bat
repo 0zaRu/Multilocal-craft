@@ -71,6 +71,9 @@ goto :EOF
     docker stop mc-server >nul 2>&1
     if %ERRORLEVEL% NEQ 0 (
         powershell -Command "Write-Host 'ADVERTENCIA: El comando para apagar el servidor directamente (`docker stop mc-server`) fallo. Puede que ya estuviera apagado.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    ) else (
+        powershell -Command "Write-Host 'Esperando 5 segundos para que el servidor se cierre completamente...' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+        timeout /t 5 > nul
     )
     
     powershell -Command "Write-Host 'Esperando a que el servidor se apague completamente (puede tardar hasta 30 segundos)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
