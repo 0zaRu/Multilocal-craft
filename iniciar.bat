@@ -26,6 +26,13 @@ if %ERRORLEVEL% EQU 0 (
     powershell -Command "Write-Host 'IP flotante %IPFLOTANTE% no está en uso. Procediendo...' -ForegroundColor Green"
 )
 
+:: --- Verificar si hay un docker-compose.yml en paralelo al script ---
+if not exist "docker-compose.yml" (
+    powershell -Command "Write-Host 'ERROR: No se encontró el archivo docker-compose.yml en el directorio actual.' -ForegroundColor Red"
+    pause
+    exit /b 1
+)
+
 :: --- Actualizar datos del mundo desde GitHub ---
 powershell -Command "Write-Host 'Sincronizando datos del mundo desde GitHub (rama main)...' -ForegroundColor Cyan"
 git fetch origin main >nul 2>&1
@@ -35,14 +42,14 @@ if %ERRORLEVEL% NEQ 0 (
     exit /b 1
 )
 
-@REM git reset --hard origin/main >nul 2>&1
-@REM if %ERRORLEVEL% NEQ 0 (
-@REM     powershell -Command "Write-Host 'ERROR: No se pudo aplicar los últimos cambios de GitHub.' -ForegroundColor Red"
-@REM     pause
-@REM     exit /b 1
-@REM ) else (
+git reset --hard origin/main >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    powershell -Command "Write-Host 'ERROR: No se pudo aplicar los últimos cambios de GitHub.' -ForegroundColor Red"
+    pause
+    exit /b 1
+) else (
     powershell -Command "Write-Host 'Datos del mundo actualizados correctamente desde GitHub.' -ForegroundColor Green"
-@REM )
+)
 
 :: --- Activar IP flotante en la interfaz ZeroTier ---
 powershell -Command "$interface = Get-NetAdapter | Where-Object { $_.InterfaceDescription -like '*ZeroTier*' } | Select-Object -First 1; if ($interface) { New-NetIPAddress -IPAddress '%IPFLOTANTE%' -InterfaceIndex $interface.ifIndex -PrefixLength 16 -AddressFamily IPv4 -ErrorAction Stop | Out-Null } else { Write-Host 'ERROR: No se encontró ninguna interfaz ZeroTier.' -ForegroundColor Red; exit 1 }"
