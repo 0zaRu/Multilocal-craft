@@ -57,16 +57,16 @@ if "%RESULTADO%"=="" (
     set DOCKERUP=1
 
     :: SI asignedip y dockerup, goto eof
-    if "%DOCKERUP%"=="1" (
-        if "%ASIGNEDIP%"=="1" (
-            powershell -Command "Write-Host '¡Todo listo! El servidor de Minecraft esta en linea y configurado en este ordenador. Ya puedes entrar a jugar.' -ForegroundColor Green"
-            goto :EOF
-        
-        ) else (
-            powershell -Command "Write-Host 'El servidor de Minecraft ya esta en marcha. Se omitio la busqueda de actualizaciones.' -ForegroundColor Yellow"
-            goto :IPACTIVATE
-        )
+    
+    if "%ASIGNEDIP%"=="1" (
+        powershell -Command "Write-Host '¡Todo listo! El servidor de Minecraft esta en linea y configurado en este ordenador. Ya puedes entrar a jugar.' -ForegroundColor Green"
+        goto :EOF
+    
+    ) else (
+        powershell -Command "Write-Host 'El servidor de Minecraft ya esta en marcha. Se omitio la busqueda de actualizaciones.' -ForegroundColor Yellow"
+        goto :IPACTIVATE
     )
+    
 )
 
 git fetch origin main >nul 2>&1
