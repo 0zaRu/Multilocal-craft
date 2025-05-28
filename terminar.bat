@@ -63,7 +63,7 @@ goto :EOF
 :detenerServidorDocker
     powershell -Command "Write-Host 'Apagando el servidor de Minecraft de forma segura...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
     docker exec -i mc-server rcon-cli stop >nul 2>&1
-    timeout /t 5 > nul
+
     if %ERRORLEVEL% NEQ 0 (
         powershell -Command "Write-Host 'ADVERTENCIA: No se pudo usar el comando normal para apagar el servidor (puede que ya estuviera apagado o hubiera un problema).' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
         powershell -Command "Write-Host 'Intentando apagarlo directamente...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
@@ -77,21 +77,21 @@ goto :EOF
         timeout /t 5 > nul
     )
     
-    powershell -Command "Write-Host 'Esperando a que el servidor se apague completamente (puede tardar hasta 30 segundos)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    for /L %%i in (1,1,30) do (
-        docker ps -q --filter "name=mc-server" --filter "status=running" > temp_docker_stop_check.txt
-        set /p DOCKER_STILL_RUNNING=<temp_docker_stop_check.txt
-        del temp_docker_stop_check.txt >nul 2>&1
-        if "!DOCKER_STILL_RUNNING!"=="" (
-            powershell -Command "Write-Host 'Servidor de Minecraft apagado correctamente.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-            set SERVIDOR_DETENIDO_EXITO=0
-            goto :EOF
-        )
-        timeout /t 1 > nul
+    :: Verificar si el servidor ya no está en ejecución (simplificado y mejorado)
+    docker ps --filter "name=mc-server" --quiet > temp_docker_check.txt
+    set /p DOCKER_STILL_RUNNING=<temp_docker_check.txt
+    del temp_docker_check.txt >nul 2>&1
+    
+    if "!DOCKER_STILL_RUNNING!"=="" (
+        :: El contenedor no aparece en docker ps (no está en ejecución)
+        powershell -Command "Write-Host 'Servidor de Minecraft apagado correctamente.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+        set SERVIDOR_DETENIDO_EXITO=0
+    ) else (
+        :: Si después de los intentos de apagar y la espera, el contenedor sigue en ejecución
+        powershell -Command "Write-Host 'ERROR: El servidor de Minecraft no se apago en el tiempo esperado.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+        powershell -Command "Write-Host 'Puede que necesites apagarlo manualmente usando el programa Docker Desktop o contactar al administrador.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+        set SERVIDOR_DETENIDO_EXITO=1
     )
-    powershell -Command "Write-Host 'ERROR: El servidor de Minecraft no se apago en el tiempo esperado.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Puede que necesites apagarlo manualmente usando el programa Docker Desktop o contactar al administrador.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    set SERVIDOR_DETENIDO_EXITO=1
 goto :EOF
 
 :pushBackupGit
@@ -211,7 +211,7 @@ goto :EOF
 
             call :detenerServidorDocker
             if %SERVIDOR_DETENIDO_EXITO% NEQ 0 (
-                 powershell -Command "Write-Host 'ADVERTENCIA: El servidor de Minecraft no se apago correctamente segun la verificacion. La copia de seguridad se intentara igualmente.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+                powershell -Command "Write-Host 'ADVERTENCIA: El servidor de Minecraft no se apago correctamente. Esto podria afectar a la copia de seguridad.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
             )
             
             call :pushBackupGit
