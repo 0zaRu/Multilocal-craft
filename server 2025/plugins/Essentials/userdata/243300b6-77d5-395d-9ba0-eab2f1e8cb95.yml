@@ -1,0 +1,79 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+muted: false
+jailed: false
+ip-address: 95.127.13.23
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 1742812069480
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1742901306179
+  login: 1742901255968
+money: '0'
+last-account-name: ThePenguin55
+logoutlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: 115.5
+  y: 94.0
+  z: -46.5
+  yaw: 153.43516540527344
+  pitch: 0.0
+homes:
+  arena:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: -957.7002137254293
+    y: 64.0
+    z: 596.9412119548095
+    yaw: 38.370338439941406
+    pitch: 13.799918174743652
+  laotra:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: -357.02878406461065
+    y: 95.0
+    z: -15.03242338634967
+    yaw: 76.7755126953125
+    pitch: 5.3996453285217285
+  casa:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 113.58170469028806
+    y: 94.0
+    z: -45.475360008041626
+    yaw: -4.812835693359375
+    pitch: 5.400099277496338
+  hierro:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: -57.19396421956391
+    y: 148.0
+    z: -81.64064678982251
+    yaw: 94.03793334960938
+    pitch: 21.600019454956055
+  exp:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 99.30000001192093
+    y: -11.0
+    z: 211.40228981691303
+    yaw: 119.013671875
+    pitch: 17.2498836517334
+lastlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: 79.1960820213384
+  y: 108.0
+  z: -20.6913234968132
+  yaw: 33.737213134765625
+  pitch: 45.749996185302734

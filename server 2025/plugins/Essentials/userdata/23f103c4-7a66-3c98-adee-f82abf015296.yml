@@ -1,0 +1,87 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+muted: false
+jailed: false
+ip-address: 83.54.90.150
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 1743455337413
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1743606929303
+  login: 1743606639494
+money: '0'
+last-account-name: Zehn
+lastlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: 236.5947521639026
+  y: -12.625
+  z: -960.8013354342387
+  yaw: -89.70365142822266
+  pitch: 35.9998779296875
+homes:
+  casa:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: -20.080905690179307
+    y: 108.0
+    z: -15.19468161516142
+    yaw: 98.09603118896484
+    pitch: 10.349771499633789
+  gran:
+    world: 17670af9-2bae-4236-bdb3-e090de0039fa
+    world-name: world_nether
+    x: -646.1608770034811
+    y: 75.0
+    z: -768.3584928300947
+    yaw: 156.153076171875
+    pitch: 3.1499905586242676
+  naranja:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: -3486.2450164884735
+    y: 65.0
+    z: -9512.255091660623
+    yaw: -177.1259765625
+    pitch: 4.650018692016602
+  end:
+    world: e9ef1c53-c1d4-4290-8f26-47e4fdd5450f
+    world-name: world_the_end
+    x: 5765.6039176593085
+    y: 149.0
+    z: -9176.537118682492
+    yaw: -96.4951171875
+    pitch: -4.049797058105469
+  explorar:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 624.7762440864708
+    y: 72.0
+    z: 166.67050159437474
+    yaw: -91.72020721435547
+    pitch: 27.300033569335938
+  exp:
+    world: e9ef1c53-c1d4-4290-8f26-47e4fdd5450f
+    world-name: world_the_end
+    x: 376.6964171794882
+    y: 1.0
+    z: 182.7343472147541
+    yaw: -165.01849365234375
+    pitch: 53.69999313354492
+logoutlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: -59.77989636559067
+  y: 108.0
+  z: -21.067089010489237
+  yaw: -92.7021484375
+  pitch: -1.6497498750686646

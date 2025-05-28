@@ -1,0 +1,79 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+muted: false
+jailed: false
+ip-address: 85.60.153.224
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 1742040359137
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1742040392297
+  login: 1742039089600
+money: '0'
+last-account-name: MrAlex0806
+homes:
+  casa:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: -20.341840756716646
+    y: 104.0
+    z: 51.780340190265605
+    yaw: 170.2894744873047
+    pitch: 29.738203048706055
+  nivel:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: -32.751578041112666
+    y: -20.0
+    z: 108.41577891343607
+    yaw: 97.19866943359375
+    pitch: 27.750078201293945
+  reparacion:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 2463.6923688491447
+    y: 68.0
+    z: -6869.4268718068615
+    yaw: 88.3863525390625
+    pitch: 11.849991798400879
+  hierro:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: -35.13800893886138
+    y: 161.0
+    z: -96.08665934716723
+    yaw: 39.48958969116211
+    pitch: 21.48813247680664
+  trialchamber:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 2410.7331244271454
+    y: -22.0
+    z: -6855.223129667286
+    yaw: -107.66400146484375
+    pitch: 20.100143432617188
+lastlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: 153.55031481200436
+  y: 99.5
+  z: -14.242900357068239
+  yaw: 57.489349365234375
+  pitch: 0.48822474479675293
+logoutlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: -19.346577678626296
+  y: 104.0
+  z: 48.23027090456056
+  yaw: -14.810544967651367
+  pitch: 8.438178062438965

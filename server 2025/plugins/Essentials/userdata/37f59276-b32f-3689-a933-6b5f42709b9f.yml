@@ -1,0 +1,79 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+muted: false
+jailed: false
+ip-address: 95.19.41.181
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 1743252114361
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1743252290740
+  login: 1743248513740
+money: '0'
+last-account-name: Jose_Alberto
+logoutlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: 39.61238249753271
+  y: 79.0
+  z: 73.31705468971073
+  yaw: -175.3504180908203
+  pitch: -86.09998321533203
+homes:
+  casa:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 191.09674693500455
+    y: 120.0
+    z: -37.89811065268218
+    yaw: 43.946197509765625
+    pitch: 16.95003318786621
+  diego:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: -64.70241456297802
+    y: 108.0
+    z: -22.79886612071029
+    yaw: -84.75375366210938
+    pitch: 8.550055503845215
+  granja:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 283.08466431797893
+    y: 98.0
+    z: 59.77897591949502
+    yaw: 50.099700927734375
+    pitch: 41.999977111816406
+  exploracion:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 852.681969004026
+    y: 110.0
+    z: -189.07886360345867
+    yaw: 161.56195068359375
+    pitch: 35.249969482421875
+  marceline:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 1357.2511235808904
+    y: 72.0
+    z: -614.0558663534397
+    yaw: 28.932178497314453
+    pitch: -2.8498096466064453
+lastlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: -1628.9516385837605
+  y: 2.0
+  z: -466.9577088555692
+  yaw: -11.85394287109375
+  pitch: 25.20001983642578

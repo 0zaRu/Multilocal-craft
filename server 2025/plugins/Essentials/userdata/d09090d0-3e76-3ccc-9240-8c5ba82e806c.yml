@@ -1,0 +1,47 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+muted: false
+jailed: false
+ip-address: 87.221.37.140
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 1740956153018
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1741377995872
+  login: 1741377949372
+money: '0'
+last-account-name: trikutrez
+logoutlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: 1330.699999988079
+  y: 8.0
+  z: -1129.5693724816408
+  yaw: 104.81819152832031
+  pitch: 50.55002212524414
+lastlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: 1195.5014159976613
+  y: 62.110764312744145
+  z: -936.4793658257689
+  yaw: -66.41985321044922
+  pitch: -13.499991416931152
+homes:
+  casa:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 97.5550748109499
+    y: 106.0
+    z: 34.556985661550385
+    yaw: -19.998046875
+    pitch: 24.0000057220459
