@@ -1,6 +1,9 @@
 @echo off
 setlocal
 
+:: --- Forzar ejecución en la carpeta del script ---
+cd /d "%~dp0"
+
 :: --- Configuración ---
 set IPFLOTANTE=172.25.254.254
 
@@ -29,6 +32,7 @@ if %ERRORLEVEL% EQU 0 (
 :: --- Verificar si hay un docker-compose.yml en paralelo al script ---
 if not exist "docker-compose.yml" (
     powershell -Command "Write-Host 'ERROR: No se encontró el archivo docker-compose.yml en el directorio actual.' -ForegroundColor Red"
+    powershell -Command "Write-Host 'Ruta actual: %CD%' -ForegroundColor Red"
     pause
     exit /b 1
 )
