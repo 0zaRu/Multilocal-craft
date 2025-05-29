@@ -152,8 +152,11 @@ goto :EOF
     powershell -Command "Write-Host 'Comprobando el estado actual del servidor y la red...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
 
     :: Comprobar si la IP flotante esta asignada a este PC
-    powershell -Command "$localIPs = Get-NetIPAddress -AddressFamily IPv4 | Select-Object -ExpandProperty IPAddress; if ($localIPs -contains '%IPFLOTANTE%') { exit 0 } else { exit 1 }"
+    powershell -Command "$result = Test-NetConnection -ComputerName '%IPFLOTANTE%' -Port 60068; if ($result.TcpTestSucceeded -and $result.SourceAddress.IPAddress -eq '%IPFLOTANTE%') { exit 0 } else { exit 1 }"
     set IP_ASIGNADA_AQUI=%ERRORLEVEL%
+    
+    powershell -Command "Write-Host ('DEBUG: ERRORLEVEL capturado = %ERRORLEVEL%') -ForegroundColor Magenta"
+    powershell -Command "Write-Host ('DEBUG: IP_ASIGNADA_AQUI = %IP_ASIGNADA_AQUI%') -ForegroundColor Magenta"
 
     :: Comprobar si el servicio Docker esta disponible y el estado del contenedor
     set DOCKER_ACTIVO=0

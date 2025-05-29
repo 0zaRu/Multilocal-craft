@@ -43,21 +43,14 @@ set ASIGNEDIP_HERE=0
 
 :: --- Verificar si la IP flotante esta en uso ---
 powershell -Command "Write-Host 'Comprobando la configuracion de red para el servidor (IP: %IPFLOTANTE%)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-ping -n 1 %IPFLOTANTE% > temp_ping.txt 2>&1
-findstr /C:"TTL=" temp_ping.txt > nul
+powershell -Command "$result = Test-NetConnection -ComputerName '%IPFLOTANTE%' -Port 60068; if ($result.TcpTestSucceeded) { if ($result.SourceAddress.IPAddress -eq '%IPFLOTANTE%') { Write-Host 'INFORMACION: La configuracion de red (IP: %IPFLOTANTE%) ya esta activa en este ordenador.' -ForegroundColor Cyan; exit 0 } else { Write-Host 'ERROR: La direccion de red %IPFLOTANTE% esta siendo usada por OTRO ordenador.' -ForegroundColor Red; Write-Host 'Si el servidor ya esta iniciado en otra maquina, puedes conectarte directamente.' -ForegroundColor Yellow; Write-Host 'Si quieres iniciar el servidor AQUI, apaga primero el otro servidor o revisa la configuracion de red.' -ForegroundColor Yellow; exit 1 } } else { Write-Host 'La configuracion de red (IP: %IPFLOTANTE%) esta disponible. Se activara si es necesario.' -ForegroundColor Green; exit 2 }"
 if %ERRORLEVEL% EQU 0 (
-    del temp_ping.txt >nul 2>&1
-    :: Comprobar si la IP esta asignada a la maquina local
-    powershell -Command "$localIPs = Get-NetIPAddress -AddressFamily IPv4 | Select-Object -ExpandProperty IPAddress; if ($localIPs -contains '%IPFLOTANTE%') { Write-Host 'INFORMACION: La configuracion de red (IP: %IPFLOTANTE%) ya esta activa en este ordenador.' -ForegroundColor Cyan -ErrorAction SilentlyContinue; exit 0 } else { Write-Host 'ERROR: La direccion de red %IPFLOTANTE% esta siendo usada por OTRO ordenador.' -ForegroundColor Red -ErrorAction SilentlyContinue; Write-Host 'Si el servidor ya esta iniciado en otra maquina, puedes conectarte directamente.' -ForegroundColor Yellow -ErrorAction SilentlyContinue; Write-Host 'Si quieres iniciar el servidor AQUI, apaga primero el otro servidor o revisa la configuracion de red.' -ForegroundColor Yellow -ErrorAction SilentlyContinue; exit 1 }"
-    if %ERRORLEVEL% EQU 0 (
-        set ASIGNEDIP_HERE=1
-    ) else (
-        set IP_EN_USO_OTRO_PC=1
-        goto :END
-    )
+    set ASIGNEDIP_HERE=1
+) else if %ERRORLEVEL% EQU 1 (
+    set IP_EN_USO_OTRO_PC=1
+    goto :END
 ) else (
-    del temp_ping.txt >nul 2>&1
-    powershell -Command "Write-Host 'La configuracion de red (IP: %IPFLOTANTE%) esta disponible. Se activara si es necesario.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+    REM ERRORLEVEL 2 significa que la IP está disponible, continuar normalmente
 )
 
 :: --- Verificar estado del servidor Docker ---
