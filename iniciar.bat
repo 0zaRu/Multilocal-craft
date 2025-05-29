@@ -163,87 +163,12 @@ if %ERRORLEVEL% NEQ 0 (
     powershell -Command "Write-Host 'Contenedor iniciado. Esperando a que el servidor este listo...' -ForegroundColor Green -ErrorAction SilentlyContinue"
 )
 
-:: Barra de progreso mejorada con marcadores de logs
-powershell -Command "Write-Host 'Progreso del arranque del servidor:' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
-set PROGRESS=0
-set MAX_WAIT=60
-set WAIT_COUNT=0
-
-:WAIT_LOOP
-:: Verificar diferentes etapas del arranque
-docker logs mc-server 2>nul > temp_server_logs.txt
-
-:: Etapa 1: Inicializando
-if %PROGRESS% LSS 1 (
-    findstr "Running as uid=" temp_server_logs.txt >nul 2>&1
-    if !ERRORLEVEL! EQU 0 (
-        set PROGRESS=1
-        powershell -Command "Write-Host '[████░░░░░░░░░░░░░░░░] Inicializando servidor...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    )
-)
-
-:: Etapa 2: Configurando
-if %PROGRESS% LSS 2 (
-    findstr "Resolving type given" temp_server_logs.txt >nul 2>&1
-    if !ERRORLEVEL! EQU 0 (
-        set PROGRESS=2
-        powershell -Command "Write-Host '[████████░░░░░░░░░░░░] Configurando tipo de servidor...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    )
-)
-
-:: Etapa 3: Cargando configuraciones
-if %PROGRESS% LSS 3 (
-    findstr "Loading configuration" temp_server_logs.txt >nul 2>&1
-    if !ERRORLEVEL! EQU 0 (
-        set PROGRESS=3
-        powershell -Command "Write-Host '[████████████░░░░░░░░] Cargando configuraciones...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    )
-)
-
-:: Etapa 4: Iniciando Minecraft
-if %PROGRESS% LSS 4 (
-    findstr "Starting org.bukkit.craftbukkit.Main" temp_server_logs.txt >nul 2>&1
-    if !ERRORLEVEL! EQU 0 (
-        set PROGRESS=4
-        powershell -Command "Write-Host '[████████████████░░░░] Iniciando Minecraft...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    )
-)
-
-:: Etapa 5: Cargando plugins
-if %PROGRESS% LSS 5 (
-    findstr "Bukkit plugins" temp_server_logs.txt >nul 2>&1
-    if !ERRORLEVEL! EQU 0 (
-        set PROGRESS=5
-        powershell -Command "Write-Host '[████████████████████] Cargando plugins y mundos...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    )
-)
-
-:: Verificar si está completamente listo
-findstr "Done (" temp_server_logs.txt >nul 2>&1
-if %ERRORLEVEL% EQU 0 (
-    del temp_server_logs.txt >nul 2>&1
-    goto :SERVER_READY
-)
-
-del temp_server_logs.txt >nul 2>&1
-
-:: Incrementar contador de espera
-set /a WAIT_COUNT+=1
-if %WAIT_COUNT% GEQ %MAX_WAIT% (
-    powershell -Command "Write-Host 'El servidor esta tardando mas de lo esperado, pero puede ser normal.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Esperando un poco mas...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    set WAIT_COUNT=0
-)
-
-:: Esperar 2 segundos antes de la siguiente verificación
-timeout /t 2 >nul
-goto :WAIT_LOOP
-
-:SERVER_READY
-powershell -Command "Write-Host '[████████████████████] Servidor completamente listo!' -ForegroundColor Green -ErrorAction SilentlyContinue"
-powershell -Command "Write-Host 'Servidor de Minecraft iniciado y listo para jugar.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+:: Esperar a que el servidor de Minecraft esté completamente listo
+timeout /t 10 >nul
+powershell -Command "Write-Host 'Servidor de Minecraft iniciado con exito.' -ForegroundColor Green -ErrorAction SilentlyContinue"
 echo.
-powershell -Command "Write-Host 'Todo listo. Ya puedes conectarte al servidor.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host 'El servidor de Minecraft estara completamente listo para jugar en aproximadamente 1 o 2 minutos.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host 'Puedes cerrar esta ventana o esperar.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
 
 :END
 del temp_*.txt >nul 2>&1 2>nul
