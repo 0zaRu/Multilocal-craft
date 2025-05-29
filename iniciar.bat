@@ -82,30 +82,13 @@ if %DOCKER_MC_RUNNING% EQU 1 (
         powershell -Command "Write-Host 'Ya puedes entrar a jugar.' -ForegroundColor Green -ErrorAction SilentlyContinue"
         goto :END
     ) else (
-        :: CASO 2: Contenedor desplegado pero IP no asignada
-        powershell -Command "Write-Host 'El servidor de Minecraft esta en marcha, pero la IP %IPFLOTANTE% no esta asignada a este PC.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-        powershell -Command "Write-Host 'Se apagara el servidor, se actualizaran los datos y se reiniciara correctamente.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-        
-        :: Detener el servidor Docker primero
-        powershell -Command "Write-Host 'Deteniendo el servidor de Minecraft...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-        docker stop mc-server >nul 2>&1
-        
-        :: Esperar a que se detenga completamente
-        powershell -Command "Write-Host 'Esperando a que el servidor se detenga...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-        timeout /t 5 >nul
-        
-        :: Actualizar desde GitHub
-        powershell -Command "Write-Host 'Actualizando datos del servidor desde GitHub...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-        git fetch origin main >nul 2>&1
-        if %ERRORLEVEL% EQU 0 (
-            git reset --hard origin/main >nul 2>&1
-            powershell -Command "Write-Host 'Datos del servidor actualizados correctamente.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-        ) else (
-            powershell -Command "Write-Host 'ADVERTENCIA: No se pudo conectar a internet para actualizar.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-        )
-        
-        :: Continuar con la activación de IP
-        goto :IPACTIVATE
+        :: CASO 2: Contenedor desplegado pero IP no asignada - SITUACIÓN PROBLEMÁTICA
+        powershell -Command "Write-Host 'DETECTADO: El servidor de Minecraft SI esta funcionando, pero la IP (%IPFLOTANTE%) NO esta configurada en este ordenador.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+        powershell -Command "Write-Host 'ADVERTENCIA: Esta es una situacion critica que requiere intervencion del administrador.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+        powershell -Command "Write-Host 'El servidor esta activo en este ordenador, pero otro ordenador puede tener la IP asignada.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+        powershell -Command "Write-Host 'CONTACTAR AL ADMINISTRADOR: No se realizara ninguna accion automatica para evitar conflictos.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+        powershell -Command "Write-Host 'El administrador debe verificar manualmente la configuracion de red y resolver el conflicto.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+        goto :END
     )
 ) else (
     :: Docker NO está corriendo (DOCKER_MC_RUNNING es 0)
@@ -166,10 +149,10 @@ if %DOCKER_MC_RUNNING% EQU 1 (
 )
 
 :: --- Lanzar servidor Docker Compose ---
-powershell -Command "Write-Host 'Iniciando el servidor de Minecraft (puede tardar unos minutos)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host 'Iniciando el servidor de Minecraft...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
 
 echo.
-docker compose up -d
+docker compose up -d >nul 2>&1
 
 if %ERRORLEVEL% NEQ 0 (
     powershell -Command "Write-Host 'ERROR: Hubo un problema al intentar iniciar el servidor de Minecraft con Docker.' -ForegroundColor Red -ErrorAction SilentlyContinue"
@@ -177,11 +160,44 @@ if %ERRORLEVEL% NEQ 0 (
     powershell -Command "Write-Host 'Revisa los mensajes de error de Docker en la consola para mas detalles.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
     goto :END
 ) else (
-    powershell -Command "Write-Host 'Servidor de Minecraft iniciado con exito.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+    powershell -Command "Write-Host 'Contenedor iniciado. Esperando a que el servidor este listo...' -ForegroundColor Green -ErrorAction SilentlyContinue"
 )
+
+:: Barra de progreso y monitoreo de logs
+powershell -Command "Write-Host 'Progreso del arranque: ' -NoNewline -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+set DOTS=0
+set SERVER_READY=0
+
+:WAIT_LOOP
+:: Verificar si el servidor está listo buscando el mensaje "Done ("
+docker logs mc-server 2>nul | findstr "Done (" >nul 2>&1
+if %ERRORLEVEL% EQU 0 (
+    set SERVER_READY=1
+    goto :SERVER_READY
+)
+
+:: Mostrar progreso con puntos
+set /a DOTS+=1
+if %DOTS% LEQ 30 (
+    powershell -Command "Write-Host '.' -NoNewline -ForegroundColor Green -ErrorAction SilentlyContinue"
+) else (
+    :: Si pasan más de 30 iteraciones sin estar listo, mostrar advertencia
+    powershell -Command "Write-Host '' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    powershell -Command "Write-Host 'El servidor esta tardando mas de lo esperado. Esto puede ser normal en el primer arranque.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    powershell -Command "Write-Host 'Continuando la espera...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    set DOTS=0
+    powershell -Command "Write-Host 'Progreso del arranque: ' -NoNewline -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+)
+
+:: Esperar 2 segundos antes de la siguiente verificación
+timeout /t 2 >nul
+goto :WAIT_LOOP
+
+:SERVER_READY
+powershell -Command "Write-Host '' -ForegroundColor Green -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host 'Servidor de Minecraft iniciado y listo para jugar.' -ForegroundColor Green -ErrorAction SilentlyContinue"
 echo.
-powershell -Command "Write-Host 'El servidor de Minecraft estara completamente listo para jugar en aproximadamente 1 o 2 minutos.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-powershell -Command "Write-Host 'Puedes cerrar esta ventana o esperar.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host 'Todo listo. Ya puedes conectarte al servidor.' -ForegroundColor Green -ErrorAction SilentlyContinue"
 
 :END
 del temp_*.txt >nul 2>&1 2>nul
