@@ -207,13 +207,8 @@ goto :EOF
             )
 
             call :desactivarIP
-            REM El mensaje de exito/error de desactivarIP se da dentro de la funcion. Continuamos igualmente.
 
             call :detenerServidorDocker
-            set SERVIDOR_DETENIDO_EXITO=%ERRORLEVEL%
-            if %SERVIDOR_DETENIDO_EXITO% NEQ 0 (
-                powershell -Command "Write-Host 'ADVERTENCIA: El servidor de Minecraft no se apago correctamente. Esto podria afectar a la copia de seguridad.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-            )
             
             call :pushBackupGit
 
