@@ -85,12 +85,12 @@ goto :EOF
     if "!DOCKER_STILL_RUNNING!"=="" (
         :: El contenedor no aparece en docker ps (no está en ejecución)
         powershell -Command "Write-Host 'Servidor de Minecraft apagado correctamente.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-        set SERVIDOR_DETENIDO_EXITO=0
+        exit /b 0
     ) else (
         :: Si después de los intentos de apagar y la espera, el contenedor sigue en ejecución
         powershell -Command "Write-Host 'ERROR: El servidor de Minecraft no se apago en el tiempo esperado.' -ForegroundColor Red -ErrorAction SilentlyContinue"
         powershell -Command "Write-Host 'Puede que necesites apagarlo manualmente usando el programa Docker Desktop o contactar al administrador.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-        set SERVIDOR_DETENIDO_EXITO=1
+        exit /b 1
     )
 goto :EOF
 
