@@ -1,157 +1,141 @@
-[18:31:05] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.7+6-LTS; Eclipse Adoptium Temurin-21.0.7+6) on Linux 5.15.167.4-microsoft-standard-WSL2 (amd64)
-[18:31:05] [ServerMain/INFO]: [bootstrap] Loading Paper 1.21.1-133-ver/1.21.1@3cb8529 (2025-03-28T16:14:36Z) for Minecraft 1.21.1
-[18:31:09] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
-[18:31:11] [ServerMain/INFO]: [PluginInitializerManager] Initialized 4 plugins
-[18:31:11] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (4):
+[18:43:41] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.7+6-LTS; Eclipse Adoptium Temurin-21.0.7+6) on Linux 5.15.167.4-microsoft-standard-WSL2 (amd64)
+[18:43:41] [ServerMain/INFO]: [bootstrap] Loading Paper 1.21.1-133-ver/1.21.1@3cb8529 (2025-03-28T16:14:36Z) for Minecraft 1.21.1
+[18:43:42] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[18:43:42] [ServerMain/INFO]: [PluginInitializerManager] Initialized 4 plugins
+[18:43:42] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (4):
  - Essentials (2.21.0-dev+180-fe27182), LoginSecurity (3.3.0), LuckPerms (5.4.131), SkinsRestorer (15.6.4)
-[18:31:20] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[18:31:37] [ServerMain/INFO]: Loaded 1290 recipes
-[18:31:38] [ServerMain/INFO]: Loaded 1399 advancements
-[18:31:39] [Server thread/INFO]: Starting minecraft server version 1.21.1
-[18:31:39] [Server thread/INFO]: Loading properties
-[18:31:39] [Server thread/INFO]: This server is running Paper version 1.21.1-133-ver/1.21.1@3cb8529 (2025-03-28T16:14:36Z) (Implementing API version 1.21.1-R0.1-SNAPSHOT)
-[18:31:41] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[18:31:42] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[18:31:42] [Server thread/INFO]: Using 4 threads for Netty based IO
-[18:31:44] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 2 worker threads, and population gen parallelism of 2 threads
-[18:31:45] [Server thread/INFO]: Default game type: SURVIVAL
-[18:31:45] [Server thread/INFO]: Generating keypair
-[18:31:45] [Server thread/INFO]: Starting Minecraft server on 0.0.0.0:25565
-[18:31:45] [Server thread/INFO]: Using epoll channel type
-[18:31:45] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
-[18:31:45] [Server thread/INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
-[18:31:45] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.4.131
-[18:31:46] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.6.4
-[18:31:46] [Server thread/INFO]: [LoginSecurity] Loading server plugin LoginSecurity v3.3.0
-[18:31:46] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.21.0-dev+180-fe27182
-[18:31:46] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[18:31:46] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.4.131
-[18:31:46] [Server thread/INFO]:         __    
-[18:31:46] [Server thread/INFO]:   |    |__)   LuckPerms v5.4.131
-[18:31:46] [Server thread/INFO]:   |___ |      Running on Bukkit - Paper
-[18:31:46] [Server thread/INFO]: 
-[18:31:46] [Server thread/INFO]: [LuckPerms] Loading configuration...
-[18:31:47] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
-[18:31:47] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
-[18:31:47] [Server thread/INFO]: [LuckPerms] Performing initial data load...
-[18:31:48] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 1815ms)
-[18:31:48] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.6.4
-[18:31:50] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.21.1.
-[18:31:51] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[18:31:51] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[18:31:51] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[18:31:51] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[18:31:51] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[18:31:51] [Server thread/INFO]: Preparing level "world"
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.6.4
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 7ee6269
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[18:31:51] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
-[18:31:52] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[18:31:54] [Server thread/INFO]: Time elapsed: 2107 ms
-[18:31:54] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
-[18:31:54] [Server thread/INFO]: Time elapsed: 380 ms
-[18:31:54] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[18:31:55] [Server thread/INFO]: Time elapsed: 129 ms
-[18:31:55] [Server thread/INFO]: [LoginSecurity] Enabling LoginSecurity v3.3.0
-[18:31:55] [Server thread/INFO]: [LoginSecurity] Loading base translations from "en_us"
-[18:31:55] [Server thread/INFO]: [LoginSecurity] Loading specified translations from "en_us"
-[18:31:55] [Server thread/INFO]: [LoginSecurity] Registering commands...
-[18:31:55] [Server thread/INFO]: [LoginSecurity] Registering listeners...
-[18:31:55] [Server thread/INFO]: [LoginSecurity] Using 1.12+ map captcha renderer
-[18:31:55] [Server thread/INFO]: [Essentials] Enabling Essentials v2.21.0-dev+180-fe27182
-[18:31:56] [Server thread/ERROR]: [Essentials] You are running an unsupported server version!
-[18:31:57] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
-[18:31:57] [Server thread/INFO]: [Essentials] No kits found to migrate.
-[18:31:58] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected Reflection Sync Commands Provider as the provider for SyncCommandsProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected Reflection Spawner Block Provider as the provider for SpawnerBlockProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected Paper Biome Key Provider as the provider for BiomeKeyProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
-[18:31:58] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
-[18:31:59] [Server thread/INFO]: [Essentials] Loaded 43465 items from items.json.
-[18:31:59] [Server thread/INFO]: [Essentials] Using locale en_US
-[18:31:59] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
-[18:31:59] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
-[18:31:59] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
-[18:31:59] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
-[18:31:59] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
-[18:31:59] [Server thread/INFO]: [spark] Starting background profiler...
-[18:32:00] [Server thread/INFO]: Done preparing level "world" (8.949s)
-[18:32:00] [Server thread/INFO]: Starting remote control listener
-[18:32:00] [Server thread/INFO]: Thread RCON Listener started
-[18:32:00] [Server thread/INFO]: RCON running on 0.0.0.0:25575
-[18:32:00] [Server thread/INFO]: Running delayed init tasks
-[18:32:00] [Craft Scheduler Thread - 2 - Essentials/INFO]: [Essentials] Fetching version information...
-[18:32:00] [Server thread/INFO]: Done (56.791s)! For help, type "help"
-[18:32:00] [Server thread/INFO]: Timings Reset
-[18:32:00] [Craft Scheduler Thread - 2 - Essentials/WARN]: [Essentials] You're 35 EssentialsX dev build(s) out of date!
-[18:32:00] [Craft Scheduler Thread - 2 - Essentials/WARN]: [Essentials] Download it here: https://essentialsx.net/downloads.html
-[18:32:48] [User Authenticator #0/INFO]: UUID of player OzaRu_ is 8204ab11-f427-375c-9615-89acd5e664bc
-[18:33:35] [Server thread/INFO]: com.mojang.authlib.GameProfile@340c62d7[id=8204ab11-f427-375c-9615-89acd5e664bc,name=OzaRu_,properties={textures=[Property[name=textures, value=ewogICJ0aW1lc3RhbXAiIDogMTc0ODU0MzU1NjIyNSwKICAicHJvZmlsZUlkIiA6ICI1OWRiNzUwMTIzNDU0ZWUzOWNiNjMzNzk5NTE2ZjFhNyIsCiAgInByb2ZpbGVOYW1lIiA6ICJPemFSdV8iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWZkY2FkYmE4N2YyZjM5OGM1OTEzYWVkNDVjMGQzNzczN2JiNmU5ZWU1ZDE0NzQ3ODFiY2RmYzBjMDBiMzVjNiIKICAgIH0KICB9Cn0=, signature=VQXXx9VqKfNmPtfdl8R+uKWgZ/DGhPeVglxdMifGDvdZIpJzi3JTSkFbpPnnqmg8FchNDe4Obdfos7EKLNhrU17YiLjsD0fxYdJ9bEG2ELqXlQ2tCzFPvzIshVirp5NJW1Z7flIDUzlHHxb2bqmTQVA8zFnRx0CzZbCe4qPaS+P+QBMQnCjWUs1lffO+5C+mamFAgaKAIjHt4uP5wZ0IdNUZm4S9hvhyzPPN5wQIcVW8eAHLBnhD08KytUaE7jPngw9S1PtdaEbqpFG2bsGvP+L/1y9ql3pUoDqZT7MVWGkWbQI+8oooCFvwl0C6r6RbO5rsGAwlQ6AVy8R9N/EHDqTInCZSlwhiu4c5rlvj9k11Byq1wiEjwyCBqOzFyNIdTl/gAMDhYNHefFH+h7BNhG4A/eWta5FBpo4BfgPADcHM1l/n8BSfkvq30iqF5jjXzlzYMx0UzOYsGXIDEj4vJGIGMtDn4p6Thnjfzgfw/55m4omwV/pomz10TkKHdA342cLLdFqnS0ZCOMTro6r2SGbsvop/BDQChWpnoFmQtd3f3lGM6kkpTVQlovIkWA+D2wh8PMjaHWFCLa//4rPZGU7gXB8q4k1T3XRDezDlLDiOFT38jl5Ld5c7KCA9RxL9e8oCpIyviVCWcyazEqti5ZE2FsQ0lE7mxkANeRODelg=]]}] lost connection: Disconnected
-[18:33:59] [User Authenticator #1/INFO]: UUID of player OzaRu_ is 8204ab11-f427-375c-9615-89acd5e664bc
-[18:34:22] [Server thread/INFO]: OzaRu_ (/192.168.16.1:50376) lost connection: Disconnected
-[18:35:00] [User Authenticator #2/INFO]: UUID of player OzaRu_ is 8204ab11-f427-375c-9615-89acd5e664bc
-[18:35:16] [Server thread/INFO]: com.mojang.authlib.GameProfile@335cf226[id=8204ab11-f427-375c-9615-89acd5e664bc,name=OzaRu_,properties={textures=[Property[name=textures, value=ewogICJ0aW1lc3RhbXAiIDogMTc0ODU0MzU1NjIyNSwKICAicHJvZmlsZUlkIiA6ICI1OWRiNzUwMTIzNDU0ZWUzOWNiNjMzNzk5NTE2ZjFhNyIsCiAgInByb2ZpbGVOYW1lIiA6ICJPemFSdV8iLAogICJzaWduYXR1cmVSZXF1aXJlZCIgOiB0cnVlLAogICJ0ZXh0dXJlcyIgOiB7CiAgICAiU0tJTiIgOiB7CiAgICAgICJ1cmwiIDogImh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWZkY2FkYmE4N2YyZjM5OGM1OTEzYWVkNDVjMGQzNzczN2JiNmU5ZWU1ZDE0NzQ3ODFiY2RmYzBjMDBiMzVjNiIKICAgIH0KICB9Cn0=, signature=VQXXx9VqKfNmPtfdl8R+uKWgZ/DGhPeVglxdMifGDvdZIpJzi3JTSkFbpPnnqmg8FchNDe4Obdfos7EKLNhrU17YiLjsD0fxYdJ9bEG2ELqXlQ2tCzFPvzIshVirp5NJW1Z7flIDUzlHHxb2bqmTQVA8zFnRx0CzZbCe4qPaS+P+QBMQnCjWUs1lffO+5C+mamFAgaKAIjHt4uP5wZ0IdNUZm4S9hvhyzPPN5wQIcVW8eAHLBnhD08KytUaE7jPngw9S1PtdaEbqpFG2bsGvP+L/1y9ql3pUoDqZT7MVWGkWbQI+8oooCFvwl0C6r6RbO5rsGAwlQ6AVy8R9N/EHDqTInCZSlwhiu4c5rlvj9k11Byq1wiEjwyCBqOzFyNIdTl/gAMDhYNHefFH+h7BNhG4A/eWta5FBpo4BfgPADcHM1l/n8BSfkvq30iqF5jjXzlzYMx0UzOYsGXIDEj4vJGIGMtDn4p6Thnjfzgfw/55m4omwV/pomz10TkKHdA342cLLdFqnS0ZCOMTro6r2SGbsvop/BDQChWpnoFmQtd3f3lGM6kkpTVQlovIkWA+D2wh8PMjaHWFCLa//4rPZGU7gXB8q4k1T3XRDezDlLDiOFT38jl5Ld5c7KCA9RxL9e8oCpIyviVCWcyazEqti5ZE2FsQ0lE7mxkANeRODelg=]]}] lost connection: Timed out
-[18:36:34] [User Authenticator #3/INFO]: UUID of player OzaRu_ is 8204ab11-f427-375c-9615-89acd5e664bc
-[18:36:35] [Server thread/INFO]: OzaRu_ joined the game
-[18:36:35] [Server thread/INFO]: OzaRu_[/192.168.16.1:50286] logged in with entity id 41 at ([world]25.378059531291473, 126.42305253386675, -74.09428753648993)
-[18:36:47] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 2506ms or 50 ticks behind
-[18:36:56] [Server thread/INFO]: OzaRu_ issued server command: /home desierto
-[18:37:26] [Server thread/INFO]: OzaRu_ lost connection: Timed out
-[18:37:26] [Server thread/INFO]: OzaRu_ left the game
-[18:37:47] [User Authenticator #4/INFO]: UUID of player OzaRu_ is 8204ab11-f427-375c-9615-89acd5e664bc
-[18:37:48] [Server thread/INFO]: OzaRu_ joined the game
-[18:37:48] [Server thread/INFO]: OzaRu_[/192.168.16.1:45848] logged in with entity id 1243 at ([world]2429.5, 114.0, -12933.5)
-[18:37:54] [Server thread/INFO]: OzaRu_ issued server command: /gamemode survival
-[18:39:33] [Server thread/INFO]: OzaRu_ lost connection: Disconnected
-[18:39:33] [Server thread/INFO]: OzaRu_ left the game
-[18:41:40] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
-[18:41:41] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[18:41:41] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[18:41:41] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[18:41:41] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[18:41:41] [Server thread/INFO]: [Rcon: Saved the game]
-[18:41:41] [RCON Client /127.0.0.1 #2/INFO]: Thread RCON Client /127.0.0.1 shutting down
-[18:41:49] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
-[18:41:49] [Server thread/INFO]: [Rcon: Stopping the server]
-[18:41:49] [RCON Client /127.0.0.1 #3/INFO]: Thread RCON Client /127.0.0.1 shutting down
-[18:41:49] [Server thread/INFO]: Stopping server
-[18:41:49] [Server thread/INFO]: [Essentials] Disabling Essentials v2.21.0-dev+180-fe27182
-[18:41:49] [Server thread/INFO]: [LoginSecurity] Disabling LoginSecurity v3.3.0
-[18:41:49] [Server thread/INFO]: [LoginSecurity] Waiting for queued tasks...
-[18:41:49] [Server thread/INFO]: [LoginSecurity] ExecutorService shut down, ready to disable.
-[18:41:49] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.6.4
-[18:41:49] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.4.131
-[18:41:49] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
-[18:41:49] [Server thread/INFO]: [LuckPerms] Closing storage...
-[18:41:49] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
-[18:41:49] [RCON Client /127.0.0.1 #4/ERROR]: Thread RCON Client /127.0.0.1 #4 failed main thread check: Command Dispatched Async: stop
+[18:43:46] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[18:43:49] [ServerMain/INFO]: Loaded 1290 recipes
+[18:43:49] [ServerMain/INFO]: Loaded 1399 advancements
+[18:43:49] [Server thread/INFO]: Starting minecraft server version 1.21.1
+[18:43:49] [Server thread/INFO]: Loading properties
+[18:43:50] [Server thread/INFO]: This server is running Paper version 1.21.1-133-ver/1.21.1@3cb8529 (2025-03-28T16:14:36Z) (Implementing API version 1.21.1-R0.1-SNAPSHOT)
+[18:43:50] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[18:43:50] [Server thread/INFO]: Using 4 threads for Netty based IO
+[18:43:50] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[18:43:51] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 7 worker threads, and population gen parallelism of 7 threads
+[18:43:51] [Server thread/INFO]: Default game type: SURVIVAL
+[18:43:51] [Server thread/INFO]: Generating keypair
+[18:43:51] [Server thread/INFO]: Starting Minecraft server on 0.0.0.0:25565
+[18:43:51] [Server thread/INFO]: Using epoll channel type
+[18:43:51] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[18:43:51] [Server thread/INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[18:43:51] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.4.131
+[18:43:52] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.6.4
+[18:43:52] [Server thread/INFO]: [LoginSecurity] Loading server plugin LoginSecurity v3.3.0
+[18:43:52] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.21.0-dev+180-fe27182
+[18:43:52] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[18:43:52] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.4.131
+[18:43:52] [Server thread/INFO]:         __    
+[18:43:52] [Server thread/INFO]:   |    |__)   LuckPerms v5.4.131
+[18:43:52] [Server thread/INFO]:   |___ |      Running on Bukkit - Paper
+[18:43:52] [Server thread/INFO]: 
+[18:43:52] [Server thread/INFO]: [LuckPerms] Loading configuration...
+[18:43:52] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
+[18:43:53] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
+[18:43:53] [Server thread/INFO]: [LuckPerms] Performing initial data load...
+[18:43:53] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 1012ms)
+[18:43:53] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.6.4
+[18:43:54] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.21.1.
+[18:43:54] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[18:43:54] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[18:43:54] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[18:43:54] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[18:43:54] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[18:43:54] [Server thread/INFO]: Preparing level "world"
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.6.4
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 7ee6269
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[18:43:54] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
+[18:43:55] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[18:43:56] [Server thread/INFO]: Time elapsed: 505 ms
+[18:43:56] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[18:43:56] [Server thread/INFO]: Time elapsed: 106 ms
+[18:43:56] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[18:43:56] [Server thread/INFO]: Time elapsed: 58 ms
+[18:43:56] [Server thread/INFO]: [LoginSecurity] Enabling LoginSecurity v3.3.0
+[18:43:56] [Server thread/INFO]: [LoginSecurity] Loading base translations from "en_us"
+[18:43:56] [Server thread/INFO]: [LoginSecurity] Loading specified translations from "en_us"
+[18:43:56] [Server thread/INFO]: [LoginSecurity] Registering commands...
+[18:43:56] [Server thread/INFO]: [LoginSecurity] Registering listeners...
+[18:43:56] [Server thread/INFO]: [LoginSecurity] Using 1.12+ map captcha renderer
+[18:43:56] [Server thread/INFO]: [Essentials] Enabling Essentials v2.21.0-dev+180-fe27182
+[18:43:56] [Server thread/ERROR]: [Essentials] You are running an unsupported server version!
+[18:43:57] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
+[18:43:57] [Server thread/INFO]: [Essentials] No kits found to migrate.
+[18:43:57] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected Reflection Spawner Block Provider as the provider for SpawnerBlockProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected Reflection Sync Commands Provider as the provider for SyncCommandsProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected Paper Biome Key Provider as the provider for BiomeKeyProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
+[18:43:57] [Server thread/INFO]: [Essentials] Loaded 43465 items from items.json.
+[18:43:57] [Server thread/INFO]: [Essentials] Using locale en_US
+[18:43:57] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
+[18:43:57] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
+[18:43:57] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
+[18:43:57] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
+[18:43:57] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
+[18:43:57] [Server thread/INFO]: [spark] Starting background profiler...
+[18:43:57] [Server thread/INFO]: Done preparing level "world" (3.232s)
+[18:43:57] [Server thread/INFO]: Starting remote control listener
+[18:43:57] [Server thread/INFO]: Thread RCON Listener started
+[18:43:57] [Server thread/INFO]: RCON running on 0.0.0.0:25575
+[18:43:57] [Server thread/INFO]: Running delayed init tasks
+[18:43:57] [Server thread/INFO]: Done (17.272s)! For help, type "help"
+[18:43:57] [Craft Scheduler Thread - 2 - Essentials/INFO]: [Essentials] Fetching version information...
+[18:43:57] [Server thread/INFO]: Timings Reset
+[18:43:58] [Craft Scheduler Thread - 2 - Essentials/WARN]: [Essentials] You're 35 EssentialsX dev build(s) out of date!
+[18:43:58] [Craft Scheduler Thread - 2 - Essentials/WARN]: [Essentials] Download it here: https://essentialsx.net/downloads.html
+[18:44:44] [User Authenticator #0/INFO]: UUID of player OzaRu_ is 8204ab11-f427-375c-9615-89acd5e664bc
+[18:44:44] [Server thread/INFO]: OzaRu_ joined the game
+[18:44:45] [Server thread/INFO]: OzaRu_[/172.18.0.1:50598] logged in with entity id 37 at ([world]2276.9959922920634, 68.0, -12774.955751313237)
+[18:44:48] [Server thread/INFO]: OzaRu_ lost connection: Disconnected
+[18:44:48] [Server thread/INFO]: OzaRu_ left the game
+[18:45:35] [User Authenticator #0/INFO]: UUID of player OzaRu_ is 8204ab11-f427-375c-9615-89acd5e664bc
+[18:45:35] [Server thread/INFO]: OzaRu_ joined the game
+[18:45:35] [Server thread/INFO]: OzaRu_[/172.18.0.1:35618] logged in with entity id 318 at ([world]2276.9959922920634, 68.0, -12774.955751313237)
+[18:46:20] [Server thread/INFO]: OzaRu_ lost connection: Disconnected
+[18:46:20] [Server thread/INFO]: OzaRu_ left the game
+[18:46:42] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
+[18:46:43] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[18:46:43] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[18:46:43] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[18:46:43] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[18:46:43] [Server thread/INFO]: [Rcon: Saved the game]
+[18:46:43] [RCON Client /0:0:0:0:0:0:0:1 #2/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
+[18:46:50] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
+[18:46:50] [Server thread/INFO]: [Rcon: Stopping the server]
+[18:46:50] [RCON Client /0:0:0:0:0:0:0:1 #3/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
+[18:46:50] [Server thread/INFO]: Stopping server
+[18:46:50] [Server thread/INFO]: [Essentials] Disabling Essentials v2.21.0-dev+180-fe27182
+[18:46:50] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
+[18:46:50] [RCON Client /0:0:0:0:0:0:0:1 #4/ERROR]: Thread RCON Client /0:0:0:0:0:0:0:1 #4 failed main thread check: Command Dispatched Async: stop
 java.lang.Throwable: null
 	at org.spigotmc.AsyncCatcher.catchOp(AsyncCatcher.java:14) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at org.bukkit.craftbukkit.CraftServer.dispatchCommand(CraftServer.java:999) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
@@ -167,8 +151,7 @@ java.lang.Throwable: null
 	at net.minecraft.server.dedicated.DedicatedServer.runCommand(DedicatedServer.java:795) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at net.minecraft.server.rcon.thread.RconClient.run(RconClient.java:83) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:41:49] [Server thread/INFO]: [LuckPerms] Goodbye!
-[18:41:49] [RCON Client /127.0.0.1 #4/WARN]: Unexpected exception while parsing console command "stop"
+[18:46:50] [RCON Client /0:0:0:0:0:0:0:1 #4/WARN]: Unexpected exception while parsing console command "stop"
 java.lang.IllegalStateException: Asynchronous Command Dispatched Async: stop!
 	at org.spigotmc.AsyncCatcher.catchOp(AsyncCatcher.java:15) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at org.bukkit.craftbukkit.CraftServer.dispatchCommand(CraftServer.java:999) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
@@ -184,25 +167,33 @@ java.lang.IllegalStateException: Asynchronous Command Dispatched Async: stop!
 	at net.minecraft.server.dedicated.DedicatedServer.runCommand(DedicatedServer.java:795) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at net.minecraft.server.rcon.thread.RconClient.run(RconClient.java:83) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:41:49] [RCON Client /127.0.0.1 #4/INFO]: Thread RCON Client /127.0.0.1 shutting down
-[18:41:49] [Server thread/INFO]: Saving players
-[18:41:49] [Server thread/INFO]: Saving worlds
-[18:41:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 127 entity chunks, 0 poi chunks in world 'world' in 0.14s
-[18:41:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 18 entity chunks, 0 poi chunks in world 'world_nether' in 0.02s
-[18:41:49] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[18:41:49] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 2 entity chunks, 0 poi chunks in world 'world_the_end' in 0.01s
-[18:41:49] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[18:41:49] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[18:41:49] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[18:41:49] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[18:46:50] [RCON Client /0:0:0:0:0:0:0:1 #4/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
+[18:46:50] [Server thread/INFO]: [LoginSecurity] Disabling LoginSecurity v3.3.0
+[18:46:50] [Server thread/INFO]: [LoginSecurity] Waiting for queued tasks...
+[18:46:50] [Server thread/INFO]: [LoginSecurity] ExecutorService shut down, ready to disable.
+[18:46:50] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.6.4
+[18:46:50] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.4.131
+[18:46:50] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
+[18:46:50] [Server thread/INFO]: [LuckPerms] Closing storage...
+[18:46:50] [Server thread/INFO]: [LuckPerms] Goodbye!
+[18:46:50] [Server thread/INFO]: Saving players
+[18:46:50] [Server thread/INFO]: Saving worlds
+[18:46:50] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 7 entity chunks, 0 poi chunks in world 'world' in 0.04s
+[18:46:50] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 18 entity chunks, 0 poi chunks in world 'world_nether' in 0.02s
+[18:46:50] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[18:46:50] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 2 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
+[18:46:50] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[18:46:50] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[18:46:50] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[18:46:50] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
