@@ -1,164 +1,170 @@
-[17:40:49] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.7+6-LTS; Eclipse Adoptium Temurin-21.0.7+6) on Linux 5.15.167.4-microsoft-standard-WSL2 (amd64)
-[17:40:49] [ServerMain/INFO]: [bootstrap] Loading Paper 1.21.1-133-ver/1.21.1@3cb8529 (2025-03-28T16:14:36Z) for Minecraft 1.21.1
-[17:40:49] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
-[17:40:50] [Paper Plugin Remapper Thread - 0/INFO]: [PluginRemapper] Remapping plugin 'plugins/SkinsRestorer.jar'...
-[17:40:52] [Paper Plugin Remapper Thread - 0/INFO]: [PluginRemapper] Done remapping plugin 'plugins/SkinsRestorer.jar' in 1976ms.
-[17:40:52] [ServerMain/INFO]: [PluginInitializerManager] Initialized 4 plugins
-[17:40:52] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (4):
- - Essentials (2.21.0-dev+180-fe27182), LoginSecurity (3.3.0), LuckPerms (5.4.131), SkinsRestorer (15.6.6)
-[17:40:55] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
-[17:40:58] [ServerMain/INFO]: Loaded 1290 recipes
-[17:40:58] [ServerMain/INFO]: Loaded 1399 advancements
-[17:40:58] [Server thread/INFO]: Starting minecraft server version 1.21.1
-[17:40:58] [Server thread/INFO]: Loading properties
-[17:40:58] [Server thread/INFO]: This server is running Paper version 1.21.1-133-ver/1.21.1@3cb8529 (2025-03-28T16:14:36Z) (Implementing API version 1.21.1-R0.1-SNAPSHOT)
-[17:40:59] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[17:40:59] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[17:40:59] [Server thread/INFO]: Using 4 threads for Netty based IO
-[17:41:00] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 7 worker threads, and population gen parallelism of 7 threads
-[17:41:00] [Server thread/INFO]: Default game type: SURVIVAL
-[17:41:00] [Server thread/INFO]: Generating keypair
-[17:41:00] [Server thread/INFO]: Starting Minecraft server on 0.0.0.0:25565
-[17:41:00] [Server thread/INFO]: Using epoll channel type
-[17:41:00] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
-[17:41:00] [Server thread/INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
-[17:41:00] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.4.131
-[17:41:00] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.6.6
-[17:41:00] [Server thread/INFO]: [LoginSecurity] Loading server plugin LoginSecurity v3.3.0
-[17:41:00] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.21.0-dev+180-fe27182
-[17:41:00] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[17:41:00] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.4.131
-[17:41:01] [Server thread/INFO]:         __    
-[17:41:01] [Server thread/INFO]:   |    |__)   LuckPerms v5.4.131
-[17:41:01] [Server thread/INFO]:   |___ |      Running on Bukkit - Paper
-[17:41:01] [Server thread/INFO]: 
-[17:41:01] [Server thread/INFO]: [LuckPerms] Loading configuration...
-[17:41:01] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
-[17:41:01] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
-[17:41:01] [Server thread/INFO]: [LuckPerms] Performing initial data load...
-[17:41:01] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 1038ms)
-[17:41:01] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.6.6
-[17:41:02] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.21.1.
-[17:41:03] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[17:41:03] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[17:41:03] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[17:41:03] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[17:41:03] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[17:41:03] [Server thread/INFO]: Preparing level "world"
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.6.6
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 763d6fb
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[17:41:03] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
-[17:41:04] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
-[17:41:04] [Server thread/INFO]: Time elapsed: 497 ms
-[17:41:04] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
-[17:41:04] [Server thread/INFO]: Time elapsed: 105 ms
-[17:41:04] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
-[17:41:04] [Server thread/INFO]: Time elapsed: 44 ms
-[17:41:04] [Server thread/INFO]: [LoginSecurity] Enabling LoginSecurity v3.3.0
-[17:41:04] [Server thread/INFO]: [LoginSecurity] Loading base translations from "en_us"
-[17:41:04] [Server thread/INFO]: [LoginSecurity] Loading specified translations from "en_us"
-[17:41:05] [Server thread/INFO]: [LoginSecurity] Registering commands...
-[17:41:05] [Server thread/INFO]: [LoginSecurity] Registering listeners...
-[17:41:05] [Server thread/INFO]: [LoginSecurity] Using 1.12+ map captcha renderer
-[17:41:05] [Server thread/INFO]: [Essentials] Enabling Essentials v2.21.0-dev+180-fe27182
-[17:41:05] [Server thread/ERROR]: [Essentials] You are running an unsupported server version!
-[17:41:05] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
-[17:41:05] [Server thread/INFO]: [Essentials] No kits found to migrate.
-[17:41:05] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected Reflection Spawner Block Provider as the provider for SpawnerBlockProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected Paper Biome Key Provider as the provider for BiomeKeyProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected Reflection Sync Commands Provider as the provider for SyncCommandsProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
-[17:41:05] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
-[17:41:06] [Server thread/INFO]: [Essentials] Loaded 43465 items from items.json.
-[17:41:06] [Server thread/INFO]: [Essentials] Using locale en_US
-[17:41:06] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
-[17:41:06] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
-[17:41:06] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
-[17:41:06] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
-[17:41:06] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
-[17:41:06] [Server thread/INFO]: [spark] Starting background profiler...
-[17:41:06] [Server thread/INFO]: Done preparing level "world" (3.256s)
-[17:41:06] [Server thread/INFO]: Starting remote control listener
-[17:41:06] [Server thread/INFO]: Thread RCON Listener started
-[17:41:06] [Server thread/INFO]: RCON running on 0.0.0.0:25575
-[17:41:06] [Server thread/INFO]: Running delayed init tasks
-[17:41:06] [Server thread/INFO]: Done (18.390s)! For help, type "help"
-[17:41:06] [Server thread/INFO]: Timings Reset
-[17:41:06] [Craft Scheduler Thread - 2 - Essentials/INFO]: [Essentials] Fetching version information...
-[17:41:07] [Craft Scheduler Thread - 2 - Essentials/WARN]: [Essentials] You're 38 EssentialsX dev build(s) out of date!
-[17:41:07] [Craft Scheduler Thread - 2 - Essentials/WARN]: [Essentials] Download it here: https://essentialsx.net/downloads.html
-[17:42:59] [User Authenticator #0/INFO]: UUID of player Zehn is 23f103c4-7a66-3c98-adee-f82abf015296
-[17:43:00] [Server thread/INFO]: Zehn joined the game
-[17:43:00] [Server thread/INFO]: Zehn[/172.18.0.1:52546] logged in with entity id 56 at ([world_the_end]1261.7860314266688, 62.0, 2022.8435269229772)
-[17:55:43] [Server thread/INFO]: Zehn issued server command: /home casa
-[17:58:30] [Server thread/INFO]: Zehn issued server command: /home casa
-[18:00:40] [Server thread/INFO]: Zehn issued server command: /home
-[18:00:44] [Server thread/INFO]: Zehn issued server command: /home explorar
-[18:01:28] [Server thread/INFO]: Zehn issued server command: /home casa
-[18:32:42] [Server thread/INFO]: Zehn lost connection: Disconnected
-[18:32:42] [Server thread/INFO]: Zehn left the game
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer] ----------------------------------------------
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer]     +==================+
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer]     |------------------|
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer]     |  Standalone Mode |
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer]     +==================+
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer] ----------------------------------------------
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer]     Version: 15.6.6
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer]     Commit: 763d6fb
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer]     A new version (15.6.7) is available! Downloading update...
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer] ----------------------------------------------
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
-[19:07:03] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer] [GitHubUpdate] Downloading update...
-[19:07:04] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer] [GitHubUpdate] Downloaded update in 982ms
-[19:07:04] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer] [GitHubUpdate] Update saved as SkinsRestorer.jar
-[19:07:04] [Folia Async Scheduler Thread Timer/INFO]: [SkinsRestorer] [GitHubUpdate] The update will be loaded on the next server restart
-[19:11:15] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
-[19:11:16] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[19:11:16] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[19:11:16] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[19:11:16] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
-[19:11:16] [Server thread/INFO]: [Rcon: Saved the game]
-[19:11:16] [RCON Client /0:0:0:0:0:0:0:1 #2/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
-[19:11:22] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
-[19:11:22] [Server thread/INFO]: [Rcon: Stopping the server]
-[19:11:22] [RCON Client /0:0:0:0:0:0:0:1 #3/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
-[19:11:22] [Server thread/INFO]: Stopping server
-[19:11:22] [Server thread/INFO]: [Essentials] Disabling Essentials v2.21.0-dev+180-fe27182
-[19:11:22] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
-[19:11:22] [Server thread/INFO]: [LoginSecurity] Disabling LoginSecurity v3.3.0
-[19:11:22] [Server thread/INFO]: [LoginSecurity] Waiting for queued tasks...
-[19:11:22] [Server thread/INFO]: [LoginSecurity] ExecutorService shut down, ready to disable.
-[19:11:22] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.6.6
-[19:11:22] [RCON Client /0:0:0:0:0:0:0:1 #4/ERROR]: Thread RCON Client /0:0:0:0:0:0:0:1 #4 failed main thread check: Command Dispatched Async: stop
+[20:52:51] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.7+6-LTS; Eclipse Adoptium Temurin-21.0.7+6) on Linux 5.15.167.4-microsoft-standard-WSL2 (amd64)
+[20:52:51] [ServerMain/INFO]: [bootstrap] Loading Paper 1.21.1-133-ver/1.21.1@3cb8529 (2025-03-28T16:14:36Z) for Minecraft 1.21.1
+[20:52:51] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[20:52:52] [Paper Plugin Remapper Thread - 0/INFO]: [PluginRemapper] Remapping plugin 'plugins/SkinsRestorer.jar'...
+[20:52:53] [Paper Plugin Remapper Thread - 0/INFO]: [PluginRemapper] Done remapping plugin 'plugins/SkinsRestorer.jar' in 1872ms.
+[20:52:54] [ServerMain/INFO]: [PluginInitializerManager] Initialized 4 plugins
+[20:52:54] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (4):
+ - Essentials (2.21.0-dev+180-fe27182), LoginSecurity (3.3.0), LuckPerms (5.4.131), SkinsRestorer (15.6.7)
+[20:52:56] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[20:53:00] [ServerMain/INFO]: Loaded 1290 recipes
+[20:53:00] [ServerMain/INFO]: Loaded 1399 advancements
+[20:53:00] [Server thread/INFO]: Starting minecraft server version 1.21.1
+[20:53:00] [Server thread/INFO]: Loading properties
+[20:53:00] [Server thread/INFO]: This server is running Paper version 1.21.1-133-ver/1.21.1@3cb8529 (2025-03-28T16:14:36Z) (Implementing API version 1.21.1-R0.1-SNAPSHOT)
+[20:53:01] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[20:53:01] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[20:53:01] [Server thread/INFO]: Using 4 threads for Netty based IO
+[20:53:01] [Server thread/INFO]: [ChunkTaskScheduler] Chunk system is using 1 I/O threads, 7 worker threads, and population gen parallelism of 7 threads
+[20:53:01] [Server thread/INFO]: Default game type: SURVIVAL
+[20:53:01] [Server thread/INFO]: Generating keypair
+[20:53:01] [Server thread/INFO]: Starting Minecraft server on 0.0.0.0:25565
+[20:53:02] [Server thread/INFO]: Using epoll channel type
+[20:53:02] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[20:53:02] [Server thread/INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[20:53:02] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.4.131
+[20:53:02] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.6.7
+[20:53:02] [Server thread/INFO]: [LoginSecurity] Loading server plugin LoginSecurity v3.3.0
+[20:53:02] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.21.0-dev+180-fe27182
+[20:53:02] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[20:53:02] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.4.131
+[20:53:03] [Server thread/INFO]:         __    
+[20:53:03] [Server thread/INFO]:   |    |__)   LuckPerms v5.4.131
+[20:53:03] [Server thread/INFO]:   |___ |      Running on Bukkit - Paper
+[20:53:03] [Server thread/INFO]: 
+[20:53:03] [Server thread/INFO]: [LuckPerms] Loading configuration...
+[20:53:03] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
+[20:53:03] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
+[20:53:03] [Server thread/INFO]: [LuckPerms] Performing initial data load...
+[20:53:03] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 1068ms)
+[20:53:03] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.6.7
+[20:53:04] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.21.1.
+[20:53:05] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[20:53:05] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[20:53:05] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[20:53:05] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[20:53:05] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[20:53:05] [Server thread/INFO]: Preparing level "world"
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.6.7
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 6a4fee6
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     A new version (15.6.8) is available! Downloading update...
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
+[20:53:05] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] [GitHubUpdate] Downloading update...
+[20:53:06] [Server thread/INFO]: Preparing start region for dimension minecraft:overworld
+[20:53:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] [GitHubUpdate] Downloaded update in 1140ms
+[20:53:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] [GitHubUpdate] Update saved as SkinsRestorer.jar
+[20:53:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] [GitHubUpdate] The update will be loaded on the next server restart
+[20:53:06] [Server thread/INFO]: Time elapsed: 490 ms
+[20:53:06] [Server thread/INFO]: Preparing start region for dimension minecraft:the_nether
+[20:53:06] [Server thread/INFO]: Time elapsed: 95 ms
+[20:53:06] [Server thread/INFO]: Preparing start region for dimension minecraft:the_end
+[20:53:06] [Server thread/INFO]: Time elapsed: 40 ms
+[20:53:06] [Server thread/INFO]: [LoginSecurity] Enabling LoginSecurity v3.3.0
+[20:53:06] [Server thread/INFO]: [LoginSecurity] Loading base translations from "en_us"
+[20:53:06] [Server thread/INFO]: [LoginSecurity] Loading specified translations from "en_us"
+[20:53:06] [Server thread/INFO]: [LoginSecurity] Registering commands...
+[20:53:06] [Server thread/INFO]: [LoginSecurity] Registering listeners...
+[20:53:07] [Server thread/INFO]: [LoginSecurity] Using 1.12+ map captcha renderer
+[20:53:07] [Server thread/INFO]: [Essentials] Enabling Essentials v2.21.0-dev+180-fe27182
+[20:53:07] [Server thread/ERROR]: [Essentials] You are running an unsupported server version!
+[20:53:07] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
+[20:53:07] [Server thread/INFO]: [Essentials] No kits found to migrate.
+[20:53:07] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected Reflection Sync Commands Provider as the provider for SyncCommandsProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected Reflection Spawner Block Provider as the provider for SpawnerBlockProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected Paper Biome Key Provider as the provider for BiomeKeyProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
+[20:53:07] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
+[20:53:08] [Server thread/INFO]: [Essentials] Loaded 43465 items from items.json.
+[20:53:08] [Server thread/INFO]: [Essentials] Using locale en_US
+[20:53:08] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
+[20:53:08] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
+[20:53:08] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
+[20:53:08] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
+[20:53:08] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
+[20:53:08] [Server thread/INFO]: [spark] Starting background profiler...
+[20:53:08] [Server thread/INFO]: Done preparing level "world" (3.355s)
+[20:53:08] [Server thread/INFO]: Starting remote control listener
+[20:53:08] [Server thread/INFO]: Thread RCON Listener started
+[20:53:08] [Server thread/INFO]: RCON running on 0.0.0.0:25575
+[20:53:08] [Server thread/INFO]: Running delayed init tasks
+[20:53:08] [Server thread/INFO]: Done (18.549s)! For help, type "help"
+[20:53:08] [Server thread/INFO]: Timings Reset
+[20:53:08] [Craft Scheduler Thread - 2 - Essentials/INFO]: [Essentials] Fetching version information...
+[20:53:08] [Craft Scheduler Thread - 2 - Essentials/WARN]: [Essentials] You're 38 EssentialsX dev build(s) out of date!
+[20:53:08] [Craft Scheduler Thread - 2 - Essentials/WARN]: [Essentials] Download it here: https://essentialsx.net/downloads.html
+[20:53:09] [Server thread/INFO]: Zehn (/172.18.0.1:42052) lost connection: Disconnected
+[20:53:09] [User Authenticator #0/INFO]: UUID of player Zehn is 23f103c4-7a66-3c98-adee-f82abf015296
+[20:53:25] [User Authenticator #0/INFO]: UUID of player Zehn is 23f103c4-7a66-3c98-adee-f82abf015296
+[20:53:25] [Server thread/INFO]: Connection closed during protocol change
+[20:53:25] [Server thread/INFO]: Connection closed during protocol change
+[20:53:25] [Server thread/INFO]: com.mojang.authlib.GameProfile@7617b2db[id=23f103c4-7a66-3c98-adee-f82abf015296,name=Zehn,properties={textures=[Property[name=textures, value=ewogICJ0aW1lc3RhbXAiIDogMTc1MDI3OTk4NTc3NSwKICAicHJvZmlsZUlkIiA6ICI0NGRjYWE3NDg5YTM0ZTI2OGY2MmJiZTU5ODQ1MmI2ZSIsCiAgInByb2ZpbGVOYW1lIiA6ICJ6ZWhuIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzFhNGFmNzE4NDU1ZDRhYWI1MjhlN2E2MWY4NmZhMjVlNmEzNjlkMTc2OGRjYjEzZjdkZjMxOWE3MTNlYjgxMGIiCiAgICB9CiAgfQp9, signature=wztPBwOzKPOnTiqMRnTH3h6SW2tm61AQP1+7itS8y2/UqmIV2MLa3BkUuQDkxeUBPTieRLJsXo3XKKPEiAL+icxnEZ0WGu5JvLi4K/hBLyc6j1FQ5+HBP7CsbD+Frp5aa0zD6uZ2MEscCAPEFuC3iB4opd+nAOrEySWQ5ceujs8b763zDcoAjmm5HSJIYV4CC0aGwLobHQZl6QUqAMDwOSfR72x3jkD7vGod8yDEDkzN0WwJIVTJXSj9s2++em/SlTmXcL3uZ9LbozzpIXAHtwGTrDbv67K+maoTRglqmXjHdy7iGHSE9I/NDERQOmQyb6AgqCbPGFXOynSRw/WtK86UL2pKPWksdLCLEeKXo9qvlczBN1JXqyErE/0EYSeAjBUhk5wK8p00S4UAkKvZoF0FyaETUthyHhl7n/d55vxlVROdU1ArjGD8xA+mulQyuP+J7Vm1QgayWaTyLPgzkpjwVcQGjxc2eQlDPeO4yWPqBBXMI46VxkcmmZOcs896zfQMI/Mga2WeKFPcBawAXLgYi4f76dYt26CGGlevpefD5DneLXPyMxJsHUoySErkk1NALmuJ/Lt3MDD2secXVXfJJjF5UxUNSU5nMv/LUe9PqZx7fMBMRx//PY/LdEekjDn72SIfG2jy3a1U2Pc1kvTchaJ8akMD63WS98kZUoE=]]}] lost connection: Disconnected
+[20:53:35] [User Authenticator #0/INFO]: UUID of player Zehn is 23f103c4-7a66-3c98-adee-f82abf015296
+[20:53:36] [Server thread/INFO]: Zehn joined the game
+[20:53:36] [Server thread/INFO]: Zehn[/172.18.0.1:53590] logged in with entity id 38 at ([world]-10.21992408919232, 94.5625, -308.8316208567867)
+[20:53:57] [User Authenticator #0/INFO]: UUID of player OzaRu_ is 8204ab11-f427-375c-9615-89acd5e664bc
+[20:53:58] [Server thread/INFO]: OzaRu_ joined the game
+[20:53:58] [Server thread/INFO]: OzaRu_[/172.18.0.1:54490] logged in with entity id 693 at ([world]-37.5, 108.0, -22.5)
+[21:04:10] [Server thread/INFO]: OzaRu_ issued server command: /time set day
+[21:13:11] [Server thread/INFO]: OzaRu_ issued server command: /home casa
+[21:13:11] [Server thread/WARN]: OzaRu_ moved too quickly! 131.07646881950092,19.125,286.03166549553725
+[21:26:23] [Server thread/INFO]: OzaRu_ issued server command: /time set day
+[21:27:26] [Server thread/INFO]: Zehn issued server command: /home casa
+[21:27:49] [Server thread/INFO]: OzaRu_ lost connection: Disconnected
+[21:27:49] [Server thread/INFO]: OzaRu_ left the game
+[21:39:06] [Server thread/WARN]: Zehn moved wrongly!
+[21:47:10] [Server thread/INFO]: Zehn issued server command: /home exp
+[21:47:27] [Server thread/INFO]: Zehn issued server command: /home casa
+[21:48:05] [Server thread/INFO]: Zehn issued server command: /home exp
+[21:48:32] [Server thread/INFO]: Zehn issued server command: /home casa
+[21:48:36] [Server thread/INFO]: Zehn lost connection: Disconnected
+[21:48:36] [Server thread/INFO]: Zehn left the game
+[22:03:30] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
+[22:03:30] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[22:03:30] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[22:03:30] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[22:03:30] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[22:03:30] [Server thread/INFO]: [Rcon: Saved the game]
+[22:03:30] [RCON Client /0:0:0:0:0:0:0:1 #2/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
+[22:03:36] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
+[22:03:36] [Server thread/INFO]: [Rcon: Stopping the server]
+[22:03:36] [RCON Client /0:0:0:0:0:0:0:1 #3/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
+[22:03:36] [Server thread/INFO]: Stopping server
+[22:03:36] [Server thread/INFO]: [Essentials] Disabling Essentials v2.21.0-dev+180-fe27182
+[22:03:36] [Server thread/INFO]: [LoginSecurity] Disabling LoginSecurity v3.3.0
+[22:03:36] [Server thread/INFO]: [LoginSecurity] Waiting for queued tasks...
+[22:03:36] [Server thread/INFO]: [LoginSecurity] ExecutorService shut down, ready to disable.
+[22:03:36] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.6.7
+[22:03:36] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.4.131
+[22:03:36] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
+[22:03:36] [Server thread/INFO]: [LuckPerms] Closing storage...
+[22:03:36] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
+[22:03:36] [RCON Client /0:0:0:0:0:0:0:1 #4/ERROR]: Thread RCON Client /0:0:0:0:0:0:0:1 #4 failed main thread check: Command Dispatched Async: stop
 java.lang.Throwable: null
 	at org.spigotmc.AsyncCatcher.catchOp(AsyncCatcher.java:14) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at org.bukkit.craftbukkit.CraftServer.dispatchCommand(CraftServer.java:999) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
@@ -174,9 +180,7 @@ java.lang.Throwable: null
 	at net.minecraft.server.dedicated.DedicatedServer.runCommand(DedicatedServer.java:795) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at net.minecraft.server.rcon.thread.RconClient.run(RconClient.java:83) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[19:11:22] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.4.131
-[19:11:22] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
-[19:11:22] [RCON Client /0:0:0:0:0:0:0:1 #4/WARN]: Unexpected exception while parsing console command "stop"
+[22:03:36] [RCON Client /0:0:0:0:0:0:0:1 #4/WARN]: Unexpected exception while parsing console command "stop"
 java.lang.IllegalStateException: Asynchronous Command Dispatched Async: stop!
 	at org.spigotmc.AsyncCatcher.catchOp(AsyncCatcher.java:15) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at org.bukkit.craftbukkit.CraftServer.dispatchCommand(CraftServer.java:999) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
@@ -192,27 +196,26 @@ java.lang.IllegalStateException: Asynchronous Command Dispatched Async: stop!
 	at net.minecraft.server.dedicated.DedicatedServer.runCommand(DedicatedServer.java:795) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at net.minecraft.server.rcon.thread.RconClient.run(RconClient.java:83) ~[paper-1.21.1.jar:1.21.1-133-3cb8529]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[19:11:22] [RCON Client /0:0:0:0:0:0:0:1 #4/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
-[19:11:22] [Server thread/INFO]: [LuckPerms] Closing storage...
-[19:11:22] [Server thread/INFO]: [LuckPerms] Goodbye!
-[19:11:22] [Server thread/INFO]: Saving players
-[19:11:23] [Server thread/INFO]: Saving worlds
-[19:11:23] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 138 entity chunks, 0 poi chunks in world 'world' in 0.11s
-[19:11:23] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 14 entity chunks, 0 poi chunks in world 'world_nether' in 0.01s
-[19:11:23] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
-[19:11:23] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.04s
-[19:11:23] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
-[19:11:23] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[19:11:23] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[19:11:23] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[22:03:36] [RCON Client /0:0:0:0:0:0:0:1 #4/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
+[22:03:36] [Server thread/INFO]: [LuckPerms] Goodbye!
+[22:03:37] [Server thread/INFO]: Saving players
+[22:03:37] [Server thread/INFO]: Saving worlds
+[22:03:37] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 153 entity chunks, 0 poi chunks in world 'world' in 0.12s
+[22:03:37] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 14 entity chunks, 0 poi chunks in world 'world_nether' in 0.01s
+[22:03:37] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[22:03:37] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
+[22:03:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[22:03:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[22:03:37] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[22:03:37] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
