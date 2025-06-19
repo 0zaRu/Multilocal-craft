@@ -16,8 +16,8 @@ timestamps:
   mute: 0
   jail: 0
   onlinejail: 0
-  logout: 1750282069194
-  login: 1750280038096
+  logout: 1750350011236
+  login: 1750349173205
 money: '0'
 last-account-name: OzaRu_
 lastlocation:
@@ -31,11 +31,11 @@ lastlocation:
 logoutlocation:
   world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
   world-name: world
-  x: -154.76470524544538
-  y: 90.0
-  z: -273.70550598533237
-  yaw: 179.52780151367188
-  pitch: 19.572214126586914
+  x: -161.03629504332073
+  y: 89.0
+  z: -269.8661211601182
+  yaw: -141.4592742919922
+  pitch: -1.2741024494171143
 homes:
   casa:
     world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
