@@ -101,14 +101,14 @@ if %DOCKER_MC_RUNNING% EQU 1 (
         ) else (
             powershell -Command "Write-Host 'Comprobacion de actualizaciones finalizada.' -ForegroundColor Green -ErrorAction SilentlyContinue"
 
-            @REM powershell -Command "Write-Host 'Aplicando actualizaciones del mundo desde GitHub (descartando cambios locales no subidos)...' -ForegroundColor Yellow"
-            @REM git reset --hard origin/main >nul 2>&1
-            @REM if %ERRORLEVEL% NEQ 0 (
-            @REM     powershell -Command "Write-Host 'ERROR: Hubo un problema al descargar o aplicar las actualizaciones del mundo.' -ForegroundColor Red"
-            @REM     goto :END
-            @REM ) else (
-            @REM     powershell -Command "Write-Host 'Mundo actualizado. Se descargaron los ultimos cambios del servidor.' -ForegroundColor Green"
-            @REM )
+            powershell -Command "Write-Host 'Aplicando actualizaciones del mundo desde GitHub (descartando cambios locales no subidos)...' -ForegroundColor Yellow"
+            git reset --hard origin/main >nul 2>&1
+            if %ERRORLEVEL% NEQ 0 (
+                powershell -Command "Write-Host 'ERROR: Hubo un problema al descargar o aplicar las actualizaciones del mundo.' -ForegroundColor Red"
+                goto :END
+            ) else (
+                powershell -Command "Write-Host 'Mundo actualizado. Se descargaron los ultimos cambios del servidor.' -ForegroundColor Green"
+            )
         )
         :: Despues de actualizar (o no) desde Git, proceder a activar la IP
         goto :IPACTIVATE
