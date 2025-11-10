@@ -1,0 +1,38 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+muted: false
+jailed: false
+ip-address: 85.48.236.190
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 1750608220188
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1750610127233
+  login: 1750603573822
+money: '0'
+last-account-name: claraerre
+lastlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: -140.53301440105454
+  y: 96.0
+  z: 19.909597741309728
+  yaw: 30.600112915039062
+  pitch: 22.949993133544922
+logoutlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: -191.5867394985647
+  y: 96.0
+  z: -77.95110360869535
+  yaw: -24.300024032592773
+  pitch: 78.75004577636719
