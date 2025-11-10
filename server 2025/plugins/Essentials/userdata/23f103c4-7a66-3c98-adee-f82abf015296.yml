@@ -3,7 +3,7 @@ teleportauto: false
 godmode: false
 muted: false
 jailed: false
-ip-address: 172.18.0.1
+ip-address: 83.54.87.138
 afk: false
 socialspy: false
 npc: false
@@ -11,23 +11,23 @@ powertoolsenabled: true
 accepting-pay: true
 baltop-exempt: false
 timestamps:
-  lastteleport: 1750283312728
+  lastteleport: 1750776379584
   lastheal: 0
   mute: 0
   jail: 0
   onlinejail: 0
-  logout: 1750349939540
-  login: 1750348250973
+  logout: 1750776389376
+  login: 1750776009755
 money: '0'
 last-account-name: Zehn
 lastlocation:
-  world: e9ef1c53-c1d4-4290-8f26-47e4fdd5450f
-  world-name: world_the_end
-  x: 376.5545865105836
-  y: 1.5
-  z: 186.30000001192093
-  yaw: 1.331521987915039
-  pitch: 20.249990463256836
+  world: 17670af9-2bae-4236-bdb3-e090de0039fa
+  world-name: world_nether
+  x: -743.0950948936089
+  y: 59.0
+  z: -789.075521295949
+  yaw: 87.45303344726562
+  pitch: 24.899972915649414
 homes:
   casa:
     world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
@@ -77,11 +77,27 @@ homes:
     z: 182.7343472147541
     yaw: -165.01849365234375
     pitch: 53.69999313354492
+  castillo:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: -68.66925215710397
+    y: 88.0
+    z: -309.261086648309
+    yaw: -98.85400390625
+    pitch: 55.94977569580078
+  end2:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 16662.53469131595
+    y: 64.0
+    z: 40792.918050793895
+    yaw: 113.69349670410156
+    pitch: 32.54996109008789
 logoutlocation:
   world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
   world-name: world
-  x: -13.452105197517428
-  y: 123.0
-  z: -292.80739854311963
-  yaw: -178.467041015625
-  pitch: -5.2496514320373535
+  x: -30.569998261683633
+  y: 88.0
+  z: -312.6189379900385
+  yaw: 26.995880126953125
+  pitch: 4.199775218963623
