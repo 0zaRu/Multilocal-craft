@@ -18,12 +18,13 @@ NC='\033[0m' # No Color
 
 echo -e "${CYAN}--- Asistente para apagar el Servidor de Minecraft (LOCAL) ---${NC}"
 
-# --- Verificar ejecución con sudo ---
-if [ "$EUID" -ne 0 ]; then
-    echo -e "${RED}ERROR: Este script debe ejecutarse con sudo.${NC}"
-    echo -e "${RED}Ejecuta: sudo ./terminar.sh${NC}"
+# --- Verificar Git instalado ---
+echo -e "${YELLOW}Verificando Git...${NC}"
+if ! command -v git &> /dev/null; then
+    echo -e "${RED}ERROR: Git no está instalado en el sistema.${NC}"
     exit 1
 fi
+echo -e "${GREEN}Git detectado.${NC}"
 
 # --- Preguntar si el terminal se cerró ---
 echo ""
