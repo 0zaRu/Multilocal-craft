@@ -20,28 +20,6 @@ MEMORIA_XMX="${1:-6}"  # Primer argumento o 6 por defecto
 
 echo -e "${CYAN}--- Asistente para iniciar el Servidor de Minecraft (LOCAL) ---${NC}"
 
-# --- Verificar Java 21 ---
-echo -e "${YELLOW}Verificando Java (JDK 21)...${NC}"
-if ! command -v java &> /dev/null; then
-    echo -e "${RED}ERROR: Java no está instalado en el sistema.${NC}"
-    echo -e "${RED}Instala JDK 21 antes de continuar.${NC}"
-    exit 1
-fi
-
-# Mejorar detección de versión de Java (compatible con OpenJDK)
-JAVA_VERSION=$(java -version 2>&1 | head -n 1 | grep -oP '(?<=version ")[0-9]+' | head -n 1)
-if [ -z "$JAVA_VERSION" ]; then
-    # Intento alternativo para OpenJDK
-    JAVA_VERSION=$(java -version 2>&1 | head -n 1 | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | cut -d'.' -f1)
-fi
-
-if [ "$JAVA_VERSION" != "21" ]; then
-    echo -e "${RED}ERROR: Se requiere Java 21, pero se detectó Java $JAVA_VERSION.${NC}"
-    echo -e "${RED}Instala JDK 21 antes de continuar.${NC}"
-    exit 1
-fi
-echo -e "${GREEN}Java 21 detectado correctamente.${NC}"
-
 # --- Preguntar memoria si no se pasó como argumento ---
 if [ -z "$1" ]; then
     echo -e "${YELLOW}Memoria RAM para el servidor (Xmx):${NC}"
