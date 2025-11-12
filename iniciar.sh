@@ -5,7 +5,7 @@
 # Propósito:
 #   Asistente para iniciar el servidor de Minecraft en modo LOCAL
 #   para sistemas Linux/Mac.
-#   Verifica ZeroTier, Git, Java 21, activa IP flotante y lanza servidor.
+#   Verifica Git, Java 21 y lanza servidor.
 # ------------------------------------------------------------
 
 # Colores para output
@@ -16,9 +16,7 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
 # --- Configuración ---
-IPFLOTANTE="172.25.254.254"
 MEMORIA_XMX="${1:-6}"  # Primer argumento o 6 por defecto
-ZEROTIER_NETWORK_ID="your_network_id"  # Ajustar según tu red
 
 echo -e "${CYAN}--- Asistente para iniciar el Servidor de Minecraft (LOCAL) ---${NC}"
 
@@ -28,22 +26,6 @@ if [ "$EUID" -ne 0 ]; then
     echo -e "${RED}Ejecuta: sudo ./iniciar.sh${NC}"
     exit 1
 fi
-
-# --- Verificar ZeroTier instalado y funcionando ---
-echo -e "${YELLOW}Verificando ZeroTier...${NC}"
-if ! command -v zerotier-cli &> /dev/null; then
-    echo -e "${RED}ERROR: ZeroTier no está instalado en el sistema.${NC}"
-    echo -e "${RED}Instala ZeroTier antes de continuar: https://www.zerotier.com/download/${NC}"
-    exit 1
-fi
-
-if ! systemctl is-active --quiet zerotier-one 2>/dev/null && ! pgrep -x "zerotier-one" > /dev/null; then
-    echo -e "${RED}ERROR: El servicio ZeroTier no está en ejecución.${NC}"
-    echo -e "${YELLOW}Intenta iniciarlo con: sudo systemctl start zerotier-one${NC}"
-    exit 1
-fi
-
-echo -e "${GREEN}ZeroTier detectado y funcionando.${NC}"
 
 # --- Verificar Git instalado ---
 echo -e "${YELLOW}Verificando Git...${NC}"
@@ -87,34 +69,25 @@ if [ ! -f "server 2025/paper-1.21.1.jar" ]; then
     exit 1
 fi
 
-# --- Obtener interfaz ZeroTier ---
-ZT_INTERFACE=$(ip addr show | grep -B 2 "zt" | grep "^[0-9]" | awk '{print $2}' | tr -d ':' | head -n 1)
-if [ -z "$ZT_INTERFACE" ]; then
-    echo -e "${RED}ERROR: No se encontró una interfaz de ZeroTier activa.${NC}"
-    exit 1
-fi
-
-echo -e "${CYAN}Interfaz ZeroTier detectada: $ZT_INTERFACE${NC}"
-
-# --- Verificar si la IP ya está asignada ---
-if ip addr show "$ZT_INTERFACE" | grep -q "$IPFLOTANTE"; then
-    echo -e "${CYAN}INFORMACION: La IP flotante ($IPFLOTANTE) ya está configurada.${NC}"
-else
-    # --- Verificar si la IP está en uso por otro PC ---
-    if ping -c 1 -W 1 "$IPFLOTANTE" &> /dev/null; then
-        echo -e "${RED}ERROR: La IP $IPFLOTANTE está siendo usada por OTRO ordenador.${NC}"
-        echo -e "${YELLOW}Apaga el otro servidor antes de continuar.${NC}"
-        exit 1
-    fi
-
-    # --- Activar IP flotante ---
-    echo -e "${YELLOW}Activando la configuración de red (IP: $IPFLOTANTE)...${NC}"
-    if ! ip addr add "$IPFLOTANTE/16" dev "$ZT_INTERFACE" 2>/dev/null; then
-        echo -e "${RED}ERROR: No se pudo activar la IP flotante.${NC}"
-        exit 1
-    fi
-    echo -e "${GREEN}Configuración de red (IP: $IPFLOTANTE) activada correctamente.${NC}"
-fi
+# --- Advertencia sobre configuración de IP en server.properties ---
+echo ""
+echo -e "${YELLOW}╔════════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${YELLOW}║                    CONFIGURACIÓN IMPORTANTE                    ║${NC}"
+echo -e "${YELLOW}╚════════════════════════════════════════════════════════════════╝${NC}"
+echo ""
+echo -e "${RED}ANTES DE CONTINUAR:${NC}"
+echo -e "${CYAN}Debes configurar manualmente la IP de ZeroTier en el archivo:${NC}"
+echo -e "${GREEN}  server 2025/server.properties${NC}"
+echo ""
+echo -e "${CYAN}Busca la línea que dice:${NC}"
+echo -e "${YELLOW}  server-ip=${NC}"
+echo ""
+echo -e "${CYAN}Y cámbiala por tu IP de ZeroTier, por ejemplo:${NC}"
+echo -e "${YELLOW}  server-ip=172.25.254.254${NC}"
+echo ""
+echo -e "${RED}Si no has configurado esto, el servidor NO será accesible por otros jugadores.${NC}"
+echo ""
+read -p "Presiona ENTER cuando hayas configurado la IP en server.properties..."
 
 # --- Lanzar servidor ---
 echo ""
@@ -131,4 +104,4 @@ cd ..
 
 echo ""
 echo -e "${CYAN}Servidor detenido.${NC}"
-echo -e "${YELLOW}Recuerda ejecutar './terminar.sh' para desactivar la IP y hacer backup.${NC}"
+echo -e "${YELLOW}Recuerda ejecutar 'sudo ./terminar.sh' para hacer backup.${NC}"
