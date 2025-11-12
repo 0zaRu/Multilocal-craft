@@ -1,6 +1,38 @@
 @echo off
 setlocal enabledelayedexpansion
 
+REM ------------------------------------------------------------
+REM Script: terminar.bat
+REM Propósito:
+REM   Asistente para apagar de forma segura el servidor de Minecraft en Docker.
+REM   Guarda el mundo, apaga el contenedor, desactiva la IP flotante en ZeroTier
+REM   y realiza una copia de seguridad en GitHub cuando procede.
+REM Pasos principales:
+REM   1. Forzar ejecución en la carpeta del script.
+REM   2. Verificar permisos de administrador.
+REM   3. Comprobar si la IP flotante está asignada a este PC.
+REM   4. Comprobar que Docker está disponible y si el contenedor "mc-server" está corriendo.
+REM   5. Lógica según el estado detectado:
+REM      - Docker no disponible: intentar desactivar IP y hacer push de backup local.
+REM      - IP asignada + Docker en ejecución:
+REM          a) Enviar comando de guardado (rcon-cli save-all flush).
+REM          b) Desactivar IP en ZeroTier.
+REM          c) Parar el contenedor (rcon-cli stop + docker stop).
+REM          d) Subir copia de seguridad a GitHub (si hay cambios).
+REM      - IP asignada + Docker NO en ejecución: desactivar IP y push backup.
+REM      - IP NO asignada + Docker en ejecución: apagar servidor directamente (sin guardar aquí).
+REM      - IP NO asignada + Docker NO en ejecución: nada que hacer.
+REM   6. Mostrar resultados y pausar para que el usuario confirme.
+REM Funciones internas:
+REM   - :desactivarIP      -> intenta quitar la IP flotante de la interfaz ZeroTier.
+REM   - :guardarMundo      -> envía comando de guardado y valida logs.
+REM   - :detenerServidorDocker -> intenta parar el servidor y verifica.
+REM   - :pushBackupGit     -> añade/commitea/pushea cambios al repositorio remoto.
+REM Notas:
+REM   - Usa PowerShell para mensajes coloreados.
+REM   - Evita acciones automáticas que puedan causar conflictos de IP entre máquinas.
+REM ------------------------------------------------------------
+
 :: --- Cambiar al directorio donde esta el script (evita quedarse en system32) ---
 cd /d "%~dp0"
 
@@ -9,6 +41,7 @@ set IPFLOTANTE=172.25.254.254
 set MUNDO_GUARDADO_EXITO=1
 set SERVIDOR_DETENIDO_EXITO=1
 set DESACTIVACION_IP_EXITO=1
+set MODO_EJECUCION=0
 
 :: --- Verificacion de privilegios ---
 NET SESSION >nul 2>&1
@@ -19,6 +52,53 @@ if %ERRORLEVEL% NEQ 0 (
     pause >nul
     goto :EndScript
 )
+
+:: --- Preguntar modo de ejecucion utilizado ---
+echo.
+powershell -Command "Write-Host '--- Asistente para apagar el Servidor de Minecraft ---' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host 'Indica como se inicio el servidor:' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host '  1 - Local (Java directo)' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host '  2 - Docker (Contenedor)' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+set /p MODO_EJECUCION="Ingresa tu opcion (1 o 2): "
+
+if "%MODO_EJECUCION%"=="1" goto :TERMINAR_LOCAL
+if "%MODO_EJECUCION%"=="2" goto :TERMINAR_DOCKER
+
+powershell -Command "Write-Host 'ERROR: Opcion no valida. Debes elegir 1 o 2.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+goto :EndScript
+
+:: ============================================
+:: TERMINAR MODO LOCAL
+:: ============================================
+:TERMINAR_LOCAL
+powershell -Command "Write-Host '--- TERMINANDO MODO LOCAL ---' -ForegroundColor Green -ErrorAction SilentlyContinue"
+echo.
+powershell -Command "Write-Host 'Se cerraste ya el terminal del servidor?' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host 'IMPORTANTE: Debes cerrar la ventana del servidor antes de continuar.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+set /p TERMINAL_CERRADO="Ya se cerro el terminal? (S/N): "
+
+if /i not "%TERMINAL_CERRADO%"=="S" (
+    powershell -Command "Write-Host 'Por favor, cierra primero el terminal del servidor (escribe ''stop'' en la consola del servidor).' -ForegroundColor Red -ErrorAction SilentlyContinue"
+    powershell -Command "Write-Host 'Luego vuelve a ejecutar este script.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    goto :EndScript
+)
+
+powershell -Command "Write-Host 'Procediendo a desactivar IP y hacer backup...' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+
+:: --- Desactivar IP flotante ---
+call :desactivarIP
+
+:: --- Realizar backup Git ---
+call :pushBackupGit
+
+powershell -Command "Write-Host 'Proceso de apagado LOCAL completado.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+goto :EndScript
+
+:: ============================================
+:: TERMINAR MODO DOCKER
+:: ============================================
+:TERMINAR_DOCKER
+powershell -Command "Write-Host '--- TERMINANDO MODO DOCKER ---' -ForegroundColor Green -ErrorAction SilentlyContinue"
 
 goto :main
 
@@ -145,10 +225,9 @@ goto :EOF
 goto :EOF
 
 :: -------------------------------------
-:: SCRIPT PRINCIPAL
+:: SCRIPT PRINCIPAL (SOLO PARA DOCKER)
 :: -------------------------------------
 :main
-    powershell -Command "Write-Host '--- Asistente para apagar el Servidor de Minecraft ---' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
     powershell -Command "Write-Host 'Comprobando el estado actual del servidor y la red...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
 
     :: Comprobar si la IP flotante esta asignada a este PC

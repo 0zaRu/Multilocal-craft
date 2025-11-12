@@ -1,12 +1,47 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: --- Forzar ejecucion en la carpeta del script ---
+REM ------------------------------------------------------------
+REM Script: iniciar.bat
+REM Propósito:
+REM   Asistente para iniciar un servidor de Minecraft ejecutado en Docker.
+REM   Gestiona comprobaciones de permisos, Docker, sincronización desde Git,
+REM   activación de una IP "flotante" en ZeroTier y arranque con docker compose.
+REM Pasos principales:
+REM   1. Forzar ejecución en la carpeta del script.
+REM   2. Verificar permisos de administrador.
+REM   3. Comprobar que Docker está disponible y responde.
+REM   4. Verificar existencia de docker-compose.yml.
+REM   5. Comprobar si la IP flotante (IPFLOTANTE) ya está en uso:
+REM      - Si la IP está activa aquí, marcarla como asignada.
+REM      - Si la IP está en otro PC, advertir y salir.
+REM      - Si está disponible, continuar.
+REM   6. Comprobar si el contenedor "mc-server" está en ejecución.
+REM   7. Gestionar los distintos casos detectados:
+REM      - Contenedor en ejecución + IP local -> informar y finalizar.
+REM      - Contenedor en ejecución + IP NO local -> alertar conflicto.
+REM      - Contenedor NO en ejecución + IP local -> iniciar servidor sin actualizar.
+REM      - Contenedor NO en ejecución + IP NO local -> intentar actualizar desde Git, activar IP y arrancar.
+REM   8. Activar la IP flotante en la interfaz ZeroTier (si es necesario).
+REM   9. Ejecutar "docker compose up -d" y esperar que el servidor arranque.
+REM   10. Informar al usuario y finalizar.
+REM Notas:
+REM   - Usa PowerShell para mensajes coloreados.
+REM   - Realiza operaciones Git (fetch/reset) si procede.
+REM ------------------------------------------------------------
+
+:: --- Cambiar al directorio donde esta el script (evita quedarse en system32) ---
 cd /d "%~dp0"
 
 :: --- Configuracion ---
 set IPFLOTANTE=172.25.254.254
 set IP_EN_USO_OTRO_PC=0
+set MODO_EJECUCION=0
+set MEMORIA_XMX=6
+
+:: --- Procesar argumentos ---
+if not "%~1"=="" set MODO_EJECUCION=%~1
+if not "%~2"=="" set MEMORIA_XMX=%~2
 
 :: --- Mensaje de inicio y verificacion de privilegios ---
 powershell -Command "Write-Host '--- Asistente para iniciar el Servidor de Minecraft ---' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
@@ -14,9 +49,96 @@ NET SESSION >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     powershell -Command "Write-Host 'ERROR: Necesitas permisos de administrador para continuar.' -ForegroundColor Red -ErrorAction SilentlyContinue"
     powershell -Command "Write-Host 'Por favor, cierra esta ventana, haz clic derecho sobre el archivo ''iniciar.bat'' y selecciona ''Ejecutar como administrador''.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-
     goto :END
 )
+
+:: --- Preguntar modo de ejecucion si no se paso como argumento ---
+if %MODO_EJECUCION% EQU 0 (
+    echo.
+    powershell -Command "Write-Host 'Selecciona el modo de ejecucion:' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    powershell -Command "Write-Host '  1 - Local (Java directo en este ordenador)' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+    powershell -Command "Write-Host '  2 - Docker (Contenedor)' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+    set /p MODO_EJECUCION="Ingresa tu opcion (1 o 2): "
+)
+
+if "%MODO_EJECUCION%"=="1" goto :MODO_LOCAL
+if "%MODO_EJECUCION%"=="2" goto :MODO_DOCKER
+
+powershell -Command "Write-Host 'ERROR: Opcion no valida. Debes elegir 1 o 2.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+goto :END
+
+:: ============================================
+:: MODO LOCAL
+:: ============================================
+:MODO_LOCAL
+powershell -Command "Write-Host '--- MODO LOCAL SELECCIONADO ---' -ForegroundColor Green -ErrorAction SilentlyContinue"
+
+:: --- Preguntar memoria si no se paso como argumento ---
+if "%~2"=="" (
+    echo.
+    powershell -Command "Write-Host 'Memoria RAM para el servidor (Xmx):' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    set /p MEMORIA_INPUT="Ingresa la cantidad en GB (por defecto 6, presiona Enter para mantener): "
+    if not "!MEMORIA_INPUT!"=="" set MEMORIA_XMX=!MEMORIA_INPUT!
+)
+
+powershell -Command "Write-Host 'Configurando servidor con Xmx%MEMORIA_XMX%G de RAM...' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+
+:: --- Verificar JDK 21 ---
+powershell -Command "Write-Host 'Verificando Java (JDK 21)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+java -version 2>&1 | findstr "21" >nul
+if %ERRORLEVEL% NEQ 0 (
+    powershell -Command "Write-Host 'ERROR: No se detecto Java 21 (JDK 21) en el sistema.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+    powershell -Command "Write-Host 'Por favor, instala JDK 21 antes de continuar.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+    goto :END
+) else (
+    powershell -Command "Write-Host 'Java 21 detectado correctamente.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+)
+
+:: --- Verificar archivo JAR ---
+if not exist "server 2025\paper-1.21.1.jar" (
+    powershell -Command "Write-Host 'ERROR: No se encuentra el archivo del servidor: server 2025\paper-1.21.1.jar' -ForegroundColor Red -ErrorAction SilentlyContinue"
+    goto :END
+)
+
+:: --- Verificar y activar IP flotante ---
+set ASIGNEDIP_HERE=0
+powershell -Command "Write-Host 'Comprobando la configuracion de red para el servidor (IP: %IPFLOTANTE%)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+powershell -Command "$result = Test-NetConnection -ComputerName '%IPFLOTANTE%' -Port 60068; if ($result.TcpTestSucceeded) { if ($result.SourceAddress.IPAddress -eq '%IPFLOTANTE%') { Write-Host 'INFORMACION: La configuracion de red (IP: %IPFLOTANTE%) ya esta activa en este ordenador.' -ForegroundColor Cyan; exit 0 } else { Write-Host 'ERROR: La direccion de red %IPFLOTANTE% esta siendo usada por OTRO ordenador.' -ForegroundColor Red; exit 1 } } else { Write-Host 'La configuracion de red (IP: %IPFLOTANTE%) esta disponible. Se activara ahora.' -ForegroundColor Green; exit 2 }"
+
+if %ERRORLEVEL% EQU 0 (
+    set ASIGNEDIP_HERE=1
+) else if %ERRORLEVEL% EQU 1 (
+    powershell -Command "Write-Host 'No se puede continuar mientras otro ordenador use la IP del servidor.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+    goto :END
+)
+
+:: --- Activar IP si no esta activa ---
+if %ASIGNEDIP_HERE% EQU 0 (
+    powershell -Command "Write-Host 'Activando la configuracion de red (IP: %IPFLOTANTE%) en este ordenador...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    powershell -Command "$interface = Get-NetAdapter | Where-Object { $_.InterfaceDescription -like '*ZeroTier*' -and $_.Status -eq 'Up' } | Select-Object -First 1; if ($interface) { New-NetIPAddress -IPAddress '%IPFLOTANTE%' -InterfaceIndex $interface.ifIndex -PrefixLength 16 -AddressFamily IPv4 -ErrorAction Stop | Out-Null } else { Write-Host 'ERROR: No se encontro el programa de red ZeroTier activo.' -ForegroundColor Red -ErrorAction SilentlyContinue; exit 1 }"
+    if %ERRORLEVEL% NEQ 0 (
+        powershell -Command "Write-Host 'ERROR: No se pudo activar la configuracion de red (IP: %IPFLOTANTE%).' -ForegroundColor Red -ErrorAction SilentlyContinue"
+        goto :END
+    ) else (
+        powershell -Command "Write-Host 'Configuracion de red (IP: %IPFLOTANTE%) activada correctamente.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+    )
+)
+
+:: --- Lanzar servidor ---
+echo.
+powershell -Command "Write-Host 'Iniciando servidor de Minecraft en modo LOCAL...' -ForegroundColor Green -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host 'IMPORTANTE: Mantén esta ventana abierta mientras el servidor esté funcionando.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+echo.
+cd "server 2025"
+java -Xms1G -Xmx%MEMORIA_XMX%G -jar paper-1.21.1.jar nogui
+cd ..
+goto :END
+
+:: ============================================
+:: MODO DOCKER
+:: ============================================
+:MODO_DOCKER
+powershell -Command "Write-Host '--- MODO DOCKER SELECCIONADO ---' -ForegroundColor Green -ErrorAction SilentlyContinue"
 
 :: --- Verificar si Docker esta disponible ---
 powershell -Command "Write-Host 'Comprobando si el programa Docker esta funcionando...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
