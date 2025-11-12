@@ -27,15 +27,6 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# --- Verificar Git instalado ---
-echo -e "${YELLOW}Verificando Git...${NC}"
-if ! command -v git &> /dev/null; then
-    echo -e "${RED}ERROR: Git no está instalado en el sistema.${NC}"
-    echo -e "${RED}Instala Git antes de continuar.${NC}"
-    exit 1
-fi
-echo -e "${GREEN}Git detectado correctamente.${NC}"
-
 # --- Verificar Java 21 ---
 echo -e "${YELLOW}Verificando Java (JDK 21)...${NC}"
 if ! command -v java &> /dev/null; then
