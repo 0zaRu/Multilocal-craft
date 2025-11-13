@@ -3,10 +3,8 @@
 # ------------------------------------------------------------
 # Script: terminar.sh
 # Propósito:
-#   Asistente para apagar el servidor de Minecraft en modo LOCAL
-#   para sistemas Linux/Mac.
-#   Verifica que el servidor esté cerrado, descarta cambios en server.properties
-#   y realiza backup en Git.
+#   Asistente para hacer backup del servidor de Minecraft.
+#   Verifica que el servidor esté cerrado y realiza backup en Git.
 # ------------------------------------------------------------
 
 # Colores para output
@@ -16,16 +14,16 @@ YELLOW='\033[1;33m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
-echo -e "${CYAN}--- Asistente para apagar el Servidor de Minecraft (LOCAL) ---${NC}"
+echo -e "${CYAN}--- Asistente para hacer backup del Servidor de Minecraft ---${NC}"
 
-# --- Preguntar si el terminal se cerró ---
+# --- Preguntar si el servidor se cerró ---
 echo ""
-echo -e "${YELLOW}¿Se cerró ya el terminal del servidor?${NC}"
+echo -e "${YELLOW}¿Ya se cerró el servidor?${NC}"
 echo -e "${YELLOW}IMPORTANTE: Debes haber detenido el servidor (comando 'stop') antes de continuar.${NC}"
-read -p "¿Ya se cerró el terminal? (S/N): " TERMINAL_CERRADO
+read -p "¿Ya se cerró el servidor? (S/N): " SERVIDOR_CERRADO
 
-if [ "${TERMINAL_CERRADO^^}" != "S" ]; then
-    echo -e "${RED}Por favor, cierra primero el terminal del servidor (escribe 'stop' en la consola del servidor).${NC}"
+if [ "${SERVIDOR_CERRADO^^}" != "S" ]; then
+    echo -e "${RED}Por favor, detén primero el servidor (escribe 'stop' en la consola del servidor).${NC}"
     echo -e "${YELLOW}Luego vuelve a ejecutar este script.${NC}"
     exit 1
 fi
@@ -90,4 +88,4 @@ else
 fi
 
 echo ""
-echo -e "${GREEN}--- Proceso de apagado LOCAL completado. ---${NC}"
+echo -e "${GREEN}--- Proceso de backup completado. ---${NC}"

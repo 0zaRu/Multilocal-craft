@@ -4,47 +4,19 @@ setlocal enabledelayedexpansion
 REM ------------------------------------------------------------
 REM Script: iniciar.bat
 REM Propósito:
-REM   Asistente para iniciar un servidor de Minecraft ejecutado en Docker.
-REM   Gestiona comprobaciones de permisos, Docker, sincronización desde Git,
-REM   activación de una IP "flotante" en ZeroTier y arranque con docker compose.
-REM Pasos principales:
-REM   1. Forzar ejecución en la carpeta del script.
-REM   2. Verificar permisos de administrador.
-REM   3. Comprobar que Docker está disponible y responde.
-REM   4. Verificar existencia de docker-compose.yml.
-REM   5. Comprobar si la IP flotante (IPFLOTANTE) ya está en uso:
-REM      - Si la IP está activa aquí, marcarla como asignada.
-REM      - Si la IP está en otro PC, advertir y salir.
-REM      - Si está disponible, continuar.
-REM   6. Comprobar si el contenedor "mc-server" está en ejecución.
-REM   7. Gestionar los distintos casos detectados:
-REM      - Contenedor en ejecución + IP local -> informar y finalizar.
-REM      - Contenedor en ejecución + IP NO local -> alertar conflicto.
-REM      - Contenedor NO en ejecución + IP local -> iniciar servidor sin actualizar.
-REM      - Contenedor NO en ejecución + IP NO local -> intentar actualizar desde Git, activar IP y arrancar.
-REM   8. Activar la IP flotante en la interfaz ZeroTier (si es necesario).
-REM   9. Ejecutar "docker compose up -d" y esperar que el servidor arranque.
-REM   10. Informar al usuario y finalizar.
-REM Notas:
-REM   - Usa PowerShell para mensajes coloreados.
-REM   - Realiza operaciones Git (fetch/reset) si procede.
+REM   Arrancar el servidor de Minecraft en modo local (Java).
+REM   Permite decidir si se sincroniza el mundo desde GitHub.
 REM ------------------------------------------------------------
 
-:: --- Cambiar al directorio donde esta el script (evita quedarse en system32) ---
+:: --- Cambiar al directorio donde esta el script ---
 cd /d "%~dp0"
 
-:: --- Configuracion ---
-set IPFLOTANTE=172.25.254.254
-set IP_EN_USO_OTRO_PC=0
-set MODO_EJECUCION=0
+:: --- Configuración ---
 set MEMORIA_XMX=6
+if not "%~1"=="" set MEMORIA_XMX=%~1
 
-:: --- Procesar argumentos ---
-if not "%~1"=="" set MODO_EJECUCION=%~1
-if not "%~2"=="" set MEMORIA_XMX=%~2
-
-:: --- Mensaje de inicio y verificacion de privilegios ---
-powershell -Command "Write-Host '--- Asistente para iniciar el Servidor de Minecraft ---' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+:: --- Mensaje de inicio y verificación de privilegios ---
+powershell -Command "Write-Host '--- Asistente para iniciar el Servidor de Minecraft (modo local) ---' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
 NET SESSION >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
     powershell -Command "Write-Host 'ERROR: Necesitas permisos de administrador para continuar.' -ForegroundColor Red -ErrorAction SilentlyContinue"
@@ -52,29 +24,33 @@ if %ERRORLEVEL% NEQ 0 (
     goto :END
 )
 
-:: --- Preguntar modo de ejecucion si no se paso como argumento ---
-if %MODO_EJECUCION% EQU 0 (
-    echo.
-    powershell -Command "Write-Host 'Selecciona el modo de ejecucion:' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host '  1 - Local (Java directo en este ordenador)' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host '  2 - Docker (Contenedor)' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
-    set /p MODO_EJECUCION="Ingresa tu opcion (1 o 2): "
+:: --- Preguntar si se debe sincronizar desde GitHub ---
+echo.
+powershell -Command "Write-Host '¿Quieres actualizar el mundo desde GitHub?' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host 'ADVERTENCIA: Esto sobrescribira cualquier cambio local que no hayas subido.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+set ACTUALIZAR_GIT=N
+set /p ACTUALIZAR_GIT="Responde S para actualizar o Enter para continuar con los datos locales: "
+
+if /i "%ACTUALIZAR_GIT%"=="S" (
+    powershell -Command "Write-Host 'Actualizando desde GitHub...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    
+    git fetch origin main >nul 2>&1
+    if %ERRORLEVEL% NEQ 0 (
+        powershell -Command "Write-Host 'ADVERTENCIA: No se pudo conectar a GitHub. Se continuara con los datos locales.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    ) else (
+        git reset --hard origin/main >nul 2>&1
+        if %ERRORLEVEL% NEQ 0 (
+            powershell -Command "Write-Host 'ERROR: Hubo un problema al aplicar las actualizaciones. Se continuara con los datos locales.' -ForegroundColor Red -ErrorAction SilentlyContinue"
+        ) else (
+            powershell -Command "Write-Host 'Mundo actualizado correctamente desde GitHub.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+        )
+    )
+) else (
+    powershell -Command "Write-Host 'Se utilizaran los datos locales sin sincronizar desde GitHub.' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
 )
 
-if "%MODO_EJECUCION%"=="1" goto :MODO_LOCAL
-if "%MODO_EJECUCION%"=="2" goto :MODO_DOCKER
-
-powershell -Command "Write-Host 'ERROR: Opcion no valida. Debes elegir 1 o 2.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-goto :END
-
-:: ============================================
-:: MODO LOCAL
-:: ============================================
-:MODO_LOCAL
-powershell -Command "Write-Host '--- MODO LOCAL SELECCIONADO ---' -ForegroundColor Green -ErrorAction SilentlyContinue"
-
-:: --- Preguntar memoria si no se paso como argumento ---
-if "%~2"=="" (
+:: --- Preguntar memoria si no se pasó como argumento ---
+if "%~1"=="" (
     echo.
     powershell -Command "Write-Host 'Memoria RAM para el servidor (Xmx):' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
     set /p MEMORIA_INPUT="Ingresa la cantidad en GB (por defecto 6, presiona Enter para mantener): "
@@ -83,211 +59,31 @@ if "%~2"=="" (
 
 powershell -Command "Write-Host 'Configurando servidor con Xmx%MEMORIA_XMX%G de RAM...' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
 
-:: --- Verificar JDK 21 ---
-powershell -Command "Write-Host 'Verificando Java (JDK 21)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-java -version 2>&1 | findstr "21" >nul
-if %ERRORLEVEL% NEQ 0 (
-    powershell -Command "Write-Host 'ERROR: No se detecto Java 21 (JDK 21) en el sistema.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Por favor, instala JDK 21 antes de continuar.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    goto :END
-) else (
-    powershell -Command "Write-Host 'Java 21 detectado correctamente.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-)
-
 :: --- Verificar archivo JAR ---
-if not exist "server 2025\paper-1.21.1.jar" (
-    powershell -Command "Write-Host 'ERROR: No se encuentra el archivo del servidor: server 2025\paper-1.21.1.jar' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    goto :END
-)
-
-:: --- Verificar y activar IP flotante ---
-set ASIGNEDIP_HERE=0
-powershell -Command "Write-Host 'Comprobando la configuracion de red para el servidor (IP: %IPFLOTANTE%)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-powershell -Command "$result = Test-NetConnection -ComputerName '%IPFLOTANTE%' -Port 60068; if ($result.TcpTestSucceeded) { if ($result.SourceAddress.IPAddress -eq '%IPFLOTANTE%') { Write-Host 'INFORMACION: La configuracion de red (IP: %IPFLOTANTE%) ya esta activa en este ordenador.' -ForegroundColor Cyan; exit 0 } else { Write-Host 'ERROR: La direccion de red %IPFLOTANTE% esta siendo usada por OTRO ordenador.' -ForegroundColor Red; exit 1 } } else { Write-Host 'La configuracion de red (IP: %IPFLOTANTE%) esta disponible. Se activara ahora.' -ForegroundColor Green; exit 2 }"
-
-if %ERRORLEVEL% EQU 0 (
-    set ASIGNEDIP_HERE=1
-) else if %ERRORLEVEL% EQU 1 (
-    powershell -Command "Write-Host 'No se puede continuar mientras otro ordenador use la IP del servidor.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    goto :END
-)
-
-:: --- Activar IP si no esta activa ---
-if %ASIGNEDIP_HERE% EQU 0 (
-    powershell -Command "Write-Host 'Activando la configuracion de red (IP: %IPFLOTANTE%) en este ordenador...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    powershell -Command "$interface = Get-NetAdapter | Where-Object { $_.InterfaceDescription -like '*ZeroTier*' -and $_.Status -eq 'Up' } | Select-Object -First 1; if ($interface) { New-NetIPAddress -IPAddress '%IPFLOTANTE%' -InterfaceIndex $interface.ifIndex -PrefixLength 16 -AddressFamily IPv4 -ErrorAction Stop | Out-Null } else { Write-Host 'ERROR: No se encontro el programa de red ZeroTier activo.' -ForegroundColor Red -ErrorAction SilentlyContinue; exit 1 }"
-    if %ERRORLEVEL% NEQ 0 (
-        powershell -Command "Write-Host 'ERROR: No se pudo activar la configuracion de red (IP: %IPFLOTANTE%).' -ForegroundColor Red -ErrorAction SilentlyContinue"
+if not exist "server 2025\paper-1.21.10.jar" (
+    if not exist "server 2025\paper-1.21.9.jar" (
+        powershell -Command "Write-Host 'ERROR: No se encuentra el archivo del servidor (paper-1.21.10.jar)' -ForegroundColor Red -ErrorAction SilentlyContinue"
         goto :END
     ) else (
-        powershell -Command "Write-Host 'Configuracion de red (IP: %IPFLOTANTE%) activada correctamente.' -ForegroundColor Green -ErrorAction SilentlyContinue"
+        set JAR_FILE=paper-1.21.9.jar
     )
+) else (
+    set JAR_FILE=paper-1.21.10.jar
 )
 
 :: --- Lanzar servidor ---
 echo.
-powershell -Command "Write-Host 'Iniciando servidor de Minecraft en modo LOCAL...' -ForegroundColor Green -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host 'Iniciando servidor de Minecraft con %JAR_FILE%...' -ForegroundColor Green -ErrorAction SilentlyContinue"
 powershell -Command "Write-Host 'IMPORTANTE: Mantén esta ventana abierta mientras el servidor esté funcionando.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+powershell -Command "Write-Host 'Para detener el servidor, escribe ''stop'' en la consola.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
 echo.
 cd "server 2025"
-java -Xms1G -Xmx%MEMORIA_XMX%G -jar paper-1.21.1.jar nogui
+java -Xms1G -Xmx%MEMORIA_XMX%G -jar %JAR_FILE% nogui
 cd ..
-goto :END
-
-:: ============================================
-:: MODO DOCKER
-:: ============================================
-:MODO_DOCKER
-powershell -Command "Write-Host '--- MODO DOCKER SELECCIONADO ---' -ForegroundColor Green -ErrorAction SilentlyContinue"
-
-:: --- Verificar si Docker esta disponible ---
-powershell -Command "Write-Host 'Comprobando si el programa Docker esta funcionando...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-docker ps >nul 2>&1
-if %ERRORLEVEL% NEQ 0 (
-    powershell -Command "Write-Host 'ERROR: El programa Docker no parece estar respondiendo.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Asegurate de que Docker Desktop este abierto y funcionando correctamente antes de continuar.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Si el problema persiste, reinicia Docker Desktop o el ordenador.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    goto :END
-) else (
-    powershell -Command "Write-Host 'Programa Docker detectado y funcionando.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-)
-
-:: --- Verificar si hay un docker-compose.yml en paralelo al script ---
-if not exist "docker-compose.yml" (
-    powershell -Command "Write-Host 'ERROR: Falta un archivo importante (docker-compose.yml) para iniciar el servidor.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Asegurate de que ''docker-compose.yml'' este en la misma carpeta que este programa: %CD%' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Pulsa cualquier tecla para cerrar la ventana' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    pause >nul
-    goto :END
-)
-
-set ASIGNEDIP_HERE=0
-
-:: --- Verificar si la IP flotante esta en uso ---
-powershell -Command "Write-Host 'Comprobando la configuracion de red para el servidor (IP: %IPFLOTANTE%)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-powershell -Command "$result = Test-NetConnection -ComputerName '%IPFLOTANTE%' -Port 60068; if ($result.TcpTestSucceeded) { if ($result.SourceAddress.IPAddress -eq '%IPFLOTANTE%') { Write-Host 'INFORMACION: La configuracion de red (IP: %IPFLOTANTE%) ya esta activa en este ordenador.' -ForegroundColor Cyan; exit 0 } else { Write-Host 'ERROR: La direccion de red %IPFLOTANTE% esta siendo usada por OTRO ordenador.' -ForegroundColor Red; Write-Host 'Si el servidor ya esta iniciado en otra maquina, puedes conectarte directamente.' -ForegroundColor Yellow; Write-Host 'Si quieres iniciar el servidor AQUI, apaga primero el otro servidor o revisa la configuracion de red.' -ForegroundColor Yellow; exit 1 } } else { Write-Host 'La configuracion de red (IP: %IPFLOTANTE%) esta disponible. Se activara si es necesario.' -ForegroundColor Green; exit 2 }"
-if %ERRORLEVEL% EQU 0 (
-    set ASIGNEDIP_HERE=1
-) else if %ERRORLEVEL% EQU 1 (
-    set IP_EN_USO_OTRO_PC=1
-    goto :END
-) else (
-    REM ERRORLEVEL 2 significa que la IP está disponible, continuar normalmente
-)
-
-:: --- Verificar estado del servidor Docker ---
-set DOCKER_MC_RUNNING=0
-set RESULTADO_DOCKER_CHECK=
-
-::Comprobar que mc-server no esta en ejecucion
-docker ps -q --filter "name=mc-server" --filter "status=running" > temp_docker_ps.txt
-set /p RESULTADO_DOCKER_CHECK=<temp_docker_ps.txt
-del temp_docker_ps.txt >nul 2>&1
-
-if not "%RESULTADO_DOCKER_CHECK%"=="" (
-    powershell -Command "Write-Host 'INFORMACION: El servidor de Minecraft (contenedor Docker ''mc-server'') ya esta en marcha.' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
-    set DOCKER_MC_RUNNING=1
-)
-
-:: --- GESTIÓN DE CASOS ---
-:: CASO 5: Todo lanzado en este ordenador
-if %DOCKER_MC_RUNNING% EQU 1 (
-    if %ASIGNEDIP_HERE% EQU 1 (
-        powershell -Command "Write-Host 'Todo listo. El servidor de Minecraft esta en linea y la configuracion de red esta activa en este ordenador.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-        powershell -Command "Write-Host 'Ya puedes entrar a jugar.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-        goto :END
-    ) else (
-        :: CASO 2: Contenedor desplegado pero IP no asignada - SITUACIÓN PROBLEMÁTICA
-        powershell -Command "Write-Host 'DETECTADO: El servidor de Minecraft SI esta funcionando, pero la IP (%IPFLOTANTE%) NO esta configurada en este ordenador.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-        powershell -Command "Write-Host 'ADVERTENCIA: Esta es una situacion critica que requiere intervencion del administrador.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-        powershell -Command "Write-Host 'El servidor esta activo en este ordenador, pero otro ordenador puede tener la IP asignada.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-        powershell -Command "Write-Host 'CONTACTAR AL ADMINISTRADOR: No se realizara ninguna accion automatica para evitar conflictos.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-        powershell -Command "Write-Host 'El administrador debe verificar manualmente la configuracion de red y resolver el conflicto.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-        goto :END
-    )
-) else (
-    :: Docker NO está corriendo (DOCKER_MC_RUNNING es 0)
-    if %ASIGNEDIP_HERE% EQU 1 (
-        :: CASO 4: IP activa, Docker NO activo. No actualizar, iniciar Docker.
-        powershell -Command "Write-Host 'INFORMACION: La IP del servidor (%IPFLOTANTE%) ya esta activa en este ordenador, pero el servidor de Minecraft (Docker) no.' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
-        powershell -Command "Write-Host 'Se procedera a iniciar el servidor de Minecraft directamente, sin actualizar desde GitHub.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-        goto :dockerComposeUp
-    ) else (
-        :: CASO 1 (Docker NO activo, IP NO activa): Actualizar desde Git, luego activar IP.
-        powershell -Command "Write-Host 'Buscando actualizaciones para el mundo del servidor en internet (GitHub)...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-        git fetch origin main >nul 2>&1
-        if %ERRORLEVEL% NEQ 0 (
-            powershell -Command "Write-Host 'ADVERTENCIA: No se pudo conectar a internet (GitHub) para buscar actualizaciones del mundo.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-            powershell -Command "Write-Host 'Se continuara con los datos locales. Si es la primera vez, podria faltar el mundo.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-            REM No es un error fatal, podemos intentar iniciar con los datos locales.
-        ) else (
-            powershell -Command "Write-Host 'Comprobacion de actualizaciones finalizada.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-
-            powershell -Command "Write-Host 'Aplicando actualizaciones del mundo desde GitHub (descartando cambios locales no subidos)...' -ForegroundColor Yellow"
-            git reset --hard origin/main >nul 2>&1
-            if %ERRORLEVEL% NEQ 0 (
-                powershell -Command "Write-Host 'ERROR: Hubo un problema al descargar o aplicar las actualizaciones del mundo.' -ForegroundColor Red"
-                goto :END
-            ) else (
-                powershell -Command "Write-Host 'Mundo actualizado. Se descargaron los ultimos cambios del servidor.' -ForegroundColor Green"
-            )
-        )
-        :: Despues de actualizar (o no) desde Git, proceder a activar la IP
-        goto :IPACTIVATE
-    )
-)
-
-
-:IPACTIVATE
-:: --- Activar IP flotante en la interfaz ZeroTier ---
-if %ASIGNEDIP_HERE% EQU 1 (
-    powershell -Command "Write-Host 'La configuracion de red (IP: %IPFLOTANTE%) ya esta activa. Procediendo a iniciar el servidor de Minecraft...' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
-    goto :dockerComposeUp
-)
-
-powershell -Command "Write-Host 'Activando la configuracion de red (IP: %IPFLOTANTE%) en este ordenador...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-powershell -Command "$interface = Get-NetAdapter | Where-Object { $_.InterfaceDescription -like '*ZeroTier*' -and $_.Status -eq 'Up' } | Select-Object -First 1; if ($interface) { New-NetIPAddress -IPAddress '%IPFLOTANTE%' -InterfaceIndex $interface.ifIndex -PrefixLength 16 -AddressFamily IPv4 -ErrorAction Stop | Out-Null } else { Write-Host 'ERROR: No se encontro el programa de red ZeroTier activo y necesario.' -ForegroundColor Red -ErrorAction SilentlyContinue; Write-Host 'Asegurate de que ZeroTier este instalado, en ejecucion y conectado a tu red.' -ForegroundColor Red -ErrorAction SilentlyContinue; exit 1 }"
-if %ERRORLEVEL% NEQ 0 (
-    powershell -Command "Write-Host 'ERROR: No se pudo activar la configuracion de red (IP: %IPFLOTANTE%).' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Comprueba que ZeroTier este funcionando correctamente y que tienes permisos de administrador.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    goto :END
-) else (
-    powershell -Command "Write-Host 'Configuracion de red (IP: %IPFLOTANTE%) activada correctamente en este ordenador.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-)
-
-:dockerComposeUp
-
-if %DOCKER_MC_RUNNING% EQU 1 (
-    powershell -Command "Write-Host 'El servidor de Minecraft ya estaba en marcha. No es necesario iniciarlo de nuevo.' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Todo listo. Ya puedes entrar a jugar.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-    goto :END
-)
-
-:: --- Lanzar servidor Docker Compose ---
-powershell -Command "Write-Host 'Iniciando el servidor de Minecraft...' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-
-echo.
-docker compose up -d >nul 2>&1
-
-if %ERRORLEVEL% NEQ 0 (
-    powershell -Command "Write-Host 'ERROR: Hubo un problema al intentar iniciar el servidor de Minecraft con Docker.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Asegurate de que Docker Desktop este abierto y funcionando correctamente.' -ForegroundColor Red -ErrorAction SilentlyContinue"
-    powershell -Command "Write-Host 'Revisa los mensajes de error de Docker en la consola para mas detalles.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-    goto :END
-) else (
-    powershell -Command "Write-Host 'Contenedor iniciado. Esperando a que el servidor este listo...' -ForegroundColor Green -ErrorAction SilentlyContinue"
-)
-
-:: Esperar a que el servidor de Minecraft esté completamente listo
-timeout /t 10 >nul
-powershell -Command "Write-Host 'Servidor de Minecraft iniciado con exito.' -ForegroundColor Green -ErrorAction SilentlyContinue"
-echo.
-powershell -Command "Write-Host 'El servidor de Minecraft estara completamente listo para jugar en aproximadamente 1 o 2 minutos.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
-powershell -Command "Write-Host 'Puedes cerrar esta ventana o esperar.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
 
 :END
-del temp_*.txt >nul 2>&1 2>nul
 echo.
+powershell -Command "Write-Host 'Servidor detenido.' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
 powershell -Command "Write-Host 'Pulsa cualquier tecla para cerrar esta ventana.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
 pause >nul
 endlocal

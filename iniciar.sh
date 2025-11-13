@@ -32,8 +32,8 @@ fi
 echo -e "${CYAN}Configurando servidor con Xmx${MEMORIA_XMX}G de RAM...${NC}"
 
 # --- Verificar archivo JAR ---
-if [ ! -f "server 2025/paper-1.21.1.jar" ]; then
-    echo -e "${RED}ERROR: No se encuentra el archivo del servidor: server 2025/paper-1.21.1.jar${NC}"
+if [ ! -f "server 2025/paper-1.21.10.jar" ]; then
+    echo -e "${RED}ERROR: No se encuentra el archivo del servidor: server 2025/paper-1.21.10.jar${NC}"
     exit 1
 fi
 
@@ -65,7 +65,7 @@ echo -e "${YELLOW}Para detener el servidor, escribe 'stop' en la consola.${NC}"
 echo ""
 
 cd "server 2025" || exit 1
-java -Xms1G -Xmx${MEMORIA_XMX}G -jar paper-1.21.1.jar nogui
+java -Xms1G -Xmx${MEMORIA_XMX}G -jar paper-1.21.10.jar nogui
 
 # Al cerrar el servidor, volver al directorio anterior
 cd ..

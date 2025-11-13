@@ -3,7 +3,7 @@ teleportauto: false
 godmode: false
 muted: false
 jailed: false
-ip-address: 172.18.0.1
+ip-address: 172.25.11.143
 afk: false
 socialspy: false
 npc: false
@@ -11,31 +11,31 @@ powertoolsenabled: true
 accepting-pay: true
 baltop-exempt: false
 timestamps:
-  lastteleport: 1750608480614
+  lastteleport: 1763035351057
   lastheal: 0
   mute: 0
   jail: 0
   onlinejail: 0
-  logout: 1750610524577
-  login: 1762801581201
+  logout: 1763036575909
+  login: 1763036427131
 money: '0'
 last-account-name: OzaRu_
 lastlocation:
-  world: e9ef1c53-c1d4-4290-8f26-47e4fdd5450f
-  world-name: world_the_end
-  x: 376.4627867384815
-  y: 1.5
-  z: 187.4403245982664
-  yaw: 133.9755859375
-  pitch: 19.87718963623047
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: -9.426726544403913
+  y: 115.86268324923758
+  z: 9.61103839041833
+  yaw: -172.037109375
+  pitch: 6.59912109375
 logoutlocation:
   world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
   world-name: world
-  x: -199.9059507461382
-  y: 87.25739419070786
-  z: -286.7827996616765
-  yaw: 179.477783203125
-  pitch: 4.90782356262207
+  x: -153.7514145784804
+  y: 158.94251520281856
+  z: -246.39695013924296
+  yaw: 91.6634521484375
+  pitch: 46.83097839355469
 homes:
   casa:
     world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
