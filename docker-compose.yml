@@ -7,8 +7,10 @@ services:
     environment:
       EULA: "TRUE"
       TYPE: "PAPER"
-      VERSION: "1.21.1"
+      VERSION: "1.21.9"
       ENABLE_RCON: "true"
       RCON_PASSWORD: "potato"
+      INIT_MEMORY: "2G"
+      MAX_MEMORY: "8G"
     volumes:
       - "./server 2025:/data"
