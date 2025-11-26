@@ -1,0 +1,329 @@
+[08:08:54] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.9; Termux null) on Linux 4.19.191-ga0b12ea684b3 (aarch64)
+[08:08:54] [ServerMain/INFO]: [bootstrap] Loading Paper 1.21.10-108-main@97452e1 (2025-11-10T18:27:52Z) for Minecraft 1.21.10
+[08:08:54] [ServerMain/WARN]: [oshi.software.os.linux.LinuxOperatingSystem] Did not find udev library in operating system. Some features may not work.
+[08:08:54] [ServerMain/ERROR]: [oshi.software.os.linux.LinuxOperatingSystem] Did not JNA classes. Investigate incompatible version or missing native dll.
+[08:08:54] [ServerMain/WARN]: Failed retrieving info for group processor
+java.lang.NoClassDefFoundError: Could not initialize class com.sun.jna.Native
+	at com.sun.jna.NativeLong.<clinit>(NativeLong.java:35) ~[jna-5.15.0.jar:5.15.0 (b0)]
+	at oshi.util.FileUtil.readNativeLongFromBuffer(FileUtil.java:260) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.driver.linux.proc.Auxv.queryAuxv(Auxv.java:39) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.software.os.linux.LinuxOperatingSystem.<clinit>(LinuxOperatingSystem.java:124) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.platform.linux.LinuxCentralProcessor.initProcessorCounts(LinuxCentralProcessor.java:174) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.common.AbstractCentralProcessor.<init>(AbstractCentralProcessor.java:68) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.platform.linux.LinuxCentralProcessor.<init>(LinuxCentralProcessor.java:59) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.platform.linux.LinuxHardwareAbstractionLayer.createProcessor(LinuxHardwareAbstractionLayer.java:43) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.util.Memoizer$1.get(Memoizer.java:61) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.common.AbstractHardwareAbstractionLayer.getProcessor(AbstractHardwareAbstractionLayer.java:48) ~[oshi-core-6.6.5.jar:6.6.5]
+	at net.minecraft.SystemReport.lambda$putHardware$7(SystemReport.java:86) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:94) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.putHardware(SystemReport.java:86) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.lambda$new$2(SystemReport.java:60) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:94) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.<init>(SystemReport.java:60) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.CrashReport.<init>(CrashReport.java:32) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.CrashReport.preload(CrashReport.java:224) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.server.Main.main(Main.java:105) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at io.papermc.paper.PaperBootstrap.boot(PaperBootstrap.java:21) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at org.bukkit.craftbukkit.Main.main(Main.java:242) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at io.papermc.paperclip.Paperclip.lambda$main$0(Paperclip.java:42) ~[app:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.UnsatisfiedLinkError: /data/data/com.termux/files/home/.cache/JNA/temp/jna8001472509716838606.tmp: dlopen failed: library "libc.so.6" not found: needed by /data/data/com.termux/files/home/.cache/JNA/temp/jna8001472509716838606.tmp in namespace (default) [in thread "ServerMain"]
+	at java.base/jdk.internal.loader.NativeLibraries.load(Native Method) ~[?:?]
+	at java.base/jdk.internal.loader.NativeLibraries$NativeLibraryImpl.open(NativeLibraries.java:331) ~[?:?]
+	at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibraries.java:197) ~[?:?]
+	at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibraries.java:139) ~[?:?]
+	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2418) ~[?:?]
+	at java.base/java.lang.Runtime.load0(Runtime.java:852) ~[?:?]
+	at java.base/java.lang.System.load(System.java:2025) ~[?:?]
+	at com.sun.jna.Native.loadNativeDispatchLibraryFromClasspath(Native.java:1041) ~[jna-5.15.0.jar:5.15.0 (b0)]
+	at com.sun.jna.Native.loadNativeDispatchLibrary(Native.java:1011) ~[jna-5.15.0.jar:5.15.0 (b0)]
+	at com.sun.jna.Native.<clinit>(Native.java:221) ~[jna-5.15.0.jar:5.15.0 (b0)]
+	at com.sun.jna.platform.linux.Udev.<clinit>(Udev.java:37) ~[jna-platform-5.15.0.jar:5.15.0 (b0)]
+	at oshi.software.os.linux.LinuxOperatingSystem.<clinit>(LinuxOperatingSystem.java:86) ~[oshi-core-6.6.5.jar:6.6.5]
+	... 19 more
+[08:08:54] [ServerMain/WARN]: Failed retrieving info for group memory
+java.lang.NoClassDefFoundError: Could not initialize class oshi.software.os.linux.LinuxOperatingSystem
+	at oshi.hardware.platform.linux.LinuxGlobalMemory.<clinit>(LinuxGlobalMemory.java:28) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.platform.linux.LinuxHardwareAbstractionLayer.createMemory(LinuxHardwareAbstractionLayer.java:38) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.util.Memoizer$1.get(Memoizer.java:61) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.common.AbstractHardwareAbstractionLayer.getMemory(AbstractHardwareAbstractionLayer.java:60) ~[oshi-core-6.6.5.jar:6.6.5]
+	at net.minecraft.SystemReport.lambda$putHardware$9(SystemReport.java:88) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:94) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.putHardware(SystemReport.java:88) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.lambda$new$2(SystemReport.java:60) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:94) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.<init>(SystemReport.java:60) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.CrashReport.<init>(CrashReport.java:32) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.CrashReport.preload(CrashReport.java:224) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.server.Main.main(Main.java:105) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at io.papermc.paper.PaperBootstrap.boot(PaperBootstrap.java:21) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at org.bukkit.craftbukkit.Main.main(Main.java:242) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at io.papermc.paperclip.Paperclip.lambda$main$0(Paperclip.java:42) ~[app:?]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[?:?]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.NoClassDefFoundError: Could not initialize class com.sun.jna.Native [in thread "ServerMain"]
+	at com.sun.jna.NativeLong.<clinit>(NativeLong.java:35) ~[jna-5.15.0.jar:5.15.0 (b0)]
+	at oshi.util.FileUtil.readNativeLongFromBuffer(FileUtil.java:260) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.driver.linux.proc.Auxv.queryAuxv(Auxv.java:39) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.software.os.linux.LinuxOperatingSystem.<clinit>(LinuxOperatingSystem.java:124) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.platform.linux.LinuxCentralProcessor.initProcessorCounts(LinuxCentralProcessor.java:174) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.common.AbstractCentralProcessor.<init>(AbstractCentralProcessor.java:68) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.platform.linux.LinuxCentralProcessor.<init>(LinuxCentralProcessor.java:59) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.platform.linux.LinuxHardwareAbstractionLayer.createProcessor(LinuxHardwareAbstractionLayer.java:43) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.util.Memoizer$1.get(Memoizer.java:61) ~[oshi-core-6.6.5.jar:6.6.5]
+	at oshi.hardware.common.AbstractHardwareAbstractionLayer.getProcessor(AbstractHardwareAbstractionLayer.java:48) ~[oshi-core-6.6.5.jar:6.6.5]
+	at net.minecraft.SystemReport.lambda$putHardware$7(SystemReport.java:86) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:94) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	at net.minecraft.SystemReport.putHardware(SystemReport.java:86) ~[paper-1.21.10.jar:1.21.10-108-97452e1]
+	... 10 more
+[08:08:54] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[08:08:56] [ServerMain/INFO]: [PluginInitializerManager] Initialized 5 plugins
+[08:08:56] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (5):
+ - Essentials (2.21.0-dev+180-fe27182), Geyser-Spigot (2.9.1-SNAPSHOT), LuckPerms (5.4.131), SkinsRestorer (15.9.0), floodgate (2.2.5-SNAPSHOT (b121-55a85ec))
+[08:09:05] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[08:09:06] [ServerMain/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[08:09:07] [ServerMain/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 1,102.4ms
+[08:09:10] [ServerMain/INFO]: Loaded 1461 recipes
+[08:09:10] [ServerMain/INFO]: Loaded 1574 advancements
+[08:09:10] [Server thread/INFO]: Starting minecraft server version 1.21.10
+[08:09:10] [Server thread/INFO]: Loading properties
+[08:09:10] [Server thread/INFO]: This server is running Paper version 1.21.10-108-main@97452e1 (2025-11-10T18:27:52Z) (Implementing API version 1.21.10-R0.1-SNAPSHOT)
+[08:09:11] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[08:09:11] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[08:09:11] [Server thread/INFO]: Using 4 threads for Netty based IO
+[08:09:13] [Server thread/INFO]: [MoonriseCommon] Paper is using 2 worker threads, 1 I/O threads
+[08:09:13] [Server thread/INFO]: Default game type: SURVIVAL
+[08:09:13] [Server thread/INFO]: Generating keypair
+[08:09:13] [Server thread/INFO]: Starting Minecraft server on 172.25.96.6:60068
+[08:09:13] [Server thread/INFO]: Using default channel type
+[08:09:13] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[08:09:13] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[08:09:13] [Server thread/WARN]: [io.netty.util.internal.MacAddressUtil] Failed to find a usable hardware address from the network interfaces; using random bytes: 07:18:13:76:e4:af:b3:37
+[08:09:14] [Server thread/INFO]: [floodgate] Loading server plugin floodgate v2.2.5-SNAPSHOT (b121-55a85ec)
+[08:09:16] [Server thread/WARN]: [floodgate] en_ is not a supported Floodgate language.
+[08:09:16] [Server thread/INFO]: [floodgate] Took 1,995ms to boot Floodgate
+[08:09:16] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.4.131
+[08:09:16] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.9.0
+[08:09:16] [Server thread/INFO]: [Geyser-Spigot] Loading server plugin Geyser-Spigot v2.9.1-SNAPSHOT
+[08:09:18] [Server thread/INFO]: [Geyser-Spigot] Loading extensions...
+[08:09:18] [Server thread/INFO]: [Geyser-Spigot] Loaded 0 extension(s)
+[08:09:18] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.21.0-dev+180-fe27182
+[08:09:18] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[08:09:18] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.4.131
+[08:09:19] [Server thread/INFO]:         __    
+[08:09:19] [Server thread/INFO]:   |    |__)   LuckPerms v5.4.131
+[08:09:19] [Server thread/INFO]:   |___ |      Running on Bukkit - Paper
+[08:09:19] [Server thread/INFO]: 
+[08:09:19] [Server thread/INFO]: [LuckPerms] Loading configuration...
+[08:09:20] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
+[08:09:21] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
+[08:09:21] [Server thread/INFO]: [LuckPerms] Performing initial data load...
+[08:09:21] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 2944ms)
+[08:09:21] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.9.0
+[08:09:23] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.21.10.
+[08:09:23] [Server thread/INFO]: [SkinsRestorer] Floodgate skin listener registered
+[08:09:24] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[08:09:25] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[08:09:25] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[08:09:25] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[08:09:25] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[08:09:25] [Server thread/INFO]: Preparing level "world"
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.9.0
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 1565b8f
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[08:09:25] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer? Consider donating: https://skinsrestorer.net/donate
+[08:09:26] [Server thread/INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
+[08:09:26] [Server thread/INFO]: Preparing spawn area: 100%
+[08:09:26] [Server thread/INFO]: Prepared spawn area in 2 ms
+[08:09:26] [Server thread/INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
+[08:09:26] [Server thread/INFO]: Preparing spawn area: 100%
+[08:09:26] [Server thread/INFO]: Prepared spawn area in 2 ms
+[08:09:26] [Server thread/INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
+[08:09:26] [Server thread/INFO]: Preparing spawn area: 100%
+[08:09:26] [Server thread/INFO]: Prepared spawn area in 1 ms
+[08:09:26] [Server thread/INFO]: Done preparing level "world" (1.398s)
+[08:09:26] [Server thread/INFO]: [floodgate] Enabling floodgate v2.2.5-SNAPSHOT (b121-55a85ec)
+[08:09:27] [Server thread/INFO]: [Geyser-Spigot] Enabling Geyser-Spigot v2.9.1-SNAPSHOT
+[08:09:31] [Server thread/INFO]: [Essentials] Enabling Essentials v2.21.0-dev+180-fe27182
+[08:09:32] [Server thread/ERROR]: [Essentials] You are running an unsupported server version!
+[08:09:32] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
+[08:09:32] [Server thread/INFO]: [Essentials] No kits found to migrate.
+[08:09:32] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected Paper Biome Key Provider as the provider for BiomeKeyProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected Reflection Spawner Block Provider as the provider for SpawnerBlockProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected Reflection Sync Commands Provider as the provider for SyncCommandsProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
+[08:09:32] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
+[08:09:33] [Server thread/INFO]: [Essentials] Loaded 43465 items from items.json.
+[08:09:33] [Server thread/INFO]: [Essentials] Using locale en
+[08:09:33] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
+[08:09:34] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
+[08:09:34] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
+[08:09:34] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
+[08:09:34] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
+[08:09:34] [Server thread/INFO]: [spark] Starting background profiler...
+[08:09:34] [Server thread/WARN]: [spark] Unable to initialise the async-profiler engine: A runtime error occurred whilst loading the native library (/data/data/com.termux/files/home/minecraft-server/Multilocal-craft/server 2025/plugins/spark/tmp/spark-338474a53616-libasyncProfiler.so.tmp: dlopen failed: library "libdl.so.2" not found: needed by /data/data/com.termux/files/home/minecraft-server/Multilocal-craft/server 2025/plugins/spark/tmp/spark-338474a53616-libasyncProfiler.so.tmp in namespace (default))
+[08:09:34] [Server thread/WARN]: [spark] Please see here for more information: https://spark.lucko.me/docs/misc/Using-async-profiler
+[08:09:35] [Server thread/INFO]: [Geyser-Spigot] ******************************************
+[08:09:35] [Server thread/INFO]: [Geyser-Spigot] 
+[08:09:35] [Server thread/INFO]: [Geyser-Spigot] Loading Geyser version 2.9.1-b997 (git-master-e726b91)
+[08:09:35] [Server thread/INFO]: [Geyser-Spigot] 
+[08:09:35] [Server thread/INFO]: [Geyser-Spigot] ******************************************
+[08:09:41] [GeyserServer-3-1/INFO]: [Geyser-Spigot] Started Geyser on 172.25.96.6:60069
+[08:09:41] [Server thread/INFO]: [Geyser-Spigot] Done (6.695s)! Run /geyser help for help!
+[08:09:42] [Server thread/INFO]: Starting remote control listener
+[08:09:42] [Server thread/INFO]: Thread RCON Listener started
+[08:09:42] [Server thread/INFO]: RCON running on 172.25.96.6:60070
+[08:09:42] [Server thread/INFO]: Running delayed init tasks
+[08:09:42] [Craft Scheduler Thread - 4 - Essentials/INFO]: [Essentials] Fetching version information...
+[08:09:42] [Server thread/INFO]: Done (50.112s)! For help, type "help"
+[08:09:42] [Craft Scheduler Thread - 4 - Essentials/WARN]: [Essentials] You're 115 EssentialsX dev build(s) out of date!
+[08:09:42] [Craft Scheduler Thread - 4 - Essentials/WARN]: [Essentials] Download it here: https://essentialsx.net/downloads.html
+[08:14:04] [GeyserServerChild-4-1/INFO]: [Geyser-Spigot] Player connected with username Ozaru33 (860)
+[08:14:04] [localSession-7-2/INFO]: [Geyser-Spigot] Ozaru33 (logged in as: Ozaru33) has connected to the Java server
+[08:14:05] [Server thread/INFO]: [HorriblePlayerLoginEventHack] You have plugins listening to the PlayerLoginEvent, this will cause re-configuration APIs to be unavailable: [LuckPerms, Essentials]
+[08:14:07] [Server thread/INFO]: [floodgate] Floodgate player logged in as .Ozaru33 joined (UUID: 00000000-0000-0000-0009-01fa9ccdc384)
+[08:14:07] [Server thread/INFO]: .Ozaru33 joined the game
+[08:14:08] [Server thread/INFO]: .Ozaru33[/172.25.4.182:0] logged in with entity id 1 at ([world]-69.653305, 108.0, -22.958431)
+[08:14:59] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[08:14:59] [RCON Client /172.25.96.6 #2/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[08:15:26] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[08:15:26] [RCON Client /172.25.96.6 #3/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[08:15:41] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[08:15:41] [RCON Client /172.25.96.6 #4/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[08:15:55] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[08:16:05] [Server thread/INFO]: .Ozaru33 lost connection: Disconnected
+[08:16:05] [GeyserServerChild-4-1/INFO]: [Geyser-Spigot] Ozaru33 has disconnected from the Java server because of Bedrock client disconnected
+[08:16:05] [Geyser Spigot connection thread-6-3/INFO]: [floodgate] Floodgate player logged in as .Ozaru33 disconnected
+[08:16:05] [Server thread/INFO]: .Ozaru33 left the game
+[08:16:18] [GeyserServerChild-4-2/INFO]: [Geyser-Spigot] Player connected with username Ozaru33 (860)
+[08:16:18] [localSession-7-3/INFO]: [Geyser-Spigot] Ozaru33 (logged in as: Ozaru33) has connected to the Java server
+[08:16:19] [Server thread/INFO]: [floodgate] Floodgate player logged in as .Ozaru33 joined (UUID: 00000000-0000-0000-0009-01fa9ccdc384)
+[08:16:19] [Server thread/INFO]: .Ozaru33 joined the game
+[08:16:19] [Server thread/INFO]: .Ozaru33[/172.25.4.182:0] logged in with entity id 1689 at ([world]-72.41002, 108.0, -23.9062)
+[08:16:48] [Server thread/INFO]: [Essentials] Rcon issued server command: /weather sun
+[08:17:06] [Server thread/INFO]: [Essentials] Rcon issued server command: /weather overworld sun
+[08:17:26] [Server thread/INFO]: [Essentials] Rcon issued server command: /weather default sun
+[08:17:40] [Server thread/INFO]: [Essentials] Rcon issued server command: /weather overworld sun
+[08:17:45] [Server thread/INFO]: [Essentials] Rcon issued server command: /weather world sun
+[08:18:46] [RCON Client /172.25.96.6 #5/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[08:20:20] [GeyserServerChild-4-2/INFO]: [Geyser-Spigot] Ozaru33 has disconnected from the Java server because of Bedrock client disconnected
+[08:20:20] [Geyser Spigot connection thread-6-4/INFO]: [floodgate] Floodgate player logged in as .Ozaru33 disconnected
+[08:20:20] [Server thread/INFO]: .Ozaru33 lost connection: Disconnected
+[08:20:20] [Server thread/INFO]: .Ozaru33 left the game
+[08:27:14] [GeyserServerChild-4-3/INFO]: [Geyser-Spigot] Player connected with username Ozaru33 (860)
+[08:27:14] [localSession-7-4/INFO]: [Geyser-Spigot] Ozaru33 (logged in as: Ozaru33) has connected to the Java server
+[08:27:15] [User Authenticator #0/INFO]: UUID of player Ozaru33 is 586cf78c-c20e-3e2a-b291-54a571ff32a1
+[08:27:15] [Server thread/INFO]: Ozaru33 joined the game
+[08:27:15] [Server thread/INFO]: Ozaru33[/172.25.244.19:0] logged in with entity id 7321 at ([world]-139.5, 97.0, 13.5)
+[08:27:50] [GeyserServerChild-4-3/INFO]: [Geyser-Spigot] Ozaru33 has disconnected from the Java server because of Bedrock client disconnected
+[08:27:50] [Server thread/INFO]: Ozaru33 lost connection: Disconnected
+[08:27:50] [Server thread/INFO]: Ozaru33 left the game
+[08:28:06] [GeyserServerChild-4-4/INFO]: [Geyser-Spigot] Player connected with username Ozaru33 (860)
+[08:28:06] [localSession-7-1/INFO]: [Geyser-Spigot] Ozaru33 (logged in as: Ozaru33) has connected to the Java server
+[08:28:07] [Server thread/INFO]: [floodgate] Floodgate player logged in as .Ozaru33 joined (UUID: 00000000-0000-0000-0009-01fa9ccdc384)
+[08:28:07] [Server thread/INFO]: .Ozaru33 joined the game
+[08:28:07] [Server thread/INFO]: .Ozaru33[/172.25.244.19:0] logged in with entity id 8488 at ([world]-47.939804, 115.46125, -1004.37866)
+[08:29:04] [Server thread/INFO]: .Ozaru33 issued server command: /time set day
+[08:29:23] [Server thread/INFO]: .Ozaru33 has reached the goal [Sky's the Limit]
+[08:40:48] [Server thread/INFO]: .Ozaru33 issued server command: /me set day
+[08:40:57] [Server thread/INFO]: .Ozaru33 issued server command: /time set day
+[08:47:39] [Server thread/INFO]: .Ozaru33 issued server command: /homes 0zaRu_
+[08:53:52] [Server thread/INFO]: .Ozaru33 issued server command: /homelist 0zaRu_
+[08:54:01] [Server thread/INFO]: .Ozaru33 issued server command: /home list 0zaRu_
+[08:54:14] [Server thread/INFO]: .Ozaru33 issued server command: /homes ozaRu_
+[08:54:20] [Server thread/INFO]: .Ozaru33 issued server command: /homes OzaRu_
+[08:54:27] [Server thread/INFO]: .Ozaru33 issued server command: /time set day
+[09:04:35] [GeyserServerChild-4-4/INFO]: [Geyser-Spigot] Ozaru33 has disconnected from the Java server because of Bedrock client disconnected
+[09:04:35] [Geyser Spigot connection thread-6-2/INFO]: [floodgate] Floodgate player logged in as .Ozaru33 disconnected
+[09:04:35] [Server thread/INFO]: .Ozaru33 lost connection: Disconnected
+[09:04:35] [Server thread/INFO]: .Ozaru33 left the game
+[09:05:05] [GeyserServerChild-4-1/INFO]: [Geyser-Spigot] Player connected with username Ozaru33 (860)
+[09:05:05] [localSession-7-2/INFO]: [Geyser-Spigot] Ozaru33 (logged in as: Ozaru33) has connected to the Java server
+[09:05:06] [Server thread/INFO]: [floodgate] Floodgate player logged in as .Ozaru33 joined (UUID: 00000000-0000-0000-0009-01fa9ccdc384)
+[09:05:06] [Server thread/INFO]: .Ozaru33 joined the game
+[09:05:06] [Server thread/INFO]: .Ozaru33[/172.25.244.19:0] logged in with entity id 47769 at ([world]-76.7225, 173.04942, -62.9257)
+[09:05:25] [GeyserServerChild-4-2/INFO]: [Geyser-Spigot] Bedrock user with ip: /172.25.4.182 has disconnected for reason Ozaru33 is already logged in!
+[09:05:32] [GeyserServerChild-4-3/INFO]: [Geyser-Spigot] Bedrock user with ip: /172.25.4.182 has disconnected for reason Ozaru33 is already logged in!
+[09:07:59] [Geyser Spigot connection thread-6-3/INFO]: [floodgate] Floodgate player logged in as .Ozaru33 disconnected
+[09:07:59] [GeyserServerChild-4-1/INFO]: [Geyser-Spigot] Ozaru33 has disconnected from the Java server because of Bedrock client disconnected
+[09:07:59] [Server thread/INFO]: .Ozaru33 lost connection: Disconnected
+[09:07:59] [Server thread/INFO]: .Ozaru33 left the game
+[09:58:27] [Server thread/INFO]: [Essentials] CONSOLE issued server command: /time set day
+[09:58:27] [Server thread/INFO]: The time was set to 0 ticks in: world, world_nether, world_the_end.
+[09:58:44] [Server thread/INFO]: [Essentials] CONSOLE issued server command: /homes 
+[09:58:44] [Server thread/INFO]: Error: Only in-game players can use homes.
+[09:58:52] [Server thread/INFO]: [Essentials] CONSOLE issued server command: /home .Ozaru33
+[09:58:52] [Server thread/INFO]: Error: Only in-game players can use home.
+[09:58:59] [Server thread/INFO]: Saving the game (this may take a moment!)
+[09:58:59] [Server thread/INFO]: Saved the game
+[10:05:56] [Server thread/INFO]: Saving the game (this may take a moment!)
+[10:05:56] [Server thread/INFO]: Saved the game
+[10:06:00] [Server thread/INFO]: Stopping the server
+[10:06:00] [Server thread/INFO]: Stopping server
+[10:06:00] [Server thread/INFO]: [Essentials] Disabling Essentials v2.21.0-dev+180-fe27182
+[10:06:01] [Server thread/INFO]: [Geyser-Spigot] Disabling Geyser-Spigot v2.9.1-SNAPSHOT
+[10:06:01] [Server thread/INFO]: [Geyser-Spigot] Shutting down Geyser.
+[10:06:01] [Server thread/INFO]: [Geyser-Spigot] Geyser shutdown successfully.
+[10:06:01] [WebSocketConnectReadThread-121/INFO]: [Geyser-Spigot] The skin uploader has been closed
+[10:06:01] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.9.0
+[10:06:01] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.4.131
+[10:06:01] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
+[10:06:01] [Server thread/INFO]: [LuckPerms] Closing storage...
+[10:06:01] [Server thread/INFO]: [LuckPerms] Goodbye!
+[10:06:01] [Server thread/INFO]: [floodgate] Disabling floodgate v2.2.5-SNAPSHOT (b121-55a85ec)
+[10:06:01] [Server thread/INFO]: Saving players
+[10:06:01] [Server thread/INFO]: Saving worlds
+[10:06:01] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[10:06:01] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[10:06:01] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[10:06:01] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world' in 0.16s
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
+[10:06:02] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.00s
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
+[10:06:02] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
+[10:06:02] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
+[10:06:02] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[10:06:02] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[10:06:02] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[10:06:02] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[10:06:02] [Server thread/INFO]: Waiting for all RegionFile I/O tasks to complete...
+[10:06:02] [Server thread/INFO]: All RegionFile I/O tasks to complete
+[10:06:02] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[10:06:02] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
