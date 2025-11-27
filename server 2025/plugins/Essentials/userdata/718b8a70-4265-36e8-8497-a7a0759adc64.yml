@@ -1,0 +1,39 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+muted: false
+jailed: false
+ip-address: 172.25.124.191
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 0
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1764193935654
+  login: 1764188900937
+money: '0'
+last-account-name: MrKarro
+logoutlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: 179.14867495903502
+  y: 119.0
+  z: -56.795425080674846
+  yaw: 4.350083351135254
+  pitch: 12.000003814697266
+homes:
+  casa:
+    world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+    world-name: world
+    x: 178.7217908843384
+    y: 119.0
+    z: -48.65373125519228
+    yaw: 72.32781219482422
+    pitch: 23.85001564025879
