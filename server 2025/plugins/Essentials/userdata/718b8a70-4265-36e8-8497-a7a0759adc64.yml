@@ -11,23 +11,23 @@ powertoolsenabled: true
 accepting-pay: true
 baltop-exempt: false
 timestamps:
-  lastteleport: 1764333595286
+  lastteleport: 1764341518259
   lastheal: 0
   mute: 0
   jail: 0
   onlinejail: 0
-  logout: 1764334653112
-  login: 1764331712610
+  logout: 1764341541009
+  login: 1764339409707
 money: '0'
 last-account-name: MrKarro
 logoutlocation:
   world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
   world-name: world
-  x: -21.69999998807907
-  y: 154.0
-  z: -113.51013948302861
-  yaw: -147.5714874267578
-  pitch: 7.799994945526123
+  x: 178.52214570912562
+  y: 119.0
+  z: -55.03972956227435
+  yaw: 151.0780029296875
+  pitch: 13.650007247924805
 homes:
   casa:
     world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
@@ -53,11 +53,19 @@ homes:
     z: -447.0646050998492
     yaw: 0.150238037109375
     pitch: 19.050085067749023
+  nether:
+    world: 890100e8-abba-4196-bfe9-d2f5ab08c39a
+    world-name: world_nether
+    x: 2.817035540073258
+    y: 64.0
+    z: -5.272502002415167
+    yaw: -2.19970703125
+    pitch: 47.250091552734375
 lastlocation:
-  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
-  world-name: world
-  x: -3437.6694649670367
-  y: 59.16061053414709
-  z: -1159.699999988079
-  yaw: 45.2908935546875
-  pitch: -6.450097560882568
+  world: 890100e8-abba-4196-bfe9-d2f5ab08c39a
+  world-name: world_nether
+  x: 68.30000001192093
+  y: 54.0
+  z: 60.130946134030005
+  yaw: 52.677978515625
+  pitch: 13.799993515014648

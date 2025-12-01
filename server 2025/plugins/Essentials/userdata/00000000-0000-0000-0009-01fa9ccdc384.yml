@@ -16,18 +16,18 @@ timestamps:
   mute: 0
   jail: 0
   onlinejail: 0
-  logout: 1764334618740
-  login: 1764334418743
+  logout: 1764359410263
+  login: 1764359342334
 money: '0'
 last-account-name: .Ozaru33
 logoutlocation:
   world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
   world-name: world
-  x: -21.25004
-  y: 155.27493
-  z: -116.24135
-  yaw: -11.604156494140625
-  pitch: 86.3807373046875
+  x: -21.569656
+  y: 157.22499
+  z: -129.16885
+  yaw: 162.0840606689453
+  pitch: 1.5673980712890625
 lastlocation:
   world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
   world-name: world
