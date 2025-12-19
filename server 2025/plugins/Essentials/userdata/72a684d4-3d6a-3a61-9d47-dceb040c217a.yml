@@ -1,0 +1,30 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+muted: false
+jailed: false
+ip-address: 172.25.150.104
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 0
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1765149265075
+  login: 1765148691990
+money: '0'
+last-account-name: aakunoo
+logoutlocation:
+  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
+  world-name: world
+  x: 320.8699681330407
+  y: -35.0
+  z: -90.05993327018125
+  yaw: 92.11270141601562
+  pitch: -7.906303405761719
