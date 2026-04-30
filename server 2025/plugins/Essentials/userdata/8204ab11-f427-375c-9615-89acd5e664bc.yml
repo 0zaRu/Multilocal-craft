@@ -3,7 +3,7 @@ teleportauto: false
 godmode: false
 muted: false
 jailed: false
-ip-address: 172.25.11.143
+ip-address: 172.23.0.1
 afk: false
 socialspy: false
 npc: false
@@ -11,31 +11,31 @@ powertoolsenabled: true
 accepting-pay: true
 baltop-exempt: false
 timestamps:
-  lastteleport: 1764940904235
+  lastteleport: 1776683269063
   lastheal: 0
   mute: 0
   jail: 0
   onlinejail: 0
-  logout: 1764941345670
-  login: 1764938391686
+  logout: 1776683300624
+  login: 1776681922205
 money: '0'
 last-account-name: OzaRu_
 lastlocation:
-  world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
-  world-name: world
-  x: -32.20358676597239
-  y: 122.08377362277005
-  z: -27.30000001192093
-  yaw: -28.4637451171875
-  pitch: 8.752264022827148
+  world: e9ef1c53-c1d4-4290-8f26-47e4fdd5450f
+  world-name: world_the_end
+  x: 376.5026055590184
+  y: 1.5
+  z: 187.40269942190866
+  yaw: -178.85328674316406
+  pitch: 4.611935615539551
 logoutlocation:
   world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
   world-name: world
-  x: -224.4301976056533
-  y: 139.0
-  z: -308.18446964754776
-  yaw: -11.745826721191406
-  pitch: 9.866257667541504
+  x: -150.7271320747811
+  y: 89.0
+  z: -262.119129560162
+  yaw: -83.75071716308594
+  pitch: -10.04062557220459
 homes:
   casa:
     world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
@@ -70,7 +70,7 @@ homes:
     yaw: -111.96084594726562
     pitch: 24.518299102783203
   nether:
-    world: 17670af9-2bae-4236-bdb3-e090de0039fa
+    world: 890100e8-abba-4196-bfe9-d2f5ab08c39a
     world-name: world_nether
     x: -2523.8796005238833
     y: 74.0
@@ -85,3 +85,11 @@ homes:
     z: 184.17321506741627
     yaw: 0.2440185546875
     pitch: 61.18724822998047
+  bastiondoble:
+    world: 890100e8-abba-4196-bfe9-d2f5ab08c39a
+    world-name: world_nether
+    x: 158.8616386501025
+    y: 55.0
+    z: 430.10177462732815
+    yaw: -25.27105712890625
+    pitch: 0.8632375001907349

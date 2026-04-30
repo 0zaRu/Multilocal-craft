@@ -1,10 +1,172 @@
-[10:06:14] [Server thread/INFO]: Stopping server
-[10:06:14] [Server thread/INFO]: [Essentials] Disabling Essentials v2.21.0-dev+180-fe27182
-[10:06:14] [Server thread/INFO]: [Geyser-Spigot] Disabling Geyser-Spigot v2.9.1-SNAPSHOT
-[10:06:14] [Server thread/INFO]: [Geyser-Spigot] Shutting down Geyser.
-[10:06:14] [WebSocketConnectReadThread-5537/INFO]: [Geyser-Spigot] The skin uploader has been closed
-[10:06:14] [Server thread/INFO]: [Geyser-Spigot] Geyser shutdown successfully.
-[10:06:14] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.9.0
-[10:06:14] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.4.131
-[10:06:14] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
-[10:06:14] [Server thread/INFO]: [LuckPerms] Closing storage...
+[11:27:27] [ServerMain/INFO]: [bootstrap] Running Java 21 (OpenJDK 64-Bit Server VM 21.0.9+10-LTS; Eclipse Adoptium Temurin-21.0.9+10) on Linux 5.15.167.4-microsoft-standard-WSL2 (amd64)
+[11:27:27] [ServerMain/INFO]: [bootstrap] Loading Paper 1.21.10-130-ver/1.21.10@8043efd (2026-01-04T21:00:59Z) for Minecraft 1.21.10
+[11:27:28] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[11:27:31] [ServerMain/INFO]: [PluginInitializerManager] Initialized 5 plugins
+[11:27:31] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (5):
+ - Essentials (2.21.0-dev+180-fe27182), Geyser-Spigot (2.9.5-SNAPSHOT), LuckPerms (5.4.131), SkinsRestorer (15.12.0), floodgate (2.2.5-SNAPSHOT (b132-5a72b6a))
+[11:27:38] [ServerMain/INFO]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, profilesHost=https://api.mojang.com, name=PROD]
+[11:27:39] [ServerMain/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[11:27:39] [ServerMain/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 437.3ms
+[11:27:44] [ServerMain/INFO]: Loaded 1461 recipes
+[11:27:44] [ServerMain/INFO]: Loaded 1574 advancements
+[11:27:44] [Server thread/INFO]: Starting minecraft server version 1.21.10
+[11:27:44] [Server thread/INFO]: Loading properties
+[11:27:45] [Server thread/INFO]: This server is running Paper version 1.21.10-130-ver/1.21.10@8043efd (2026-01-04T21:00:59Z) (Implementing API version 1.21.10-R0.1-SNAPSHOT)
+[11:27:45] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[11:27:45] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[11:27:45] [Server thread/INFO]: Using 4 threads for Netty based IO
+[11:27:46] [Server thread/INFO]: [MoonriseCommon] Paper is using 7 worker threads, 1 I/O threads
+[11:27:47] [Server thread/INFO]: Default game type: SURVIVAL
+[11:27:47] [Server thread/INFO]: Generating keypair
+[11:27:47] [Server thread/INFO]: Starting Minecraft server on 0.0.0.0:60068
+[11:27:47] [Server thread/INFO]: Using epoll channel type
+[11:27:47] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[11:27:47] [Server thread/INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[11:27:48] [Server thread/INFO]: [floodgate] Loading server plugin floodgate v2.2.5-SNAPSHOT (b132-5a72b6a)
+[11:27:49] [Server thread/INFO]: [floodgate] Took 1,392ms to boot Floodgate
+[11:27:49] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.4.131
+[11:27:50] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.12.0
+[11:27:50] [Server thread/INFO]: [Geyser-Spigot] Loading server plugin Geyser-Spigot v2.9.5-SNAPSHOT
+[11:27:50] [Server thread/INFO]: [Geyser-Spigot] Loading extensions...
+[11:27:50] [Server thread/INFO]: [Geyser-Spigot] Loaded 0 extension(s)
+[11:27:50] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.21.0-dev+180-fe27182
+[11:27:50] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[11:27:50] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.4.131
+[11:27:51] [Server thread/INFO]:         __    
+[11:27:51] [Server thread/INFO]:   |    |__)   LuckPerms v5.4.131
+[11:27:51] [Server thread/INFO]:   |___ |      Running on Bukkit - Paper
+[11:27:51] [Server thread/INFO]: 
+[11:27:51] [Server thread/INFO]: [LuckPerms] Loading configuration...
+[11:27:51] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
+[11:27:52] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
+[11:27:52] [Server thread/INFO]: [LuckPerms] Performing initial data load...
+[11:27:52] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 1938ms)
+[11:27:52] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.12.0
+[11:27:55] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 1.21.10.
+[11:27:55] [Server thread/INFO]: [SkinsRestorer] Floodgate skin listener registered
+[11:27:55] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[11:27:55] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[11:27:55] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[11:27:55] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[11:27:55] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[11:27:55] [Server thread/INFO]: Preparing level "world"
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer  |
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |------------------|
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode |
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +==================+
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.12.0
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: 2903414
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[11:27:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer or receive priority support? Become a supporter: https://skinsrestorer.net/pricing
+[11:27:59] [Server thread/INFO]: Loading 0 persistent chunks for world 'minecraft:overworld'...
+[11:27:59] [Server thread/INFO]: Preparing spawn area: 100%
+[11:27:59] [Server thread/INFO]: Prepared spawn area in 1 ms
+[11:27:59] [Server thread/INFO]: Loading 0 persistent chunks for world 'minecraft:the_nether'...
+[11:27:59] [Server thread/INFO]: Prepared spawn area in 0 ms
+[11:27:59] [Server thread/INFO]: Loading 0 persistent chunks for world 'minecraft:the_end'...
+[11:27:59] [Server thread/INFO]: Preparing spawn area: 100%
+[11:27:59] [Server thread/INFO]: Prepared spawn area in 1 ms
+[11:27:59] [Server thread/INFO]: Done preparing level "world" (3.662s)
+[11:27:59] [Server thread/INFO]: [floodgate] Enabling floodgate v2.2.5-SNAPSHOT (b132-5a72b6a)
+[11:28:00] [Server thread/INFO]: [Geyser-Spigot] Enabling Geyser-Spigot v2.9.5-SNAPSHOT
+[11:28:02] [Server thread/INFO]: [Essentials] Enabling Essentials v2.21.0-dev+180-fe27182
+[11:28:02] [Server thread/ERROR]: [Essentials] You are running an unsupported server version!
+[11:28:02] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
+[11:28:02] [Server thread/INFO]: [Essentials] No kits found to migrate.
+[11:28:02] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected Reflection Sync Commands Provider as the provider for SyncCommandsProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected Reflection Spawner Block Provider as the provider for SpawnerBlockProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected Paper Biome Key Provider as the provider for BiomeKeyProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
+[11:28:02] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
+[11:28:03] [Server thread/INFO]: [Essentials] Loaded 43465 items from items.json.
+[11:28:03] [Server thread/INFO]: [Essentials] Using locale en_US
+[11:28:03] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
+[11:28:03] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
+[11:28:03] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
+[11:28:03] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
+[11:28:03] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
+[11:28:03] [Server thread/INFO]: [spark] Starting background profiler...
+[11:28:04] [Server thread/INFO]: [Geyser-Spigot] ******************************************
+[11:28:04] [Server thread/INFO]: [Geyser-Spigot] 
+[11:28:04] [Server thread/INFO]: [Geyser-Spigot] Loading Geyser version 2.9.5-b1117 (git-master-c386571)
+[11:28:04] [Server thread/INFO]: [Geyser-Spigot] 
+[11:28:04] [Server thread/INFO]: [Geyser-Spigot] ******************************************
+[11:28:07] [GeyserServer-3-1/INFO]: [Geyser-Spigot] Started Geyser on UDP port 60069
+[11:28:07] [Server thread/INFO]: [Geyser-Spigot] Done (3.104s)! Run /geyser help for help!
+[11:28:08] [Server thread/WARN]: [Geyser-Spigot] Your server software does not support the Java version that Geyser requires (1.21.11). Please install ViaVersion (https://ci.viaversion.com/job/ViaVersion/) or update your server software!
+[11:28:08] [Server thread/INFO]: Starting remote control listener
+[11:28:08] [Server thread/INFO]: Thread RCON Listener started
+[11:28:08] [Server thread/INFO]: RCON running on 0.0.0.0:25575
+[11:28:08] [Server thread/INFO]: Running delayed init tasks
+[11:28:08] [Craft Scheduler Thread - 3 - Essentials/INFO]: [Essentials] Fetching version information...
+[11:28:08] [Server thread/INFO]: Done (44.276s)! For help, type "help"
+[11:28:08] [Craft Scheduler Thread - 3 - Essentials/WARN]: [Essentials] You're 175 EssentialsX dev build(s) out of date!
+[11:28:08] [Craft Scheduler Thread - 3 - Essentials/WARN]: [Essentials] Download it here: https://essentialsx.net/downloads.html
+[11:43:02] [RCON Listener #1/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 started
+[11:43:03] [Server thread/INFO]: [Rcon: Stopping the server]
+[11:43:03] [Server thread/INFO]: Stopping server
+[11:43:03] [RCON Client /0:0:0:0:0:0:0:1 #2/INFO]: Thread RCON Client /0:0:0:0:0:0:0:1 shutting down
+[11:43:03] [Server thread/INFO]: [Essentials] Disabling Essentials v2.21.0-dev+180-fe27182
+[11:43:03] [Server thread/INFO]: [Geyser-Spigot] Disabling Geyser-Spigot v2.9.5-SNAPSHOT
+[11:43:03] [Server thread/INFO]: [Geyser-Spigot] Shutting down Geyser.
+[11:43:03] [Server thread/INFO]: [Geyser-Spigot] Geyser shutdown successfully.
+[11:43:03] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.12.0
+[11:43:03] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.4.131
+[11:43:03] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
+[11:43:03] [Server thread/INFO]: [LuckPerms] Closing storage...
+[11:43:03] [Server thread/INFO]: [LuckPerms] Goodbye!
+[11:43:03] [Server thread/INFO]: [floodgate] Disabling floodgate v2.2.5-SNAPSHOT (b132-5a72b6a)
+[11:43:03] [WebSocketConnectReadThread-173/INFO]: [Geyser-Spigot] The skin uploader has been closed
+[11:43:03] [Server thread/INFO]: Saving players
+[11:43:03] [Server thread/INFO]: Saving worlds
+[11:43:03] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world' in 0.00s
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world'
+[11:43:03] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_nether]'/minecraft:the_nether
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_nether'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_nether'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_nether'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_nether' in 0.00s
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_nether'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_nether'
+[11:43:03] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world_the_end]'/minecraft:the_end
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'world_the_end'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'world_the_end'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'world_the_end'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'world_the_end' in 0.00s
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'world_the_end'
+[11:43:03] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'world_the_end'
+[11:43:03] [Server thread/INFO]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[11:43:03] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[11:43:03] [Server thread/INFO]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[11:43:03] [Server thread/INFO]: ThreadedAnvilChunkStorage: All dimensions are saved
+[11:43:03] [Server thread/INFO]: Waiting for all RegionFile I/O tasks to complete...
+[11:43:03] [Server thread/INFO]: All RegionFile I/O tasks to complete
+[11:43:03] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[11:43:03] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
