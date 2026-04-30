@@ -17966,7 +17966,6 @@ c	net/minecraft/server/MinecraftServer	net/minecraft/server/MinecraftServer
 	m	(Lnet/minecraft/server/level/WorldServer;Lnet/minecraft/core/BlockPosition;Lnet/minecraft/world/entity/player/EntityHuman;)Z	a	isUnderSpawnProtection
 	m	(Lnet/minecraft/server/packs/repository/ResourcePackRepository;Ljava/util/Collection;Lnet/minecraft/world/flag/FeatureFlagSet;Z)Lnet/minecraft/world/level/WorldDataConfiguration;	a	configureRepositoryWithSelection
 	m	(Lnet/minecraft/SystemReport;)Lnet/minecraft/SystemReport;	a	fillServerSystemReport
-	m	(Lnet/minecraft/world/level/World;)Z	a	isAllowedToEnterPortal
 	m	()Ljava/lang/Thread;	aA	getRunningThread
 	m	()I	aB	getCompressionThreshold
 	m	()Z	aC	enforceSecureProfile

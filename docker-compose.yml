@@ -3,7 +3,9 @@ services:
     image: itzg/minecraft-server:latest
     container_name: mc-server
     ports:
-      - "60068:25565"
+      - 60068:60068
+      - 60069:60069
+      - 60070:60070
     environment:
       EULA: "TRUE"
       TYPE: "PAPER"
@@ -11,6 +13,7 @@ services:
       ENABLE_RCON: "true"
       RCON_PASSWORD: "potato"
       INIT_MEMORY: "2G"
-      MAX_MEMORY: "8G"
+      MAX_MEMORY: "16G"
     volumes:
       - "./server 2025:/data"
+    restart: always
