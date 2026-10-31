@@ -1,0 +1,277 @@
+#!/usr/bin/env python3
+# ------------------------------------------------------------
+# Script: geyser-bajo-demanda.py
+# Propósito:
+#   Mantener Geyser (la conexión para móviles / Minecraft Bedrock) APAGADO
+#   mientras nadie lo use, y encenderlo cuando un jugador de Bedrock intenta entrar.
+#
+#   - Con Geyser apagado, este script escucha en los puertos de Bedrock:
+#       * responde al listado de servidores (ping RakNet) con un aviso,
+#       * el primer intento de conexión (RakNet, señalización NetherNet o WebRTC)
+#         arranca Geyser. Ese primer intento falla: hay que reintentar en ~30 s.
+#   - Con Geyser encendido, lleva la lista de jugadores de Bedrock con los eventos
+#     de conexión/desconexión de Geyser y lo apaga 3 minutos (--idle-min) después
+#     de que salga el último. Cada 2 min comprueba con "geyser list" por si acaso.
+#
+# Uso (lo lanzan iniciar.sh / iniciar.bat y Docker; no hace falta a mano):
+#   python geyser-bajo-demanda.py [--java java] [--idle-min 10]
+# Solo usa la librería estándar de Python.
+# ------------------------------------------------------------
+import argparse
+import os
+import random
+import re
+import select
+import shutil
+import signal
+import socket
+import struct
+import subprocess
+import sys
+import threading
+import time
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+MAGIC = bytes.fromhex("00ffff00fefefefefdfdfdfd12345678")
+GUID = random.getrandbits(63)
+
+
+def log(msg):
+    print(time.strftime("[%H:%M:%S] ") + msg, flush=True)
+
+
+def read_ports(config):
+    """Puerto de Bedrock (RakNet UDP + señalización TCP) y puerto WebRTC (UDP) del config.yml de Geyser."""
+    port, webrtc = 19132, 0
+    with open(config, encoding="utf-8") as f:
+        txt = f.read()
+    bedrock = re.search(r"(?ms)^bedrock:\n(.*?)^\S", txt)
+    if bedrock:
+        m = re.search(r"(?m)^  port:\s*(\d+)", bedrock.group(1))
+        if m:
+            port = int(m.group(1))
+        m = re.search(r"(?m)^  webrtc-port:\s*(\d+)", bedrock.group(1))
+        if m:
+            webrtc = int(m.group(1))
+    return port, webrtc
+
+
+def pong(ping, port, line1, line2):
+    """Respuesta RakNet 'unconnected pong' para que el móvil vea un texto en la lista de servidores."""
+    t = ping[1:9] if len(ping) >= 9 else b"\0" * 8
+    motd = f"MCPE;{line1};900;26.3;0;10;{GUID};{line2};Survival;1;{port};{port};0;".encode("utf-8")
+    return b"\x1c" + t + struct.pack(">Q", GUID) + MAGIC + struct.pack(">H", len(motd)) + motd
+
+
+def bind_all(port, webrtc):
+    """Abre los sockets de escucha. Reintenta un rato por si Geyser aún no ha soltado los puertos."""
+    for _ in range(30):
+        socks = []
+        try:
+            u = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            u.bind(("0.0.0.0", port))
+            socks.append(("raknet", u))
+            t = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            t.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            t.bind(("0.0.0.0", port))
+            t.listen(8)
+            socks.append(("signaling", t))
+            if webrtc and webrtc != port:
+                w = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                w.bind(("0.0.0.0", webrtc))
+                socks.append(("webrtc", w))
+            return socks
+        except OSError:
+            for _, s in socks:
+                s.close()
+            time.sleep(2)
+    raise SystemExit(f"No se pueden abrir los puertos {port}/{webrtc}: ¿hay otro Geyser encendido?")
+
+
+def wait_for_player(port, webrtc):
+    """Escucha hasta que alguien intenta conectarse de verdad. Los pings solo reciben el aviso."""
+    socks = bind_all(port, webrtc)
+    log(f"En espera: Geyser apagado. Escuchando en {port} (UDP+TCP)" + (f" y {webrtc} (UDP)" if webrtc else ""))
+    try:
+        while True:
+            ready, _, _ = select.select([s for _, s in socks], [], [], 5)
+            for kind, s in socks:
+                if s not in ready:
+                    continue
+                if kind == "signaling":
+                    conn, addr = s.accept()
+                    try:
+                        conn.settimeout(2)
+                        conn.recv(4096)
+                        body = "Arrancando la conexion para moviles. Vuelve a intentarlo en 30 segundos.".encode()
+                        conn.sendall(b"HTTP/1.1 503 Service Unavailable\r\nRetry-After: 30\r\nContent-Type: text/plain\r\n"
+                                     b"Content-Length: " + str(len(body)).encode() + b"\r\nConnection: close\r\n\r\n" + body)
+                    except OSError:
+                        pass
+                    finally:
+                        conn.close()
+                    return f"señalización NetherNet desde {addr[0]}"
+                data, addr = s.recvfrom(2048)
+                if kind == "webrtc":
+                    return f"WebRTC desde {addr[0]}"
+                if data[:1] in (b"\x01", b"\x02"):
+                    s.sendto(pong(data, port, "Movil en espera - conectate para activarlo",
+                                  "Si falla, reintenta en 30 s"), addr)
+                elif data[:1] == b"\x05":
+                    return f"RakNet desde {addr[0]}"
+    finally:
+        for _, s in socks:
+            s.close()
+
+
+# Mensajes de Geyser (se arranca en inglés para que el formato no dependa del idioma del sistema)
+RE_ATTEMPT = re.compile(r"(\S+) tried to connect!")
+RE_LEFT = re.compile(r"Bedrock user with ip: (\S+) has disconnected")
+RE_JOINED = re.compile(r"\] (\S+) \(logged in as: (\S+)\) has connected")
+RE_LIST = re.compile(r"Online Players \((\d+)\)")
+
+
+def addr_key(text):
+    """'/1.2.3.4:5678' -> '1.2.3.4:5678' para emparejar conexión y desconexión."""
+    return text.strip().lstrip("/")
+
+
+def run_geyser(args, workdir):
+    """Arranca Geyser y lo apaga args.idle_min minutos después de que se vaya el último jugador.
+
+    Funciona por eventos: cada conexión ("tried to connect") entra en una lista y cada
+    desconexión la saca. Cuando la lista se queda vacía empieza la cuenta atrás; si alguien
+    entra antes, se cancela. Como red de seguridad, cada args.check_every segundos se pregunta
+    a Geyser ("geyser list") por si se ha perdido algún evento.
+    """
+    cmd = [args.java, f"-Xmx{args.xmx}", "-Duser.language=en", "-Duser.country=US",
+           "-jar", args.jar, "--nogui"]
+    proc = subprocess.Popen(cmd, cwd=workdir, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                            stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace")
+    lock = threading.Lock()
+    sessions = {}                       # dirección -> [nombre (o "?" hasta que inicia sesión), hora de entrada]
+    state = {"empty_since": time.time(), "listed": None}
+
+    def ask_list():
+        """Pregunta a Geyser cuántos jugadores hay de verdad. None si no responde."""
+        state["listed"] = None
+        try:
+            proc.stdin.write("geyser list\n")
+            proc.stdin.flush()
+        except OSError:
+            return None
+        for _ in range(50):
+            time.sleep(0.1)
+            if state["listed"] is not None:
+                break
+        return state["listed"]
+
+    def update_empty():
+        if sessions:
+            state["empty_since"] = None
+        elif state["empty_since"] is None:
+            state["empty_since"] = time.time()
+            log(f"No quedan jugadores de Bedrock: Geyser se apagará en {args.idle_min:g} min si nadie entra.")
+
+    def reader():
+        for line in proc.stdout:
+            line = re.sub(r"\x1b\[[0-9;]*m", "", line.rstrip())
+            print("  geyser| " + line, flush=True)
+            with lock:
+                if m := RE_ATTEMPT.search(line):
+                    sessions[addr_key(m.group(1))] = ["?", time.time()]
+                    log(f"Conexión de Bedrock ({len(sessions)} conectados).")
+                elif m := RE_LEFT.search(line):
+                    name = (sessions.pop(addr_key(m.group(1)), None) or ["?"])[0]
+                    log(f"Desconexión de Bedrock: {name} ({len(sessions)} conectados).")
+                elif m := RE_JOINED.search(line):
+                    for v in sessions.values():
+                        if v[0] == "?":
+                            v[0] = m.group(2)
+                            break
+                elif m := RE_LIST.search(line):
+                    state["listed"] = int(m.group(1))
+                update_empty()
+
+    threading.Thread(target=reader, daemon=True).start()
+    last_check = time.time()
+    try:
+        while proc.poll() is None:
+            time.sleep(2)
+            with lock:
+                empty_since = state["empty_since"]
+            if empty_since is not None and time.time() - empty_since >= args.idle_min * 60:
+                # Antes de apagar, Geyser tiene que confirmar que no hay nadie
+                listed = ask_list()
+                if listed == 0:
+                    log(f"{args.idle_min:g} min sin jugadores de Bedrock: apagando Geyser.")
+                    break
+                with lock:
+                    state["empty_since"] = time.time()
+                log(f"Geyser dice que hay {listed} jugador(es) aunque no se vio su conexión: sigue encendido.")
+            if time.time() - last_check >= args.check_every:
+                last_check = time.time()
+                listed = ask_list()
+                with lock:
+                    if listed:
+                        # Hay gente aunque se perdiera el evento de conexión: no apagar
+                        state["empty_since"] = None
+                    elif listed == 0:
+                        # Red de seguridad: quitar solo entradas antiguas (un login a medias no sale en la lista)
+                        stale = [k for k, v in sessions.items() if time.time() - v[1] > 300]
+                        for k in stale:
+                            sessions.pop(k)
+                        if stale:
+                            log(f"Quitadas {len(stale)} conexiones sin desconexión registrada.")
+                        update_empty()
+    finally:
+        stop_geyser(proc)
+
+
+def stop_geyser(proc):
+    if proc.poll() is not None:
+        return
+    try:
+        proc.stdin.write("geyser stop\n")
+        proc.stdin.flush()
+        proc.wait(30)
+    except Exception:
+        proc.kill()
+        proc.wait()
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Enciende Geyser solo cuando un jugador de Bedrock intenta entrar.")
+    ap.add_argument("--dir", default=os.path.join(ROOT, "server 2025", "geyser"), help="carpeta de Geyser Standalone")
+    ap.add_argument("--jar", default="Geyser-Standalone.jar")
+    ap.add_argument("--key", default=os.path.join(ROOT, "server 2025", "plugins", "floodgate", "key.pem"),
+                    help="clave de Floodgate (se copia a la carpeta de Geyser)")
+    ap.add_argument("--java", default=os.environ.get("JAVA", "java"))
+    ap.add_argument("--xmx", default="512M", help="memoria máxima de Geyser")
+    ap.add_argument("--idle-min", type=float, default=3, help="minutos sin jugadores antes de apagar Geyser")
+    ap.add_argument("--check-every", type=float, default=120,
+                    help="segundos entre comprobaciones de seguridad ('geyser list')")
+    args = ap.parse_args()
+
+    workdir = os.path.abspath(args.dir)
+    if not os.path.isfile(os.path.join(workdir, args.jar)):
+        raise SystemExit(f"No está {args.jar} en {workdir}. Ejecuta actualizar.py.")
+    port, webrtc = read_ports(os.path.join(workdir, "config.yml"))
+    if os.path.isfile(args.key):
+        shutil.copy2(args.key, os.path.join(workdir, "key.pem"))
+    else:
+        log(f"AVISO: no se encuentra la clave de Floodgate ({args.key}); arranca Paper una vez para generarla.")
+
+    signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))
+    while True:
+        who = wait_for_player(port, webrtc)
+        log(f"Intento de conexión ({who}): arrancando Geyser. El jugador debe reintentar en ~30 s.")
+        run_geyser(args, workdir)
+        log("Geyser apagado.")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        pass

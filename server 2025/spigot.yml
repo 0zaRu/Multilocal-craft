@@ -60,6 +60,7 @@ commands:
   enable-spam-exclusions: false
 world-settings:
   default:
+    seed-abandonedcamp: 91231127
     below-zero-generation-in-existing-chunks: true
     view-distance: default
     simulation-distance: default
@@ -176,7 +177,7 @@ world-settings:
     verbose: false
 players:
   disable-saving: false
-config-version: 12
+config-version: 13
 stats:
   disable-saving: false
   forced-stats: {}

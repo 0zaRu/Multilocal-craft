@@ -1,0 +1,8 @@
+# Copias de jars antiguos que guarda actualizar.py
+server 2025/.upgrade-backup/
+# Log de la prueba de arranque de actualizar.py
+server 2025/logs/actualizar-prueba.log
+# Datos que genera Geyser Standalone al ejecutarse
+server 2025/geyser/*
+!server 2025/geyser/config.yml
+!server 2025/geyser/Geyser-Standalone.jar
