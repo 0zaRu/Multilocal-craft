@@ -58,7 +58,7 @@ iniciar_terminal() {
     estado_set ip "$IP"
     trap limpiar_terminal EXIT
     trap 'exit 130' INT TERM HUP
-    aplicar_ip "$IP"
+    aplicar_ip "$IP" || exit 1
 
     # Geyser (conexión para Bedrock / móviles)
     if [ -f "$SERVER_DIR/geyser/Geyser-Standalone.jar" ]; then
@@ -95,7 +95,7 @@ main() {
     done
     leer_env
     detectar_so
-    buscar_python || { error "Hace falta Python 3. Ejecuta scripts/preparar."; exit 1; }
+    buscar_python   # solo obligatorio en modo terminal (en Docker, Geyser lleva su propio Python)
     echo -e "${CYAN}${BOLD}--- Iniciar servidor Multilocal-craft ---${NC}"
 
     detectar_modo_activo
@@ -107,6 +107,10 @@ main() {
     rm -f "$ESTADO"
 
     preguntar_modo "$modo_arg"
+    if [ "$MODO" = terminal ] && [ -z "$PYTHON" ]; then
+        error "El modo terminal necesita Python 3. Ejecuta scripts/preparar."
+        exit 1
+    fi
     if preguntar_sn "¿Sincronizar el mundo con GitHub antes de empezar (rama $(rama_actual))?"; then
         sincronizar
         leer_env   # .env puede haber cambiado (versión nueva)

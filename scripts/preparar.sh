@@ -3,7 +3,7 @@
 # Script: preparar.sh
 # Propósito:
 #   Comprobar qué herramientas hacen falta para lanzar el servidor (en Docker o en
-#   terminal) en este sistema, e instalar las que falten.
+#   terminal) en este sistema, e instalar las que falten. En Termux solo existe el modo terminal.
 # Uso: scripts/preparar.sh [--docker|--terminal] [--check]
 #   --check  solo comprobar y mostrar cómo se instalaría lo que falta
 # Sistemas: Windows (Git Bash + winget), Termux, Debian/Ubuntu, Fedora, Arch, Mac (brew)
@@ -25,9 +25,6 @@ zerotier_instalado() {
     [ "$SO" = windows ] && { [ -d "/c/ProgramData/ZeroTier" ] || [ -d "/c/Program Files (x86)/ZeroTier" ]; } && return 0
     [ "$SO" = mac ] && [ -d "/Library/Application Support/ZeroTier" ] && return 0
     return 1
-}
-check_zerotier() {
-    [ -n "$PYTHON" ] && "$PYTHON" "$SCRIPTS_DIR/lib/ip_zerotier.py" "$ZEROTIER_RED" >/dev/null 2>&1
 }
 
 # --- Cómo se instala cada cosa en cada sistema (vacío = no se puede automáticamente) ---
@@ -78,30 +75,31 @@ fila() {  # fila <clave> <nombre> <0|1 resultado> [nota]
     fi
 }
 
+# Lo que se comprueba depende del modo:
+#   terminal: Git, Python, Java, ZeroTier (+ termux-api en Termux)  -> todo corre en este equipo
+#   docker:   Git, Docker, ZeroTier                                 -> Java y Python van dentro de los contenedores
 comprobar() {
     FALTAN=()
     FALLOS=0
     PYTHON=""
     echo
     echo -e "${BOLD}Comprobando ($SO, modo $MODO):${NC}"
-    check_git;    fila git "Git" $?
-    check_python; fila python "Python 3.8+" $? "${PYTHON:+($PYTHON)}"
+    check_git; fila git "Git" $?
     if [ "$MODO" = terminal ]; then
-        check_java; fila java "Java $JAVA_VERSION+" $? "(encontrado: ${JAVA_MAJOR:-ninguno})"
+        check_python; fila python "Python 3.8+" $? "${PYTHON:+($PYTHON)}"
+        check_java;   fila java "Java $JAVA_VERSION+" $? "(encontrado: ${JAVA_MAJOR:-ninguno})"
         [ "$SO" = termux ] && { check_termuxapi; fila termuxapi "termux-api (wake-lock)" $? "(instala también la app Termux:API)"; }
     else
-        if [ "$SO" = termux ]; then
-            fila "" "Docker" 1 "(no existe en Android: usa el modo terminal)"
-        else
-            check_docker; fila docker "Docker + docker compose" $?
-            if check_docker; then
-                if check_dockerd; then fila "" "Docker funcionando" 0
-                else fila "" "Docker funcionando" 1 "(abre Docker Desktop / arranca el servicio)"; fi
-            fi
+        check_docker; fila docker "Docker + docker compose" $?
+        if check_docker; then
+            if check_dockerd; then fila "" "Docker funcionando" 0
+            else fila "" "Docker funcionando" 1 "(abre Docker Desktop / arranca el servicio)"; fi
         fi
     fi
-    if check_zerotier; then
-        fila "" "ZeroTier en $ZEROTIER_RED" 0 "(IP: $("$PYTHON" "$SCRIPTS_DIR/lib/ip_zerotier.py" "$ZEROTIER_RED"))"
+    local ip_zt
+    ip_zt="$(ip_en_red "$ZEROTIER_RED")"
+    if [ -n "$ip_zt" ]; then
+        fila "" "ZeroTier en $ZEROTIER_RED" 0 "(IP: $ip_zt)"
     elif zerotier_instalado; then
         fila "" "ZeroTier en $ZEROTIER_RED" 1 "(instalado; únete a la red: zerotier-cli join $ZEROTIER_ID)"
     elif [ "$SO" = termux ]; then

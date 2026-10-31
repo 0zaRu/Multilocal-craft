@@ -10,7 +10,7 @@ source "$(dirname "$0")/lib/comun.sh"
 main() {
     leer_env
     detectar_so
-    buscar_python || { error "Hace falta Python 3. Ejecuta scripts/preparar."; exit 1; }
+    buscar_python   # solo hace falta si el servidor va en modo terminal
     detectar_modo_activo
     if [ -z "$MODO_ACTIVO" ]; then
         aviso "No hay ningún servidor en marcha en este equipo. Arráncalo con scripts/iniciar."
