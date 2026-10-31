@@ -15,6 +15,9 @@ YELLOW='\033[1;33m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
+# --- Trabajar siempre desde la carpeta del script ---
+cd "$(dirname "$0")" || exit 1
+
 # --- Configuración ---
 MEMORIA_XMX="${1:-6}"  # Primer argumento o 6 por defecto
 
@@ -31,9 +34,34 @@ fi
 
 echo -e "${CYAN}Configurando servidor con Xmx${MEMORIA_XMX}G de RAM...${NC}"
 
-# --- Verificar archivo JAR ---
-if [ ! -f "server 2025/paper-1.21.10.jar" ]; then
-    echo -e "${RED}ERROR: No se encuentra el archivo del servidor: server 2025/paper-1.21.10.jar${NC}"
+# --- Leer .env (versión de Paper, Java necesario, modo de Geyser) ---
+if [ -f ".env" ]; then
+    PAPER_JAR=$(grep -E '^PAPER_JAR=' .env | cut -d= -f2 | tr -d '\r')
+    JAVA_VERSION=$(grep -E '^JAVA_VERSION=' .env | cut -d= -f2 | tr -d '\r')
+    GEYSER_MODE=$(grep -E '^GEYSER_MODE=' .env | cut -d= -f2 | tr -d '\r')
+fi
+JAVA_VERSION="${JAVA_VERSION:-21}"
+GEYSER_MODE="${GEYSER_MODE:-ondemand}"
+
+# --- Verificar archivo JAR (el de .env o el paper-*.jar más reciente) ---
+if [ -z "$PAPER_JAR" ] || [ ! -f "server 2025/$PAPER_JAR" ]; then
+    PAPER_JAR=$(ls -t "server 2025"/paper-*.jar 2>/dev/null | head -n1 | xargs -r -d '\n' basename)
+fi
+if [ -z "$PAPER_JAR" ]; then
+    echo -e "${RED}ERROR: No se encuentra el jar de Paper en 'server 2025/'. Ejecuta ./actualizar.sh${NC}"
+    exit 1
+fi
+
+# --- Verificar Java (usa $JAVA si está definido) ---
+JAVA="${JAVA:-java}"
+JAVA_MAJOR=$("$JAVA" -version 2>&1 | grep -oE 'version "[0-9]+' | grep -oE '[0-9]+$')
+if [ -z "$JAVA_MAJOR" ] || [ "$JAVA_MAJOR" -lt "$JAVA_VERSION" ]; then
+    echo -e "${RED}ERROR: Hace falta Java ${JAVA_VERSION} o superior (encontrado: ${JAVA_MAJOR:-ninguno}).${NC}"
+    if [ -n "$TERMUX_VERSION" ]; then
+        echo -e "${YELLOW}En Termux: pkg install openjdk-${JAVA_VERSION}${NC}"
+    else
+        echo -e "${YELLOW}Descárgalo de https://adoptium.net o indica uno con: JAVA=/ruta/a/java ./iniciar.sh${NC}"
+    fi
     exit 1
 fi
 
@@ -64,8 +92,26 @@ echo -e "${YELLOW}IMPORTANTE: Mantén esta terminal abierta mientras el servidor
 echo -e "${YELLOW}Para detener el servidor, escribe 'stop' en la consola.${NC}"
 echo ""
 
+# --- Geyser bajo demanda (conexión para móviles / Bedrock) ---
+GEYSER_PID=""
+if [ "$GEYSER_MODE" = "ondemand" ] && [ -f "server 2025/geyser/Geyser-Standalone.jar" ]; then
+    # En Windows "python3" puede ser el acceso directo a la Microsoft Store: probar que funciona
+    PYTHON=""
+    for p in python3 python; do
+        if command -v "$p" >/dev/null && "$p" -c "import sys" >/dev/null 2>&1; then PYTHON="$p"; break; fi
+    done
+    if [ -n "$PYTHON" ]; then
+        "$PYTHON" geyser-bajo-demanda.py --java "$JAVA" > "server 2025/logs/geyser-bajo-demanda.log" 2>&1 &
+        GEYSER_PID=$!
+        echo -e "${CYAN}Geyser bajo demanda activo (log: server 2025/logs/geyser-bajo-demanda.log)${NC}"
+    else
+        echo -e "${YELLOW}AVISO: sin Python no hay conexión para móviles (Bedrock). Instálalo para usarla.${NC}"
+    fi
+fi
+trap '[ -n "$GEYSER_PID" ] && kill "$GEYSER_PID" 2>/dev/null' EXIT
+
 cd "server 2025" || exit 1
-java -Xms1G -Xmx${MEMORIA_XMX}G -jar paper-1.21.10.jar nogui
+"$JAVA" -Xms1G -Xmx${MEMORIA_XMX}G -jar "$PAPER_JAR" nogui
 
 # Al cerrar el servidor, volver al directorio anterior
 cd ..

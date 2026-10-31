@@ -1,0 +1,105 @@
+{
+  "_comentario": "Lo gestiona actualizar.py. Edita solo la lista de plugins (añadir/quitar) o el canal; los bloques 'installed' los rellena el script.",
+  "paper": {
+    "installed": {
+      "version": "26.3",
+      "build": 235,
+      "file": "paper-26.3-235.jar",
+      "java": 25
+    }
+  },
+  "plugins": [
+    {
+      "name": "Geyser",
+      "source": "geysermc",
+      "project": "geyser",
+      "compat_modrinth": "geyser",
+      "compat_loaders": [
+        "paper",
+        "spigot",
+        "bukkit"
+      ],
+      "installed": {
+        "version": "2.12.1-b1279",
+        "file": "Geyser-Standalone.jar",
+        "location": "geyser"
+      }
+    },
+    {
+      "name": "Floodgate",
+      "source": "geysermc",
+      "project": "floodgate",
+      "platform": "spigot",
+      "compat_modrinth": "floodgate",
+      "compat_loaders": [],
+      "installed": {
+        "version": "2.2.5-b141",
+        "file": "floodgate-spigot.jar",
+        "location": "plugin"
+      }
+    },
+    {
+      "name": "LuckPerms",
+      "source": "modrinth",
+      "project": "luckperms",
+      "loaders": [
+        "bukkit",
+        "paper"
+      ],
+      "installed": {
+        "version": "v5.5.71-bukkit",
+        "file": "LuckPerms-Bukkit-5.5.71.jar",
+        "location": "plugin"
+      }
+    },
+    {
+      "name": "SkinsRestorer",
+      "source": "modrinth",
+      "project": "skinsrestorer",
+      "loaders": [
+        "paper",
+        "bukkit",
+        "spigot"
+      ],
+      "installed": {
+        "version": "15.12.6",
+        "file": "SkinsRestorer.jar",
+        "location": "plugin"
+      }
+    },
+    {
+      "name": "EssentialsX",
+      "source": "modrinth",
+      "project": "essentialsx",
+      "loaders": [
+        "paper",
+        "bukkit",
+        "spigot"
+      ],
+      "dev_fallback": {
+        "jenkins": "https://ci.ender.zone/job/EssentialsX/",
+        "artifact": "^EssentialsX-[0-9][^/]*\\.jar$"
+      },
+      "installed": {
+        "version": "2.22.1-dev+27-e70bdb8",
+        "file": "EssentialsX-2.22.1-dev+27-e70bdb8.jar",
+        "location": "plugin"
+      }
+    },
+    {
+      "name": "ChunkLoader",
+      "source": "modrinth",
+      "project": "chunkloader",
+      "loaders": [
+        "paper",
+        "bukkit",
+        "spigot"
+      ],
+      "installed": {
+        "version": "1.0.8",
+        "file": "ChunkLoader-1.0.8.jar",
+        "location": "plugin"
+      }
+    }
+  ]
+}

@@ -1,19 +1,40 @@
+# Versiones en .env (lo mantiene actualizar.py): MC_VERSION, PAPER_JAR, JAVA_VERSION, GEYSER_MODE.
+# Con GEYSER_MODE=ondemand, COMPOSE_PROFILES=geyser-ondemand activa el servicio "geyser".
 services:
   mc-server:
-    image: itzg/minecraft-server:latest
+    image: itzg/minecraft-server:java${JAVA_VERSION:-25}
     container_name: mc-server
     ports:
-      - 60068:60068
-      - 60069:60069
-      - 60070:60070
+      - 60068:60068          # Java
+      - 60069:60069/udp      # Bedrock (RakNet)
+      - 60069:60069/tcp      # Bedrock (señalización NetherNet)
+      - 60070:60070/udp      # Bedrock (NetherNet/WebRTC)
     environment:
       EULA: "TRUE"
-      TYPE: "PAPER"
-      VERSION: "1.21.10"
+      # El jar lo gestiona actualizar.py: Docker y terminal usan exactamente el mismo
+      TYPE: "CUSTOM"
+      CUSTOM_SERVER: "/data/${PAPER_JAR}"
+      VERSION: "${MC_VERSION}"
       ENABLE_RCON: "true"
       RCON_PASSWORD: "potato"
       INIT_MEMORY: "2G"
       MAX_MEMORY: "16G"
+    volumes:
+      - "./server 2025:/data"
+    restart: always
+
+  # Geyser bajo demanda: comparte la red de mc-server (mismos puertos, Java en 127.0.0.1)
+  geyser:
+    profiles: ["geyser-ondemand"]
+    build:
+      context: .
+      dockerfile: geyser/Dockerfile
+      args:
+        JAVA_VERSION: "${JAVA_VERSION:-25}"
+    container_name: mc-geyser
+    network_mode: "service:mc-server"
+    depends_on:
+      - mc-server
     volumes:
       - "./server 2025:/data"
     restart: always

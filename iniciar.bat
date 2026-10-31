@@ -59,16 +59,51 @@ if "%~1"=="" (
 
 powershell -Command "Write-Host 'Configurando servidor con Xmx%MEMORIA_XMX%G de RAM...' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
 
-:: --- Verificar archivo JAR ---
-if not exist "server 2025\paper-1.21.10.jar" (
-    if not exist "server 2025\paper-1.21.9.jar" (
-        powershell -Command "Write-Host 'ERROR: No se encuentra el archivo del servidor (paper-1.21.10.jar)' -ForegroundColor Red -ErrorAction SilentlyContinue"
-        goto :END
-    ) else (
-        set JAR_FILE=paper-1.21.9.jar
+:: --- Leer .env (versión de Paper, Java necesario, modo de Geyser) ---
+set JAR_FILE=
+set JAVA_VERSION=21
+set GEYSER_MODE=ondemand
+if exist ".env" (
+    for /f "usebackq tokens=1,* delims==" %%a in (".env") do (
+        if "%%a"=="PAPER_JAR" set JAR_FILE=%%b
+        if "%%a"=="JAVA_VERSION" set JAVA_VERSION=%%b
+        if "%%a"=="GEYSER_MODE" set GEYSER_MODE=%%b
     )
-) else (
-    set JAR_FILE=paper-1.21.10.jar
+)
+
+:: --- Verificar archivo JAR (el de .env o el paper-*.jar más reciente) ---
+if defined JAR_FILE if not exist "server 2025\!JAR_FILE!" set JAR_FILE=
+if not defined JAR_FILE (
+    for /f "delims=" %%j in ('dir /b /o:d "server 2025\paper-*.jar" 2^>nul') do set JAR_FILE=%%j
+)
+if not defined JAR_FILE (
+    powershell -Command "Write-Host 'ERROR: No se encuentra el jar de Paper en server 2025. Ejecuta actualizar.bat' -ForegroundColor Red -ErrorAction SilentlyContinue"
+    goto :END
+)
+
+:: --- Verificar Java (usa la variable JAVA si está definida) ---
+if not defined JAVA set JAVA=java
+set JAVA_MAJOR=0
+for /f "tokens=3" %%v in ('"!JAVA!" -version 2^>^&1 ^| findstr /i "version"') do (
+    for /f "delims=.-" %%m in ("%%~v") do set JAVA_MAJOR=%%m
+)
+if !JAVA_MAJOR! LSS !JAVA_VERSION! (
+    powershell -Command "Write-Host 'ERROR: Hace falta Java !JAVA_VERSION! o superior (encontrado: !JAVA_MAJOR!).' -ForegroundColor Red -ErrorAction SilentlyContinue"
+    powershell -Command "Write-Host 'Descargalo de https://adoptium.net o indica uno con: set JAVA=C:\ruta\java.exe' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    goto :END
+)
+
+:: --- Geyser bajo demanda (conexión para móviles / Bedrock) en una ventana minimizada ---
+set GEYSER_ACTIVO=0
+if /i "!GEYSER_MODE!"=="ondemand" if exist "server 2025\geyser\Geyser-Standalone.jar" (
+    where python >nul 2>&1
+    if !ERRORLEVEL! EQU 0 (
+        start "Geyser bajo demanda" /min python geyser-bajo-demanda.py --java "!JAVA!"
+        set GEYSER_ACTIVO=1
+        powershell -Command "Write-Host 'Geyser bajo demanda activo (ventana minimizada).' -ForegroundColor Cyan -ErrorAction SilentlyContinue"
+    ) else (
+        powershell -Command "Write-Host 'AVISO: sin Python no hay conexion para moviles (Bedrock).' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
+    )
 )
 
 :: --- Lanzar servidor ---
@@ -78,8 +113,10 @@ powershell -Command "Write-Host 'IMPORTANTE: Mantén esta ventana abierta mientr
 powershell -Command "Write-Host 'Para detener el servidor, escribe ''stop'' en la consola.' -ForegroundColor Yellow -ErrorAction SilentlyContinue"
 echo.
 cd "server 2025"
-java -Xms1G -Xmx%MEMORIA_XMX%G -jar %JAR_FILE% nogui
+"!JAVA!" -Xms1G -Xmx%MEMORIA_XMX%G -jar "!JAR_FILE!" nogui
 cd ..
+:: Al parar el servidor, parar también Geyser bajo demanda (y su proceso de Java)
+if "!GEYSER_ACTIVO!"=="1" taskkill /FI "WINDOWTITLE eq Geyser bajo demanda*" /T /F >nul 2>&1
 
 :END
 echo.

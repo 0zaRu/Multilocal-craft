@@ -1,0 +1,19 @@
+[16:36:09] En espera: Geyser apagado. Escuchando en 60069 (UDP+TCP) y 60070 (UDP)
+[16:36:29] Intento de conexión (señalización NetherNet desde 127.0.0.1): arrancando Geyser. El jugador debe reintentar en ~30 s.
+  geyser| WARN StatusConsoleListener Advanced terminal features are not available in this environment
+  geyser| [16:36:30 INFO] Cargando extensiones...
+Exception in thread Thread-1 (reader):
+Traceback (most recent call last):
+  File "C:\Users\arube\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "C:\Users\arube\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\arube\Desktop\Ordenar\Multilocal-craft\geyser-bajo-demanda.py", line 136, in reader
+    print("  geyser| " + line, flush=True)
+  File "C:\Users\arube\AppData\Roaming\uv\python\cpython-3.12.9-windows-x86_64-none\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\ufffd' in position 44: character maps to <undefined>
+[16:39:47] 3 min sin jugadores de Bedrock: apagando Geyser.
+[16:39:48] Geyser apagado.
+[16:39:48] En espera: Geyser apagado. Escuchando en 60069 (UDP+TCP) y 60070 (UDP)
