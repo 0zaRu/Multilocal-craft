@@ -15,3 +15,5 @@ server 2025/logs/geyser-bajo-demanda.log
 server 2025/.paper/
 # Cachés de Python
 __pycache__/
+# Temporales de Essentials
+server 2025/plugins/Essentials/*.tmp.bin
