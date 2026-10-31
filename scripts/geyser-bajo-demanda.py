@@ -31,7 +31,7 @@ import sys
 import threading
 import time
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # carpeta del repo (padre de scripts/)
 MAGIC = bytes.fromhex("00ffff00fefefefefdfdfdfd12345678")
 GUID = random.getrandbits(63)
 
@@ -63,22 +63,22 @@ def pong(ping, port, line1, line2):
     return b"\x1c" + t + struct.pack(">Q", GUID) + MAGIC + struct.pack(">H", len(motd)) + motd
 
 
-def bind_all(port, webrtc):
+def bind_all(host, port, webrtc):
     """Abre los sockets de escucha. Reintenta un rato por si Geyser aún no ha soltado los puertos."""
     for _ in range(30):
         socks = []
         try:
             u = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            u.bind(("0.0.0.0", port))
+            u.bind((host, port))
             socks.append(("raknet", u))
             t = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             t.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            t.bind(("0.0.0.0", port))
+            t.bind((host, port))
             t.listen(8)
             socks.append(("signaling", t))
             if webrtc and webrtc != port:
                 w = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-                w.bind(("0.0.0.0", webrtc))
+                w.bind((host, webrtc))
                 socks.append(("webrtc", w))
             return socks
         except OSError:
@@ -88,10 +88,37 @@ def bind_all(port, webrtc):
     raise SystemExit(f"No se pueden abrir los puertos {port}/{webrtc}: ¿hay otro Geyser encendido?")
 
 
-def wait_for_player(port, webrtc):
+def config_generada(workdir, java_address=None, escuchar=None, anunciar=None):
+    """Copia de config.yml con la IP de este equipo y la dirección del servidor Java.
+
+    - escuchar: IP en la que escucha Geyser (bedrock.address).
+    - anunciar: IP que se envía a los clientes NetherNet (bedrock.signaling.advertise-addresses);
+      sin ella Geyser anuncia la IP pública que da STUN, que no sirve por ZeroTier.
+    - java_address: dónde está el servidor Java (en Docker: 'mc-server').
+    El config.yml de git no se toca.
+    """
+    with open(os.path.join(workdir, "config.yml"), encoding="utf-8") as f:
+        lines = f.readlines()
+    section = None
+    for i, line in enumerate(lines):
+        if re.match(r"\S", line):                      # clave de primer nivel
+            section = line.split(":")[0]
+        elif section == "java" and java_address and re.match(r"  address:", line):
+            lines[i] = f"  address: {java_address}\n"
+        elif section == "bedrock" and escuchar and re.match(r"  address:", line):
+            lines[i] = f"  address: {escuchar}\n"
+        elif section == "bedrock" and anunciar and re.match(r"    advertise-addresses:", line):
+            lines[i] = f'    advertise-addresses: ["{anunciar}"]\n'
+    name = "config-generado.yml"
+    with open(os.path.join(workdir, name), "w", encoding="utf-8") as f:
+        f.writelines(lines)
+    return name
+
+
+def wait_for_player(host, port, webrtc):
     """Escucha hasta que alguien intenta conectarse de verdad. Los pings solo reciben el aviso."""
-    socks = bind_all(port, webrtc)
-    log(f"En espera: Geyser apagado. Escuchando en {port} (UDP+TCP)" + (f" y {webrtc} (UDP)" if webrtc else ""))
+    socks = bind_all(host, port, webrtc)
+    log(f"En espera: Geyser apagado. Escuchando en {host}:{port} (UDP+TCP)" + (f" y {webrtc} (UDP)" if webrtc else ""))
     try:
         while True:
             ready, _, _ = select.select([s for _, s in socks], [], [], 5)
@@ -125,9 +152,11 @@ def wait_for_player(port, webrtc):
 
 
 # Mensajes de Geyser (se arranca en inglés para que el formato no dependa del idioma del sistema)
+# RakNet escribe las líneas por IP; NetherNet (el protocolo nuevo de Bedrock) solo las de nombre.
 RE_ATTEMPT = re.compile(r"(\S+) tried to connect!")
 RE_LEFT = re.compile(r"Bedrock user with ip: (\S+) has disconnected")
 RE_JOINED = re.compile(r"\] (\S+) \(logged in as: (\S+)\) has connected")
+RE_LEFT_NAME = re.compile(r"\] (\S+) has disconnected from (?:the|remote) Java server")
 RE_LIST = re.compile(r"Online Players \((\d+)\)")
 
 
@@ -146,6 +175,8 @@ def run_geyser(args, workdir):
     """
     cmd = [args.java, f"-Xmx{args.xmx}", "-Duser.language=en", "-Duser.country=US",
            "-jar", args.jar, "--nogui"]
+    if args.java_address or args.escuchar or args.anunciar:
+        cmd += ["-c", config_generada(workdir, args.java_address, args.escuchar, args.anunciar)]
     proc = subprocess.Popen(cmd, cwd=workdir, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace")
     lock = threading.Lock()
@@ -182,13 +213,18 @@ def run_geyser(args, workdir):
                     sessions[addr_key(m.group(1))] = ["?", time.time()]
                     log(f"Conexión de Bedrock ({len(sessions)} conectados).")
                 elif m := RE_LEFT.search(line):
-                    name = (sessions.pop(addr_key(m.group(1)), None) or ["?"])[0]
-                    log(f"Desconexión de Bedrock: {name} ({len(sessions)} conectados).")
+                    if sessions.pop(addr_key(m.group(1)), None):
+                        log(f"Desconexión de Bedrock ({len(sessions)} conectados).")
                 elif m := RE_JOINED.search(line):
-                    for v in sessions.values():
-                        if v[0] == "?":
-                            v[0] = m.group(2)
-                            break
+                    # Pasa a contarse por nombre; la entrada por IP (si la hubo) sobra
+                    pending = next((k for k, v in sessions.items() if v[0] == "?"), None)
+                    if pending:
+                        sessions.pop(pending)
+                    sessions["jugador:" + m.group(1)] = [m.group(1), time.time()]
+                    log(f"{m.group(1)} ha entrado desde Bedrock ({len(sessions)} conectados).")
+                elif m := RE_LEFT_NAME.search(line):
+                    if sessions.pop("jugador:" + m.group(1), None):
+                        log(f"{m.group(1)} ha salido ({len(sessions)} conectados).")
                 elif m := RE_LIST.search(line):
                     state["listed"] = int(m.group(1))
                 update_empty()
@@ -199,7 +235,7 @@ def run_geyser(args, workdir):
         while proc.poll() is None:
             time.sleep(2)
             with lock:
-                empty_since = state["empty_since"]
+                empty_since = None if args.siempre else state["empty_since"]
             if empty_since is not None and time.time() - empty_since >= args.idle_min * 60:
                 # Antes de apagar, Geyser tiene que confirmar que no hay nadie
                 listed = ask_list()
@@ -248,6 +284,10 @@ def main():
                     help="clave de Floodgate (se copia a la carpeta de Geyser)")
     ap.add_argument("--java", default=os.environ.get("JAVA", "java"))
     ap.add_argument("--xmx", default="512M", help="memoria máxima de Geyser")
+    ap.add_argument("--java-address", help="dirección del servidor Java si no es la de config.yml (Docker: mc-server)")
+    ap.add_argument("--escuchar", help="IP de este equipo en la que escuchar (la de ZeroTier); por defecto todas")
+    ap.add_argument("--anunciar", help="IP que se anuncia a los clientes NetherNet (la de ZeroTier)")
+    ap.add_argument("--siempre", action="store_true", help="Geyser siempre encendido (sin bajo demanda)")
     ap.add_argument("--idle-min", type=float, default=3, help="minutos sin jugadores antes de apagar Geyser")
     ap.add_argument("--check-every", type=float, default=120,
                     help="segundos entre comprobaciones de seguridad ('geyser list')")
@@ -264,10 +304,15 @@ def main():
 
     signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))
     while True:
-        who = wait_for_player(port, webrtc)
-        log(f"Intento de conexión ({who}): arrancando Geyser. El jugador debe reintentar en ~30 s.")
+        if args.siempre:
+            log("Modo siempre encendido: arrancando Geyser.")
+        else:
+            who = wait_for_player(args.escuchar or "0.0.0.0", port, webrtc)
+            log(f"Intento de conexión ({who}): arrancando Geyser. El jugador debe reintentar en ~30 s.")
         run_geyser(args, workdir)
         log("Geyser apagado.")
+        if args.siempre:
+            time.sleep(5)  # si se ha caído, se vuelve a arrancar
 
 
 if __name__ == "__main__":

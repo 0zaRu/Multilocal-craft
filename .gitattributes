@@ -1,0 +1,7 @@
+# Los .sh y .py se ejecutan con bash/python también en Linux y Termux: siempre LF
+*.sh text eol=lf
+*.py text eol=lf
+Dockerfile text eol=lf
+*.Dockerfile text eol=lf
+# Los .bat, siempre CRLF
+*.bat text eol=crlf

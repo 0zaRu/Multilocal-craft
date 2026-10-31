@@ -1,17 +1,14 @@
-# Versiones en .env (lo mantiene actualizar.py): MC_VERSION, PAPER_JAR, JAVA_VERSION, GEYSER_MODE.
-# Con GEYSER_MODE=ondemand, COMPOSE_PROFILES=geyser-ondemand activa el servicio "geyser".
+# Lo lanza scripts/iniciar (que pone MLC_IP = IP de ZeroTier de este equipo).
+# Versiones y modo de Geyser en .env (los mantiene scripts/actualizar).
 services:
   mc-server:
     image: itzg/minecraft-server:java${JAVA_VERSION:-25}
     container_name: mc-server
     ports:
-      - 60068:60068          # Java
-      - 60069:60069/udp      # Bedrock (RakNet)
-      - 60069:60069/tcp      # Bedrock (señalización NetherNet)
-      - 60070:60070/udp      # Bedrock (NetherNet/WebRTC)
+      - "${MLC_IP:-0.0.0.0}:60068:60068"          # Java
     environment:
       EULA: "TRUE"
-      # El jar lo gestiona actualizar.py: Docker y terminal usan exactamente el mismo
+      # El jar lo gestiona scripts/actualizar: Docker y terminal usan exactamente el mismo
       TYPE: "CUSTOM"
       CUSTOM_SERVER: "/data/${PAPER_JAR}"
       VERSION: "${MC_VERSION}"
@@ -23,16 +20,21 @@ services:
       - "./server 2025:/data"
     restart: always
 
-  # Geyser bajo demanda: comparte la red de mc-server (mismos puertos, Java en 127.0.0.1)
+  # Geyser (Bedrock / móviles): contenedor propio, llega al servidor Java por el nombre mc-server
   geyser:
-    profiles: ["geyser-ondemand"]
     build:
       context: .
-      dockerfile: geyser/Dockerfile
+      dockerfile: scripts/docker/geyser.Dockerfile
       args:
         JAVA_VERSION: "${JAVA_VERSION:-25}"
     container_name: mc-geyser
-    network_mode: "service:mc-server"
+    ports:
+      - "${MLC_IP:-0.0.0.0}:60069:60069/udp"      # Bedrock (RakNet)
+      - "${MLC_IP:-0.0.0.0}:60069:60069/tcp"      # Bedrock (señalización NetherNet)
+      - "${MLC_IP:-0.0.0.0}:60070:60070/udp"      # Bedrock (NetherNet/WebRTC)
+    environment:
+      GEYSER_MODE: "${GEYSER_MODE:-ondemand}"
+      MLC_IP: "${MLC_IP:-}"
     depends_on:
       - mc-server
     volumes:
