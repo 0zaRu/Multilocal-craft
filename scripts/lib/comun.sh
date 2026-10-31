@@ -49,7 +49,7 @@ preguntar_modo() {
 
 # --- .env (versiones y ajustes comunes) ---
 leer_env() {
-    PAPER_JAR=""; JAVA_VERSION=25; GEYSER_MODE=ondemand; ZEROTIER_RED=172.25.0.0/16; ZEROTIER_ID=""
+    PAPER_JAR=""; JAVA_VERSION=25; GEYSER_MODE=ondemand; ZEROTIER_RED=172.25.0.0/16; ZEROTIER_ID=""; JAVA_OPTS=""
     if [ -f "$ROOT/.env" ]; then
         local k v
         while IFS='=' read -r k v; do
@@ -60,6 +60,7 @@ leer_env() {
                 GEYSER_MODE) GEYSER_MODE="$v" ;;
                 ZEROTIER_RED) ZEROTIER_RED="$v" ;;
                 ZEROTIER_ID) ZEROTIER_ID="$v" ;;
+                JAVA_OPTS) JAVA_OPTS="$v" ;;
             esac
         done < <(grep -E '^[A-Z_]+=' "$ROOT/.env")
     fi

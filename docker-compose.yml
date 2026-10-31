@@ -16,6 +16,7 @@ services:
       RCON_PASSWORD: "potato"
       INIT_MEMORY: "2G"
       MAX_MEMORY: "16G"
+      JVM_OPTS: "${JAVA_OPTS:-}"            # opciones de la JVM, las mismas que en terminal (.env)
     volumes:
       - "./server 2025:/data"
     restart: always
