@@ -97,11 +97,21 @@ buscar_python() {
     return 1
 }
 
-# --- Java: usa $JAVA o el del PATH; deja JAVA y JAVA_MAJOR ---
+# --- Java: usa $JAVA, el del PATH o, si es antiguo, uno instalado de la versión necesaria
+#     (Termux y Linux pueden tener varios: java-21, java-25...). Deja JAVA y JAVA_MAJOR ---
+_java_mayor() { "$1" -version 2>&1 | grep -oE 'version "[0-9]+' | grep -oE '[0-9]+$'; }
 buscar_java() {
-    JAVA="${JAVA:-java}"
-    JAVA_MAJOR=$("$JAVA" -version 2>&1 | grep -oE 'version "[0-9]+' | grep -oE '[0-9]+$')
-    [ -n "$JAVA_MAJOR" ] && [ "$JAVA_MAJOR" -ge "$JAVA_VERSION" ]
+    local c
+    for c in "${JAVA:-java}" \
+             "$PREFIX"/lib/jvm/java-"$JAVA_VERSION"*/bin/java \
+             /usr/lib/jvm/*-"$JAVA_VERSION"*/bin/java /usr/lib/jvm/java-"$JAVA_VERSION"*/bin/java \
+             /opt/homebrew/opt/openjdk@"$JAVA_VERSION"/bin/java /usr/local/opt/openjdk@"$JAVA_VERSION"/bin/java; do
+        command -v "$c" >/dev/null 2>&1 || [ -x "$c" ] || continue
+        JAVA_MAJOR="$(_java_mayor "$c")"
+        if [ -n "$JAVA_MAJOR" ] && [ "$JAVA_MAJOR" -ge "$JAVA_VERSION" ]; then JAVA="$c"; return 0; fi
+    done
+    JAVA="${JAVA:-java}"; JAVA_MAJOR="$(_java_mayor "$JAVA")"
+    return 1
 }
 
 # --- Estado del servidor en marcha (server 2025/.estado-servidor) ---
