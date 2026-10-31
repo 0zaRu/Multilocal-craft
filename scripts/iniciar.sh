@@ -50,8 +50,10 @@ iniciar_terminal() {
     fi
     [ -z "$PAPER_JAR" ] && { error "No se encuentra el jar de Paper. Ejecuta scripts/actualizar."; exit 1; }
     if [ -z "$ram" ]; then
-        read -r -p "Memoria RAM para el servidor en GB (Enter = 6): " ram
-        ram="${ram:-6}"
+        # En el móvil (7-8 GB de RAM) 3 GB es lo que mejor funcionó en las pruebas; en PC, 6
+        local def=6; [ "$SO" = termux ] && def=3
+        read -r -p "Memoria RAM para el servidor en GB (Enter = $def): " ram
+        ram="${ram:-$def}"
     fi
 
     estado_set modo terminal
@@ -79,9 +81,9 @@ iniciar_terminal() {
     aviso "Esta ventana es la consola del servidor: no la cierres. Para apagar: 'stop' aquí o scripts/terminar."
     echo
     cd "$SERVER_DIR" || exit 1
-    # JAVA_OPTS (en .env): opciones de la JVM (recolector de basura, etc.)
+    # Memoria fija (Xms = Xmx) y JAVA_OPTS de .env (recolector de basura ajustado; ver docs/pruebas-movil.md)
     # shellcheck disable=SC2086
-    "$JAVA" -Xms1G -Xmx"${ram}"G $JAVA_OPTS -jar "$PAPER_JAR" nogui
+    "$JAVA" -Xms"${ram}"G -Xmx"${ram}"G $JAVA_OPTS -jar "$PAPER_JAR" nogui
     cd "$ROOT" || exit 1
     echo
     info "Servidor detenido. Para guardar el mundo en GitHub: scripts/terminar"

@@ -1,10 +1,15 @@
 {
-  "_comentario": "Lo gestiona actualizar.py. Edita solo la lista de plugins (añadir/quitar) o el canal; los bloques 'installed' los rellena el script.",
+  "_comentario": "Lo gestiona scripts/actualizar.py. 'paper.proyecto': paper o leaf (fork de Paper, mismos plugins; 'canales' = tipos de build aceptados). Edita solo eso y la lista de plugins; los bloques 'installed' los rellena el script.",
   "paper": {
+    "proyecto": "leaf",
+    "canales": [
+      "default",
+      "experimental"
+    ],
     "installed": {
       "version": "26.3",
-      "build": 235,
-      "file": "paper-26.3-235.jar",
+      "build": 13,
+      "file": "leaf-26.3-13.jar",
       "java": 25
     }
   },

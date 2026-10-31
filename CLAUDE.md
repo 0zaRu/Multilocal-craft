@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Not a software project: it is a **shared Minecraft server whose world is synced through git**. Each player deploys the server on their own device in turns (PC with Docker or plain Java, or an Android phone with Termux), plays, then commits and pushes the world back. Players connect over a ZeroTier network; there is no lock or "someone is already hosting" check, so players coordinate who hosts. There is no build step. Project text (README, scripts, commit messages) is in Spanish.
 
-- Server: **Paper 26.3**, **Java 25**. spark is built into Paper.
+- Server: **Leaf 26.3** (Paper fork, same plugins/world; `server 2025/plugins.json` → `paper.proyecto: leaf`, accepting `experimental` builds since that's all Leaf ships for 26.x), **Java 25**. Chosen from phone load tests: see `docs/pruebas-movil.md`. spark is built in.
 - Plugins (`server 2025/plugins/`): EssentialsX (dev build: no stable release supports 26.3 yet), Floodgate, LuckPerms, SkinsRestorer, ChunkLoader. Geyser runs **outside** Paper as Geyser Standalone (`server 2025/geyser/`).
 - Branches: `main`, `mobile-version`, `try-update` (test branch). Work goes on a new branch.
 - Everything must keep working in both Docker and plain terminal (Windows via Git Bash, Linux, Termux).
@@ -42,7 +42,7 @@ Not a software project: it is a **shared Minecraft server whose world is synced 
 
 ## Versions: `server 2025/plugins.json` + `.env`
 
-- `scripts/actualizar.py` picks the highest stable Paper version that every plugin in `plugins.json` declares support for (Fill v3 + Modrinth `game_versions`, Jenkins dev builds as fallback), reports blockers, and smoke-tests the new jars without the world. Then it backs up the old jars to `server 2025/.upgrade-backup/` and installs.
+- `scripts/actualizar.py` picks the highest server version that every plugin in `plugins.json` declares support for (server = Paper via Fill v3, or Leaf via api.leafmc.one with the build channels listed in `plugins.json`; plugins via Modrinth `game_versions`, Jenkins dev builds as fallback), reports blockers, and smoke-tests the new jars without the world. Then it backs up the old jars to `server 2025/.upgrade-backup/` and installs.
 - It writes `MC_VERSION`, `PAPER_JAR` and `JAVA_VERSION` into the committed root `.env`. `.env` also holds `GEYSER_MODE` (`ondemand`|`siempre`), `ZEROTIER_RED` and `ZEROTIER_ID`.
 - Docker uses `TYPE: CUSTOM` + `CUSTOM_SERVER=/data/${PAPER_JAR}`, so it runs exactly the jar `actualizar.py` installed.
 - Upgrading Minecraft to 26.x reorganizes the world folders (`world/dimensions/...`, `world/players/`), so git sees ~5k delete/add pairs once (mostly identical content). `subir` warns above 500 changed world files.
@@ -75,3 +75,11 @@ Not a software project: it is a **shared Minecraft server whose world is synced 
 - `online-mode=false` and no login plugin jar: anyone on the network can join as an op username (see `ops.json`).
 - `rcon.password` is committed in `server.properties` and `docker-compose.yml`.
 - Performance config is untuned (`view-distance=32`, `sync-chunk-writes=true`, no JVM flags, `player-max-chunk-generate-rate: -1`). This is the next phase: mobile/Termux optimization.
+
+## Phone performance findings (keep in mind before changing tuning)
+
+- Main-thread time on the phone at 32/20 goes to entity AI and block ticking of the bases' farms, not to networking or chunk generation. Do **not** reduce entity activation ranges or make villagers inactive: that breaks farms (the user's hard requirement). Distances stay 32/20.
+- Leaf `config/leaf-global.yml`: async-pathfinding, async-entity-tracker, async-mob-spawning, async-playerdata-save enabled (no gameplay change).
+- `JAVA_OPTS` (.env): G1 tuned for the phone (`-XX:-ClassUnloadingWithConcurrentMark`, 4 GC threads, IHOP 30, MaxGCPauseMillis 50); `iniciar` runs with `-Xms = -Xmx` (default 3 GB on Termux, 6 GB elsewhere).
+- Termux JDK: ZGC/Shenandoah fail ("Bad system call", blocked by Android seccomp); Java Flight Recorder crashes the JVM. Only G1/Parallel/Serial work.
+- Paper/Leaf 26.x do not implement `--forceUpgrade` ("World upgrade ... not yet implemented in Paper 26.1"). Old-format chunks convert lazily on first load, which is expensive on the phone. `scripts/convertir_mundo.py` converts every existing region with `/forceload` (Chunky does NOT work: it skips existing chunks), verifies each chunk's DataVersion, and deletes the half-generated border region files `/forceload` creates. `actualizar.py` offers it after a Minecraft version change.
