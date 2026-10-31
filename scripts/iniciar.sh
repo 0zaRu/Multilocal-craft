@@ -79,7 +79,9 @@ iniciar_terminal() {
     aviso "Esta ventana es la consola del servidor: no la cierres. Para apagar: 'stop' aquí o scripts/terminar."
     echo
     cd "$SERVER_DIR" || exit 1
-    "$JAVA" -Xms1G -Xmx"${ram}"G -jar "$PAPER_JAR" nogui
+    # JAVA_OPTS (en .env): opciones de la JVM (recolector de basura, etc.)
+    # shellcheck disable=SC2086
+    "$JAVA" -Xms1G -Xmx"${ram}"G $JAVA_OPTS -jar "$PAPER_JAR" nogui
     cd "$ROOT" || exit 1
     echo
     info "Servidor detenido. Para guardar el mundo en GitHub: scripts/terminar"
