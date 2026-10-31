@@ -14,7 +14,11 @@ Not a software project: it is a **shared Minecraft server whose world is synced 
 ## Layout and conventions
 
 - All scripts live in `scripts/`. Logic is written **once in bash** (`scripts/*.sh`); each `scripts/*.bat` only finds Git for Windows' `bash.exe` and runs the `.sh`. Shared functions are in `scripts/lib/comun.sh` (`ROOT` = parent of `scripts/`; env, OS detection, Python/Java lookup, state file, IP handling, git sync/upload).
-- Python (stdlib only, ≥3.8) is a project dependency: `actualizar.py`, `geyser-bajo-demanda.py`, `rcon.py`, `lib/ip_zerotier.py`.
+- Requirements depend on the mode, and `preparar` checks only those: **terminal** = Git, Python ≥3.8 (stdlib only), Java `JAVA_VERSION`, ZeroTier (+ `termux-api` on Termux); **Docker** = Git, Docker, ZeroTier, with **no local Python**. Keep Docker mode Python-free on the host:
+  - `ip_en_red` falls back to listing interface IPs (PowerShell, `ip`, `ifconfig`) when there is no Python;
+  - `actualizar.sh` falls back to running `actualizar.py` inside the `geyser` image (it has Java and Python) as uid 1000 (or the host user on Linux);
+  - the Geyser watcher runs inside its container.
+- Termux is terminal-only: `preguntar_modo` forces `MODO=terminal` when `SO=termux`.
 - Each bash script defines `main` and ends with `main "$@"; exit $?`, so bash has parsed the whole file before `git reset --hard` (sync) can rewrite it.
 - `.gitattributes` forces LF for `*.sh`/`*.py`/Dockerfiles and CRLF for `*.bat`. Keep it, or the scripts break on Linux and Termux.
 - On this Windows machine, another process sometimes maps freshly written files ("Invalid argument" / "user-mapped section"). Write to a temp file and `os.replace` if an in-place write fails. The same cause makes Paper log `Could not save spigot.yml` on Windows hosts; it is harmless.
@@ -30,6 +34,8 @@ Not a software project: it is a **shared Minecraft server whose world is synced 
 | Update versions | `bash scripts/actualizar.sh --check` |
 
 - Local Java on the dev PC is 24; run terminal mode with `JAVA=/path/to/java25`.
+- **Never run a container as root on the shared repo folder.** Files it creates get Linux 0644 root ownership, and the itzg server (uid 1000) then crash-loops on `logs/latest.log: Permission denied`. Use `--user 1000:1000`. If it happens, fix it with `chmod a+rwX` from a container.
+- `_poner_server_ip` retries for up to 30 s and verifies the write, because Windows can briefly lock `server.properties` after the previous server stops. `iniciar` aborts if the write fails, rather than starting on the wrong IP.
 - **Never answer "yes" to upload in tests.** `MLC_REMOTO=<remote>` points sync/upload at another remote (e.g. a local `git init --bare`).
 - RCON: Docker uses `docker exec mc-server rcon-cli`; terminal mode uses `scripts/rcon.py` (reads host/port/password from `server.properties`). LuckPerms output doesn't return over RCON; use `lp export <name>` and read the `.json.gz`.
 - Bedrock probe for tests: send RakNet `0x01` pings / `0x05` or an HTTP request to TCP 60069. When probing a service bound to the ZeroTier IP from the same host, bind the probe's source to that IP, or the reply never arrives.

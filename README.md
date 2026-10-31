@@ -9,13 +9,20 @@ Cada script existe como `.sh` (Linux, Mac, Termux y Git Bash) y como `.bat` (Win
 
 | Script | Para qué |
 |---|---|
-| `preparar` | Pregunta si vas a usar Docker o terminal, comprueba qué falta (Git, Python, Java, Docker, ZeroTier) y lo instala (winget, pkg, apt, dnf, pacman o brew). `--check` solo comprueba. |
+| `preparar` | Pregunta si vas a usar Docker o terminal, comprueba **solo lo que necesita ese modo** y lo instala (winget, pkg, apt, dnf, pacman o brew). `--check` solo comprueba. |
 | `iniciar` | Pregunta **Docker o terminal** y si **sincronizar antes con GitHub**. Arranca el servidor y Geyser con la IP de ZeroTier de este dispositivo. |
 | `consola` | Abre la consola del servidor, vaya por Docker o por terminal. |
 | `terminar` | Detecta cómo se lanzó, guarda el mundo, apaga el servidor y Geyser, deja la configuración como estaba y pregunta si **subir el mundo a GitHub**. |
 | `actualizar` | Actualiza Minecraft y los plugins (ver abajo). |
 
 Primera vez en un equipo nuevo: `scripts/preparar` y después `scripts/iniciar`.
+
+| Modo | Qué hace falta en el equipo |
+|---|---|
+| **Docker** (PC) | Git, Docker y ZeroTier. Java y Python van dentro de los contenedores. |
+| **Terminal** (PC o móvil) | Git, Python 3, Java 25 y ZeroTier; en Termux, además, `termux-api`. |
+
+En **Termux (Android)** solo existe el modo terminal: Docker no funciona allí, así que los scripts ni lo preguntan.
 
 - Sincronizar y subir usan siempre **la rama en la que estés** (`main`, `mobile-version`...).
 - Sincronizar descarta los cambios locales que no hayas subido; el script avisa antes.
@@ -65,4 +72,4 @@ Geyser va aparte del servidor y, con `GEYSER_MODE=ondemand` en `.env` (por defec
 - Puertos: 60069 (UDP y TCP) y 60070 (UDP).
 - Log: en terminal, `server 2025/logs/geyser-bajo-demanda.log`; en Docker, `docker logs mc-geyser`.
 - Para tener Geyser **siempre encendido**, pon `GEYSER_MODE=siempre` en `.env`.
-- Necesita Python, que `preparar` instala (en Termux: `pkg install python`).
+- En modo terminal necesita Python, que `preparar` instala (en Termux: `pkg install python`). En Docker va dentro de su contenedor.

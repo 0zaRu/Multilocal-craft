@@ -25,8 +25,12 @@ preguntar_sn() {
     [[ "$r" =~ ^[SsYy] ]]
 }
 
-# preguntar_modo [argumento]  -> deja MODO=docker|terminal
+# preguntar_modo [argumento]  -> deja MODO=docker|terminal (necesita detectar_so antes)
 preguntar_modo() {
+    if [ "$SO" = termux ]; then
+        [ "$1" = --docker ] && aviso "Docker no existe en Android: se usa el modo terminal."
+        MODO=terminal; return
+    fi
     case "$1" in
         --docker) MODO=docker; return ;;
         --terminal) MODO=terminal; return ;;
@@ -125,9 +129,34 @@ detectar_modo_activo() {
 }
 
 # --- IP del dispositivo en la red ZeroTier del servidor ---
+_ip_a_num() { local IFS=.; set -- $1; echo $(( ($1 << 24) + ($2 << 16) + ($3 << 8) + $4 )); }
+# ip_en_red <red/prefijo>: imprime la IP de este dispositivo dentro de esa red (vacío si no está)
+ip_en_red() {
+    if [ -n "$PYTHON" ]; then
+        # Con Python: truco del socket UDP (también funciona en Termux, donde 'ip addr' suele estar bloqueado)
+        "$PYTHON" "$SCRIPTS_DIR/lib/ip_zerotier.py" "$1" 2>/dev/null
+        return
+    fi
+    # Sin Python (modo Docker): listar las IPv4 del sistema y quedarse con la de la red
+    local red="${1%/*}" bits="${1#*/}" mascara ip lista
+    mascara=$(( (0xFFFFFFFF << (32 - bits)) & 0xFFFFFFFF ))
+    case "$SO" in
+        windows) lista="$(powershell.exe -NoProfile -Command "(Get-NetIPAddress -AddressFamily IPv4).IPAddress" 2>/dev/null | tr -d '\r')" ;;
+        mac)     lista="$(ifconfig 2>/dev/null | awk '/inet /{print $2}')" ;;
+        *)       lista="$(ip -4 -o addr show 2>/dev/null | awk '{print $4}' | cut -d/ -f1)"
+                 [ -z "$lista" ] && lista="$(hostname -I 2>/dev/null | tr ' ' '\n')" ;;
+    esac
+    for ip in $lista; do
+        [[ "$ip" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]] || continue
+        if [ $(( $(_ip_a_num "$ip") & mascara )) -eq $(( $(_ip_a_num "$red") & mascara )) ]; then
+            echo "$ip"; return
+        fi
+    done
+}
+
 # Deja IP=<ip de ZeroTier> o IP=0.0.0.0 si se decide seguir sin ZeroTier
 detectar_ip() {
-    IP="$("$PYTHON" "$SCRIPTS_DIR/lib/ip_zerotier.py" "$ZEROTIER_RED")"
+    IP="$(ip_en_red "$ZEROTIER_RED")"
     if [ -z "$IP" ]; then
         echo
         echo -e "${RED}${BOLD}╔════════════════════════════════════════════════════════════╗${NC}"
@@ -161,16 +190,26 @@ mostrar_ip() {
 }
 
 # --- server-ip en server.properties (solo modo terminal) ---
+# Escribe server-ip y comprueba que se ha guardado (en Windows otro proceso puede tener el
+# fichero bloqueado un momento: se reintenta). Devuelve 1 si no se pudo.
 _poner_server_ip() {
-    local tmp="$PROPS.tmp"
-    awk -v ip="$1" '/^server-ip=/{print "server-ip=" ip; next} {print}' "$PROPS" > "$tmp" && cat "$tmp" > "$PROPS" && rm -f "$tmp"
+    local tmp="$PROPS.tmp" _
+    for _ in $(seq 1 30); do
+        awk -v ip="$1" '/^server-ip=/{print "server-ip=" ip; next} {print}' "$PROPS" > "$tmp" && \
+            { cat "$tmp" > "$PROPS"; } 2>/dev/null
+        if grep -qxF "server-ip=$1" <(tr -d '\r' < "$PROPS"); then rm -f "$tmp"; return 0; fi
+        sleep 1
+    done
+    rm -f "$tmp"
+    error "No se pudo escribir server-ip=$1 en server.properties (fichero bloqueado por otro programa)."
+    return 1
 }
 aplicar_ip() {
     local orig
     orig="$(grep -E '^server-ip=' "$PROPS" | cut -d= -f2- | tr -d '\r')"
     [ -z "$(estado_get server_ip_original)" ] && estado_set server_ip_original "$orig"
     [ "$orig" = "$1" ] && return 0
-    _poner_server_ip "$1"
+    _poner_server_ip "$1" || return 1
     info "server-ip: $orig → $1 (se restaura al terminar)"
 }
 restaurar_ip() {
@@ -181,8 +220,7 @@ restaurar_ip() {
     fi
     actual="$(grep -E '^server-ip=' "$PROPS" | cut -d= -f2- | tr -d '\r')"
     if [ "$actual" != "$orig" ]; then
-        _poner_server_ip "$orig"
-        info "server-ip: $actual → $orig (original)"
+        _poner_server_ip "$orig" && info "server-ip: $actual → $orig (original)"
     fi
 }
 

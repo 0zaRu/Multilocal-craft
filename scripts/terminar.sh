@@ -51,7 +51,7 @@ terminar_terminal() {
 main() {
     leer_env
     detectar_so
-    buscar_python || { error "Hace falta Python 3. Ejecuta scripts/preparar."; exit 1; }
+    buscar_python   # solo hace falta si el servidor va en modo terminal
     echo -e "${CYAN}${BOLD}--- Terminar servidor Multilocal-craft ---${NC}"
 
     detectar_modo_activo
