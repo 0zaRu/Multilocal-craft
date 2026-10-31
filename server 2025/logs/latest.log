@@ -1,10 +1,15 @@
-[18:19:25] [ServerMain/INFO]: [bootstrap] Running Java 25 (OpenJDK 64-Bit Server VM 25.0.5+8-LTS; Eclipse Adoptium Temurin-25.0.5+8) on Windows 11 10.0 (amd64)
-[18:19:25] [ServerMain/INFO]: [bootstrap] Loading Paper 26.3-235-main@bb10cf0 (2026-10-31T14:17:37Z) for Minecraft 26.3
-[18:19:25] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
-[18:19:25] [ServerMain/INFO]: [PluginInitializerManager] Initialized 5 plugins
-[18:19:25] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (5):
+[00:41:50] [ServerMain/INFO]: [bootstrap] Running Java 25 (OpenJDK 64-Bit Server VM 25.0.5+8-LTS; Eclipse Adoptium Temurin-25.0.5+8) on Windows 11 10.0 (amd64)
+[00:41:50] [ServerMain/INFO]: [bootstrap] Loading Leaf 26.3-13-ver/26.3@66f99f8 (2026-10-26T03:02:06Z) for Minecraft 26.3
+[00:41:50] [ServerMain/INFO]: [LeafConfig] Loading config...
+[00:41:50] [ServerMain/INFO]: [LeafConfig] Using 7 threads for Async Pathfinding
+[00:41:50] [ServerMain/INFO]: [LeafConfig] Using 4 threads for Async Entity Tracker
+[00:41:50] [ServerMain/WARN]: [LeafConfig] You have following experimental module(s) enabled: [MultithreadedTracker.enabled], please proceed with caution!
+[00:41:50] [ServerMain/INFO]: [LeafConfig] Successfully loaded config in 110ms.
+[00:41:50] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[00:41:50] [ServerMain/INFO]: [PluginInitializerManager] Initialized 5 plugins
+[00:41:50] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (5):
  - ChunkLoader (1.0.8), Essentials (2.22.1-dev+27-e70bdb8), LuckPerms (5.5.71), SkinsRestorer (15.12.6), floodgate (2.2.5-SNAPSHOT (b141-81b65cc))
-[18:19:26] [CrashReport preload thread/ERROR]: [oshi.driver.windows.registry.HkeyPerformanceDataUtil] Unable to locate English counter names in registry Perflib 009. Counters may need to be rebuilt: 
+[00:41:51] [CrashReport preload thread/ERROR]: [oshi.driver.windows.registry.HkeyPerformanceDataUtil] Unable to locate English counter names in registry Perflib 009. Counters may need to be rebuilt: 
 com.sun.jna.platform.win32.Win32Exception: El parámetro no es correcto.
 	at com.sun.jna.platform.win32.Advapi32Util.registryGetStringArray(Advapi32Util.java:921) ~[jna-platform-5.17.0.jar:5.17.0 (b0)]
 	at com.sun.jna.platform.win32.Advapi32Util.registryGetStringArray(Advapi32Util.java:898) ~[jna-platform-5.17.0.jar:5.17.0 (b0)]
@@ -16,342 +21,1141 @@ com.sun.jna.platform.win32.Win32Exception: El parámetro no es correcto.
 	at oshi.software.os.windows.WindowsOperatingSystem.processMapToList(WindowsOperatingSystem.java:298) ~[oshi-core-6.9.0.jar:6.9.0]
 	at oshi.software.os.windows.WindowsOperatingSystem.getProcess(WindowsOperatingSystem.java:292) ~[oshi-core-6.9.0.jar:6.9.0]
 	at oshi.software.os.OperatingSystem.getCurrentProcess(OperatingSystem.java:246) ~[oshi-core-6.9.0.jar:6.9.0]
-	at net.minecraft.SystemReport.lambda$putSoftware$0(SystemReport.java:115) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.SystemReport.putSoftware(SystemReport.java:115) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.SystemReport.lambda$new$7(SystemReport.java:68) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.SystemReport.<init>(SystemReport.java:68) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.CrashReport.<init>(CrashReport.java:32) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.CrashReport.preload(CrashReport.java:240) ~[paper-26.3.jar:26.3-235-bb10cf0]
+	at net.minecraft.SystemReport.lambda$putSoftware$0(SystemReport.java:115) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.putSoftware(SystemReport.java:115) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.lambda$new$7(SystemReport.java:68) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.<init>(SystemReport.java:68) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.CrashReport.<init>(CrashReport.java:33) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.CrashReport.preload(CrashReport.java:241) ~[leaf-26.3.jar:26.3-13-66f99f8]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:19:26] [CrashReport preload thread/WARN]: [oshi.util.platform.windows.PerfCounterQuery] Unable to locate English counter names in registry Perflib 009. Assuming English counters. Error 0x80070057. See https://support.microsoft.com/en-us/help/300956/how-to-manually-rebuild-performance-counter-library-values
-[18:19:26] [CrashReport preload thread/WARN]: [oshi.util.platform.windows.PerfCounterWildcardQuery] Failed to locate performance object for Process in the registry. Performance counters may be corrupt. Pdh call failed with error code 0xC0000BB8
-[18:19:26] [CrashReport preload thread/INFO]: [oshi.util.platform.windows.PerfCounterWildcardQuery] Disabling further attempts to query Process.
-[18:19:28] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
-[18:19:28] [ServerMain/INFO]: [com.destroystokyo.paper.profile.PaperServicesDiscoveryService] Environment: Environment[discoveryUrl=https://discovery.minecraftservices.com/minecraft/client, name=PROD]
-[18:19:28] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 342,0ms
-[18:19:29] [Worker-Main-7/INFO]: Loaded 1866 advancements
-[18:19:30] [Server thread/INFO]: Starting minecraft server version 26.3
-[18:19:30] [Server thread/INFO]: Loading properties
-[18:19:30] [Server thread/INFO]: This server is running Paper version 26.3-235-main@bb10cf0 (2026-10-31T14:17:37Z) (Implementing API version 26.3.build.235-stable)
-[18:19:30] [Server thread/ERROR]: [org.bukkit.craftbukkit.CraftServer] Could not save bukkit.yml
-java.io.FileNotFoundException: bukkit.yml (La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.bukkit.craftbukkit.CraftServer.saveConfig(CraftServer.java:489) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.bukkit.craftbukkit.CraftServer.<init>(CraftServer.java:414) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.players.PlayerList.<init>(PlayerList.java:146) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.<init>(DedicatedPlayerList.java:16) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:233) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
+[00:41:51] [CrashReport preload thread/WARN]: [oshi.util.platform.windows.PerfCounterQuery] Unable to locate English counter names in registry Perflib 009. Assuming English counters. Error 0x80070057. See https://support.microsoft.com/en-us/help/300956/how-to-manually-rebuild-performance-counter-library-values
+[00:41:51] [CrashReport preload thread/WARN]: [oshi.util.platform.windows.PerfCounterWildcardQuery] Failed to locate performance object for Process in the registry. Performance counters may be corrupt. Pdh call failed with error code 0xC0000BB8
+[00:41:51] [CrashReport preload thread/INFO]: [oshi.util.platform.windows.PerfCounterWildcardQuery] Disabling further attempts to query Process.
+[00:41:52] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[00:41:52] [ServerMain/INFO]: [com.destroystokyo.paper.profile.PaperServicesDiscoveryService] Environment: Environment[discoveryUrl=https://discovery.minecraftservices.com/minecraft/client, name=PROD]
+[00:41:53] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 342,4ms
+[00:41:53] [Worker-Main-7/INFO]: Loaded 1866 advancements
+[00:41:53] [ServerMain/INFO]: Resource reload finished after 2 ms
+[00:41:53] [ServerMain/INFO]: ServerFunctionLibrary took approximately 3 tasks/0 ms (2 tasks/0 ms preparing, 1 tasks/0 ms applying)
+[00:41:53] [ServerMain/INFO]: Total blocking time: 0 ms
+[00:41:54] [Server thread/INFO]: Starting minecraft server version 26.3
+[00:41:54] [Server thread/INFO]: Loading properties
+[00:41:54] [Server thread/INFO]: This server is running Leaf version 26.3-13-ver/26.3@66f99f8 (2026-10-26T03:02:06Z) (Implementing API version 26.3.build.13-alpha)
+[00:41:54] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[00:41:54] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[00:41:54] [Server thread/INFO]: Using 4 threads for Netty based IO
+[00:41:54] [Server thread/INFO]: [MoonriseCommon] Paper is using 7 worker threads, 1 I/O threads
+[00:41:54] [Server thread/INFO]: Default game type: SURVIVAL
+[00:41:54] [Server thread/INFO]: Generating keypair
+[00:41:54] [Server thread/INFO]: Starting Minecraft server on 0.0.0.0:60068
+[00:41:54] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[00:41:54] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[00:41:54] [Server thread/INFO]: [floodgate] Loading server plugin floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[00:41:55] [Server thread/INFO]: [floodgate] Tardó 317ms en iniciar Floodgate
+[00:41:55] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.5.71
+[00:41:55] [Server thread/INFO]: [LuckPerms] Loading configuration...
+[00:41:55] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.12.6
+[00:41:55] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.22.1-dev+27-e70bdb8
+[00:41:55] [Server thread/INFO]: [ChunkLoader] Loading server plugin ChunkLoader v1.0.8
+[00:41:55] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[00:41:55] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.5.71
+[00:41:55] [Server thread/INFO]:         __    
+[00:41:55] [Server thread/INFO]:   |    |__)   LuckPerms v5.5.71
+[00:41:55] [Server thread/INFO]:   |___ |      Running on Bukkit - Leaf
+[00:41:55] [Server thread/INFO]: 
+[00:41:55] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
+[00:41:55] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
+[00:41:55] [Server thread/INFO]: [LuckPerms] Performing initial data load...
+[00:41:55] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 408ms)
+[00:41:55] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.12.6
+[00:41:55] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 26.3.0.
+[00:41:55] [Server thread/INFO]: [SkinsRestorer] Floodgate skin listener registered
+[00:41:56] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[00:41:56] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[00:41:56] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[00:41:56] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[00:41:56] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[00:41:56] [Server thread/INFO]: Preparing level "world"
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer   |
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |-------------------|
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode  |
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.12.6
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: c8c321f
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[00:41:56] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer or receive priority support? Become a supporter: https://skinsrestorer.net/pricing
+[00:41:56] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:overworld'...
+[00:41:56] [Server thread/INFO]: Prepared spawn area in 2 ms
+[00:41:56] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_nether'...
+[00:41:56] [Server thread/INFO]: Prepared spawn area in 0 ms
+[00:41:56] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_end'...
+[00:41:56] [Server thread/INFO]: Prepared spawn area in 2 ms
+[00:41:56] [Server thread/INFO]: Done preparing level "world" (0.666s)
+[00:41:56] [Server thread/INFO]: [floodgate] Enabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[00:41:57] [Server thread/INFO]: [Essentials] Enabling Essentials v2.22.1-dev+27-e70bdb8
+[00:41:57] [Server thread/ERROR]: [Essentials] You are running a server fork that is known to be extremely dangerous and lead to data loss. It is strongly recommended you switch to a more stable server software like Paper.
+[00:41:57] [Server thread/INFO]: [Essentials] Status determining class: brand:Leaf
+[00:41:57] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
+[00:41:57] [Server thread/INFO]: [Essentials] No kits found to migrate.
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.21.4+ Sync Commands Provider as the provider for SyncCommandsProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected Modern (Registry-based) PatternType Provider as the provider for PatternTypeProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.12+ Spawner Block Provider as the provider for SpawnerBlockProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected Legacy Biome Name Provider as the provider for BiomeNameProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
+[00:41:57] [Server thread/INFO]: [Essentials] No provider found for BiomeKeyProvider, but it is nullable
+[00:41:57] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected Paper 1.13+ Tile Entity Provider as the provider for TileEntityProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
+[00:41:57] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
+[00:41:57] [Server thread/WARN]: [Essentials] File plugins\Essentials\items.json has been modified by user and file version differs, please update the file manually.
+[00:41:57] [Server thread/INFO]: [Essentials] Loaded 43465 items from items.json.
+[00:41:57] [Server thread/INFO]: [Essentials] Using locale es_ES
+[00:41:57] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
+[00:41:57] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
+[00:41:57] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
+[00:41:57] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
+[00:41:57] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
+[00:41:57] [Server thread/INFO]: [ChunkLoader] Enabling ChunkLoader v1.0.8
+[00:41:57] [Server thread/INFO]: [spark] Starting background profiler...
+[00:41:57] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
+[00:41:57] [Server thread/INFO]: Starting remote control listener
+[00:41:57] [Server thread/INFO]: Thread RCON Listener started
+[00:41:57] [Server thread/INFO]: RCON running on 0.0.0.0:25575
+[00:41:57] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[00:41:57] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[00:41:57] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:19:30] [Server thread/ERROR]: [org.bukkit.craftbukkit.CraftServer] Could not save commands.yml
-java.io.FileNotFoundException: commands.yml (La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.bukkit.craftbukkit.CraftServer.saveCommandsConfig(CraftServer.java:497) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.bukkit.craftbukkit.CraftServer.<init>(CraftServer.java:426) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.players.PlayerList.<init>(PlayerList.java:146) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.<init>(DedicatedPlayerList.java:16) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:233) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
+[00:41:57] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[00:41:57] [Server thread/INFO]: Running delayed init tasks
+[00:41:57] [Craft Scheduler Thread - 1 - Essentials/INFO]: [Essentials] Obteniendo información de versión...
+[00:41:57] [Server thread/INFO]: Done (7.821s)! For help, type "help"
+[00:41:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-32, 0] to [-17, 15] to be force loaded
+[00:41:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-32, 16] to [-17, 31] to be force loaded
+[00:41:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-16, 0] to [-1, 15] to be force loaded
+[00:41:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-16, 16] to [-1, 31] to be force loaded
+[00:41:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-32, 32] to [-17, 47] to be force loaded
+[00:41:59] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-32, 48] to [-17, 63] to be force loaded
+[00:41:59] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-16, 32] to [-1, 47] to be force loaded
+[00:41:59] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-16, 48] to [-1, 63] to be force loaded
+[00:41:59] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-64, -32] to [-49, -17] to be force loaded
+[00:42:00] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-64, -16] to [-49, -1] to be force loaded
+[00:42:00] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-48, -32] to [-33, -17] to be force loaded
+[00:42:00] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-48, -16] to [-33, -1] to be force loaded
+[00:42:22] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:overworld
+[00:42:22] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:42:22] [Dimension-Data-IO-Worker-4/ERROR]: Could not save data to random_sequences.dat
+java.nio.file.FileSystemException: .\world\.\data\minecraft\random_sequences.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:19:30] [Server thread/ERROR]: [org.bukkit.craftbukkit.CraftServer] Could not save commands.yml
-java.io.FileNotFoundException: commands.yml (La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.bukkit.craftbukkit.CraftServer.saveCommandsConfig(CraftServer.java:497) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.bukkit.craftbukkit.CraftServer.<init>(CraftServer.java:446) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.players.PlayerList.<init>(PlayerList.java:146) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.<init>(DedicatedPlayerList.java:16) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:233) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
+[00:42:22] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\overworld\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:19:30] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[18:19:30] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[18:19:30] [Server thread/INFO]: Using 4 threads for Netty based IO
-[18:19:30] [Server thread/ERROR]: Could not save spigot.yml
-java.io.FileNotFoundException: spigot.yml (La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:99) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotConfig.init(SpigotConfig.java:73) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:234) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
+[00:42:22] [Dimension-Data-IO-Worker-4/ERROR]: Could not save data to weather.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\overworld\data\minecraft\weather.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:19:30] [Server thread/INFO]: [MoonriseCommon] Paper is using 7 worker threads, 1 I/O threads
-[18:19:30] [Server thread/ERROR]: Could not save spigot.yml
-java.io.FileNotFoundException: spigot.yml (La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:99) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.configuration.PaperConfigurations$1.init(PaperConfigurations.java:157) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.<init>(SpigotWorldConfig.java:21) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.configuration.PaperConfigurations$1.<init>(PaperConfigurations.java:154) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.configuration.PaperConfigurations.lambda$static$1(PaperConfigurations.java:154) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at com.google.common.base.Suppliers$NonSerializableMemoizingSupplier.get(Suppliers.java:194) ~[guava-33.6.0-jre.jar:?]
-	at io.papermc.paper.configuration.PaperConfigurations.lambda$createWorldConfigLoaderBuilder$1(PaperConfigurations.java:267) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spongepowered.configurate.ConfigurationOptions.serializers(ConfigurationOptions.java:165) ~[configurate-core-4.2.0.jar:?]
-	at io.papermc.paper.configuration.PaperConfigurations.lambda$createWorldConfigLoaderBuilder$0(PaperConfigurations.java:259) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spongepowered.configurate.loader.AbstractConfigurationLoader$Builder.defaultOptions(AbstractConfigurationLoader.java:530) ~[configurate-core-4.2.0.jar:?]
-	at io.papermc.paper.configuration.PaperConfigurations.createWorldConfigLoaderBuilder(PaperConfigurations.java:257) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.configuration.Configurations.createDefaultWorldLoader(Configurations.java:186) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.configuration.Configurations.initializeWorldDefaultsConfiguration(Configurations.java:166) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:239) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
+[00:42:22] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\overworld\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:19:30] [Server thread/WARN]: Failed to save ip banlist: 
-java.io.FileNotFoundException: banned-ips.json (La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at com.google.common.io.Files.newWriter(Files.java:107) ~[guava-33.6.0-jre.jar:?]
-	at net.minecraft.server.players.StoredUserList.save(StoredUserList.java:132) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.saveIpBanList(DedicatedPlayerList.java:43) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.loadAndSaveFiles(DedicatedPlayerList.java:27) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:246) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
+[00:42:22] [Dimension-Data-IO-Worker-3/ERROR]: Could not save data to chunk_tickets.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\overworld\data\minecraft\chunk_tickets.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:19:30] [Server thread/WARN]: Failed to save operators list: 
-java.io.FileNotFoundException: ops.json (La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at com.google.common.io.Files.newWriter(Files.java:107) ~[guava-33.6.0-jre.jar:?]
-	at net.minecraft.server.players.StoredUserList.save(StoredUserList.java:132) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.saveOps(DedicatedPlayerList.java:83) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.loadAndSaveFiles(DedicatedPlayerList.java:30) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:246) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
+[00:42:22] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\overworld\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:19:30] [Server thread/INFO]: Default game type: SURVIVAL
-[18:19:30] [Server thread/INFO]: Generating keypair
-[18:19:30] [Server thread/INFO]: Starting Minecraft server on 172.25.11.143:60068
-[18:19:30] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[18:19:30] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[18:19:31] [Server thread/INFO]: [floodgate] Loading server plugin floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
-[18:19:31] [Server thread/INFO]: [floodgate] Tardó 492ms en iniciar Floodgate
-[18:19:31] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.5.71
-[18:19:31] [Server thread/INFO]: [LuckPerms] Loading configuration...
-[18:19:31] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.12.6
-[18:19:31] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.22.1-dev+27-e70bdb8
-[18:19:31] [Server thread/INFO]: [ChunkLoader] Loading server plugin ChunkLoader v1.0.8
-[18:19:31] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[18:19:31] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.5.71
-[18:19:31] [Server thread/INFO]:         __    
-[18:19:31] [Server thread/INFO]:   |    |__)   LuckPerms v5.5.71
-[18:19:31] [Server thread/INFO]:   |___ |      Running on Bukkit - Paper
-[18:19:31] [Server thread/INFO]: 
-[18:19:31] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
-[18:19:32] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
-[18:19:32] [Server thread/INFO]: [LuckPerms] Performing initial data load...
-[18:19:32] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 579ms)
-[18:19:32] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.12.6
-[18:19:32] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 26.3.0.
-[18:19:32] [Server thread/INFO]: [SkinsRestorer] Floodgate skin listener registered
-[18:19:33] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[18:19:33] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[18:19:33] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[18:19:33] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[18:19:33] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[18:19:33] [Server thread/INFO]: Preparing level "world"
-[18:19:33] [Server thread/ERROR]: Could not save spigot.yml
-java.io.FileNotFoundException: spigot.yml (La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:99) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.init(SpigotWorldConfig.java:36) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.<init>(SpigotWorldConfig.java:21) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.world.level.Level.<init>(Level.java:852) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.level.ServerLevel.<init>(ServerLevel.java:639) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.createLevel(MinecraftServer.java:706) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorld(PaperWorldLoader.java:168) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorlds(PaperWorldLoader.java:126) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.loadLevel(MinecraftServer.java:612) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:339) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
+[00:42:23] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer   |
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |-------------------|
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode  |
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.12.6
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: c8c321f
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[18:19:33] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer or receive priority support? Become a supporter: https://skinsrestorer.net/pricing
-[18:19:33] [Server thread/ERROR]: Could not save spigot.yml
-java.io.FileNotFoundException: spigot.yml (La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:99) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.init(SpigotWorldConfig.java:36) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.<init>(SpigotWorldConfig.java:21) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.world.level.Level.<init>(Level.java:852) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.level.ServerLevel.<init>(ServerLevel.java:639) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.createLevel(MinecraftServer.java:737) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorld(PaperWorldLoader.java:168) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorlds(PaperWorldLoader.java:131) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.loadLevel(MinecraftServer.java:612) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:339) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
+[00:42:23] [Dimension-Data-IO-Worker-4/ERROR]: Could not save data to chunk_tickets.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\chunk_tickets.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:19:33] [Server thread/ERROR]: Could not save spigot.yml
-java.io.FileNotFoundException: spigot.yml (La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:99) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.init(SpigotWorldConfig.java:36) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.<init>(SpigotWorldConfig.java:21) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.world.level.Level.<init>(Level.java:852) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.level.ServerLevel.<init>(ServerLevel.java:639) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.createLevel(MinecraftServer.java:737) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorld(PaperWorldLoader.java:168) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorlds(PaperWorldLoader.java:131) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.loadLevel(MinecraftServer.java:612) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:339) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
+[00:42:23] [Dimension-Data-IO-Worker-3/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
 	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[18:19:33] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:overworld'...
-[18:19:33] [Server thread/INFO]: Prepared spawn area in 7 ms
-[18:19:33] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_nether'...
-[18:19:33] [Server thread/INFO]: Prepared spawn area in 14 ms
-[18:19:33] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_end'...
-[18:19:33] [Server thread/INFO]: Prepared spawn area in 15 ms
-[18:19:33] [Server thread/INFO]: Done preparing level "world" (0.509s)
-[18:19:33] [Server thread/INFO]: [floodgate] Enabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
-[18:19:34] [Server thread/INFO]: [Essentials] Enabling Essentials v2.22.1-dev+27-e70bdb8
-[18:19:34] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
-[18:19:34] [Server thread/INFO]: [Essentials] No kits found to migrate.
-[18:19:34] [Server thread/INFO]: [Essentials] Selected Paper 1.13+ Tile Entity Provider as the provider for TileEntityProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected Modern (Registry-based) PatternType Provider as the provider for PatternTypeProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected Legacy Biome Name Provider as the provider for BiomeNameProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
-[18:19:34] [Server thread/INFO]: [Essentials] No provider found for BiomeKeyProvider, but it is nullable
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.21.4+ Sync Commands Provider as the provider for SyncCommandsProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.12+ Spawner Block Provider as the provider for SpawnerBlockProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
-[18:19:34] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
-[18:19:34] [Server thread/WARN]: [Essentials] File plugins\Essentials\items.json has been modified by user and file version differs, please update the file manually.
-[18:19:34] [Server thread/INFO]: [Essentials] Loaded 43465 items from items.json.
-[18:19:34] [Server thread/INFO]: [Essentials] Using locale es_ES
-[18:19:34] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
-[18:19:34] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
-[18:19:34] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
-[18:19:34] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
-[18:19:34] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
-[18:19:34] [Server thread/INFO]: [ChunkLoader] Enabling ChunkLoader v1.0.8
-[18:19:34] [Server thread/INFO]: [spark] Starting background profiler...
-[18:19:34] [Server thread/INFO]: [spark] The async-profiler engine is not supported for your os/arch (windows11/amd64), so the built-in Java engine will be used instead.
-[18:19:34] [Server thread/INFO]: Starting remote control listener
-[18:19:34] [Server thread/INFO]: Thread RCON Listener started
-[18:19:34] [Server thread/INFO]: RCON running on 172.25.11.143:25575
-[18:19:34] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[18:19:34] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[18:19:34] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[18:19:34] [Server thread/INFO]: Running delayed init tasks
-[18:19:34] [Craft Scheduler Thread - 1 - Essentials/INFO]: [Essentials] Obteniendo información de versión...
-[18:19:34] [Server thread/INFO]: Done (9.909s)! For help, type "help"
-[18:19:37] [RCON Listener #1/INFO]: Thread RCON Client /172.25.11.143 started
-[18:19:37] [RCON Client /172.25.11.143 #2/INFO]: Thread RCON Client /172.25.11.143 shutting down
-[18:19:37] [RCON Listener #1/INFO]: Thread RCON Client /172.25.11.143 started
-[18:19:37] [Server thread/INFO]: System chat: [Rcon: Saved the game]
-[18:19:37] [RCON Client /172.25.11.143 #3/INFO]: Thread RCON Client /172.25.11.143 shutting down
-[18:19:37] [RCON Listener #1/INFO]: Thread RCON Client /172.25.11.143 started
-[18:19:37] [Server thread/INFO]: System chat: [Rcon: Stopping the server]
-[18:19:37] [RCON Client /172.25.11.143 #4/INFO]: Thread RCON Client /172.25.11.143 shutting down
-[18:19:37] [Server thread/INFO]: Stopping server
-[18:19:37] [Server thread/INFO]: [ChunkLoader] Disabling ChunkLoader v1.0.8
-[18:19:37] [Server thread/INFO]: [Essentials] Disabling Essentials v2.22.1-dev+27-e70bdb8
-[18:19:37] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.12.6
-[18:19:37] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.5.71
-[18:19:37] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
-[18:19:37] [Server thread/INFO]: [LuckPerms] Closing storage...
-[18:19:38] [Server thread/INFO]: [LuckPerms] Goodbye!
-[18:19:38] [Server thread/INFO]: [floodgate] Disabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
-[18:19:38] [Server thread/INFO]: Saving players
-[18:19:38] [Server thread/INFO]: Saving worlds
-[18:19:38] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[18:19:38] [RCON Listener #1/INFO]: Thread RCON Client /172.25.11.143 started
-[18:19:38] [RCON Client /172.25.11.143 #5/INFO]: Thread RCON Client /172.25.11.143 shutting down
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:overworld'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:overworld'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:overworld'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:overworld' in 0,00s
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:overworld'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:overworld'
-[18:19:38] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_nether'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_nether'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_nether'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_nether' in 0,00s
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_nether'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_nether'
-[18:19:38] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_end'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_end'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_end'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_end' in 0,00s
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_end'
-[18:19:38] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_end'
-[18:19:38] [Server thread/INFO]: Waiting for all RegionFile I/O tasks to complete...
-[18:19:38] [Server thread/INFO]: All RegionFile I/O tasks to complete
-[18:19:38] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
-[18:19:38] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
+[00:42:23] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:42:23] [Dimension-Data-IO-Worker-4/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_end\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:42:23] [Dimension-Data-IO-Worker-3/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_end\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:42:23] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_end\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:42:23] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to chunk_tickets.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_end\data\minecraft\chunk_tickets.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:42:23] [Server thread/INFO]: System chat: Saved the game
+[00:42:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-64, 0] to [-49, 15] to be force loaded
+[00:42:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-64, 16] to [-49, 31] to be force loaded
+[00:42:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-48, 0] to [-33, 15] to be force loaded
+[00:42:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-48, 16] to [-33, 31] to be force loaded
+[00:42:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-64, 32] to [-49, 47] to be force loaded
+[00:42:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-64, 48] to [-49, 63] to be force loaded
+[00:42:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-48, 32] to [-33, 47] to be force loaded
+[00:42:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-48, 48] to [-33, 63] to be force loaded
+[00:42:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-96, -32] to [-81, -17] to be force loaded
+[00:42:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-96, -16] to [-81, -1] to be force loaded
+[00:42:29] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-80, -32] to [-65, -17] to be force loaded
+[00:42:29] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-80, -16] to [-65, -1] to be force loaded
+[00:42:52] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:overworld
+[00:42:52] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:42:53] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:42:53] [Dimension-Data-IO-Worker-3/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:42:53] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:42:53] [Server thread/INFO]: System chat: Saved the game
+[00:42:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-96, 0] to [-81, 15] to be force loaded
+[00:42:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-96, 16] to [-81, 31] to be force loaded
+[00:42:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-80, 0] to [-65, 15] to be force loaded
+[00:42:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-80, 16] to [-65, 31] to be force loaded
+[00:42:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-96, 32] to [-81, 47] to be force loaded
+[00:42:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-96, 48] to [-81, 63] to be force loaded
+[00:42:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-80, 32] to [-65, 47] to be force loaded
+[00:42:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [-80, 48] to [-65, 63] to be force loaded
+[00:42:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [0, 32] to [15, 47] to be force loaded
+[00:42:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [0, 48] to [15, 63] to be force loaded
+[00:42:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [16, 32] to [31, 47] to be force loaded
+[00:42:59] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [16, 48] to [31, 63] to be force loaded
+[00:43:22] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:overworld
+[00:43:22] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:43:23] [Server thread/INFO]: System chat: Saved the game
+[00:43:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [32, -32] to [47, -17] to be force loaded
+[00:43:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [32, -16] to [47, -1] to be force loaded
+[00:43:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [48, -32] to [63, -17] to be force loaded
+[00:43:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [48, -16] to [63, -1] to be force loaded
+[00:43:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [32, 0] to [47, 15] to be force loaded
+[00:43:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [32, 16] to [47, 31] to be force loaded
+[00:43:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [48, 0] to [63, 15] to be force loaded
+[00:43:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [48, 16] to [63, 31] to be force loaded
+[00:43:29] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [736, 448] to [751, 463] to be force loaded
+[00:43:29] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [736, 464] to [751, 479] to be force loaded
+[00:43:29] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [752, 448] to [767, 463] to be force loaded
+[00:43:29] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [752, 464] to [767, 479] to be force loaded
+[00:43:52] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:overworld
+[00:43:52] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:43:52] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to random_sequences.dat
+java.nio.file.FileSystemException: .\world\.\data\minecraft\random_sequences.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:52] [Dimension-Data-IO-Worker-3/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\overworld\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:52] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to weather.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\overworld\data\minecraft\weather.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:52] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to chunk_tickets.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\overworld\data\minecraft\chunk_tickets.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:52] [Dimension-Data-IO-Worker-4/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\overworld\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:52] [Dimension-Data-IO-Worker-3/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\overworld\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:53] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to chunk_tickets.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\chunk_tickets.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:53] [Dimension-Data-IO-Worker-3/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:53] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:53] [Dimension-Data-IO-Worker-4/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:53] [Dimension-Data-IO-Worker-3/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_end\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:53] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_end\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:53] [Dimension-Data-IO-Worker-4/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_end\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:53] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to chunk_tickets.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_end\data\minecraft\chunk_tickets.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:43:53] [Server thread/INFO]: System chat: Saved the game
+[00:43:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [96, -832] to [111, -817] to be force loaded
+[00:43:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [96, -816] to [111, -801] to be force loaded
+[00:43:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [112, -832] to [127, -817] to be force loaded
+[00:43:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [112, -816] to [127, -801] to be force loaded
+[00:43:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [128, -768] to [143, -753] to be force loaded
+[00:43:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [128, -752] to [143, -737] to be force loaded
+[00:43:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [144, -768] to [159, -753] to be force loaded
+[00:43:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [144, -752] to [159, -737] to be force loaded
+[00:43:59] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [128, -800] to [143, -785] to be force loaded
+[00:43:59] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [128, -784] to [143, -769] to be force loaded
+[00:43:59] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [144, -800] to [159, -785] to be force loaded
+[00:43:59] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [144, -784] to [159, -769] to be force loaded
+[00:44:22] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:overworld
+[00:44:22] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:44:23] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:44:23] [Dimension-Data-IO-Worker-4/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:44:23] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:44:23] [Server thread/INFO]: System chat: Saved the game
+[00:44:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [128, -832] to [143, -817] to be force loaded
+[00:44:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [128, -816] to [143, -801] to be force loaded
+[00:44:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [144, -832] to [159, -817] to be force loaded
+[00:44:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [144, -816] to [159, -801] to be force loaded
+[00:44:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [128, -864] to [143, -849] to be force loaded
+[00:44:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [128, -848] to [143, -833] to be force loaded
+[00:44:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [144, -864] to [159, -849] to be force loaded
+[00:44:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [144, -848] to [159, -833] to be force loaded
+[00:44:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [160, -768] to [175, -753] to be force loaded
+[00:44:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [160, -752] to [175, -737] to be force loaded
+[00:44:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [176, -768] to [191, -753] to be force loaded
+[00:44:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [176, -752] to [191, -737] to be force loaded
+[00:44:52] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:overworld
+[00:44:52] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:44:53] [Server thread/INFO]: System chat: Saved the game
+[00:44:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [160, -800] to [175, -785] to be force loaded
+[00:44:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [160, -784] to [175, -769] to be force loaded
+[00:44:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [176, -800] to [191, -785] to be force loaded
+[00:44:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [176, -784] to [191, -769] to be force loaded
+[00:44:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [160, -832] to [175, -817] to be force loaded
+[00:44:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [160, -816] to [175, -801] to be force loaded
+[00:44:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [176, -832] to [191, -817] to be force loaded
+[00:44:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [176, -816] to [191, -801] to be force loaded
+[00:44:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [160, -864] to [175, -849] to be force loaded
+[00:44:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [160, -848] to [175, -833] to be force loaded
+[00:44:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [176, -864] to [191, -849] to be force loaded
+[00:44:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [176, -848] to [191, -833] to be force loaded
+[00:45:22] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:overworld
+[00:45:22] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:45:23] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:45:23] [Dimension-Data-IO-Worker-4/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:45:23] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:45:23] [Server thread/INFO]: System chat: Saved the game
+[00:45:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [192, -800] to [207, -785] to be force loaded
+[00:45:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [192, -784] to [207, -769] to be force loaded
+[00:45:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [208, -800] to [223, -785] to be force loaded
+[00:45:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [208, -784] to [223, -769] to be force loaded
+[00:45:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [192, -832] to [207, -817] to be force loaded
+[00:45:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [192, -816] to [207, -801] to be force loaded
+[00:45:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [208, -832] to [223, -817] to be force loaded
+[00:45:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:overworld from [208, -816] to [223, -801] to be force loaded
+[00:45:29] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-32, -32] to [-17, -17] to be force loaded
+[00:45:29] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-32, -16] to [-17, -1] to be force loaded
+[00:45:29] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-16, -32] to [-1, -17] to be force loaded
+[00:45:29] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-16, -16] to [-1, -1] to be force loaded
+[00:45:52] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:the_nether
+[00:45:52] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:overworld
+[00:45:52] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:45:53] [Server thread/INFO]: System chat: Saved the game
+[00:45:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-32, -64] to [-17, -49] to be force loaded
+[00:45:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-32, -48] to [-17, -33] to be force loaded
+[00:45:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-16, -64] to [-1, -49] to be force loaded
+[00:45:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-16, -48] to [-1, -33] to be force loaded
+[00:45:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-32, 0] to [-17, 15] to be force loaded
+[00:45:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-32, 16] to [-17, 31] to be force loaded
+[00:45:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-16, 0] to [-1, 15] to be force loaded
+[00:45:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [-16, 16] to [-1, 31] to be force loaded
+[00:45:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [0, -32] to [15, -17] to be force loaded
+[00:45:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [0, -16] to [15, -1] to be force loaded
+[00:45:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [16, -32] to [31, -17] to be force loaded
+[00:45:58] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [16, -16] to [31, -1] to be force loaded
+[00:46:22] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:the_nether
+[00:46:22] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:46:23] [Server thread/INFO]: System chat: Saved the game
+[00:46:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [0, -64] to [15, -49] to be force loaded
+[00:46:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [0, -48] to [15, -33] to be force loaded
+[00:46:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [16, -64] to [31, -49] to be force loaded
+[00:46:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [16, -48] to [31, -33] to be force loaded
+[00:46:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [0, 0] to [15, 15] to be force loaded
+[00:46:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [0, 16] to [15, 31] to be force loaded
+[00:46:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [16, 0] to [31, 15] to be force loaded
+[00:46:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_nether from [16, 16] to [31, 31] to be force loaded
+[00:46:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-32, -32] to [-17, -17] to be force loaded
+[00:46:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-32, -16] to [-17, -1] to be force loaded
+[00:46:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-16, -32] to [-1, -17] to be force loaded
+[00:46:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-16, -16] to [-1, -1] to be force loaded
+[00:46:52] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:the_nether
+[00:46:52] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:the_end
+[00:46:52] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:46:52] [Dimension-Data-IO-Worker-3/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:46:52] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:46:52] [Dimension-Data-IO-Worker-4/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:46:53] [Server thread/INFO]: System chat: Saved the game
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-32, 0] to [-17, 15] to be force loaded
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-32, 16] to [-17, 31] to be force loaded
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-16, 0] to [-1, 15] to be force loaded
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-16, 16] to [-1, 31] to be force loaded
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-64, -32] to [-49, -17] to be force loaded
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-64, -16] to [-49, -1] to be force loaded
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-48, -32] to [-33, -17] to be force loaded
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-48, -16] to [-33, -1] to be force loaded
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-64, 0] to [-49, 15] to be force loaded
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-64, 16] to [-49, 31] to be force loaded
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-48, 0] to [-33, 15] to be force loaded
+[00:46:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-48, 16] to [-33, 31] to be force loaded
+[00:47:22] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:the_end
+[00:47:22] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:47:22] [Server thread/INFO]: System chat: Saved the game
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-96, -32] to [-81, -17] to be force loaded
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-96, -16] to [-81, -1] to be force loaded
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-80, -32] to [-65, -17] to be force loaded
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-80, -16] to [-65, -1] to be force loaded
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-96, 0] to [-81, 15] to be force loaded
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-96, 16] to [-81, 31] to be force loaded
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-80, 0] to [-65, 15] to be force loaded
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [-80, 16] to [-65, 31] to be force loaded
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [0, -32] to [15, -17] to be force loaded
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [0, -16] to [15, -1] to be force loaded
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [16, -32] to [31, -17] to be force loaded
+[00:47:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [16, -16] to [31, -1] to be force loaded
+[00:47:52] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:the_end
+[00:47:52] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:47:52] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:47:52] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:47:52] [Dimension-Data-IO-Worker-3/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:47:52] [Server thread/INFO]: System chat: Saved the game
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [0, 0] to [15, 15] to be force loaded
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [0, 16] to [15, 31] to be force loaded
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [16, 0] to [31, 15] to be force loaded
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [16, 16] to [31, 31] to be force loaded
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [32, -32] to [47, -17] to be force loaded
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [32, -16] to [47, -1] to be force loaded
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [48, -32] to [63, -17] to be force loaded
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [48, -16] to [63, -1] to be force loaded
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [32, 0] to [47, 15] to be force loaded
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [32, 16] to [47, 31] to be force loaded
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [48, 0] to [63, 15] to be force loaded
+[00:47:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [48, 16] to [63, 31] to be force loaded
+[00:48:22] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:the_end
+[00:48:22] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:48:22] [Server thread/INFO]: System chat: Saved the game
+[00:48:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [64, -32] to [79, -17] to be force loaded
+[00:48:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [64, -16] to [79, -1] to be force loaded
+[00:48:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [80, -32] to [95, -17] to be force loaded
+[00:48:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [80, -16] to [95, -1] to be force loaded
+[00:48:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [64, 0] to [79, 15] to be force loaded
+[00:48:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [64, 16] to [79, 31] to be force loaded
+[00:48:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [80, 0] to [95, 15] to be force loaded
+[00:48:27] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [80, 16] to [95, 31] to be force loaded
+[00:48:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [96, -32] to [111, -17] to be force loaded
+[00:48:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [96, -16] to [111, -1] to be force loaded
+[00:48:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [112, -32] to [127, -17] to be force loaded
+[00:48:28] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [112, -16] to [127, -1] to be force loaded
+[00:48:52] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:the_end
+[00:48:52] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:48:52] [Dimension-Data-IO-Worker-3/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:48:52] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:48:52] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_nether\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:48:52] [Dimension-Data-IO-Worker-4/ERROR]: Could not save data to level_overrides.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_end\data\paper\level_overrides.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:48:52] [Dimension-Data-IO-Worker-2/ERROR]: Could not save data to raids.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_end\data\minecraft\raids.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:48:52] [Dimension-Data-IO-Worker-1/ERROR]: Could not save data to world_clocks.dat
+java.nio.file.FileSystemException: .\world\dimensions\minecraft\the_end\data\minecraft\world_clocks.dat: La operación solicitada no se puede realizar en un archivo con una sección asignada a usuario abierta
+	at java.base/sun.nio.fs.WindowsException.translateToIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsException.rethrowAsIOException(Unknown Source) ~[?:?]
+	at java.base/sun.nio.fs.WindowsFileSystemProvider.newByteChannel(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source) ~[?:?]
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source) ~[?:?]
+	at net.minecraft.nbt.NbtIo.writeCompressed(NbtIo.java:81) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.tryWrite(SavedDataStorage.java:211) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.storage.SavedDataStorage.lambda$scheduleSave$2(SavedDataStorage.java:179) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[?:?]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+[00:48:52] [Server thread/INFO]: System chat: Saved the game
+[00:48:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [96, 0] to [111, 15] to be force loaded
+[00:48:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [96, 16] to [111, 31] to be force loaded
+[00:48:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [112, 0] to [127, 15] to be force loaded
+[00:48:57] [Server thread/INFO]: System chat: Marked 256 chunks in minecraft:the_end from [112, 16] to [127, 31] to be force loaded
+[00:49:22] [Server thread/INFO]: System chat: Unmarked all force loaded chunks in minecraft:the_end
+[00:49:22] [Server thread/INFO]: System chat: Saving the game (this may take a moment!)
+[00:49:22] [Server thread/INFO]: System chat: Saved the game
+[00:49:41] [Server thread/INFO]: System chat: Stopping the server
+[00:49:41] [Server thread/INFO]: Stopping server
+[00:49:41] [Server thread/INFO]: [ChunkLoader] Disabling ChunkLoader v1.0.8
+[00:49:41] [Server thread/INFO]: [Essentials] Disabling Essentials v2.22.1-dev+27-e70bdb8
+[00:49:41] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.12.6
+[00:49:41] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.5.71
+[00:49:41] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
+[00:49:41] [Server thread/INFO]: [LuckPerms] Closing storage...
+[00:49:41] [Server thread/INFO]: [LuckPerms] Goodbye!
+[00:49:41] [Server thread/INFO]: [floodgate] Disabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[00:49:41] [Server thread/INFO]: Saving players
+[00:49:41] [Server thread/INFO]: Saving worlds
+[00:49:41] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:overworld'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:overworld'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:overworld'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:overworld' in 0,01s
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:overworld'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:overworld'
+[00:49:41] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_nether'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_nether'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_nether'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_nether' in 0,00s
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_nether'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_nether'
+[00:49:41] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_end'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_end'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_end'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_end' in 0,00s
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_end'
+[00:49:41] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_end'
+[00:49:41] [Server thread/INFO]: Waiting for all RegionFile I/O tasks to complete...
+[00:49:41] [Server thread/INFO]: All RegionFile I/O tasks to complete
+[00:49:41] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[00:49:41] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
+[00:49:41] [Server thread/INFO]: [Leaf] Waiting for mob spawning thread to shutdown...
+[00:49:41] [Server thread/INFO]: [Leaf] Waiting for player I/O executor to shutdown...
+[00:49:41] [Server thread/INFO]: [Leaf] Waiting for entity tracker executor to shutdown...
+[00:49:41] [Server thread/INFO]: [Leaf] Waiting for mob pathfinding executor to shutdown...

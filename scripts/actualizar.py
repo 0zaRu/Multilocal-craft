@@ -53,6 +53,7 @@ BACKUP_DIR = os.path.join(SERVER_DIR, ".upgrade-backup")
 
 UA = "0zaRu/Multilocal-craft actualizar.py"
 FILL = "https://fill.papermc.io/v3/projects/paper"
+LEAF = "https://api.leafmc.one/v2/projects/leaf"
 MODRINTH = "https://api.modrinth.com/v2"
 GEYSERMC = "https://download.geysermc.org/v2/projects"
 SMOKE_TIMEOUT = 600
@@ -146,6 +147,41 @@ def notify(title, text):
 
 
 # ------------------------------------------------------------ Paper
+
+def server_candidates(srv, current):
+    """Candidatas del servidor elegido en plugins.json ("proyecto": paper | leaf)."""
+    if srv.get("proyecto", "paper") == "leaf":
+        return leaf_candidates(current, srv.get("canales", ["default"]))
+    return paper_candidates(current)
+
+
+def leaf_candidates(current, canales):
+    """Versiones de Leaf (fork de Paper, mismos plugins) >= la actual, de la más nueva a la más vieja.
+    Para 26.x Leaf solo publica builds 'experimental': se aceptan si están en `canales`."""
+    data = http_json(LEAF)
+    versions = sorted({v for v in data["versions"] if "-" not in v and vkey(v) >= vkey(current)}, key=vkey, reverse=True)
+    out = []
+    for v in versions:
+        try:
+            builds = http_json(f"{LEAF}/versions/{v}/builds")["builds"]
+        except Exception:
+            continue
+        builds = [b for b in builds if b.get("channel", "default").lower() in canales]
+        if not builds:
+            continue
+        b = builds[-1]
+        dl = b["downloads"]["primary"]
+        try:  # Leaf no publica el Java mínimo: el de Paper para la misma versión
+            java = http_json(f"{FILL}/versions/{v}")["version"]["java"]["version"]["minimum"]
+        except Exception:
+            java = 25
+        out.append({
+            "version": v, "build": b["build"], "status": b.get("channel", "?"), "java": java,
+            "file": dl["name"], "url": f"{LEAF}/versions/{v}/builds/{b['build']}/downloads/{dl['name']}",
+            "sha256": dl["sha256"],
+        })
+    return out
+
 
 def paper_candidates(current):
     """Versiones estables de Paper >= la actual, de la más nueva a la más vieja."""
@@ -411,13 +447,13 @@ def rollback():
     save_cfg(old)
     inst = old["paper"]["installed"]
     write_env({"MC_VERSION": inst["version"], "PAPER_JAR": inst["file"], "JAVA_VERSION": str(inst["java"])})
-    say("g", f"Restaurado el backup {os.path.basename(last)} (Paper {inst['version']}).")
+    say("g", f"Restaurado el backup {os.path.basename(last)} (servidor {inst['version']}).")
     say("y", "OJO: si el mundo ya se abrió con la versión nueva, NO se puede abrir con la vieja.")
     return 0
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Actualiza Paper y los plugins de Multilocal-craft.")
+    ap = argparse.ArgumentParser(description="Actualiza el servidor (Paper o Leaf) y los plugins de Multilocal-craft.")
     ap.add_argument("--check", action="store_true", help="solo comprobar, no cambia nada")
     ap.add_argument("--yes", action="store_true", help="aplicar sin preguntar")
     ap.add_argument("--no-smoke", action="store_true", help="saltar la prueba de arranque")
@@ -430,13 +466,14 @@ def main():
     cfg = load_cfg()
     cur = cfg["paper"]["installed"]
     say("c", f"{C['b']}--- Actualizador de Multilocal-craft ---")
-    say("c", f"Instalado: Paper {cur['version']} build {cur['build']} | Geyser en modo '{geyser_mode()}'")
-    say("c", "Buscando versiones de Paper y comprobando plugins...")
+    srv = cfg["paper"].get("proyecto", "paper").capitalize()
+    say("c", f"Instalado: {srv} {cur['version']} build {cur['build']} | Geyser en modo '{geyser_mode()}'")
+    say("c", f"Buscando versiones de {srv} y comprobando plugins...")
 
     try:
-        cands = paper_candidates(cur["version"])
+        cands = server_candidates(cfg["paper"], cur["version"])
     except Exception as e:
-        say("r", f"No se pudo consultar PaperMC: {e}")
+        say("r", f"No se pudo consultar las versiones de {srv}: {e}")
         return 2
     if not cands:
         say("r", "PaperMC no devolvió ninguna versión estable.")
@@ -454,7 +491,7 @@ def main():
         break
 
     for c, bad in blocked:
-        say("y", f"\nMinecraft {c['version']} (Paper build {c['build']}) disponible, pero BLOQUEADO por:")
+        say("y", f"\nMinecraft {c['version']} ({srv} build {c['build']}) disponible, pero BLOQUEADO por:")
         for b in bad:
             say("y", f"   - {b}")
     if not target:
@@ -465,11 +502,11 @@ def main():
 
     # Informe
     print()
-    say("b", f"Versión elegida: Minecraft {target['version']} (Paper build {target['build']}, "
+    say("b", f"Versión elegida: Minecraft {target['version']} ({srv} build {target['build']}, "
              f"{target['status']}, Java {target['java']}+)")
     print(f"  {'Componente':<15} {'Instalado':<28} {'Nuevo':<28} Estado")
     same_paper = target["file"] == cur["file"]
-    print(f"  {'Paper':<15} {cur['version'] + '-' + str(cur['build']):<28} "
+    print(f"  {srv:<15} {cur['version'] + '-' + str(cur['build']):<28} "
           f"{target['version'] + '-' + str(target['build']):<28} {'igual' if same_paper else 'actualizar'}")
     changes = 0 if same_paper else 1
     for p in cfg["plugins"]:
@@ -574,6 +611,15 @@ def main():
         msg = f"Hay Minecraft {blocked[0][0]['version']}, pero algún plugin aún no lo soporta. Vuelve a probar más adelante."
         say("y", msg)
         notify("Multilocal-craft", msg)
+    # Con versión nueva de Minecraft, los chunks antiguos se convierten al cargarse (caro en el móvil):
+    # mejor convertir todo el mundo ahora, en este equipo.
+    if target["version"] != cur["version"]:
+        print()
+        if args.yes or input("¿Convertir ahora todos los chunks del mundo al formato nuevo? "
+                             "(recomendado antes de jugar desde el móvil) (S/N): ").strip().upper() == "S":
+            import convertir_mundo
+            return convertir_mundo.main()
+        say("c", "Puedes hacerlo luego con: python scripts/convertir_mundo.py (con el servidor apagado)")
     return 0
 
 

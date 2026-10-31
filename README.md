@@ -37,6 +37,13 @@ No hay que tocar ningún fichero a mano:
 - `terminar` devuelve `server-ip` a su valor original **antes de subir nada** a GitHub. Además, si detecta una IP de dispositivo en `server.properties`, no sube nada.
 - Si el dispositivo no está en la red ZeroTier, `iniciar` lo avisa y deja elegir entre seguir solo en red local o cancelar.
 
+## Servidor: Leaf (rendimiento en el móvil)
+
+El servidor es **Leaf**, un derivado de Paper con los **mismos plugins y el mismo mundo**, que reparte trabajo entre los núcleos libres. En el móvil, con 4 jugadores a 32 de visión / 20 de simulación, quita los tirones que daba Paper (resultados en [docs/pruebas-movil.md](docs/pruebas-movil.md)). Para volver a Paper: en `server 2025/plugins.json` pon `"proyecto": "paper"` y ejecuta el actualizador.
+
+- `JAVA_OPTS` en `.env`: ajustes de Java (recolector de basura afinado para el móvil). Los usan `iniciar` en terminal y Docker.
+- Memoria: `iniciar` propone **3 GB en el móvil y 6 GB en PC** (fija: mínimo = máximo).
+
 ## Actualizar el servidor y los plugins
 
 ```bash
@@ -44,7 +51,7 @@ scripts/actualizar.sh          # Linux / Mac / Termux
 scripts\actualizar.bat         # Windows (doble clic)
 ```
 
-Busca la versión de Minecraft **más nueva que soporten todos los plugins** y actualiza Paper y los plugins a ella. Si un plugin todavía no soporta la última versión, te dice cuál es y se queda en la más alta compatible (o no cambia nada). Así puedes volver a probar más adelante, cuando el plugin se haya actualizado.
+Busca la versión de Minecraft **más nueva que soporten todos los plugins** y actualiza el servidor (Leaf o Paper) y los plugins a ella. Si un plugin todavía no soporta la última versión, te dice cuál es y se queda en la más alta compatible (o no cambia nada). Así puedes volver a probar más adelante, cuando el plugin se haya actualizado.
 
 Antes de instalar:
 1. Te enseña una tabla con lo que hay instalado y lo que se va a poner, y pide confirmación.
@@ -73,3 +80,13 @@ Geyser va aparte del servidor y, con `GEYSER_MODE=ondemand` en `.env` (por defec
 - Log: en terminal, `server 2025/logs/geyser-bajo-demanda.log`; en Docker, `docker logs mc-geyser`.
 - Para tener Geyser **siempre encendido**, pon `GEYSER_MODE=siempre` en `.env`.
 - En modo terminal necesita Python, que `preparar` instala (en Termux: `pkg install python`). En Docker va dentro de su contenedor.
+
+### Convertir el mundo tras cambiar de versión
+
+Al subir de versión de Minecraft, los chunks antiguos se convierten la primera vez que alguien los visita, y en el móvil eso provoca tirones. El actualizador ofrece convertir **todo el mundo de una vez** en ese momento; también se puede hacer a mano, con el servidor apagado y en un equipo con Java:
+
+```bash
+python scripts/convertir_mundo.py
+```
+
+Carga región a región las que existan (comando `/forceload`), comprueba que todos los chunks queden en el formato nuevo y retira los bordes a medio generar que crea. No necesita plugins.
