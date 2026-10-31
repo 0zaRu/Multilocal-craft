@@ -3,7 +3,7 @@ teleportauto: false
 godmode: false
 muted: false
 jailed: false
-ip-address: 172.25.4.182
+ip-address: 172.18.0.1
 afk: false
 socialspy: false
 npc: false
@@ -16,18 +16,18 @@ timestamps:
   mute: 0
   jail: 0
   onlinejail: 0
-  logout: 1764749400031
-  login: 1764749309244
+  logout: 1793462563573
+  login: 1793462459814
 money: '0'
 last-account-name: .Ozaru33
 logoutlocation:
   world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
   world-name: world
-  x: 49.05661
-  y: 134.49998
-  z: 91.65834
-  yaw: 162.9005126953125
-  pitch: -89.89998626708984
+  x: -59.192337
+  y: 161.95192
+  z: -313.04797
+  yaw: -77.5445556640625
+  pitch: -34.80821228027344
 lastlocation:
   world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
   world-name: world
@@ -36,3 +36,4 @@ lastlocation:
   z: 933.88855
   yaw: 171.43502807617188
   pitch: 63.3955078125
+flymode: false

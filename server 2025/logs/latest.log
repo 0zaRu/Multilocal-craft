@@ -1,288 +1,198 @@
-[15:51:50] [ServerMain/INFO]: [bootstrap] Running Java 25 (OpenJDK 64-Bit Server VM 25.0.5+8-LTS; Eclipse Adoptium Temurin-25.0.5+8) on Linux 5.15.167.4-microsoft-standard-WSL2 (amd64)
-[15:51:50] [ServerMain/INFO]: [bootstrap] Loading Paper 26.3-235-main@bb10cf0 (2026-10-31T14:17:37Z) for Minecraft 26.3
-[15:51:50] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
-[15:51:51] [ServerMain/INFO]: [PluginInitializerManager] Initialized 5 plugins
-[15:51:51] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (5):
+[16:48:25] [ServerMain/INFO]: [bootstrap] Running Java 25 (OpenJDK 64-Bit Server VM 25.0.5+8-LTS; Eclipse Adoptium Temurin-25.0.5+8) on Linux 5.15.167.4-microsoft-standard-WSL2 (amd64)
+[16:48:25] [ServerMain/INFO]: [bootstrap] Loading Paper 26.3-235-main@bb10cf0 (2026-10-31T14:17:37Z) for Minecraft 26.3
+[16:48:25] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[16:48:26] [ServerMain/INFO]: [PluginInitializerManager] Initialized 5 plugins
+[16:48:26] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (5):
  - ChunkLoader (1.0.8), Essentials (2.22.1-dev+27-e70bdb8), LuckPerms (5.5.71), SkinsRestorer (15.12.6), floodgate (2.2.5-SNAPSHOT (b141-81b65cc))
-[15:51:55] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
-[15:51:55] [ServerMain/ERROR]: Failed to store properties to file: server.properties
-[15:51:55] [ServerMain/INFO]: [com.destroystokyo.paper.profile.PaperServicesDiscoveryService] Environment: Environment[discoveryUrl=https://discovery.minecraftservices.com/minecraft/client, name=PROD]
-[15:51:56] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 490.3ms
-[15:51:59] [Worker-Main-5/INFO]: Loaded 1866 advancements
-[15:52:00] [ServerMain/ERROR]: Failed to store properties to file: server.properties
-[15:52:00] [Server thread/INFO]: Starting minecraft server version 26.3
-[15:52:00] [Server thread/INFO]: Loading properties
-[15:52:00] [Server thread/INFO]: This server is running Paper version 26.3-235-main@bb10cf0 (2026-10-31T14:17:37Z) (Implementing API version 26.3.build.235-stable)
-[15:52:00] [Server thread/ERROR]: [org.bukkit.craftbukkit.CraftServer] Could not save bukkit.yml
-java.io.FileNotFoundException: bukkit.yml (Invalid argument)
+[16:48:30] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[16:48:30] [ServerMain/INFO]: [com.destroystokyo.paper.profile.PaperServicesDiscoveryService] Environment: Environment[discoveryUrl=https://discovery.minecraftservices.com/minecraft/client, name=PROD]
+[16:48:31] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 448.0ms
+[16:48:35] [Worker-Main-6/INFO]: Loaded 1866 advancements
+[16:48:35] [Server thread/INFO]: Starting minecraft server version 26.3
+[16:48:35] [Server thread/WARN]: ****************************
+[16:48:35] [Server thread/WARN]: YOU ARE RUNNING THIS SERVER AS AN ADMINISTRATIVE OR ROOT USER. THIS IS NOT ADVISED.
+[16:48:35] [Server thread/WARN]: YOU ARE OPENING YOURSELF UP TO POTENTIAL RISKS WHEN DOING THIS.
+[16:48:35] [Server thread/WARN]: FOR MORE INFORMATION, SEE https://madelinemiller.dev/blog/root-minecraft-server/
+[16:48:35] [Server thread/WARN]: ****************************
+[16:48:35] [Server thread/INFO]: Loading properties
+[16:48:35] [Server thread/INFO]: This server is running Paper version 26.3-235-main@bb10cf0 (2026-10-31T14:17:37Z) (Implementing API version 26.3.build.235-stable)
+[16:48:35] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[16:48:35] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[16:48:35] [Server thread/INFO]: Using 4 threads for Netty based IO
+[16:48:36] [Server thread/INFO]: [MoonriseCommon] Paper is using 7 worker threads, 1 I/O threads
+[16:48:36] [Server thread/INFO]: Default game type: SURVIVAL
+[16:48:36] [Server thread/INFO]: Generating keypair
+[16:48:36] [Server thread/INFO]: Starting Minecraft server on 0.0.0.0:60068
+[16:48:36] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
+[16:48:36] [Server thread/INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
+[16:48:36] [Server thread/INFO]: [floodgate] Loading server plugin floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[16:48:37] [Server thread/INFO]: [floodgate] Took 590ms to boot Floodgate
+[16:48:37] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.5.71
+[16:48:37] [Server thread/INFO]: [LuckPerms] Loading configuration...
+[16:48:37] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.12.6
+[16:48:37] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.22.1-dev+27-e70bdb8
+[16:48:37] [Server thread/INFO]: [ChunkLoader] Loading server plugin ChunkLoader v1.0.8
+[16:48:37] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[16:48:37] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.5.71
+[16:48:37] [Server thread/INFO]:         __    
+[16:48:37] [Server thread/INFO]:   |    |__)   LuckPerms v5.5.71
+[16:48:37] [Server thread/INFO]:   |___ |      Running on Bukkit - Paper
+[16:48:37] [Server thread/INFO]: 
+[16:48:38] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
+[16:48:38] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
+[16:48:38] [Server thread/INFO]: [LuckPerms] Performing initial data load...
+[16:48:38] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 1130ms)
+[16:48:38] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.12.6
+[16:48:39] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 26.3.0.
+[16:48:39] [Server thread/INFO]: [SkinsRestorer] Floodgate skin listener registered
+[16:48:40] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[16:48:40] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[16:48:40] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[16:48:40] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[16:48:40] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[16:48:40] [Server thread/INFO]: Preparing level "world"
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer   |
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |-------------------|
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode  |
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.12.6
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: c8c321f
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[16:48:40] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer or receive priority support? Become a supporter: https://skinsrestorer.net/pricing
+[16:48:41] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:overworld'...
+[16:48:41] [Server thread/INFO]: Preparing spawn area: 100%
+[16:48:41] [Server thread/INFO]: Prepared spawn area in 1 ms
+[16:48:41] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_nether'...
+[16:48:41] [Server thread/INFO]: Prepared spawn area in 0 ms
+[16:48:41] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_end'...
+[16:48:41] [Server thread/INFO]: Prepared spawn area in 0 ms
+[16:48:41] [Server thread/INFO]: Done preparing level "world" (0.896s)
+[16:48:41] [Server thread/INFO]: [floodgate] Enabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[16:48:41] [Server thread/INFO]: [Essentials] Enabling Essentials v2.22.1-dev+27-e70bdb8
+[16:48:41] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
+[16:48:41] [Server thread/INFO]: [Essentials] No kits found to migrate.
+[16:48:41] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected Modern (Registry-based) PatternType Provider as the provider for PatternTypeProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.12+ Spawner Block Provider as the provider for SpawnerBlockProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
+[16:48:41] [Server thread/INFO]: [Essentials] No provider found for BiomeKeyProvider, but it is nullable
+[16:48:41] [Server thread/INFO]: [Essentials] Selected Legacy Biome Name Provider as the provider for BiomeNameProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.21.4+ Sync Commands Provider as the provider for SyncCommandsProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected Paper 1.13+ Tile Entity Provider as the provider for TileEntityProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
+[16:48:41] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
+[16:48:42] [Server thread/WARN]: [Essentials] File plugins/Essentials/items.json has been modified by user and file version differs, please update the file manually.
+[16:48:42] [Server thread/INFO]: [Essentials] Loaded 43465 items from items.json.
+[16:48:42] [Server thread/INFO]: [Essentials] Using locale en_US
+[16:48:42] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
+[16:48:42] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
+[16:48:42] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
+[16:48:42] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
+[16:48:42] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
+[16:48:42] [Server thread/INFO]: [ChunkLoader] Enabling ChunkLoader v1.0.8
+[16:48:42] [Server thread/ERROR]: Error occurred while enabling ChunkLoader v1.0.8 (Is it up to date?)
+java.lang.RuntimeException: java.io.FileNotFoundException: plugins/ChunkLoader/lang.yml (Invalid argument)
+	at ChunkLoader-1.0.8.jar//com.liba.utils.file.FileChecker.loadFile(FileChecker.java:54) ~[?:?]
+	at ChunkLoader-1.0.8.jar//com.liba.utils.file.FileChecker.<init>(FileChecker.java:31) ~[?:?]
+	at ChunkLoader-1.0.8.jar//com.modencore.lang.Lang.<init>(Lang.java:10) ~[?:?]
+	at ChunkLoader-1.0.8.jar//com.modencore.ChunkLoader.onEnable(ChunkLoader.java:40) ~[?:?]
+	at org.bukkit.plugin.java.JavaPlugin.setEnabled(JavaPlugin.java:280) ~[paper-api-26.3.build.235-stable.jar:?]
+	at io.papermc.paper.plugin.manager.PaperPluginInstanceManager.enablePlugin(PaperPluginInstanceManager.java:201) ~[paper-26.3.jar:26.3-235-bb10cf0]
+	at io.papermc.paper.plugin.manager.PaperPluginManagerImpl.enablePlugin(PaperPluginManagerImpl.java:109) ~[paper-26.3.jar:26.3-235-bb10cf0]
+	at org.bukkit.plugin.SimplePluginManager.enablePlugin(SimplePluginManager.java:519) ~[paper-api-26.3.build.235-stable.jar:?]
+	at org.bukkit.craftbukkit.CraftServer.enablePlugin(CraftServer.java:616) ~[paper-26.3.jar:26.3-235-bb10cf0]
+	at org.bukkit.craftbukkit.CraftServer.enablePlugins(CraftServer.java:573) ~[paper-26.3.jar:26.3-235-bb10cf0]
+	at net.minecraft.server.MinecraftServer.initPostWorld(MinecraftServer.java:642) ~[paper-26.3.jar:26.3-235-bb10cf0]
+	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:343) ~[paper-26.3.jar:26.3-235-bb10cf0]
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
+	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
+	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
+Caused by: java.io.FileNotFoundException: plugins/ChunkLoader/lang.yml (Invalid argument)
 	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
 	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
 	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
 	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
 	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.bukkit.craftbukkit.CraftServer.saveConfig(CraftServer.java:489) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.bukkit.craftbukkit.CraftServer.<init>(CraftServer.java:414) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.players.PlayerList.<init>(PlayerList.java:146) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.<init>(DedicatedPlayerList.java:16) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:233) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[15:52:00] [Server thread/ERROR]: [org.bukkit.craftbukkit.CraftServer] Could not save commands.yml
-java.io.FileNotFoundException: commands.yml (Invalid argument)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.bukkit.craftbukkit.CraftServer.saveCommandsConfig(CraftServer.java:497) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.bukkit.craftbukkit.CraftServer.<init>(CraftServer.java:426) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.players.PlayerList.<init>(PlayerList.java:146) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.<init>(DedicatedPlayerList.java:16) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:233) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[15:52:00] [Server thread/ERROR]: [org.bukkit.craftbukkit.CraftServer] Could not save commands.yml
-java.io.FileNotFoundException: commands.yml (Invalid argument)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.bukkit.craftbukkit.CraftServer.saveCommandsConfig(CraftServer.java:497) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.bukkit.craftbukkit.CraftServer.<init>(CraftServer.java:446) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.players.PlayerList.<init>(PlayerList.java:146) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.<init>(DedicatedPlayerList.java:16) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:233) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[15:52:00] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[15:52:00] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[15:52:00] [Server thread/INFO]: Using 4 threads for Netty based IO
-[15:52:00] [Server thread/ERROR]: Could not save spigot.yml
-java.io.FileNotFoundException: spigot.yml (Invalid argument)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:99) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotConfig.init(SpigotConfig.java:73) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:234) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[15:52:01] [Server thread/INFO]: [MoonriseCommon] Paper is using 7 worker threads, 1 I/O threads
-[15:52:01] [Server thread/ERROR]: Could not save spigot.yml
-java.io.FileNotFoundException: spigot.yml (Invalid argument)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:99) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.configuration.PaperConfigurations$1.init(PaperConfigurations.java:157) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.<init>(SpigotWorldConfig.java:21) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.configuration.PaperConfigurations$1.<init>(PaperConfigurations.java:154) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.configuration.PaperConfigurations.lambda$static$1(PaperConfigurations.java:154) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at com.google.common.base.Suppliers$NonSerializableMemoizingSupplier.get(Suppliers.java:194) ~[guava-33.6.0-jre.jar:?]
-	at io.papermc.paper.configuration.PaperConfigurations.lambda$createWorldConfigLoaderBuilder$1(PaperConfigurations.java:267) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spongepowered.configurate.ConfigurationOptions.serializers(ConfigurationOptions.java:165) ~[configurate-core-4.2.0.jar:?]
-	at io.papermc.paper.configuration.PaperConfigurations.lambda$createWorldConfigLoaderBuilder$0(PaperConfigurations.java:259) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spongepowered.configurate.loader.AbstractConfigurationLoader$Builder.defaultOptions(AbstractConfigurationLoader.java:530) ~[configurate-core-4.2.0.jar:?]
-	at io.papermc.paper.configuration.PaperConfigurations.createWorldConfigLoaderBuilder(PaperConfigurations.java:257) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.configuration.Configurations.createDefaultWorldLoader(Configurations.java:186) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.configuration.Configurations.initializeWorldDefaultsConfiguration(Configurations.java:166) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:239) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[15:52:01] [Server thread/WARN]: Failed to save ip banlist: 
-java.io.FileNotFoundException: banned-ips.json (Invalid argument)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at com.google.common.io.Files.newWriter(Files.java:107) ~[guava-33.6.0-jre.jar:?]
-	at net.minecraft.server.players.StoredUserList.save(StoredUserList.java:132) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.saveIpBanList(DedicatedPlayerList.java:43) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.loadAndSaveFiles(DedicatedPlayerList.java:27) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:246) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[15:52:01] [Server thread/WARN]: Failed to save operators list: 
-java.io.FileNotFoundException: ops.json (Invalid argument)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at com.google.common.io.Files.newWriter(Files.java:107) ~[guava-33.6.0-jre.jar:?]
-	at net.minecraft.server.players.StoredUserList.save(StoredUserList.java:132) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.saveOps(DedicatedPlayerList.java:83) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedPlayerList.loadAndSaveFiles(DedicatedPlayerList.java:30) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:246) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[15:52:01] [Server thread/INFO]: Default game type: SURVIVAL
-[15:52:01] [Server thread/INFO]: Generating keypair
-[15:52:01] [Server thread/INFO]: Starting Minecraft server on 0.0.0.0:60068
-[15:52:01] [Server thread/INFO]: Paper: Using libdeflate (Linux x86_64) compression from Velocity.
-[15:52:01] [Server thread/INFO]: Paper: Using OpenSSL 3.x.x (Linux x86_64) cipher from Velocity.
-[15:52:01] [Server thread/INFO]: [floodgate] Loading server plugin floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
-[15:52:02] [Server thread/INFO]: [floodgate] Took 621ms to boot Floodgate
-[15:52:02] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.5.71
-[15:52:02] [Server thread/INFO]: [LuckPerms] Loading configuration...
-[15:52:02] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.12.6
-[15:52:02] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.22.1-dev+27-e70bdb8
-[15:52:02] [Server thread/INFO]: [ChunkLoader] Loading server plugin ChunkLoader v1.0.8
-[15:52:03] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[15:52:03] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.5.71
-[15:52:03] [Server thread/INFO]:         __    
-[15:52:03] [Server thread/INFO]:   |    |__)   LuckPerms v5.5.71
-[15:52:03] [Server thread/INFO]:   |___ |      Running on Bukkit - Paper
-[15:52:03] [Server thread/INFO]: 
-[15:52:03] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
-[15:52:04] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
-[15:52:04] [Server thread/INFO]: [LuckPerms] Performing initial data load...
-[15:52:04] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 1382ms)
-[15:52:04] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.12.6
-[15:52:05] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 26.3.0.
-[15:52:05] [Server thread/INFO]: [SkinsRestorer] Floodgate skin listener registered
-[15:52:05] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[15:52:05] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[15:52:05] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[15:52:05] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[15:52:05] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[15:52:05] [Server thread/INFO]: Preparing level "world"
-[15:52:06] [Server thread/ERROR]: Could not save spigot.yml
-java.io.FileNotFoundException: spigot.yml (Invalid argument)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:99) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.init(SpigotWorldConfig.java:36) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.<init>(SpigotWorldConfig.java:21) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.world.level.Level.<init>(Level.java:852) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.level.ServerLevel.<init>(ServerLevel.java:639) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.createLevel(MinecraftServer.java:706) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorld(PaperWorldLoader.java:168) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorlds(PaperWorldLoader.java:126) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.loadLevel(MinecraftServer.java:612) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:339) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer   |
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |-------------------|
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode  |
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.12.6
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: c8c321f
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[15:52:06] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer or receive priority support? Become a supporter: https://skinsrestorer.net/pricing
-[15:52:06] [Server thread/ERROR]: Could not save spigot.yml
-java.io.FileNotFoundException: spigot.yml (Invalid argument)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:99) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.init(SpigotWorldConfig.java:36) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.<init>(SpigotWorldConfig.java:21) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.world.level.Level.<init>(Level.java:852) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.level.ServerLevel.<init>(ServerLevel.java:639) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.createLevel(MinecraftServer.java:737) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorld(PaperWorldLoader.java:168) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorlds(PaperWorldLoader.java:131) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.loadLevel(MinecraftServer.java:612) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:339) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[15:52:06] [Server thread/ERROR]: Could not save spigot.yml
-java.io.FileNotFoundException: spigot.yml (Invalid argument)
-	at java.base/java.io.FileOutputStream.open0(Native Method) ~[?:?]
-	at java.base/java.io.FileOutputStream.open(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at java.base/java.io.FileOutputStream.<init>(Unknown Source) ~[?:?]
-	at org.bukkit.configuration.file.FileConfiguration.save(FileConfiguration.java:67) ~[paper-api-26.3.build.235-stable.jar:?]
-	at org.spigotmc.SpigotConfig.readConfig(SpigotConfig.java:99) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.init(SpigotWorldConfig.java:36) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at org.spigotmc.SpigotWorldConfig.<init>(SpigotWorldConfig.java:21) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.world.level.Level.<init>(Level.java:852) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.level.ServerLevel.<init>(ServerLevel.java:639) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.createLevel(MinecraftServer.java:737) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorld(PaperWorldLoader.java:168) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at io.papermc.paper.world.PaperWorldLoader.loadInitialWorlds(PaperWorldLoader.java:131) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.loadLevel(MinecraftServer.java:612) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.dedicated.DedicatedServer.initServer(DedicatedServer.java:339) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:1249) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at net.minecraft.server.MinecraftServer.lambda$spin$0(MinecraftServer.java:299) ~[paper-26.3.jar:26.3-235-bb10cf0]
-	at java.base/java.lang.Thread.run(Unknown Source) ~[?:?]
-[15:52:07] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:overworld'...
-[15:52:07] [Server thread/INFO]: Prepared spawn area in 0 ms
-[15:52:07] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_nether'...
-[15:52:07] [Server thread/INFO]: Prepared spawn area in 0 ms
-[15:52:07] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_end'...
-[15:52:07] [Server thread/INFO]: Prepared spawn area in 1 ms
-[15:52:07] [Server thread/INFO]: Done preparing level "world" (1.171s)
-[15:52:07] [Server thread/INFO]: [floodgate] Enabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
-[15:52:07] [Server thread/INFO]: [Essentials] Enabling Essentials v2.22.1-dev+27-e70bdb8
-[15:52:07] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
-[15:52:07] [Server thread/INFO]: [Essentials] No kits found to migrate.
-[15:52:07] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected Modern (Registry-based) PatternType Provider as the provider for PatternTypeProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
-[15:52:07] [Server thread/INFO]: [Essentials] No provider found for BiomeKeyProvider, but it is nullable
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected Paper 1.13+ Tile Entity Provider as the provider for TileEntityProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.21.4+ Sync Commands Provider as the provider for SyncCommandsProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected Legacy Biome Name Provider as the provider for BiomeNameProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.12+ Spawner Block Provider as the provider for SpawnerBlockProvider
-[15:52:07] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
-[15:52:08] [Server thread/WARN]: [Essentials] File plugins/Essentials/items.json has been modified by user and file version differs, please update the file manually.
-[15:52:08] [Server thread/INFO]: [Essentials] Loaded 43465 items from items.json.
-[15:52:08] [Server thread/INFO]: [Essentials] Using locale en_US
-[15:52:08] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
-[15:52:08] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
-[15:52:08] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
-[15:52:08] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
-[15:52:08] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
-[15:52:08] [Server thread/INFO]: [ChunkLoader] Enabling ChunkLoader v1.0.8
-[15:52:08] [Server thread/INFO]: [spark] Starting background profiler...
-[15:52:08] [Server thread/INFO]: Starting remote control listener
-[15:52:08] [Server thread/INFO]: Thread RCON Listener started
-[15:52:08] [Server thread/INFO]: RCON running on 0.0.0.0:25575
-[15:52:08] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[15:52:08] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[15:52:08] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[15:52:08] [Server thread/INFO]: Running delayed init tasks
-[15:52:08] [Craft Scheduler Thread - 1 - Essentials/INFO]: [Essentials] Fetching version information...
-[15:52:08] [Server thread/INFO]: Done (19.835s)! For help, type "help"
+	at ChunkLoader-1.0.8.jar//com.liba.utils.file.FileChecker.loadFile(FileChecker.java:52) ~[?:?]
+	... 14 more
+[16:48:42] [Server thread/INFO]: [ChunkLoader] Disabling ChunkLoader v1.0.8
+[16:48:42] [Server thread/INFO]: [spark] Starting background profiler...
+[16:48:42] [Server thread/INFO]: Starting remote control listener
+[16:48:42] [Server thread/INFO]: Thread RCON Listener started
+[16:48:42] [Server thread/INFO]: RCON running on 0.0.0.0:25575
+[16:48:42] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[16:48:42] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[16:48:42] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[16:48:42] [Server thread/INFO]: Running delayed init tasks
+[16:48:42] [Craft Scheduler Thread - 3 - Essentials/INFO]: [Essentials] Fetching version information...
+[16:48:42] [Server thread/INFO]: Done (18.366s)! For help, type "help"
+[16:48:56] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[16:48:56] [RCON Client /127.0.0.1 #2/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[16:48:56] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[16:48:58] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
+[16:49:00] [RCON Client /127.0.0.1 #3/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[16:52:52] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[16:52:52] [RCON Client /127.0.0.1 #4/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[16:52:52] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[16:52:53] [Server thread/INFO]: System chat: [Rcon: Saved the game]
+[16:52:53] [RCON Client /127.0.0.1 #5/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[16:52:53] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[16:52:53] [Server thread/INFO]: System chat: [Rcon: Stopping the server]
+[16:52:53] [RCON Client /127.0.0.1 #6/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[16:52:53] [Server thread/INFO]: Stopping server
+[16:52:53] [RCON Listener #1/INFO]: Thread RCON Client /127.0.0.1 started
+[16:52:53] [RCON Client /127.0.0.1 #7/INFO]: Thread RCON Client /127.0.0.1 shutting down
+[16:52:53] [Server thread/INFO]: [Essentials] Disabling Essentials v2.22.1-dev+27-e70bdb8
+[16:52:53] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.12.6
+[16:52:53] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.5.71
+[16:52:53] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
+[16:52:53] [Server thread/INFO]: [LuckPerms] Closing storage...
+[16:52:53] [Server thread/INFO]: [LuckPerms] Goodbye!
+[16:52:53] [Server thread/INFO]: [floodgate] Disabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[16:52:53] [Server thread/INFO]: Saving players
+[16:52:53] [Server thread/INFO]: Saving worlds
+[16:52:53] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:overworld'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:overworld'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:overworld'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:overworld' in 0.00s
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:overworld'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:overworld'
+[16:52:53] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_nether'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_nether'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_nether'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_nether' in 0.00s
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_nether'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_nether'
+[16:52:53] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_end'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_end'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_end'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_end' in 0.00s
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_end'
+[16:52:53] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_end'
+[16:52:53] [Server thread/INFO]: Waiting for all RegionFile I/O tasks to complete...
+[16:52:53] [Server thread/INFO]: All RegionFile I/O tasks to complete
+[16:52:53] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[16:52:53] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...

@@ -43,7 +43,7 @@ for stream in (sys.stdout, sys.stderr):
     except Exception:
         pass
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # carpeta del repo (padre de scripts/)
 SERVER_DIR = os.path.join(ROOT, "server 2025")
 PLUGINS_DIR = os.path.join(SERVER_DIR, "plugins")
 GEYSER_DIR = os.path.join(SERVER_DIR, "geyser")
@@ -119,9 +119,11 @@ def read_env():
 def write_env(values):
     env = read_env()
     env.update(values)
+    env = {k: v for k, v in env.items() if v is not None}  # None = quitar la clave
     lines = [
-        "# Lo actualiza actualizar.py. Docker Compose lo lee automáticamente.",
-        "# GEYSER_MODE: ondemand (Geyser solo se enciende cuando un móvil se conecta) o plugin (siempre encendido).",
+        "# Lo actualiza scripts/actualizar.py (versiones). Lo leen los scripts y Docker Compose.",
+        "# GEYSER_MODE: ondemand (Geyser solo se enciende cuando un jugador de Bedrock se conecta) o siempre.",
+        "# ZEROTIER_RED / ZEROTIER_ID: red ZeroTier del servidor; iniciar usa la IP de este dispositivo dentro de ella.",
     ]
     lines += [f"{k}={v}" for k, v in env.items()]
     with open(ENV_FILE, "w", encoding="utf-8", newline="\n") as f:
@@ -133,10 +135,8 @@ def geyser_mode():
 
 
 def plugin_dir_for(p):
-    """Dónde vive el jar del plugin: Geyser en modo bajo demanda va fuera de plugins/."""
-    if p["name"] == "Geyser" and geyser_mode() == "ondemand":
-        return GEYSER_DIR
-    return PLUGINS_DIR
+    """Dónde vive el jar: Geyser va aparte (Geyser Standalone), fuera de plugins/."""
+    return GEYSER_DIR if p["name"] == "Geyser" else PLUGINS_DIR
 
 
 def notify(title, text):
@@ -209,9 +209,7 @@ def resolve_geysermc(p, mc):
     # GeyserMC no publica qué versiones de MC soporta cada build; Modrinth sí.
     if not modrinth_versions(p["compat_modrinth"], mc, p.get("compat_loaders")):
         return {"status": "bloquea", "note": f"no hay versión para Minecraft {mc}"}
-    platform = p.get("platform")
-    if p["name"] == "Geyser":
-        platform = "standalone" if geyser_mode() == "ondemand" else "spigot"
+    platform = "standalone" if p["name"] == "Geyser" else p.get("platform")
     b = http_json(f"{GEYSERMC}/{p['project']}/versions/latest/builds/latest")
     dl = b["downloads"][platform]
     return {"status": "ok", "version": f"{b['version']}-b{b['build']}", "file": dl["name"],
@@ -324,15 +322,6 @@ def smoke_test(paper, jars, java_min):
             name = plugin_name_in_jar(j)
             if name:
                 expected.append(name)
-        # Geyser como plugin escucharía en el mismo puerto UDP que el servidor real
-        gcfg = os.path.join(tmp, "plugins", "Geyser-Spigot", "config.yml")
-        if os.path.exists(gcfg):
-            with open(gcfg, encoding="utf-8") as f:
-                txt = f.read()
-            txt = re.sub(r"(?m)^(\s+port:\s*)\d+", lambda m: m.group(1) + str(free_port()), txt, count=1)
-            with open(gcfg, "w", encoding="utf-8") as f:
-                f.write(txt)
-
         java, major = find_java()
         if java and major >= java_min:
             cmd = [java, "-Xms1G", "-Xmx2G", "-jar", "server.jar", "--nogui"]
@@ -573,8 +562,7 @@ def main():
                               "location": "plugin" if d == PLUGINS_DIR else "geyser"}
         save_cfg(cfg)
         write_env({"MC_VERSION": target["version"], "PAPER_JAR": target["file"],
-                   "JAVA_VERSION": str(target["java"]), "GEYSER_MODE": geyser_mode(),
-                   "COMPOSE_PROFILES": "geyser-ondemand" if geyser_mode() == "ondemand" else ""})
+                   "JAVA_VERSION": str(target["java"]), "GEYSER_MODE": geyser_mode()})
     finally:
         shutil.rmtree(staging, ignore_errors=True)
 
