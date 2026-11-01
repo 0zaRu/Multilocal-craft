@@ -95,9 +95,10 @@ def es_android():
 
 def debian_proot_con_java():
     """¿Hay un Debian de proot-distro con Java dentro? (para Geyser con NetherNet en Android)"""
-    raiz = os.path.join(os.environ.get("PREFIX", "/data/data/com.termux/files/usr"),
-                        "var", "lib", "proot-distro", "installed-rootfs", "debian")
-    return shutil.which("proot-distro") is not None and os.path.lexists(os.path.join(raiz, "usr", "bin", "java"))
+    base = os.path.join(os.environ.get("PREFIX", "/data/data/com.termux/files/usr"), "var", "lib", "proot-distro")
+    raices = (os.path.join(base, "containers", "debian", "rootfs"),   # proot-distro nuevo
+              os.path.join(base, "installed-rootfs", "debian"))        # proot-distro antiguo
+    return shutil.which("proot-distro") is not None and         any(os.path.lexists(os.path.join(r, "usr", "bin", "java")) for r in raices)
 
 
 def config_generada(workdir, java_address=None, escuchar=None, anunciar=None, transporte=None):
