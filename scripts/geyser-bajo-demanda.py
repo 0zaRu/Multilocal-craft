@@ -88,7 +88,11 @@ def bind_all(host, port, webrtc):
     raise SystemExit(f"No se pueden abrir los puertos {port}/{webrtc}: ¿hay otro Geyser encendido?")
 
 
-def config_generada(workdir, java_address=None, escuchar=None, anunciar=None):
+def es_android():
+    return os.path.exists("/system/bin/app_process") or "ANDROID_ROOT" in os.environ
+
+
+def config_generada(workdir, java_address=None, escuchar=None, anunciar=None, transporte=None):
     """Copia de config.yml con la IP de este equipo y la dirección del servidor Java.
 
     - escuchar: IP en la que escucha Geyser (bedrock.address).
@@ -107,6 +111,8 @@ def config_generada(workdir, java_address=None, escuchar=None, anunciar=None):
             lines[i] = f"  address: {java_address}\n"
         elif section == "bedrock" and escuchar and re.match(r"  address:", line):
             lines[i] = f"  address: {escuchar}\n"
+        elif section == "bedrock" and transporte and re.match(r"  transport:", line):
+            lines[i] = f"  transport: {transporte}\n"
         elif section == "bedrock" and anunciar and re.match(r"    advertise-addresses:", line):
             lines[i] = f'    advertise-addresses: ["{anunciar}"]\n'
     name = "config-generado.yml"
@@ -175,8 +181,11 @@ def run_geyser(args, workdir):
     """
     cmd = [args.java, f"-Xmx{args.xmx}", "-Duser.language=en", "-Duser.country=US",
            "-jar", args.jar, "--nogui"]
-    if args.java_address or args.escuchar or args.anunciar:
-        cmd += ["-c", config_generada(workdir, args.java_address, args.escuchar, args.anunciar)]
+    if args.transporte == "auto":
+        # NetherNet usa una librería nativa (libdatachannel) que no funciona en Android: allí, solo RakNet
+        args.transporte = "raknet" if es_android() else None
+    if args.java_address or args.escuchar or args.anunciar or args.transporte:
+        cmd += ["-c", config_generada(workdir, args.java_address, args.escuchar, args.anunciar, args.transporte)]
     proc = subprocess.Popen(cmd, cwd=workdir, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace")
     lock = threading.Lock()
@@ -288,6 +297,7 @@ def main():
     ap.add_argument("--escuchar", help="IP de este equipo en la que escuchar (la de ZeroTier); por defecto todas")
     ap.add_argument("--anunciar", help="IP que se anuncia a los clientes NetherNet (la de ZeroTier)")
     ap.add_argument("--siempre", action="store_true", help="Geyser siempre encendido (sin bajo demanda)")
+    ap.add_argument("--transporte", default="auto", help="raknet | nethernet | both | auto (raknet en Android)")
     ap.add_argument("--idle-min", type=float, default=3, help="minutos sin jugadores antes de apagar Geyser")
     ap.add_argument("--check-every", type=float, default=120,
                     help="segundos entre comprobaciones de seguridad ('geyser list')")
