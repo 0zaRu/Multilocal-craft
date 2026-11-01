@@ -20,6 +20,10 @@ check_java()   { buscar_java; }
 check_docker() { command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; }
 check_dockerd(){ docker info >/dev/null 2>&1; }
 check_termuxapi() { command -v termux-wake-lock >/dev/null 2>&1; }
+# Geyser necesita NetherNet (librería nativa solo para glibc): en Android corre dentro de un Debian (proot)
+check_geyserdebian() {
+    command -v proot-distro >/dev/null 2>&1 &&         [ -L "$PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/bin/java" -o -e "$PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/bin/java" ]
+}
 zerotier_instalado() {
     command -v zerotier-cli >/dev/null 2>&1 && return 0
     [ "$SO" = windows ] && { [ -d "/c/ProgramData/ZeroTier" ] || [ -d "/c/Program Files (x86)/ZeroTier" ]; } && return 0
@@ -40,6 +44,7 @@ cmd_instalar() {
         termux:python)    echo "pkg install -y python" ;;
         termux:java)      echo "pkg install -y openjdk-$v" ;;
         termux:termuxapi) echo "pkg install -y termux-api" ;;
+        termux:geyserdebian) echo "pkg install -y proot-distro libandroid-shmem proot && { [ -d \$PREFIX/var/lib/proot-distro/installed-rootfs/debian ] || proot-distro install debian; } && proot-distro login debian -- bash -c 'apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-$v-jre-headless'" ;;
         debian:git)       echo "$SUDO apt-get update && $SUDO apt-get install -y git" ;;
         debian:python)    echo "$SUDO apt-get update && $SUDO apt-get install -y python3" ;;
         debian:java)      echo "$SUDO apt-get update && $SUDO apt-get install -y openjdk-$v-jre-headless" ;;
@@ -89,6 +94,7 @@ comprobar() {
         check_python; fila python "Python 3.8+" $? "${PYTHON:+($PYTHON)}"
         check_java;   fila java "Java $JAVA_VERSION+" $? "(encontrado: ${JAVA_MAJOR:-ninguno})"
         [ "$SO" = termux ] && { check_termuxapi; fila termuxapi "termux-api (wake-lock)" $? "(instala también la app Termux:API)"; }
+        [ "$SO" = termux ] && { check_geyserdebian; fila geyserdebian "Debian (proot) para Geyser" $? "(Bedrock actual usa NetherNet: necesita glibc)"; }
     else
         check_docker; fila docker "Docker + docker compose" $?
         if check_docker; then
