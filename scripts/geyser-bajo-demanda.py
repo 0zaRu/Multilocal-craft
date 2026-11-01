@@ -22,6 +22,7 @@ import os
 import random
 import re
 import select
+import shlex
 import shutil
 import signal
 import socket
@@ -90,6 +91,13 @@ def bind_all(host, port, webrtc):
 
 def es_android():
     return os.path.exists("/system/bin/app_process") or "ANDROID_ROOT" in os.environ
+
+
+def debian_proot_con_java():
+    """¿Hay un Debian de proot-distro con Java dentro? (para Geyser con NetherNet en Android)"""
+    raiz = os.path.join(os.environ.get("PREFIX", "/data/data/com.termux/files/usr"),
+                        "var", "lib", "proot-distro", "installed-rootfs", "debian")
+    return shutil.which("proot-distro") is not None and os.path.lexists(os.path.join(raiz, "usr", "bin", "java"))
 
 
 def config_generada(workdir, java_address=None, escuchar=None, anunciar=None, transporte=None):
@@ -179,13 +187,22 @@ def run_geyser(args, workdir):
     entra antes, se cancela. Como red de seguridad, cada args.check_every segundos se pregunta
     a Geyser ("geyser list") por si se ha perdido algún evento.
     """
-    cmd = [args.java, f"-Xmx{args.xmx}", "-Duser.language=en", "-Duser.country=US",
-           "-jar", args.jar, "--nogui"]
+    jvm = [f"-Xmx{args.xmx}", "-Duser.language=en", "-Duser.country=US", "-jar", args.jar, "--nogui"]
+    # NetherNet (el protocolo actual de Bedrock) usa una librería nativa (libdatachannel) que solo existe
+    # para Linux con glibc. En Android (bionic) Geyser se ejecuta dentro de un Debian en proot si lo hay;
+    # si no, solo RakNet (los clientes Bedrock actuales ya no se conectarán).
+    proot = es_android() and debian_proot_con_java()
     if args.transporte == "auto":
-        # NetherNet usa una librería nativa (libdatachannel) que no funciona en Android: allí, solo RakNet
-        args.transporte = "raknet" if es_android() else None
+        args.transporte = "raknet" if es_android() and not proot else None
+        if args.transporte == "raknet":
+            log("AVISO: sin Debian (proot) con Java no hay NetherNet: Bedrock actual no podrá entrar. Ejecuta scripts/preparar.")
     if args.java_address or args.escuchar or args.anunciar or args.transporte:
-        cmd += ["-c", config_generada(workdir, args.java_address, args.escuchar, args.anunciar, args.transporte)]
+        jvm += ["-c", config_generada(workdir, args.java_address, args.escuchar, args.anunciar, args.transporte)]
+    if proot:
+        interno = "cd /geyser && exec java " + " ".join(shlex.quote(a) for a in jvm)
+        cmd = ["proot-distro", "login", "debian", "--bind", f"{workdir}:/geyser", "--", "bash", "-c", interno]
+    else:
+        cmd = [args.java, *jvm]
     proc = subprocess.Popen(cmd, cwd=workdir, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                             stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace")
     lock = threading.Lock()
