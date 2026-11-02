@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Not a software project: it is a **shared Minecraft server whose world is synced through git**. Each player deploys the server on their own device in turns (PC with Docker or plain Java, or an Android phone with Termux), plays, then commits and pushes the world back. Players connect over a ZeroTier network; there is no lock or "someone is already hosting" check, so players coordinate who hosts. There is no build step. Project text (README, scripts, commit messages) is in Spanish.
 
 - Server: **Leaf 26.3** (Paper fork, same plugins/world; `server 2025/plugins.json` → `paper.proyecto: leaf`, accepting `experimental` builds since that's all Leaf ships for 26.x), **Java 25**. Chosen from phone load tests: see `docs/pruebas-movil.md`. spark is built in.
-- Plugins (`server 2025/plugins/`): EssentialsX (dev build: no stable release supports 26.3 yet), Floodgate, LuckPerms, SkinsRestorer, ChunkLoader. Geyser runs **outside** Paper as Geyser Standalone (`server 2025/geyser/`).
+- Plugins (`server 2025/plugins/`): EssentialsX (dev build: no stable release supports 26.3 yet), Floodgate, LuckPerms, SkinsRestorer, ChunkLoader, OpenShulk, Chestsort+. Geyser runs **outside** Paper as Geyser Standalone (`server 2025/geyser/`).
 - Branches: `main`, `mobile-version`, `try-update` (test branch). Work goes on a new branch.
 - Everything must keep working in both Docker and plain terminal (Windows via Git Bash, Linux, Termux).
 
@@ -69,6 +69,8 @@ Not a software project: it is a **shared Minecraft server whose world is synced 
 
 - Homes: 1 per player (`sethome-multiple` all 1 in `plugins/Essentials/config.yml`; `essentials.sethome.multiple` removed from LuckPerms group `default`). Existing extra homes were kept.
 - ChunkLoader: players craft the block (obsidian, diamonds and an ender eye, in `plugins/ChunkLoader/config.yml`). `chunkloader.admin` is op-only, with a limit of 5 per player. It uses Paper chunk tickets, so removing the plugin leaves the world intact.
+- OpenShulk: right-click a shulker in the inventory opens it (contents stay in the item's vanilla `container` component; no database).
+- Chestsort+: off by default for each player; each enables it and picks the shortcut in `/chestsort`. Needs `chestsort.use`, granted to LuckPerms group `default`. Settings live in each player's data (ignored if the plugin is removed).
 
 ## Known issues
 
