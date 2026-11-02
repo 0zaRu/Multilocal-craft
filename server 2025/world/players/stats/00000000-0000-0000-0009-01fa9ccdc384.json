@@ -1,9 +1,30 @@
 {
   "stats": {
-    "minecraft:dropped": {
-      "minecraft:cherry_planks": 1,
-      "minecraft:sand": 4,
-      "minecraft:water_bucket": 1
+    "minecraft:picked_up": {
+      "minecraft:poppy": 1,
+      "minecraft:sand": 12,
+      "minecraft:torch": 1,
+      "minecraft:iron_ingot": 50
+    },
+    "minecraft:custom": {
+      "minecraft:time_since_rest": 39188,
+      "minecraft:walk_one_cm": 38410,
+      "minecraft:leave_game": 23,
+      "minecraft:walk_under_water_one_cm": 277,
+      "minecraft:damage_dealt": 10,
+      "minecraft:play_time": 122354,
+      "minecraft:jump": 128,
+      "minecraft:time_since_death": 122354,
+      "minecraft:aviate_one_cm": 3030670,
+      "minecraft:drop": 6,
+      "minecraft:sprint_one_cm": 19561,
+      "minecraft:open_chest": 32,
+      "minecraft:sleep_in_bed": 1,
+      "minecraft:total_world_time": 122354,
+      "minecraft:fly_one_cm": 1379110,
+      "minecraft:walk_on_water_one_cm": 4078,
+      "minecraft:crouch_one_cm": 165,
+      "minecraft:sneak_time": 1835
     },
     "minecraft:used": {
       "minecraft:sand": 6,
@@ -12,33 +33,12 @@
       "minecraft:oak_sign": 1,
       "minecraft:torch": 3,
       "minecraft:cherry_planks": 2,
-      "minecraft:firework_rocket": 486
+      "minecraft:firework_rocket": 707
     },
-    "minecraft:custom": {
-      "minecraft:time_since_rest": 30613,
-      "minecraft:walk_one_cm": 33627,
-      "minecraft:leave_game": 21,
-      "minecraft:walk_under_water_one_cm": 277,
-      "minecraft:damage_dealt": 10,
-      "minecraft:play_time": 113779,
-      "minecraft:jump": 123,
-      "minecraft:time_since_death": 113779,
-      "minecraft:aviate_one_cm": 2522194,
-      "minecraft:drop": 6,
-      "minecraft:sprint_one_cm": 18035,
-      "minecraft:open_chest": 32,
-      "minecraft:sleep_in_bed": 1,
-      "minecraft:total_world_time": 113779,
-      "minecraft:fly_one_cm": 1334732,
-      "minecraft:walk_on_water_one_cm": 4078,
-      "minecraft:crouch_one_cm": 165,
-      "minecraft:sneak_time": 1776
-    },
-    "minecraft:picked_up": {
-      "minecraft:poppy": 1,
-      "minecraft:sand": 12,
-      "minecraft:torch": 1,
-      "minecraft:iron_ingot": 50
+    "minecraft:dropped": {
+      "minecraft:cherry_planks": 1,
+      "minecraft:sand": 4,
+      "minecraft:water_bucket": 1
     }
   },
   "DataVersion": 5023
