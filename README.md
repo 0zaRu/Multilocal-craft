@@ -44,6 +44,12 @@ El servidor es **Leaf**, un derivado de Paper con los **mismos plugins y el mism
 - `JAVA_OPTS` en `.env`: ajustes de Java (recolector de basura afinado para el móvil). Los usan `iniciar` en terminal y Docker.
 - Memoria: `iniciar` propone **3 GB en el móvil y 6 GB en PC** (fija: mínimo = máximo).
 
+## Plugins para jugar
+
+- **Shulkers:** clic derecho sobre una shulker en el inventario para abrirla sin colocarla (OpenShulk).
+- **Ordenar inventario y cofres:** cada jugador lo activa una vez con `/chestsort` y elige el atajo (Shift + clic o doble clic en un hueco vacío). Ahí también están la ordenación automática y la transferencia rápida (Chestsort+).
+- **Cargador de chunks:** se fabrica con obsidiana, diamantes y un ojo de Ender; máximo 5 por jugador (ChunkLoader).
+
 ## Actualizar el servidor y los plugins
 
 ```bash
