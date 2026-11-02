@@ -63,3 +63,77 @@
 [12:23:49] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
 [12:23:53] [Server thread/INFO]: System chat: [Rcon: Saved the game]
 [12:23:53] [RCON Client /172.25.96.6 #3/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[12:24:25] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[12:24:25] [Server thread/INFO]: System chat: [Rcon: Automatic saving is now enabled]
+[12:24:25] [RCON Client /172.25.96.6 #4/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[12:29:15] [Server thread/INFO]: OzaRu_ issued server command: /tp Zehn
+[12:30:21] [Server thread/INFO]: OzaRu_ issued server command: /home bed
+[12:30:24] [Server thread/INFO]: Zehn issued server command: /tp OzaRu_
+[12:43:37] [Server thread/INFO]: OzaRu_ issued server command: /tp Zehn
+[12:47:25] [Server thread/INFO]: OzaRu_ issued server command: /tp Zehn
+[12:47:40] [Server thread/INFO]: Villager Villager['Farmer'/124146, uuid='387f30b3-9d5c-46a7-8301-84e4bac79de4', l='ServerLevel[world]', x=154.50, y=95.00, z=-6.30, cpos=[9, -1], tl=36063, v=true] died, message: 'Farmer was slain by Zombie'
+[12:48:22] [Server thread/INFO]: Villager Villager['Farmer'/124149, uuid='af556e05-5e78-4e87-8b75-aac7b7cdba40', l='ServerLevel[world]', x=156.50, y=95.00, z=-6.30, cpos=[9, -1], tl=36903, v=true] died, message: 'Farmer was slain by Zombie'
+[13:16:07] [Server thread/INFO]: Zehn issued server command: /tp OzaRu_
+[13:18:50] [Server thread/INFO]: OzaRu_ issued server command: /home casa
+[13:19:00] [Server thread/INFO]: OzaRu_ issued server command: /tp Zehn
+[13:19:24] [Server thread/INFO]: OzaRu_ lost connection: Disconnected
+[13:19:24] [Server thread/INFO]: System chat: OzaRu_ left the game
+[13:25:22] [User Authenticator #12/INFO]: UUID of player OzaRu_ is 8204ab11-f427-375c-9615-89acd5e664bc
+[13:25:23] [Server thread/INFO]: System chat: OzaRu_ joined the game
+[13:25:23] [Server thread/INFO]: OzaRu_[/172.25.11.143:60059] logged in with entity id 165429 at ([minecraft:overworld]-37.2295944130133, 169.0, -309.30422280644706)
+[13:28:12] [Server thread/INFO]: Zehn lost connection: Disconnected
+[13:28:12] [Server thread/INFO]: System chat: Zehn left the game
+[13:28:37] [Server thread/INFO]: OzaRu_ issued server command: /home casa
+[13:28:52] [Server thread/INFO]: OzaRu_ issued server command: /home bed
+[13:30:27] [Server thread/INFO]: OzaRu_ lost connection: Disconnected
+[13:30:28] [Server thread/INFO]: System chat: OzaRu_ left the game
+[16:09:35] [RCON Client /172.25.96.6 #5/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[16:09:35] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[16:09:35] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[16:09:36] [Server thread/INFO]: System chat: [Rcon: Saved the game]
+[16:09:36] [RCON Client /172.25.96.6 #6/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[16:09:36] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[16:09:36] [Server thread/INFO]: System chat: [Rcon: Stopping the server]
+[16:09:36] [RCON Client /172.25.96.6 #7/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[16:09:36] [Server thread/INFO]: Stopping server
+[16:09:36] [Server thread/INFO]: [ChunkLoader] Disabling ChunkLoader v1.0.8
+[16:09:36] [Server thread/INFO]: [Essentials] Disabling Essentials v2.22.1-dev+27-e70bdb8
+[16:09:36] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.12.6
+[16:09:36] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.5.71
+[16:09:36] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
+[16:09:36] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[16:09:36] [RCON Client /172.25.96.6 #8/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[16:09:36] [Server thread/INFO]: [LuckPerms] Closing storage...
+[16:09:36] [Server thread/INFO]: [LuckPerms] Goodbye!
+[16:09:36] [Server thread/INFO]: [floodgate] Disabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[16:09:36] [Server thread/INFO]: Saving players
+[16:09:36] [Server thread/INFO]: Saving worlds
+[16:09:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:overworld'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:overworld'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:overworld'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:overworld' in 0.01s
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:overworld'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:overworld'
+[16:09:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_nether'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_nether'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_nether'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_nether' in 0.00s
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_nether'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_nether'
+[16:09:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_end'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_end'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_end'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_end' in 0.00s
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_end'
+[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_end'
+[16:09:36] [Server thread/INFO]: Waiting for all RegionFile I/O tasks to complete...
+[16:09:36] [Server thread/INFO]: All RegionFile I/O tasks to complete
+[16:09:36] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[16:09:36] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
+[16:09:36] [Server thread/INFO]: [Leaf] Waiting for mob spawning thread to shutdown...
+[16:09:36] [Server thread/INFO]: [Leaf] Waiting for player I/O executor to shutdown...
+[16:09:36] [Server thread/INFO]: [Leaf] Waiting for entity tracker executor to shutdown...
+[16:09:36] [Server thread/INFO]: [Leaf] Waiting for mob pathfinding executor to shutdown...
