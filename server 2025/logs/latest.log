@@ -1,139 +1,311 @@
-[09:30:12] [User Authenticator #7/INFO]: UUID of player Zehn is 23f103c4-7a66-3c98-adee-f82abf015296
-[09:30:14] [Server thread/INFO]: System chat: Zehn joined the game
-[09:30:14] [Server thread/INFO]: Zehn[/172.25.80.49:62733] logged in with entity id 50442 at ([minecraft:overworld]-57.536811298214836, 108.0, -23.562151654054347)
-[09:30:51] [Server thread/INFO]: Zehn lost connection: Disconnected
-[09:30:51] [Server thread/INFO]: System chat: Zehn left the game
-[09:31:45] [User Authenticator #8/INFO]: UUID of player Zehn is 23f103c4-7a66-3c98-adee-f82abf015296
-[09:31:46] [Server thread/INFO]: System chat: Zehn joined the game
-[09:31:46] [Server thread/INFO]: Zehn[/172.25.80.49:62780] logged in with entity id 51536 at ([minecraft:overworld]-71.78453316843124, 108.0, -23.869768727931426)
-[09:46:52] [Server thread/INFO]: Zehn lost connection: Disconnected
-[09:46:52] [Server thread/INFO]: System chat: Zehn left the game
-[09:49:49] [User Authenticator #9/INFO]: UUID of player Zehn is 23f103c4-7a66-3c98-adee-f82abf015296
-[09:49:50] [Server thread/INFO]: System chat: Zehn joined the game
-[09:49:50] [Server thread/INFO]: Zehn[/172.25.80.49:64561] logged in with entity id 54877 at ([minecraft:overworld]-22.379335825315703, 281.0, -130.78315306085153)
-[09:51:52] [Server thread/INFO]: Zehn lost connection: Disconnected
-[09:51:52] [Server thread/INFO]: System chat: Zehn left the game
-[09:52:11] [User Authenticator #10/INFO]: UUID of player Zehn is 23f103c4-7a66-3c98-adee-f82abf015296
-[09:52:12] [Server thread/INFO]: System chat: Zehn joined the game
-[09:52:12] [Server thread/INFO]: Zehn[/172.25.80.49:64607] logged in with entity id 56413 at ([minecraft:overworld]-34.141001701783296, 161.0, -114.70644136689262)
-[10:04:33] [Server thread/INFO]: [floodgate] Floodgate player logged in as .Ozaru33 joined (UUID: 00000000-0000-0000-0009-01fa9ccdc384)
-[10:04:33] [Server thread/INFO]: System chat: .Ozaru33 joined the game
-[10:04:33] [Server thread/INFO]: .Ozaru33[/172.25.4.182:33224] logged in with entity id 60503 at ([minecraft:overworld]324.97986, 79.84972, -1178.3728)
-[10:05:22] [Async Chat Thread - #2/INFO]: [Not Secure] <.Ozaru33> ei, estoy desayunando pero que bien va desde bedrock
-[10:05:39] [Async Chat Thread - #5/INFO]: [Not Secure] <Zehn> bedrock es un sacrilegio
-[10:06:23] [Async Chat Thread - #8/INFO]: [Not Secure] <Zehn> ya arregle la granja de creepers
-[10:06:49] [Async Chat Thread - #11/INFO]: [Not Secure] <Zehn> igualmente habria que moverla en algun momento que los zombis de la de hierro roban algun espacio de spawn de zombies
-[10:06:55] [Async Chat Thread - #14/INFO]: [Not Secure] <Zehn> creepers*
-[10:08:09] [Server thread/INFO]: Zehn issued server command: /home casa
-[10:09:20] [Server thread/INFO]: .Ozaru33 issued server command: /tpa zehn
-[10:09:30] [Server thread/INFO]: Zehn issued server command: /tpaccept
-[10:09:40] [Async Chat Thread - #17/INFO]: [Not Secure] <Zehn> tienes antorchas?
-[10:10:00] [Async Chat Thread - #20/INFO]: [Not Secure] <.Ozaru33> en bedrock estoy en creativo porque está en testing todavia
-[10:11:00] [Server thread/INFO]: .Ozaru33 lost connection: Disconnected
-[10:11:00] [Netty NIO IO #0/INFO]: [floodgate] Floodgate player logged in as .Ozaru33 disconnected
-[10:11:00] [Server thread/INFO]: System chat: .Ozaru33 left the game
-[10:40:34] [User Authenticator #11/INFO]: UUID of player OzaRu_ is 8204ab11-f427-375c-9615-89acd5e664bc
-[10:40:34] [Server thread/INFO]: System chat: OzaRu_ joined the game
-[10:40:34] [Server thread/INFO]: OzaRu_[/172.25.11.143:50539] logged in with entity id 72970 at ([minecraft:overworld]-145.84632100421823, 90.0, -267.4569045288462)
-[10:41:07] [Server thread/INFO]: Villager Villager['Villager'/56933, uuid='c939d810-3a43-46c2-98b2-0af14700f689', l='ServerLevel[world]', x=46.89, y=134.49, z=102.88, cpos=[2, 6], tl=55984, v=true] died, message: 'Villager was squished too much'
-[10:43:08] [Server thread/INFO]: OzaRu_ issued server command: /chunkloader giveblock Zehn
-[10:47:33] [Server thread/INFO]: Zehn issued server command: /home casa
-[10:48:32] [Server thread/INFO]: Zehn issued server command: /tp OzaRu_
-[10:48:44] [Async Chat Thread - #23/INFO]: [Not Secure] <Zehn> mñaolsd
-[10:48:56] [Server thread/INFO]: OzaRu_ issued server command: /time set day
-[11:01:07] [Server thread/INFO]: OzaRu_ issued server command: /home casa
-[11:01:10] [Server thread/INFO]: Zehn issued server command: /home casa
-[11:02:11] [Server thread/INFO]: OzaRu_ issued server command: /home casa
-[11:14:31] [Server thread/INFO]: OzaRu_ issued server command: /home casa
-[11:35:42] [Server thread/INFO]: OzaRu_ issued server command: /home desierto
-[11:36:09] [Server thread/INFO]: Zehn issued server command: /tp OzaRu_
-[11:36:25] [Server thread/INFO]: Zehn issued server command: /home casa
-[11:36:57] [Server thread/INFO]: Zehn issued server command: /tp OzaRu_
-[11:37:13] [Server thread/INFO]: OzaRu_ issued server command: /home bed
-[11:46:52] [Server thread/INFO]: Zehn issued server command: /tp OzaRu_
-[11:50:50] [Server thread/INFO]: Zehn issued server command: /home casa
-[11:58:40] [Server thread/INFO]: OzaRu_ issued server command: /tp Zehn
-[12:01:36] [Server thread/INFO]: System chat: OzaRu_ fell from a high place
-[12:18:30] [Server thread/INFO]: Zehn issued server command: /home casa
-[12:18:42] [Server thread/WARN]: Zehn moved wrongly!, (0.0)
-[12:21:04] [Server thread/INFO]: OzaRu_ issued server command: /home casa
-[12:23:49] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[12:23:49] [Server thread/INFO]: System chat: [Rcon: Automatic saving is now disabled]
-[12:23:49] [RCON Client /172.25.96.6 #2/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[12:23:49] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[12:23:53] [Server thread/INFO]: System chat: [Rcon: Saved the game]
-[12:23:53] [RCON Client /172.25.96.6 #3/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[12:24:25] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[12:24:25] [Server thread/INFO]: System chat: [Rcon: Automatic saving is now enabled]
-[12:24:25] [RCON Client /172.25.96.6 #4/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[12:29:15] [Server thread/INFO]: OzaRu_ issued server command: /tp Zehn
-[12:30:21] [Server thread/INFO]: OzaRu_ issued server command: /home bed
-[12:30:24] [Server thread/INFO]: Zehn issued server command: /tp OzaRu_
-[12:43:37] [Server thread/INFO]: OzaRu_ issued server command: /tp Zehn
-[12:47:25] [Server thread/INFO]: OzaRu_ issued server command: /tp Zehn
-[12:47:40] [Server thread/INFO]: Villager Villager['Farmer'/124146, uuid='387f30b3-9d5c-46a7-8301-84e4bac79de4', l='ServerLevel[world]', x=154.50, y=95.00, z=-6.30, cpos=[9, -1], tl=36063, v=true] died, message: 'Farmer was slain by Zombie'
-[12:48:22] [Server thread/INFO]: Villager Villager['Farmer'/124149, uuid='af556e05-5e78-4e87-8b75-aac7b7cdba40', l='ServerLevel[world]', x=156.50, y=95.00, z=-6.30, cpos=[9, -1], tl=36903, v=true] died, message: 'Farmer was slain by Zombie'
-[13:16:07] [Server thread/INFO]: Zehn issued server command: /tp OzaRu_
-[13:18:50] [Server thread/INFO]: OzaRu_ issued server command: /home casa
-[13:19:00] [Server thread/INFO]: OzaRu_ issued server command: /tp Zehn
-[13:19:24] [Server thread/INFO]: OzaRu_ lost connection: Disconnected
-[13:19:24] [Server thread/INFO]: System chat: OzaRu_ left the game
-[13:25:22] [User Authenticator #12/INFO]: UUID of player OzaRu_ is 8204ab11-f427-375c-9615-89acd5e664bc
-[13:25:23] [Server thread/INFO]: System chat: OzaRu_ joined the game
-[13:25:23] [Server thread/INFO]: OzaRu_[/172.25.11.143:60059] logged in with entity id 165429 at ([minecraft:overworld]-37.2295944130133, 169.0, -309.30422280644706)
-[13:28:12] [Server thread/INFO]: Zehn lost connection: Disconnected
-[13:28:12] [Server thread/INFO]: System chat: Zehn left the game
-[13:28:37] [Server thread/INFO]: OzaRu_ issued server command: /home casa
-[13:28:52] [Server thread/INFO]: OzaRu_ issued server command: /home bed
-[13:30:27] [Server thread/INFO]: OzaRu_ lost connection: Disconnected
-[13:30:28] [Server thread/INFO]: System chat: OzaRu_ left the game
-[16:09:35] [RCON Client /172.25.96.6 #5/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[16:09:35] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[16:09:35] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[16:09:36] [Server thread/INFO]: System chat: [Rcon: Saved the game]
-[16:09:36] [RCON Client /172.25.96.6 #6/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[16:09:36] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[16:09:36] [Server thread/INFO]: System chat: [Rcon: Stopping the server]
-[16:09:36] [RCON Client /172.25.96.6 #7/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[16:09:36] [Server thread/INFO]: Stopping server
-[16:09:36] [Server thread/INFO]: [ChunkLoader] Disabling ChunkLoader v1.0.8
-[16:09:36] [Server thread/INFO]: [Essentials] Disabling Essentials v2.22.1-dev+27-e70bdb8
-[16:09:36] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.12.6
-[16:09:36] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.5.71
-[16:09:36] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
-[16:09:36] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[16:09:36] [RCON Client /172.25.96.6 #8/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[16:09:36] [Server thread/INFO]: [LuckPerms] Closing storage...
-[16:09:36] [Server thread/INFO]: [LuckPerms] Goodbye!
-[16:09:36] [Server thread/INFO]: [floodgate] Disabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
-[16:09:36] [Server thread/INFO]: Saving players
-[16:09:36] [Server thread/INFO]: Saving worlds
-[16:09:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:overworld'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:overworld'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:overworld'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:overworld' in 0.01s
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:overworld'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:overworld'
-[16:09:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_nether'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_nether'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_nether'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_nether' in 0.00s
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_nether'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_nether'
-[16:09:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_end'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_end'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_end'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_end' in 0.00s
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_end'
-[16:09:36] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_end'
-[16:09:36] [Server thread/INFO]: Waiting for all RegionFile I/O tasks to complete...
-[16:09:36] [Server thread/INFO]: All RegionFile I/O tasks to complete
-[16:09:36] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
-[16:09:36] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
-[16:09:36] [Server thread/INFO]: [Leaf] Waiting for mob spawning thread to shutdown...
-[16:09:36] [Server thread/INFO]: [Leaf] Waiting for player I/O executor to shutdown...
-[16:09:36] [Server thread/INFO]: [Leaf] Waiting for entity tracker executor to shutdown...
-[16:09:36] [Server thread/INFO]: [Leaf] Waiting for mob pathfinding executor to shutdown...
+[16:14:09] [ServerMain/INFO]: [bootstrap] Running Java 25 (OpenJDK 64-Bit Server VM 25.0.5; Termux null) on Linux 4.19.191-ga0b12ea684b3 (aarch64)
+[16:14:09] [ServerMain/INFO]: [bootstrap] Loading Leaf 26.3-13-ver/26.3@66f99f8 (2026-10-26T03:02:06Z) for Minecraft 26.3
+[16:14:09] [ServerMain/INFO]: [LeafConfig] Loading config...
+[16:14:09] [ServerMain/INFO]: [LeafConfig] Using 2 threads for Async Pathfinding
+[16:14:09] [ServerMain/INFO]: [LeafConfig] Using 4 threads for Async Entity Tracker
+[16:14:09] [ServerMain/WARN]: [LeafConfig] You have following experimental module(s) enabled: [MultithreadedTracker.enabled], please proceed with caution!
+[16:14:09] [ServerMain/INFO]: [LeafConfig] Successfully loaded config in 313ms.
+[16:14:09] [CrashReport preload thread/ERROR]: [oshi.software.os.linux.LinuxOperatingSystem] Did not JNA classes. Investigate incompatible version or missing native dll.
+[16:14:09] [CrashReport preload thread/WARN]: Failed retrieving info for group processor
+java.lang.NoClassDefFoundError: Could not initialize class com.sun.jna.Native
+	at com.sun.jna.NativeLong.<clinit>(NativeLong.java:35) ~[jna-5.17.0.jar:5.17.0 (b0)]
+	at oshi.util.FileUtil.readNativeLongFromBuffer(FileUtil.java:253) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.driver.linux.proc.Auxv.queryAuxv(Auxv.java:48) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.software.os.linux.LinuxOperatingSystem.<clinit>(LinuxOperatingSystem.java:131) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.platform.linux.LinuxCentralProcessor.initProcessorCounts(LinuxCentralProcessor.java:174) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.common.AbstractCentralProcessor.<init>(AbstractCentralProcessor.java:68) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.platform.linux.LinuxCentralProcessor.<init>(LinuxCentralProcessor.java:59) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.platform.linux.LinuxHardwareAbstractionLayer.createProcessor(LinuxHardwareAbstractionLayer.java:43) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.util.Memoizer$1.get(Memoizer.java:65) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.common.AbstractHardwareAbstractionLayer.getProcessor(AbstractHardwareAbstractionLayer.java:48) ~[oshi-core-6.9.0.jar:6.9.0]
+	at net.minecraft.SystemReport.lambda$putHardware$0(SystemReport.java:105) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.putHardware(SystemReport.java:105) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.lambda$new$6(SystemReport.java:67) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.<init>(SystemReport.java:67) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.CrashReport.<init>(CrashReport.java:33) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.CrashReport.preload(CrashReport.java:241) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.lang.Thread.run(Thread.java:1474) ~[?:?]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.UnsatisfiedLinkError: /data/data/com.termux/files/home/.cache/JNA/temp/jna1285574914137279413.tmp: dlopen failed: library "libc.so.6" not found: needed by /data/data/com.termux/files/home/.cache/JNA/temp/jna1285574914137279413.tmp in namespace (default) [in thread "ServerMain"]
+	at java.base/jdk.internal.loader.NativeLibraries.load(Native Method) ~[?:?]
+	at java.base/jdk.internal.loader.NativeLibraries$NativeLibraryImpl.open(NativeLibraries.java:321) ~[?:?]
+	at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibraries.java:187) ~[?:?]
+	at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibraries.java:129) ~[?:?]
+	at java.base/java.lang.ClassLoader.loadLibrary(ClassLoader.java:2245) ~[?:?]
+	at java.base/java.lang.Runtime.load0(Runtime.java:767) ~[?:?]
+	at java.base/java.lang.System.load(System.java:1647) ~[?:?]
+	at com.sun.jna.Native.loadNativeDispatchLibraryFromClasspath(Native.java:1041) ~[jna-5.17.0.jar:5.17.0 (b0)]
+	at com.sun.jna.Native.loadNativeDispatchLibrary(Native.java:1011) ~[jna-5.17.0.jar:5.17.0 (b0)]
+	at com.sun.jna.Native.<clinit>(Native.java:221) ~[jna-5.17.0.jar:5.17.0 (b0)]
+	at ca.spottedleaf.concurrentutil.numa.LinuxNuma$LibNuma.<clinit>(LinuxNuma.java:167) ~[concurrentutil-1.3.2.jar:?]
+	at ca.spottedleaf.concurrentutil.numa.LinuxNuma.<clinit>(LinuxNuma.java:19) ~[concurrentutil-1.3.2.jar:?]
+	at ca.spottedleaf.concurrentutil.numa.OSNuma.getNativeInstance(OSNuma.java:11) ~[concurrentutil-1.3.2.jar:?]
+	at net.minecraft.util.Util.maxAllowedExecutorThreads(Util.java:241) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.util.Util.makeExecutor(Util.java:203) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.util.Util.<clinit>(Util.java:106) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.util.Mth.<clinit>(Mth.java:35) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.world.level.NaturalSpawner.<clinit>(NaturalSpawner.java:61) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at org.dreeam.leaf.config.modules.opt.ThrottleNaturalMobSpawning.onLoaded(ThrottleNaturalMobSpawning.java:28) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at org.dreeam.leaf.config.ConfigModule.initModules(ConfigModule.java:30) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at org.dreeam.leaf.config.LeafConfig.loadConfig(LeafConfig.java:113) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at org.dreeam.leaf.config.LeafConfig.loadConfig(LeafConfig.java:96) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.server.Main.main(Main.java:105) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at io.papermc.paper.PaperBootstrap.boot(PaperBootstrap.java:25) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at org.bukkit.craftbukkit.Main.main(Main.java:217) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at io.papermc.paperclip.Paperclip.lambda$main$0(Paperclip.java:42) ~[?:?]
+	... 1 more
+[16:14:09] [CrashReport preload thread/WARN]: Failed retrieving info for group memory
+java.lang.NoClassDefFoundError: Could not initialize class oshi.software.os.linux.LinuxOperatingSystem
+	at oshi.hardware.platform.linux.LinuxGlobalMemory.<clinit>(LinuxGlobalMemory.java:28) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.platform.linux.LinuxHardwareAbstractionLayer.createMemory(LinuxHardwareAbstractionLayer.java:38) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.util.Memoizer$1.get(Memoizer.java:65) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.common.AbstractHardwareAbstractionLayer.getMemory(AbstractHardwareAbstractionLayer.java:60) ~[oshi-core-6.9.0.jar:6.9.0]
+	at net.minecraft.SystemReport.lambda$putHardware$2(SystemReport.java:107) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.putHardware(SystemReport.java:107) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.lambda$new$6(SystemReport.java:67) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.<init>(SystemReport.java:67) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.CrashReport.<init>(CrashReport.java:33) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.CrashReport.preload(CrashReport.java:241) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.lang.Thread.run(Thread.java:1474) ~[?:?]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.NoClassDefFoundError: Could not initialize class com.sun.jna.Native [in thread "CrashReport preload thread"]
+	at com.sun.jna.NativeLong.<clinit>(NativeLong.java:35) ~[jna-5.17.0.jar:5.17.0 (b0)]
+	at oshi.util.FileUtil.readNativeLongFromBuffer(FileUtil.java:253) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.driver.linux.proc.Auxv.queryAuxv(Auxv.java:48) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.software.os.linux.LinuxOperatingSystem.<clinit>(LinuxOperatingSystem.java:131) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.platform.linux.LinuxCentralProcessor.initProcessorCounts(LinuxCentralProcessor.java:174) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.common.AbstractCentralProcessor.<init>(AbstractCentralProcessor.java:68) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.platform.linux.LinuxCentralProcessor.<init>(LinuxCentralProcessor.java:59) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.platform.linux.LinuxHardwareAbstractionLayer.createProcessor(LinuxHardwareAbstractionLayer.java:43) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.util.Memoizer$1.get(Memoizer.java:65) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.common.AbstractHardwareAbstractionLayer.getProcessor(AbstractHardwareAbstractionLayer.java:48) ~[oshi-core-6.9.0.jar:6.9.0]
+	at net.minecraft.SystemReport.lambda$putHardware$0(SystemReport.java:105) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.putHardware(SystemReport.java:105) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	... 6 more
+[16:14:09] [CrashReport preload thread/WARN]: Failed retrieving info for group software
+java.lang.NoClassDefFoundError: Could not initialize class oshi.software.os.linux.LinuxOperatingSystem
+	at oshi.SystemInfo.createOperatingSystem(SystemInfo.java:85) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.util.Memoizer$1.get(Memoizer.java:65) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.SystemInfo.getOperatingSystem(SystemInfo.java:76) ~[oshi-core-6.9.0.jar:6.9.0]
+	at net.minecraft.SystemReport.putSoftware(SystemReport.java:112) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.lambda$new$7(SystemReport.java:68) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.<init>(SystemReport.java:68) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.CrashReport.<init>(CrashReport.java:33) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.CrashReport.preload(CrashReport.java:241) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at java.base/java.lang.Thread.run(Thread.java:1474) ~[?:?]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.NoClassDefFoundError: Could not initialize class com.sun.jna.Native [in thread "CrashReport preload thread"]
+	at com.sun.jna.NativeLong.<clinit>(NativeLong.java:35) ~[jna-5.17.0.jar:5.17.0 (b0)]
+	at oshi.util.FileUtil.readNativeLongFromBuffer(FileUtil.java:253) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.driver.linux.proc.Auxv.queryAuxv(Auxv.java:48) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.software.os.linux.LinuxOperatingSystem.<clinit>(LinuxOperatingSystem.java:131) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.platform.linux.LinuxCentralProcessor.initProcessorCounts(LinuxCentralProcessor.java:174) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.common.AbstractCentralProcessor.<init>(AbstractCentralProcessor.java:68) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.platform.linux.LinuxCentralProcessor.<init>(LinuxCentralProcessor.java:59) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.platform.linux.LinuxHardwareAbstractionLayer.createProcessor(LinuxHardwareAbstractionLayer.java:43) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.util.Memoizer$1.get(Memoizer.java:65) ~[oshi-core-6.9.0.jar:6.9.0]
+	at oshi.hardware.common.AbstractHardwareAbstractionLayer.getProcessor(AbstractHardwareAbstractionLayer.java:48) ~[oshi-core-6.9.0.jar:6.9.0]
+	at net.minecraft.SystemReport.lambda$putHardware$0(SystemReport.java:105) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.putHardware(SystemReport.java:105) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.lambda$new$6(SystemReport.java:67) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	at net.minecraft.SystemReport.<init>(SystemReport.java:67) ~[leaf-26.3.jar:26.3-13-66f99f8]
+	... 3 more
+[16:14:09] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[16:14:10] [ServerMain/INFO]: [PluginInitializerManager] Initialized 7 plugins
+[16:14:10] [ServerMain/INFO]: [PluginInitializerManager] Paper plugins (1):
+ - chestsort-plus (0.6.0)
+[16:14:10] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (6):
+ - ChunkLoader (1.0.8), Essentials (2.22.1-dev+27-e70bdb8), LuckPerms (5.5.71), OpenShulk (1.2.0), SkinsRestorer (15.12.6), floodgate (2.2.5-SNAPSHOT (b141-81b65cc))
+[16:14:17] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[16:14:17] [ServerMain/INFO]: [com.destroystokyo.paper.profile.PaperServicesDiscoveryService] Environment: Environment[discoveryUrl=https://discovery.minecraftservices.com/minecraft/client, name=PROD]
+[16:14:18] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 1,155.7ms
+[16:14:21] [Worker-Main-1/INFO]: Loaded 1866 advancements
+[16:14:21] [ServerMain/INFO]: Resource reload finished after 8 ms
+[16:14:21] [ServerMain/INFO]: ServerFunctionLibrary took approximately 3 tasks/1 ms (2 tasks/1 ms preparing, 1 tasks/0 ms applying)
+[16:14:21] [ServerMain/INFO]: Total blocking time: 0 ms
+[16:14:22] [Server thread/INFO]: Starting minecraft server version 26.3
+[16:14:22] [Server thread/INFO]: Loading properties
+[16:14:22] [Server thread/INFO]: This server is running Leaf version 26.3-13-ver/26.3@66f99f8 (2026-10-26T03:02:06Z) (Implementing API version 26.3.build.13-alpha)
+[16:14:22] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[16:14:23] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[16:14:23] [Server thread/INFO]: Using 4 threads for Netty based IO
+[16:14:23] [Server thread/INFO]: [MoonriseCommon] Paper is using 2 worker threads, 1 I/O threads
+[16:14:24] [Server thread/INFO]: Default game type: SURVIVAL
+[16:14:24] [Server thread/INFO]: Generating keypair
+[16:14:24] [Server thread/INFO]: Starting Minecraft server on 172.25.96.6:60068
+[16:14:24] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[16:14:24] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[16:14:24] [Server thread/WARN]: [io.netty.util.internal.MacAddressUtil] Failed to find a usable hardware address from the network interfaces; using random bytes: d4:ee:fb:00:ec:47:32:c2
+[16:14:24] [Server thread/INFO]: [floodgate] Loading server plugin floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[16:14:25] [Server thread/WARN]: [floodgate] en_ is not a supported Floodgate language.
+[16:14:25] [Server thread/INFO]: [floodgate] Took 1,179ms to boot Floodgate
+[16:14:25] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.5.71
+[16:14:26] [Server thread/INFO]: [LuckPerms] Loading configuration...
+[16:14:26] [Server thread/INFO]: [OpenShulk] Loading server plugin OpenShulk v1.2.0
+[16:14:26] [Server thread/INFO]: [chestsort-plus] Loading server plugin chestsort-plus v0.6.0
+[16:14:26] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.12.6
+[16:14:26] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.22.1-dev+27-e70bdb8
+[16:14:26] [Server thread/INFO]: [ChunkLoader] Loading server plugin ChunkLoader v1.0.8
+[16:14:26] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[16:14:26] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.5.71
+[16:14:26] [Server thread/INFO]:         __    
+[16:14:26] [Server thread/INFO]:   |    |__)   LuckPerms v5.5.71
+[16:14:26] [Server thread/INFO]:   |___ |      Running on Bukkit - Leaf
+[16:14:26] [Server thread/INFO]: 
+[16:14:26] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
+[16:14:27] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
+[16:14:27] [Server thread/INFO]: [LuckPerms] Performing initial data load...
+[16:14:27] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 1462ms)
+[16:14:27] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.12.6
+[16:14:29] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 26.3.0.
+[16:14:29] [Server thread/INFO]: [SkinsRestorer] Floodgate skin listener registered
+[16:14:30] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[16:14:30] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[16:14:30] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[16:14:30] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[16:14:30] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[16:14:30] [Server thread/INFO]: Preparing level "world"
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer   |
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |-------------------|
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode  |
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.12.6
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: c8c321f
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[16:14:30] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer or receive priority support? Become a supporter: https://skinsrestorer.net/pricing
+[16:14:31] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:overworld'...
+[16:14:31] [Server thread/INFO]: Preparing spawn area: 100%
+[16:14:31] [Server thread/INFO]: Prepared spawn area in 2 ms
+[16:14:31] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_nether'...
+[16:14:31] [Server thread/INFO]: Prepared spawn area in 1 ms
+[16:14:31] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_end'...
+[16:14:31] [Server thread/INFO]: Prepared spawn area in 0 ms
+[16:14:31] [Server thread/INFO]: Done preparing level "world" (1.262s)
+[16:14:31] [Server thread/INFO]: [floodgate] Enabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[16:14:32] [Server thread/INFO]: [OpenShulk] Enabling OpenShulk v1.2.0
+[16:14:32] [Server thread/INFO]: [OpenShulk] OpenShulk plugin enabled!
+[16:14:32] [Server thread/INFO]: [chestsort-plus] Enabling chestsort-plus v0.6.0
+[16:14:33] [Server thread/INFO]: [Essentials] Enabling Essentials v2.22.1-dev+27-e70bdb8
+[16:14:33] [Server thread/ERROR]: [Essentials] You are running a server fork that is known to be extremely dangerous and lead to data loss. It is strongly recommended you switch to a more stable server software like Paper.
+[16:14:33] [Server thread/INFO]: [Essentials] Status determining class: brand:Leaf
+[16:14:33] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
+[16:14:33] [Server thread/INFO]: [Essentials] No kits found to migrate.
+[16:14:33] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
+[16:14:33] [Server thread/INFO]: [Essentials] No provider found for BiomeKeyProvider, but it is nullable
+[16:14:33] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected Paper 1.13+ Tile Entity Provider as the provider for TileEntityProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.21.4+ Sync Commands Provider as the provider for SyncCommandsProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected Legacy Biome Name Provider as the provider for BiomeNameProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected Modern (Registry-based) PatternType Provider as the provider for PatternTypeProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected 1.12+ Spawner Block Provider as the provider for SpawnerBlockProvider
+[16:14:33] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
+[16:14:34] [Server thread/INFO]: [Essentials] Loaded 48578 items from items.json.
+[16:14:34] [Server thread/INFO]: [Essentials] Using locale en
+[16:14:34] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
+[16:14:34] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
+[16:14:34] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
+[16:14:34] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
+[16:14:34] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
+[16:14:34] [Server thread/INFO]: [ChunkLoader] Enabling ChunkLoader v1.0.8
+[16:14:34] [Server thread/INFO]: [spark] Starting background profiler...
+[16:14:34] [Server thread/WARN]: [spark] Unable to initialise the async-profiler engine: A runtime error occurred whilst loading the native library (/data/data/com.termux/files/home/Multilocal-craft/server 2025/plugins/spark/tmp/spark-9a5ae6126645-libasyncProfiler.so.tmp: dlopen failed: library "libdl.so.2" not found: needed by /data/data/com.termux/files/home/Multilocal-craft/server 2025/plugins/spark/tmp/spark-9a5ae6126645-libasyncProfiler.so.tmp in namespace (default))
+[16:14:34] [Server thread/WARN]: [spark] Please see here for more information: https://spark.lucko.me/docs/misc/Using-async-profiler
+[16:14:34] [Server thread/INFO]: Starting remote control listener
+[16:14:35] [Server thread/INFO]: Thread RCON Listener started
+[16:14:35] [Server thread/INFO]: RCON running on 172.25.96.6:25575
+[16:14:35] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[16:14:35] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[16:14:35] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[16:14:35] [Server thread/INFO]: Running delayed init tasks
+[16:14:35] [Craft Scheduler Thread - 3 - Essentials/INFO]: [Essentials] Fetching version information...
+[16:14:35] [Server thread/INFO]: Done (27.763s)! For help, type "help"
+[16:14:37] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[16:14:37] [RCON Client /172.25.96.6 #2/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[16:14:46] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[16:14:46] [RCON Client /172.25.96.6 #3/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[16:14:46] [luckperms-worker-0/INFO]: [LP] EXPORT > Gathering group data...
+[16:14:47] [luckperms-worker-0/INFO]: [LP] EXPORT > Gathering track data...
+[16:14:47] [luckperms-worker-0/INFO]: [LP] EXPORT > Gathering user data...
+[16:14:47] [luckperms-worker-0/INFO]: [LP] EXPORT > Finding a list of unique users to export.
+[16:14:47] [luckperms-worker-0/INFO]: [LP] EXPORT > Found 1 unique users to export.
+[16:14:47] [luckperms-worker-0/INFO]: [LP] EXPORT > Finished gathering data, writing file...
+[16:14:47] [luckperms-worker-0/INFO]: [LP] Successfully exported to /data/data/com.termux/files/home/Multilocal-craft/server 2025/plugins/LuckPerms/permcheck.json.gz.
+[16:17:35] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[16:17:35] [RCON Client /172.25.96.6 #4/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[16:17:35] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[16:17:36] [Server thread/INFO]: System chat: [Rcon: Saved the game]
+[16:17:36] [RCON Client /172.25.96.6 #5/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[16:17:36] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[16:17:36] [Server thread/INFO]: System chat: [Rcon: Stopping the server]
+[16:17:36] [RCON Client /172.25.96.6 #6/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[16:17:36] [Server thread/INFO]: Stopping server
+[16:17:36] [Server thread/INFO]: [ChunkLoader] Disabling ChunkLoader v1.0.8
+[16:17:36] [Server thread/INFO]: [Essentials] Disabling Essentials v2.22.1-dev+27-e70bdb8
+[16:17:36] [Server thread/INFO]: [SkinsRestorer] Disabling SkinsRestorer v15.12.6
+[16:17:36] [Server thread/INFO]: [chestsort-plus] Disabling chestsort-plus v0.6.0
+[16:17:36] [Server thread/INFO]: [OpenShulk] Disabling OpenShulk v1.2.0
+[16:17:36] [Server thread/INFO]: [OpenShulk] OpenShulk plugin disabled!
+[16:17:36] [Server thread/INFO]: [LuckPerms] Disabling LuckPerms v5.5.71
+[16:17:36] [Server thread/INFO]: [LuckPerms] Starting shutdown process...
+[16:17:36] [Server thread/INFO]: [LuckPerms] Closing storage...
+[16:17:36] [Server thread/INFO]: [LuckPerms] Goodbye!
+[16:17:36] [Server thread/INFO]: [floodgate] Disabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[16:17:36] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[16:17:36] [RCON Client /172.25.96.6 #7/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[16:17:36] [Server thread/INFO]: Saving players
+[16:17:36] [Server thread/INFO]: Saving worlds
+[16:17:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:overworld'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:overworld'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:overworld'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:overworld' in 0.00s
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:overworld'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:overworld'
+[16:17:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_nether'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_nether'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_nether'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_nether' in 0.00s
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_nether'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_nether'
+[16:17:36] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk system to halt for world 'minecraft:the_end'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Halted chunk system for world 'minecraft:the_end'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Saving all chunkholders for world 'minecraft:the_end'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Saved 0 block chunks, 0 entity chunks, 0 poi chunks in world 'minecraft:the_end' in 0.00s
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Waiting 60s for chunk I/O to halt for world 'minecraft:the_end'
+[16:17:36] [Server thread/INFO]: [ChunkHolderManager] Halted I/O scheduler for world 'minecraft:the_end'
+[16:17:36] [Server thread/INFO]: Waiting for all RegionFile I/O tasks to complete...
+[16:17:36] [Server thread/INFO]: All RegionFile I/O tasks to complete
+[16:17:36] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of worker pool for up to 60s...
+[16:17:36] [Server thread/INFO]: [MoonriseCommon] Awaiting termination of I/O pool for up to 60s...
+[16:17:36] [Server thread/INFO]: [Leaf] Waiting for mob spawning thread to shutdown...
+[16:17:36] [Server thread/INFO]: [Leaf] Waiting for player I/O executor to shutdown...
+[16:17:36] [Server thread/INFO]: [Leaf] Waiting for entity tracker executor to shutdown...
+[16:17:36] [Server thread/INFO]: [Leaf] Waiting for mob pathfinding executor to shutdown...
