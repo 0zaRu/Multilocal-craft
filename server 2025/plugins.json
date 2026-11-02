@@ -8,8 +8,8 @@
     ],
     "installed": {
       "version": "26.3",
-      "build": 13,
-      "file": "leaf-26.3-13.jar",
+      "build": 17,
+      "file": "leaf-26.3-17.jar",
       "java": 25
     }
   },
@@ -25,7 +25,7 @@
         "bukkit"
       ],
       "installed": {
-        "version": "2.12.1-b1279",
+        "version": "2.12.1-b1281",
         "file": "Geyser-Standalone.jar",
         "location": "geyser"
       }
