@@ -179,6 +179,53 @@ final class Estilo {
         }
     }
 
+    /**
+     * Barra de progreso por pasos (como la de carga del juego): los pasos hechos van llenos y el actual
+     * se llena con su porcentaje o, si no se sabe, con un bloque que va y viene para que se vea que sigue vivo.
+     */
+    static final class Progreso extends View {
+        private int pasos = 1, paso = 1, porcentaje = -1;
+        private final Paint p = new Paint();
+
+        Progreso(Context c) { super(c); }
+
+        void poner(int pasos, int paso, int porcentaje) {
+            this.pasos = Math.max(1, pasos);
+            this.paso = Math.max(1, Math.min(paso, this.pasos));
+            this.porcentaje = porcentaje;
+            invalidate();
+        }
+
+        @Override protected void onMeasure(int w, int h) {
+            setMeasuredDimension(MeasureSpec.getSize(w), px(getContext(), 14));
+        }
+
+        @Override protected void onDraw(Canvas c) {
+            int u = px(getContext(), 2), w = getWidth(), h = getHeight(), ancho = w - 2 * u;
+            p.setColor(0xFF000000);
+            c.drawRect(0, 0, w, h, p);
+            p.setColor(0xFF2A2A2A);
+            c.drawRect(u, u, w - u, h - u, p);
+            float tramo = ancho / (float) pasos, inicio = u + tramo * (paso - 1);
+            p.setColor(VERDE);
+            c.drawRect(u, u, inicio, h - u, p);
+            if (porcentaje >= 0) {
+                c.drawRect(inicio, u, inicio + tramo * porcentaje / 100f, h - u, p);
+            } else {
+                // bloque que se desliza dentro del paso actual
+                float bloque = Math.max(4 * u, tramo / 4), t = (System.currentTimeMillis() % 1600) / 1600f;
+                float x = inicio + (tramo - bloque) * (t < 0.5f ? t * 2 : 2 - t * 2);
+                p.setColor(0xFF7CFC7C);
+                c.drawRect(x, u, x + bloque, h - u, p);
+                postInvalidateOnAnimation();
+            }
+            p.setColor(0x55FFFFFF);
+            c.drawRect(u, u, w - u, 2 * u, p);
+            p.setColor(0xFF000000);   // separaciones entre pasos
+            for (int i = 1; i < pasos; i++) c.drawRect(u + tramo * i - u / 2f, u, u + tramo * i + u / 2f, h - u, p);
+        }
+    }
+
     /** Cara de 8x8 generada a partir del nombre (no usa skins: el servidor va sin cuentas oficiales). */
     static Drawable cara(Context c, String nombre) {
         Random r = new Random(nombre.toLowerCase().hashCode());

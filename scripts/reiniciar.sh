@@ -43,7 +43,7 @@ lanzar() {
 }
 
 main() {
-    local actualizar=0 ram rc
+    local actualizar=0 ram rc n
     [ "$1" = --actualizar ] && actualizar=1
     leer_env
     detectar_so
@@ -64,17 +64,21 @@ main() {
     fi
     ram="$(estado_get ram)"
     [ -z "$ram" ] && { ram=6; [ "$SO" = termux ] && ram=3; }
+    n=2; [ $actualizar = 1 ] && n=4   # pasos que ve la app
 
     if [ $actualizar = 1 ]; then
-        bash "$SCRIPTS_DIR/copia.sh"
+        paso "1/$n" "Copia de seguridad"
+        MLC_SIN_PASOS=1 bash "$SCRIPTS_DIR/copia.sh"
         rc=$?
         if [ $rc = 1 ]; then error "ACTUALIZACIÓN CANCELADA: no se pudo hacer la copia de seguridad."; exit 1; fi
         [ $rc = 2 ] && aviso "La copia está en un commit local pero no se pudo subir; se sigue (se puede volver atrás con git)."
     fi
+    if [ $actualizar = 1 ]; then paso "2/$n" "Apagando el servidor"; else paso "1/$n" "Apagando el servidor"; fi
     if [ -n "$MODO_ACTIVO" ]; then apagar || exit 1; fi
 
     rc=0
     if [ $actualizar = 1 ]; then
+        paso "3/$n" "Instalando la actualización"
         info "Aplicando la actualización..."
         "$PYTHON" "$SCRIPTS_DIR/actualizar.py" --yes
         rc=$?
@@ -85,6 +89,7 @@ main() {
             *) error "LA ACTUALIZACIÓN NO SE HA PODIDO APLICAR (código $rc): se vuelve a lanzar la versión que había." ;;
         esac
     fi
+    paso "$n/$n" "Arrancando el servidor"
     lanzar "$ram" || exit 1
     [ $rc = 0 ] || [ $rc = 3 ] || exit 1
 }

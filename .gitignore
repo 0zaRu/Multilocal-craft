@@ -23,3 +23,5 @@ server 2025/.panel-operacion
 # Compilación de la app de control
 app-movil/build/
 server 2025/.panel-bateria
+# Diario temporal de SQLite (la base de vínculos linked-players.db sí se sube: viaja con el mundo)
+server 2025/plugins/floodgate/linked-players.db-journal

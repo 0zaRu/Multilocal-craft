@@ -81,7 +81,31 @@ Not a software project: it is a **shared Minecraft server whose world is synced 
   - optional `copia.sh`, then stop;
   - optional `actualizar.py --yes`;
   - relaunch with `tmux new-session -d -s mc ... iniciar.sh --terminal --sin-sincronizar <ram>`; RAM comes from the state file.
+- Progress:
+  - `copia.sh` and `reiniciar.sh` print `PASO n/m: text` via `paso` in `comun.sh` (`MLC_SIN_PASOS=1` silences them when `reiniciar --actualizar` nests `copia.sh`);
+  - the push uses `git push --progress`;
+  - `estado_operacion` returns `paso`/`pasos`/`paso_texto`/`porcentaje`/`inicio` and collapses repeated git progress lines;
+  - the app swaps the bottom buttons for a progress card while an operation runs.
 - The app hides its own RCON noise in the console (`Thread RCON Client`, `/list|/tps|/mspt`). The status poll runs every 10 s, the log poll every 2 s and only on the Consola tab.
+
+## Bedrock → Java account links (Floodgate local linking)
+
+- **How it works:**
+  - Floodgate's own local linking: `player-link.enable-own-linking: true`, `type: sqlite`.
+  - A linked Bedrock player logs in with the Java account's UUID and name, so it gets that account's inventory, position, Essentials data and permissions.
+  - Local links take priority over global linking. There is no cache: every login queries the DB.
+- **Table:** `plugins/floodgate/linked-players.db`, `LinkedPlayers(bedrockId string, javaUniqueId string, javaUsername string)`. UUIDs are stored as text, there is no primary key, and the Bedrock UUID is `UUID(0, xuid)` (`00000000-0000-0000-…`). The DB is committed, so links travel between hosts.
+- **The app writes the DB through `panel.py`:**
+  - `vincular`: snapshots both accounts' files into `server 2025/copias-cuentas/<date>_<name>/`, then deletes any previous row of that Bedrock or Java account and inserts the new row in one transaction;
+  - `desvincular`;
+  - `cuentas`: accounts from `usercache.json` and `world/players/data`, plus whether linking is loaded.
+- **Linking never modifies player files.** Tested on a copy of the real world: after a Bedrock session as `OzaRu_`, the NBT inventory, ender chest, position and XP were identical, and `.Ozaru33`'s files were untouched. Unlinking gives the Bedrock account its own data back.
+- **The extension jar:**
+  - `floodgate-sqlite-database.jar` is built by `scripts/floodgate_sqlite.py` from the official GeyserMC `floodgatedb` 2.2.5 b138 jar, with its bundled sqlite-jdbc 3.36 replaced by 3.51.3.0.
+  - Why: sqlite-jdbc 3.36 loads the glibc native on Termux ("libc.so.6 not found"). 3.51.3.0 is the last release that both detects Termux and ships `Linux-Android/aarch64`.
+  - In practice Leaf's own `libraries/org/xerial/sqlite-jdbc/3.49.1.0` wins (parent-first class loading), and it also works on Termux. Both were checked on the phone with an isolated probe.
+- **Removing it is safe:** delete the jar (or set `enable-own-linking: false`) and restart. The server starts normally and Bedrock players use their own UUIDs again.
+- **Limit:** only Bedrock → Java. Java → Java aliasing would need a plugin inside the server, which the user rules out.
 
 ## Gameplay config decisions
 
