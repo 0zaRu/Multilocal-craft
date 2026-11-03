@@ -359,8 +359,10 @@ def smoke_test(paper, jars, java_min):
         with open(os.path.join(tmp, "server.properties"), "w", encoding="utf-8") as f:
             f.writelines(f"{k}={v}\n" for k, v in props.items())
 
-        # Configuración de los plugins (sin cachés ni datos de jugadores)
-        ign = shutil.ignore_patterns("*.jar", ".paper-remapped", "cache", "userdata", "logs", "tmp*", "*.mv.db", "*.db")
+        # Configuración de los plugins (sin cachés, datos de jugadores ni datos ligados al mundo: los
+        # cargadores de ChunkLoader, en "chunks", apuntan a mundos que en la prueba no existen)
+        ign = shutil.ignore_patterns("*.jar", ".paper-remapped", "cache", "userdata", "logs", "tmp*", "*.mv.db", "*.db",
+                                     "chunks")
         os.makedirs(os.path.join(tmp, "plugins"))
         for entry in os.listdir(PLUGINS_DIR):
             src = os.path.join(PLUGINS_DIR, entry)
