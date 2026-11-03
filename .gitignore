@@ -22,3 +22,4 @@ server 2025/logs/panel-operacion.log
 server 2025/.panel-operacion
 # Compilación de la app de control
 app-movil/build/
+server 2025/.panel-bateria
