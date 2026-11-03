@@ -8,8 +8,8 @@
     ],
     "installed": {
       "version": "26.3",
-      "build": 17,
-      "file": "leaf-26.3-17.jar",
+      "build": 18,
+      "file": "leaf-26.3-18.jar",
       "java": 25
     }
   },
@@ -25,7 +25,7 @@
         "bukkit"
       ],
       "installed": {
-        "version": "2.12.1-b1281",
+        "version": "2.12.1-b1284",
         "file": "Geyser-Standalone.jar",
         "location": "geyser"
       }
@@ -86,8 +86,8 @@
         "artifact": "^EssentialsX-[0-9][^/]*\\.jar$"
       },
       "installed": {
-        "version": "2.22.1-dev+27-e70bdb8",
-        "file": "EssentialsX-2.22.1-dev+27-e70bdb8.jar",
+        "version": "2.22.1-dev+28-f8724e2",
+        "file": "EssentialsX-2.22.1-dev+28-f8724e2.jar",
         "location": "plugin"
       }
     },
