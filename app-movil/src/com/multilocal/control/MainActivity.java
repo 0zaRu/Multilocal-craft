@@ -427,11 +427,14 @@ public class MainActivity extends Activity {
         StringBuilder sb = new StringBuilder();
         if (log != null) for (int i = 0; i < log.length(); i++) sb.append(log.optString(i)).append('\n');
         String t = sb.toString();
+        boolean enMarcha = t.contains("SERVIDOR EN MARCHA") || t.contains("SERVIDOR REINICIADO");
         boolean ok = "copia".equals(op) ? t.contains("COPIA SUBIDA")
-                : !t.contains("NO SE PUDO") && !t.contains("NO HA ARRANCADO") && !t.contains("CANCELADA") && t.contains("EN MARCHA");
+                : "reiniciar".equals(op) ? enMarcha
+                : enMarcha && (t.contains("ACTUALIZACIÓN APLICADA") || t.contains("No había nada que actualizar"));
         String titulo = "copia".equals(op) ? (ok ? "Copia subida a GitHub" : "La copia no se pudo subir")
                 : "reiniciar".equals(op) ? (ok ? "Servidor reiniciado" : "El reinicio ha fallado")
-                : (ok ? "Actualización terminada" : "La actualización no se ha podido aplicar");
+                : ok ? "Actualización terminada"
+                : enMarcha ? "No se actualizó: sigue la versión de antes" : "La actualización ha fallado";
         TextView tv = new TextView(this);
         tv.setText(t.trim());
         tv.setTypeface(Typeface.MONOSPACE);
@@ -587,7 +590,11 @@ public class MainActivity extends Activity {
                 String ultima = log != null && log.length() > 0 ? log.optString(log.length() - 1) : "";
                 String tipo = op.optString("tipo");
                 String nombre = "copia".equals(tipo) ? "Última copia" : "reiniciar".equals(tipo) ? "Último reinicio" : "Última actualización";
-                boolean mal = ultima.contains("NO SE PUDO") || ultima.contains("NO HA") || ultima.contains("CANCELADA");
+                String todo = log != null ? log.toString() : "";
+                boolean mal = todo.contains("NO SE PUDO") || todo.contains("NO SE HA PODIDO") || todo.contains("NO HA ARRANCADO")
+                        || todo.contains("CANCELADA");
+                if ("actualizar".equals(tipo) && todo.contains("NO SE HA PODIDO APLICAR"))
+                    ultima = "No se aplicó: sigue la versión de antes (mira el resultado en la consola del host).";
                 fila(c, nombre, "hace " + duracion(ahora - op.optLong("fecha")), mal ? Estilo.ROJO : Estilo.BLANCO);
                 if (!ultima.isEmpty()) c.addView(Estilo.texto(this, ultima, 12, mal ? Estilo.ROJO : Estilo.VERDE));
             }
