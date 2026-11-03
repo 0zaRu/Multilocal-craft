@@ -17,3 +17,8 @@ server 2025/.paper/
 __pycache__/
 # Temporales de Essentials
 server 2025/plugins/Essentials/*.tmp.bin
+# Operaciones lanzadas desde la app de control (scripts/panel.py lanzar)
+server 2025/logs/panel-operacion.log
+server 2025/.panel-operacion
+# Compilación de la app de control
+app-movil/build/

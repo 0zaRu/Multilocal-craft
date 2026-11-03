@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Icono adaptable: las imágenes las genera icono.py al compilar -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@mipmap/ic_launcher_fondo" />
+    <foreground android:drawable="@mipmap/ic_launcher_frente" />
+</adaptive-icon>

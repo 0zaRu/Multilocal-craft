@@ -43,6 +43,7 @@ terminar_terminal() {
     for _ in $(seq 1 15); do [ -f "$ESTADO" ] || break; sleep 1; done
     if [ -f "$ESTADO" ]; then
         detener_arbol "$(estado_get pid_geyser)"
+        parar_sshd
         restaurar_ip
         rm -f "$ESTADO"
     fi
@@ -62,7 +63,7 @@ main() {
     else
         info "No hay ningún servidor en marcha en este equipo."
         # Restos de un cierre brusco (Geyser suelto, IP sin restaurar)
-        [ -f "$ESTADO" ] && detener_arbol "$(estado_get pid_geyser)"
+        [ -f "$ESTADO" ] && { detener_arbol "$(estado_get pid_geyser)"; parar_sshd; }
         if command -v docker >/dev/null 2>&1 && [ -n "$(docker ps -aq --filter name=^mc-geyser$ 2>/dev/null)" ]; then
             docker compose -f "$ROOT/docker-compose.yml" down >/dev/null 2>&1
         fi
