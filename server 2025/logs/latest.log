@@ -1,12 +1,12 @@
-[22:10:59] [ServerMain/INFO]: [bootstrap] Running Java 25 (OpenJDK 64-Bit Server VM 25.0.5; Termux null) on Linux 4.19.191-ga0b12ea684b3 (aarch64)
-[22:10:59] [ServerMain/INFO]: [bootstrap] Loading Leaf 26.3-17-ver/26.3@af63114 (2026-11-02T12:39:24Z) for Minecraft 26.3
-[22:10:59] [ServerMain/INFO]: [LeafConfig] Loading config...
-[22:10:59] [ServerMain/INFO]: [LeafConfig] Using 2 threads for Async Pathfinding
-[22:10:59] [ServerMain/INFO]: [LeafConfig] Using 4 threads for Async Entity Tracker
-[22:10:59] [ServerMain/WARN]: [LeafConfig] You have following experimental module(s) enabled: [MultithreadedTracker.enabled], please proceed with caution!
-[22:10:59] [ServerMain/INFO]: [LeafConfig] Successfully loaded config in 316ms.
-[22:10:59] [CrashReport preload thread/ERROR]: [oshi.software.os.linux.LinuxOperatingSystem] Did not JNA classes. Investigate incompatible version or missing native dll.
-[22:10:59] [CrashReport preload thread/WARN]: Failed retrieving info for group processor
+[22:40:27] [ServerMain/INFO]: [bootstrap] Running Java 25 (OpenJDK 64-Bit Server VM 25.0.5; Termux null) on Linux 4.19.191-ga0b12ea684b3 (aarch64)
+[22:40:27] [ServerMain/INFO]: [bootstrap] Loading Leaf 26.3-17-ver/26.3@af63114 (2026-11-02T12:39:24Z) for Minecraft 26.3
+[22:40:27] [ServerMain/INFO]: [LeafConfig] Loading config...
+[22:40:27] [ServerMain/INFO]: [LeafConfig] Using 2 threads for Async Pathfinding
+[22:40:27] [ServerMain/INFO]: [LeafConfig] Using 4 threads for Async Entity Tracker
+[22:40:27] [ServerMain/WARN]: [LeafConfig] You have following experimental module(s) enabled: [MultithreadedTracker.enabled], please proceed with caution!
+[22:40:27] [ServerMain/INFO]: [LeafConfig] Successfully loaded config in 305ms.
+[22:40:27] [CrashReport preload thread/ERROR]: [oshi.software.os.linux.LinuxOperatingSystem] Did not JNA classes. Investigate incompatible version or missing native dll.
+[22:40:27] [CrashReport preload thread/WARN]: Failed retrieving info for group processor
 java.lang.NoClassDefFoundError: Could not initialize class com.sun.jna.Native
 	at com.sun.jna.NativeLong.<clinit>(NativeLong.java:35) ~[jna-5.17.0.jar:5.17.0 (b0)]
 	at oshi.util.FileUtil.readNativeLongFromBuffer(FileUtil.java:253) ~[oshi-core-6.9.0.jar:6.9.0]
@@ -27,7 +27,7 @@ java.lang.NoClassDefFoundError: Could not initialize class com.sun.jna.Native
 	at net.minecraft.CrashReport.<init>(CrashReport.java:33) ~[leaf-26.3.jar:26.3-17-af63114]
 	at net.minecraft.CrashReport.preload(CrashReport.java:241) ~[leaf-26.3.jar:26.3-17-af63114]
 	at java.base/java.lang.Thread.run(Thread.java:1474) ~[?:?]
-Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.UnsatisfiedLinkError: /data/data/com.termux/files/home/.cache/JNA/temp/jna11591140970366919084.tmp: dlopen failed: library "libc.so.6" not found: needed by /data/data/com.termux/files/home/.cache/JNA/temp/jna11591140970366919084.tmp in namespace (default) [in thread "ServerMain"]
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.UnsatisfiedLinkError: /data/data/com.termux/files/home/.cache/JNA/temp/jna5498713302382421440.tmp: dlopen failed: library "libc.so.6" not found: needed by /data/data/com.termux/files/home/.cache/JNA/temp/jna5498713302382421440.tmp in namespace (default) [in thread "ServerMain"]
 	at java.base/jdk.internal.loader.NativeLibraries.load(Native Method) ~[?:?]
 	at java.base/jdk.internal.loader.NativeLibraries$NativeLibraryImpl.open(NativeLibraries.java:321) ~[?:?]
 	at java.base/jdk.internal.loader.NativeLibraries.loadLibrary(NativeLibraries.java:187) ~[?:?]
@@ -55,7 +55,7 @@ Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.Unsatisfie
 	at org.bukkit.craftbukkit.Main.main(Main.java:217) ~[leaf-26.3.jar:26.3-17-af63114]
 	at io.papermc.paperclip.Paperclip.lambda$main$0(Paperclip.java:42) ~[?:?]
 	... 1 more
-[22:10:59] [CrashReport preload thread/WARN]: Failed retrieving info for group memory
+[22:40:27] [CrashReport preload thread/WARN]: Failed retrieving info for group memory
 java.lang.NoClassDefFoundError: Could not initialize class oshi.software.os.linux.LinuxOperatingSystem
 	at oshi.hardware.platform.linux.LinuxGlobalMemory.<clinit>(LinuxGlobalMemory.java:28) ~[oshi-core-6.9.0.jar:6.9.0]
 	at oshi.hardware.platform.linux.LinuxHardwareAbstractionLayer.createMemory(LinuxHardwareAbstractionLayer.java:38) ~[oshi-core-6.9.0.jar:6.9.0]
@@ -85,7 +85,7 @@ Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.NoClassDef
 	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-17-af63114]
 	at net.minecraft.SystemReport.putHardware(SystemReport.java:105) ~[leaf-26.3.jar:26.3-17-af63114]
 	... 6 more
-[22:10:59] [CrashReport preload thread/WARN]: Failed retrieving info for group software
+[22:40:27] [CrashReport preload thread/WARN]: Failed retrieving info for group software
 java.lang.NoClassDefFoundError: Could not initialize class oshi.software.os.linux.LinuxOperatingSystem
 	at oshi.SystemInfo.createOperatingSystem(SystemInfo.java:85) ~[oshi-core-6.9.0.jar:6.9.0]
 	at oshi.util.Memoizer$1.get(Memoizer.java:65) ~[oshi-core-6.9.0.jar:6.9.0]
@@ -115,220 +115,176 @@ Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.NoClassDef
 	at net.minecraft.SystemReport.ignoreErrors(SystemReport.java:120) ~[leaf-26.3.jar:26.3-17-af63114]
 	at net.minecraft.SystemReport.<init>(SystemReport.java:67) ~[leaf-26.3.jar:26.3-17-af63114]
 	... 3 more
-[22:10:59] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
-[22:11:00] [ServerMain/INFO]: [PluginInitializerManager] Initialized 7 plugins
-[22:11:00] [ServerMain/INFO]: [PluginInitializerManager] Paper plugins (1):
+[22:40:27] [ServerMain/INFO]: [PluginInitializerManager] Initializing plugins...
+[22:40:28] [ServerMain/INFO]: [PluginInitializerManager] Initialized 7 plugins
+[22:40:28] [ServerMain/INFO]: [PluginInitializerManager] Paper plugins (1):
  - chestsort-plus (0.6.0)
-[22:11:00] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (6):
+[22:40:28] [ServerMain/INFO]: [PluginInitializerManager] Bukkit plugins (6):
  - ChunkLoader (1.0.8), Essentials (2.22.1-dev+27-e70bdb8), LuckPerms (5.5.71), OpenShulk (1.2.0), SkinsRestorer (15.12.6), floodgate (2.2.5-SNAPSHOT (b141-81b65cc))
-[22:11:07] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
-[22:11:07] [ServerMain/INFO]: [com.destroystokyo.paper.profile.PaperServicesDiscoveryService] Environment: Environment[discoveryUrl=https://discovery.minecraftservices.com/minecraft/client, name=PROD]
-[22:11:08] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 1,198.3ms
-[22:11:11] [Worker-Main-1/INFO]: Loaded 1866 advancements
-[22:11:11] [ServerMain/INFO]: Resource reload finished after 8 ms
-[22:11:11] [ServerMain/INFO]: ServerFunctionLibrary took approximately 3 tasks/1 ms (2 tasks/1 ms preparing, 1 tasks/0 ms applying)
-[22:11:11] [ServerMain/INFO]: Total blocking time: 0 ms
-[22:11:12] [Server thread/INFO]: Starting minecraft server version 26.3
-[22:11:12] [Server thread/INFO]: Loading properties
-[22:11:12] [Server thread/INFO]: This server is running Leaf version 26.3-17-ver/26.3@af63114 (2026-11-02T12:39:24Z) (Implementing API version 26.3.build.17-alpha)
-[22:11:12] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
-[22:11:12] [Server thread/INFO]: Server Ping Player Sample Count: 12
-[22:11:12] [Server thread/INFO]: Using 4 threads for Netty based IO
-[22:11:13] [Paper FMA initialiser/INFO]: [ca.spottedleaf.moonrise.common.util.FMA] FMA supported: true for all ARMv8 platforms
-[22:11:13] [Server thread/INFO]: [MoonriseCommon] Paper is using 2 worker threads, 1 I/O threads
-[22:11:14] [Server thread/INFO]: Default game type: SURVIVAL
-[22:11:14] [Server thread/INFO]: Generating keypair
-[22:11:14] [Server thread/INFO]: Starting Minecraft server on 172.25.96.6:60068
-[22:11:14] [Server thread/INFO]: Paper: Using Java compression from Velocity.
-[22:11:14] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
-[22:11:14] [Server thread/WARN]: [io.netty.util.internal.MacAddressUtil] Failed to find a usable hardware address from the network interfaces; using random bytes: d2:2d:c3:65:1a:d6:1f:7a
-[22:11:14] [Server thread/INFO]: [floodgate] Loading server plugin floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
-[22:11:15] [Server thread/WARN]: [floodgate] en_ is not a supported Floodgate language.
-[22:11:16] [Server thread/INFO]: [floodgate] Took 1,596ms to boot Floodgate
-[22:11:16] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.5.71
-[22:11:16] [Server thread/INFO]: [LuckPerms] Loading configuration...
-[22:11:16] [Server thread/INFO]: [OpenShulk] Loading server plugin OpenShulk v1.2.0
-[22:11:16] [Server thread/INFO]: [chestsort-plus] Loading server plugin chestsort-plus v0.6.0
-[22:11:16] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.12.6
-[22:11:16] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.22.1-dev+27-e70bdb8
-[22:11:16] [Server thread/INFO]: [ChunkLoader] Loading server plugin ChunkLoader v1.0.8
-[22:11:16] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
-[22:11:16] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.5.71
-[22:11:17] [Server thread/INFO]:         __    
-[22:11:17] [Server thread/INFO]:   |    |__)   LuckPerms v5.5.71
-[22:11:17] [Server thread/INFO]:   |___ |      Running on Bukkit - Leaf
-[22:11:17] [Server thread/INFO]: 
-[22:11:17] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
-[22:11:17] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
-[22:11:18] [Server thread/INFO]: [LuckPerms] Performing initial data load...
-[22:11:18] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 1401ms)
-[22:11:18] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.12.6
-[22:11:19] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 26.3.0.
-[22:11:20] [Server thread/INFO]: [SkinsRestorer] Floodgate skin listener registered
-[22:11:20] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
-[22:11:20] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
-[22:11:20] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
-[22:11:20] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
-[22:11:20] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
-[22:11:20] [Server thread/INFO]: Preparing level "world"
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer   |
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |-------------------|
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode  |
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.12.6
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: c8c321f
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
-[22:11:21] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer or receive priority support? Become a supporter: https://skinsrestorer.net/pricing
-[22:11:22] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:overworld'...
-[22:11:22] [Server thread/INFO]: Preparing spawn area: 100%
-[22:11:22] [Server thread/INFO]: Prepared spawn area in 4 ms
-[22:11:22] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_nether'...
-[22:11:22] [Server thread/INFO]: Preparing spawn area: 100%
-[22:11:22] [Server thread/INFO]: Prepared spawn area in 2 ms
-[22:11:22] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_end'...
-[22:11:22] [Server thread/INFO]: Prepared spawn area in 0 ms
-[22:11:22] [Server thread/INFO]: Done preparing level "world" (1.218s)
-[22:11:22] [Server thread/INFO]: [floodgate] Enabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
-[22:11:22] [Server thread/INFO]: [OpenShulk] Enabling OpenShulk v1.2.0
-[22:11:22] [Server thread/INFO]: [OpenShulk] OpenShulk plugin enabled!
-[22:11:22] [Server thread/INFO]: [chestsort-plus] Enabling chestsort-plus v0.6.0
-[22:11:23] [Server thread/INFO]: [Essentials] Enabling Essentials v2.22.1-dev+27-e70bdb8
-[22:11:23] [Server thread/ERROR]: [Essentials] You are running a server fork that is known to be extremely dangerous and lead to data loss. It is strongly recommended you switch to a more stable server software like Paper.
-[22:11:23] [Server thread/INFO]: [Essentials] Status determining class: brand:Leaf
-[22:11:24] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
-[22:11:24] [Server thread/INFO]: [Essentials] No kits found to migrate.
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected Legacy Biome Name Provider as the provider for BiomeNameProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.12+ Spawner Block Provider as the provider for SpawnerBlockProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.21.4+ Sync Commands Provider as the provider for SyncCommandsProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected Paper 1.13+ Tile Entity Provider as the provider for TileEntityProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected Modern (Registry-based) PatternType Provider as the provider for PatternTypeProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
-[22:11:24] [Server thread/INFO]: [Essentials] No provider found for BiomeKeyProvider, but it is nullable
-[22:11:24] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
-[22:11:24] [Server thread/INFO]: [Essentials] Loaded 48578 items from items.json.
-[22:11:24] [Server thread/INFO]: [Essentials] Using locale en
-[22:11:24] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
-[22:11:24] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
-[22:11:24] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
-[22:11:24] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
-[22:11:24] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
-[22:11:24] [Server thread/INFO]: [ChunkLoader] Enabling ChunkLoader v1.0.8
-[22:11:25] [Server thread/INFO]: [spark] Starting background profiler...
-[22:11:25] [Server thread/WARN]: [spark] Unable to initialise the async-profiler engine: A runtime error occurred whilst loading the native library (/data/data/com.termux/files/home/Multilocal-craft/server 2025/plugins/spark/tmp/spark-fc686f09104e-libasyncProfiler.so.tmp: dlopen failed: library "libdl.so.2" not found: needed by /data/data/com.termux/files/home/Multilocal-craft/server 2025/plugins/spark/tmp/spark-fc686f09104e-libasyncProfiler.so.tmp in namespace (default))
-[22:11:25] [Server thread/WARN]: [spark] Please see here for more information: https://spark.lucko.me/docs/misc/Using-async-profiler
-[22:11:25] [Server thread/INFO]: Starting remote control listener
-[22:11:25] [Server thread/INFO]: Thread RCON Listener started
-[22:11:25] [Server thread/INFO]: RCON running on 172.25.96.6:25575
-[22:11:25] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
-[22:11:25] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
-[22:11:25] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
-[22:11:25] [Server thread/INFO]: Running delayed init tasks
-[22:11:25] [Craft Scheduler Thread - 3 - Essentials/INFO]: [Essentials] Fetching version information...
-[22:11:25] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:11:25] [RCON Client /172.25.96.6 #2/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:11:25] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:11:25] [RCON Client /172.25.96.6 #3/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:11:27] [Server thread/INFO]: Done (29.803s)! For help, type "help"
-[22:11:27] [Craft Scheduler Thread - 3 - Essentials/WARN]: [Essentials] You're 1 EssentialsX dev build(s) out of date!
-[22:11:27] [Craft Scheduler Thread - 3 - Essentials/WARN]: [Essentials] Download it here: https://essentialsx.net/downloads.html
-[22:11:33] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:11:34] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:11:34] [RCON Client /172.25.96.6 #4/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:11:47] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:11:47] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:11:47] [RCON Client /172.25.96.6 #5/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:11:47] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:11:47] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:11:47] [RCON Client /172.25.96.6 #6/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:11:48] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:11:48] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:11:48] [RCON Client /172.25.96.6 #7/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:11:56] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:11:56] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:11:56] [RCON Client /172.25.96.6 #8/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:12:06] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:12:06] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:12:06] [RCON Client /172.25.96.6 #9/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:12:46] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:12:46] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:12:46] [RCON Client /172.25.96.6 #10/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:12:49] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:12:49] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:12:49] [RCON Client /172.25.96.6 #11/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:12:56] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:12:56] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:12:56] [RCON Client /172.25.96.6 #12/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:13:06] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:13:06] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:13:06] [RCON Client /172.25.96.6 #13/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:13:16] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:13:16] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:13:16] [RCON Client /172.25.96.6 #14/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:13:20] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:13:20] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:13:20] [RCON Client /172.25.96.6 #15/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:13:26] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:13:26] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:13:26] [RCON Client /172.25.96.6 #16/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:13:48] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:13:48] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:13:48] [RCON Client /172.25.96.6 #17/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:13:54] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:13:54] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:13:54] [RCON Client /172.25.96.6 #18/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:13:57] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:13:57] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:13:57] [RCON Client /172.25.96.6 #19/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:14:08] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:14:08] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:14:08] [RCON Client /172.25.96.6 #20/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:16:06] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:16:06] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:16:06] [RCON Client /172.25.96.6 #21/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:25:14] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:25:14] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:25:14] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:25:14] [RCON Client /172.25.96.6 #22/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:25:14] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:25:14] [RCON Client /172.25.96.6 #23/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:25:23] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:25:23] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:25:23] [RCON Client /172.25.96.6 #24/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:25:28] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:25:28] [RCON Client /172.25.96.6 #25/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:25:28] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:25:28] [RCON Client /172.25.96.6 #26/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:25:28] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:25:28] [Server thread/INFO]: System chat: [Rcon: Automatic saving is now disabled]
-[22:25:28] [RCON Client /172.25.96.6 #27/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:25:29] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:25:29] [Server thread/INFO]: System chat: [Rcon: Saved the game]
-[22:25:29] [RCON Client /172.25.96.6 #28/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:25:30] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:25:30] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:25:30] [RCON Client /172.25.96.6 #29/INFO]: Thread RCON Client /172.25.96.6 shutting down
-[22:25:32] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
-[22:25:32] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
-[22:25:32] [RCON Client /172.25.96.6 #30/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:40:35] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Initialising converters for DataConverter...
+[22:40:35] [ServerMain/INFO]: [com.destroystokyo.paper.profile.PaperServicesDiscoveryService] Environment: Environment[discoveryUrl=https://discovery.minecraftservices.com/minecraft/client, name=PROD]
+[22:40:36] [DataConverter MCTypeRegistry init thread/INFO]: [ca.spottedleaf.dataconverter.minecraft.datatypes.MCTypeRegistry] Finished initialising converters for DataConverter in 1,254.1ms
+[22:40:39] [Worker-Main-2/INFO]: Loaded 1866 advancements
+[22:40:39] [ServerMain/INFO]: Resource reload finished after 13 ms
+[22:40:39] [ServerMain/INFO]: ServerFunctionLibrary took approximately 3 tasks/1 ms (2 tasks/1 ms preparing, 1 tasks/0 ms applying)
+[22:40:39] [ServerMain/INFO]: Total blocking time: 0 ms
+[22:40:40] [Server thread/INFO]: Starting minecraft server version 26.3
+[22:40:40] [Server thread/INFO]: Loading properties
+[22:40:40] [Server thread/INFO]: This server is running Leaf version 26.3-17-ver/26.3@af63114 (2026-11-02T12:39:24Z) (Implementing API version 26.3.build.17-alpha)
+[22:40:40] [Server thread/INFO]: [spark] This server bundles the spark profiler. For more information please visit https://docs.papermc.io/paper/profiling
+[22:40:40] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[22:40:40] [Server thread/INFO]: Using 4 threads for Netty based IO
+[22:40:41] [Paper FMA initialiser/INFO]: [ca.spottedleaf.moonrise.common.util.FMA] FMA supported: true for all ARMv8 platforms
+[22:40:41] [Server thread/INFO]: [MoonriseCommon] Paper is using 2 worker threads, 1 I/O threads
+[22:40:41] [Server thread/INFO]: Default game type: SURVIVAL
+[22:40:41] [Server thread/INFO]: Generating keypair
+[22:40:42] [Server thread/INFO]: Starting Minecraft server on 172.25.96.6:60068
+[22:40:42] [Server thread/INFO]: Paper: Using Java compression from Velocity.
+[22:40:42] [Server thread/INFO]: Paper: Using Java cipher from Velocity.
+[22:40:42] [Server thread/WARN]: [io.netty.util.internal.MacAddressUtil] Failed to find a usable hardware address from the network interfaces; using random bytes: e7:a2:28:c4:e3:fd:1d:c4
+[22:40:42] [Server thread/INFO]: [floodgate] Loading server plugin floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[22:40:43] [Server thread/WARN]: [floodgate] en_ is not a supported Floodgate language.
+[22:40:44] [Server thread/INFO]: [floodgate] Took 1,587ms to boot Floodgate
+[22:40:44] [Server thread/INFO]: [LuckPerms] Loading server plugin LuckPerms v5.5.71
+[22:40:44] [Server thread/INFO]: [LuckPerms] Loading configuration...
+[22:40:44] [Server thread/INFO]: [OpenShulk] Loading server plugin OpenShulk v1.2.0
+[22:40:44] [Server thread/INFO]: [chestsort-plus] Loading server plugin chestsort-plus v0.6.0
+[22:40:44] [Server thread/INFO]: [SkinsRestorer] Loading server plugin SkinsRestorer v15.12.6
+[22:40:44] [Server thread/INFO]: [Essentials] Loading server plugin Essentials v2.22.1-dev+27-e70bdb8
+[22:40:44] [Server thread/INFO]: [ChunkLoader] Loading server plugin ChunkLoader v1.0.8
+[22:40:44] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[22:40:44] [Server thread/INFO]: [LuckPerms] Enabling LuckPerms v5.5.71
+[22:40:44] [Server thread/INFO]:         __    
+[22:40:44] [Server thread/INFO]:   |    |__)   LuckPerms v5.5.71
+[22:40:44] [Server thread/INFO]:   |___ |      Running on Bukkit - Leaf
+[22:40:44] [Server thread/INFO]: 
+[22:40:45] [Server thread/INFO]: [LuckPerms] Loading storage provider... [H2]
+[22:40:45] [Server thread/INFO]: [LuckPerms] Loading internal permission managers...
+[22:40:45] [Server thread/INFO]: [LuckPerms] Performing initial data load...
+[22:40:46] [Server thread/INFO]: [LuckPerms] Successfully enabled. (took 1532ms)
+[22:40:46] [Server thread/INFO]: [SkinsRestorer] Enabling SkinsRestorer v15.12.6
+[22:40:47] [Server thread/INFO]: [SkinsRestorer] Running on Minecraft 26.3.0.
+[22:40:47] [Server thread/INFO]: [SkinsRestorer] Floodgate skin listener registered
+[22:40:48] [Server thread/INFO]: [SkinsRestorer] Using paper join listener!
+[22:40:48] [Server thread/WARN]: **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+[22:40:48] [Server thread/WARN]: The server will make no attempt to authenticate usernames. Beware.
+[22:40:48] [Server thread/WARN]: While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+[22:40:48] [Server thread/WARN]: To change this, set "online-mode" to "true" in the server.properties file.
+[22:40:48] [Server thread/INFO]: Preparing level "world"
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |   SkinsRestorer   |
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |-------------------|
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     |  Standalone Mode  |
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     +===================+
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Version: 15.12.6
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     Commit: c8c321f
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer]     This is the latest version!
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] ----------------------------------------------
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Do you have issues? Read our troubleshooting guide: https://skinsrestorer.net/docs/troubleshooting
+[22:40:48] [Folia Async Scheduler Thread #1/INFO]: [SkinsRestorer] Want to support SkinsRestorer or receive priority support? Become a supporter: https://skinsrestorer.net/pricing
+[22:40:49] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:overworld'...
+[22:40:49] [Server thread/INFO]: Preparing spawn area: 100%
+[22:40:49] [Server thread/INFO]: Prepared spawn area in 4 ms
+[22:40:49] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_nether'...
+[22:40:49] [Server thread/INFO]: Prepared spawn area in 0 ms
+[22:40:49] [Server thread/INFO]: Loading 0 persistent chunks for level 'minecraft:the_end'...
+[22:40:49] [Server thread/INFO]: Prepared spawn area in 0 ms
+[22:40:49] [Server thread/INFO]: Done preparing level "world" (1.184s)
+[22:40:49] [Server thread/INFO]: [floodgate] Enabling floodgate v2.2.5-SNAPSHOT (b141-81b65cc)
+[22:40:50] [Server thread/INFO]: [OpenShulk] Enabling OpenShulk v1.2.0
+[22:40:50] [Server thread/INFO]: [OpenShulk] OpenShulk plugin enabled!
+[22:40:50] [Server thread/INFO]: [chestsort-plus] Enabling chestsort-plus v0.6.0
+[22:40:51] [Server thread/INFO]: [Essentials] Enabling Essentials v2.22.1-dev+27-e70bdb8
+[22:40:51] [Server thread/ERROR]: [Essentials] You are running a server fork that is known to be extremely dangerous and lead to data loss. It is strongly recommended you switch to a more stable server software like Paper.
+[22:40:51] [Server thread/INFO]: [Essentials] Status determining class: brand:Leaf
+[22:40:51] [Server thread/INFO]: [Essentials] Attempting to convert old kits in config.yml to new kits.yml
+[22:40:51] [Server thread/INFO]: [Essentials] No kits found to migrate.
+[22:40:51] [Server thread/INFO]: [Essentials] Selected Paper Material Tag Provider as the provider for MaterialTagProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.17.1+ World Info Provider as the provider for WorldInfoProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.14+ Sign Data Provider as the provider for SignDataProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.14.4+ Persistent Data Container Provider as the provider for PersistentDataProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.21.4+ Sync Commands Provider as the provider for SyncCommandsProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected Legacy Biome Name Provider as the provider for BiomeNameProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.12+ Spawner Block Provider as the provider for SpawnerBlockProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.20.6+ Potion Meta Provider as the provider for PotionMetaProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected Paper Container Provider as the provider for ContainerProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.20.4+ Damage Event Provider as the provider for DamageEventProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected Reflection Online Mode Provider as the provider for OnlineModeProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.12.2+ Player Locale Provider as the provider for PlayerLocaleProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.20.5+ Banner Data Provider as the provider for BannerDataProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.13+ Spawn Egg Provider as the provider for SpawnEggProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected Paper Server State Provider as the provider for ServerStateProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.21+ InventoryView Interface ABI Provider as the provider for InventoryViewProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected Reflection Formatted Command Alias Provider as the provider for FormattedCommandAliasProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected Paper 1.13+ Tile Entity Provider as the provider for TileEntityProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected Paper Known Commands Provider as the provider for KnownCommandsProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected Paper Tick Count Provider as the provider for TickCountProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.8.3+ Spawner Item Provider as the provider for SpawnerItemProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected Modern (Registry-based) PatternType Provider as the provider for PatternTypeProvider
+[22:40:51] [Server thread/INFO]: [Essentials] Selected Paper Serialization Provider as the provider for SerializationProvider
+[22:40:51] [Server thread/INFO]: [Essentials] No provider found for BiomeKeyProvider, but it is nullable
+[22:40:51] [Server thread/INFO]: [Essentials] Selected 1.11+ Item Unbreakable Provider as the provider for ItemUnbreakableProvider
+[22:40:52] [Server thread/INFO]: [Essentials] Loaded 48578 items from items.json.
+[22:40:52] [Server thread/INFO]: [Essentials] Using locale en
+[22:40:52] [Server thread/INFO]: [Essentials] ServerListPingEvent: Spigot iterator API
+[22:40:52] [Server thread/INFO]: [Essentials] Starting Metrics. Opt-out using the global bStats config.
+[22:40:52] [Server thread/WARN]: [Essentials] Detected supported permissions plugin LuckPerms without Vault installed.
+[22:40:52] [Server thread/WARN]: [Essentials] Features such as chat prefixes/suffixes and group-related functionality will not work until you install Vault.
+[22:40:52] [Server thread/INFO]: [Essentials] Using superperms-based permissions.
+[22:40:52] [Server thread/INFO]: [ChunkLoader] Enabling ChunkLoader v1.0.8
+[22:40:52] [Server thread/INFO]: [spark] Starting background profiler...
+[22:40:52] [Server thread/WARN]: [spark] Unable to initialise the async-profiler engine: A runtime error occurred whilst loading the native library (/data/data/com.termux/files/home/Multilocal-craft/server 2025/plugins/spark/tmp/spark-fe0403365f8a-libasyncProfiler.so.tmp: dlopen failed: library "libdl.so.2" not found: needed by /data/data/com.termux/files/home/Multilocal-craft/server 2025/plugins/spark/tmp/spark-fe0403365f8a-libasyncProfiler.so.tmp in namespace (default))
+[22:40:52] [Server thread/WARN]: [spark] Please see here for more information: https://spark.lucko.me/docs/misc/Using-async-profiler
+[22:40:52] [Server thread/INFO]: Starting remote control listener
+[22:40:52] [Server thread/INFO]: Thread RCON Listener started
+[22:40:52] [Server thread/INFO]: RCON running on 172.25.96.6:25575
+[22:40:53] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:overworld
+[22:40:53] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_nether
+[22:40:53] [Server thread/INFO]: Saving chunks for level 'ServerLevel[world]'/minecraft:the_end
+[22:40:53] [Server thread/INFO]: Running delayed init tasks
+[22:40:53] [Craft Scheduler Thread - 3 - Essentials/INFO]: [Essentials] Fetching version information...
+[22:40:53] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:40:53] [RCON Client /172.25.96.6 #2/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:40:54] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:40:54] [RCON Client /172.25.96.6 #3/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:40:54] [Server thread/INFO]: Done (29.479s)! For help, type "help"
+[22:40:55] [Craft Scheduler Thread - 3 - Essentials/WARN]: [Essentials] You're 1 EssentialsX dev build(s) out of date!
+[22:40:55] [Craft Scheduler Thread - 3 - Essentials/WARN]: [Essentials] Download it here: https://essentialsx.net/downloads.html
+[22:40:57] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:40:57] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
+[22:40:57] [RCON Client /172.25.96.6 #4/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:47:46] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:47:46] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
+[22:47:46] [RCON Client /172.25.96.6 #5/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:48:29] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:48:29] [RCON Client /172.25.96.6 #6/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:48:29] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:48:29] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
+[22:48:29] [RCON Client /172.25.96.6 #7/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:55:52] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:55:52] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
+[22:55:52] [RCON Client /172.25.96.6 #8/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:56:01] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:56:01] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
+[22:56:01] [RCON Client /172.25.96.6 #9/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:56:01] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:56:01] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
+[22:56:01] [RCON Client /172.25.96.6 #10/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:56:08] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:56:08] [RCON Client /172.25.96.6 #11/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:56:09] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:56:09] [RCON Client /172.25.96.6 #12/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:56:09] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:56:09] [Server thread/INFO]: System chat: [Rcon: Automatic saving is now disabled]
+[22:56:09] [RCON Client /172.25.96.6 #13/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:56:09] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:56:09] [Server thread/INFO]: System chat: [Rcon: Saved the game]
+[22:56:09] [RCON Client /172.25.96.6 #14/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:56:10] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:56:10] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
+[22:56:10] [RCON Client /172.25.96.6 #15/INFO]: Thread RCON Client /172.25.96.6 shutting down
+[22:56:12] [RCON Listener #1/INFO]: Thread RCON Client /172.25.96.6 started
+[22:56:12] [Server thread/INFO]: [Essentials] Rcon issued server command: /list 
+[22:56:12] [RCON Client /172.25.96.6 #16/INFO]: Thread RCON Client /172.25.96.6 shutting down
