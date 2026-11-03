@@ -901,7 +901,7 @@ public class MainActivity extends Activity {
             boolean mundo = obj != null && inst != null && !obj.optString("version").equals(inst.optString("version"));
             confirmar("actualizar", "Actualizar el servidor",
                     "1. Copia de seguridad del mundo (y subida a GitHub).\n2. Se apaga el servidor.\n3. Se instala " + srvNombre + " "
-                            + (obj != null ? obj.optString("version") + " build " + obj.optInt("build") : "") + " y los plugins nuevos.\n4. Se vuelve a lanzar."
+                            + (obj != null ? obj.optString("version") + " build " + obj.optInt("build") : "") + " y los plugins nuevos.\n4. Se vuelve a lanzar.\n5. Se sube la versión nueva a GitHub."
                             + (mundo ? "\n\nOJO: cambia la versión de Minecraft. El mundo se convierte (tarda) y no vuelve a abrirse con la versión anterior; todos tenéis que actualizar el juego." : ""),
                     "Actualizar");
         });
