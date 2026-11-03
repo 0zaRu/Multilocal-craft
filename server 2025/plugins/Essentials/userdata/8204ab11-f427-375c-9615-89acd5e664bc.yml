@@ -11,31 +11,31 @@ powertoolsenabled: true
 accepting-pay: true
 baltop-exempt: false
 timestamps:
-  lastteleport: 1793626132544
+  lastteleport: 1793736272972
   lastheal: 0
   mute: 0
   jail: 0
   onlinejail: 0
-  logout: 1793626227945
-  login: 1793625923046
+  logout: 1793739227822
+  login: 1793728464880
 money: '0'
 last-account-name: OzaRu_
 lastlocation:
   world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
   world-name: world
-  x: -71.02325206572101
-  y: 108.0
-  z: -24.014960847998644
-  yaw: -173.37469482421875
-  pitch: 41.98202896118164
+  x: 128.30951082053852
+  y: 96.0
+  z: -244.92731367273666
+  yaw: 40.2755126953125
+  pitch: 30.93465232849121
 logoutlocation:
   world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe
   world-name: world
-  x: -142.44607997604
-  y: 89.0
-  z: -269.24239788672344
-  yaw: 77.4762954711914
-  pitch: -13.817899703979492
+  x: 127.38595903172981
+  y: 96.0
+  z: -245.57773612949478
+  yaw: -4.22802734375
+  pitch: 21.723731994628906
 homes:
   casa:
     world: 59f14a3e-2d66-40d2-b06e-4c8bb8e469fe

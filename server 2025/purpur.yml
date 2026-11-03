@@ -74,6 +74,8 @@ settings:
       distance: 0.5
     minecraft:pink_bed:
       distance: 0.5
+    minecraft:shelf_mushroom:
+      distance: 0.5
   bee-count-payload: false
   clamp-attributes: true
   disable-give-dropping: false
@@ -194,7 +196,7 @@ settings:
   username-valid-characters: ^[a-zA-Z0-9_.]*$
   limit-armor: true
   tps-catchup: true
-config-version: 49
+config-version: 50
 world-settings:
   default:
     settings:
