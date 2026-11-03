@@ -133,8 +133,12 @@ def estado_java(pid):
         nucleos = os.cpu_count() or 1
         j["cpu"] = round((t1 - t0) / hz / 0.5 * 100 / nucleos, 1)   # % del total del dispositivo
         j["nucleos"] = nucleos
-        uptime = float((leer("/proc/uptime", "0") or "0").split()[0])
-        j["encendido_s"] = int(uptime - inicio / hz)
+        uptime = leer("/proc/uptime")
+        if uptime:
+            j["encendido_s"] = int(float(uptime.split()[0]) - inicio / hz)
+        elif os.path.exists(os.path.join(SERVER_DIR, ".estado-servidor")):
+            # Android no deja leer /proc/uptime: vale la hora a la que iniciar creó su fichero de estado
+            j["encendido_s"] = int(time.time() - os.path.getmtime(os.path.join(SERVER_DIR, ".estado-servidor")))
     except (OSError, ValueError, IndexError):
         pass
     for linea in (leer(f"/proc/{pid}/status", "") or "").splitlines():
@@ -149,6 +153,29 @@ def estado_java(pid):
 
 
 # --- Dispositivo ---
+CACHE_BATERIA = os.path.join(SERVER_DIR, ".panel-bateria")
+
+
+def bateria():
+    """termux-battery-status puede tardar o colgarse (Termux:API dormida): se pregunta en segundo
+    plano y se usa lo último guardado (vale 5 min; si falló, no se reintenta en 10 min)."""
+    if not shutil.which("termux-battery-status"):
+        return None
+    try:
+        edad = time.time() - os.path.getmtime(CACHE_BATERIA)
+        datos = json.loads(leer(CACHE_BATERIA, "{}") or "{}")
+    except (OSError, ValueError):
+        edad, datos = None, {}
+    if edad is None or edad > (300 if datos else 600):
+        with open(CACHE_BATERIA, "a"):
+            os.utime(CACHE_BATERIA)   # marca la petición ya hecha para no lanzar otra
+        subprocess.Popen(["sh", "-c", 'r=$(timeout 20 termux-battery-status) && printf "%s" "$r" > "$1" || : > "$1"',
+                          "sh", CACHE_BATERIA], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
+                         stderr=subprocess.DEVNULL, start_new_session=True)
+    if datos.get("percentage") is None:
+        return None
+    return {"porcentaje": datos.get("percentage"), "estado": datos.get("status"),
+            "enchufado": datos.get("plugged"), "temperatura": datos.get("temperature")}
 def temperatura_cpu():
     maximo = None
     base = "/sys/class/thermal"
@@ -180,13 +207,9 @@ def estado_dispositivo():
         import platform
         d["modelo"] = platform.node()
         d["sistema"] = f"{platform.system()} {platform.release()}"
-    if shutil.which("termux-battery-status"):
-        try:
-            b = json.loads(salida(["termux-battery-status"], timeout=8) or "{}")
-            d["bateria"] = {"porcentaje": b.get("percentage"), "estado": b.get("status"),
-                            "enchufado": b.get("plugged"), "temperatura": b.get("temperature")}
-        except ValueError:
-            pass
+    b = bateria()
+    if b:
+        d["bateria"] = b
     t = temperatura_cpu()
     if t is not None:
         d["temp_cpu"] = round(t, 1)
