@@ -12,12 +12,16 @@
 #   python panel.py versiones       comprobación de actualizaciones (actualizar.py --json)
 #   python panel.py lanzar <op>     copia | reiniciar | actualizar, en segundo plano
 #                                   (log en logs/panel-operacion.log; el estado sale en "estado")
+#   python panel.py cuentas         JSON con las cuentas Bedrock y Java y los vínculos de Floodgate
+#   python panel.py vincular <uuid Bedrock> <uuid Java> <nombre Java>
+#   python panel.py desvincular <uuid Bedrock>
 # ------------------------------------------------------------
 import argparse
 import json
 import os
 import re
 import shutil
+import sqlite3
 import subprocess
 import sys
 import time
@@ -38,7 +42,12 @@ LOG_OP = os.path.join(SERVER_DIR, "logs", "panel-operacion.log")
 PID_OP = os.path.join(SERVER_DIR, ".panel-operacion")
 OPERACIONES = {"copia": ["scripts/copia.sh"], "reiniciar": ["scripts/reiniciar.sh"],
                "actualizar": ["scripts/reiniciar.sh", "--actualizar"]}
+FLOODGATE = os.path.join(SERVER_DIR, "plugins", "floodgate")
+DB_VINCULOS = os.path.join(FLOODGATE, "linked-players.db")   # base de datos de la vinculación local de Floodgate
+COPIAS_CUENTAS = os.path.join(SERVER_DIR, "copias-cuentas")
 ANSI = re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
+PASO = re.compile(r"PASO (\d+)/(\d+):? *(.*)")
+UUID = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
 NUM = re.compile(r"\d+(?:\.\d+)?")
 
 
@@ -176,6 +185,8 @@ def bateria():
         return None
     return {"porcentaje": datos.get("percentage"), "estado": datos.get("status"),
             "enchufado": datos.get("plugged"), "temperatura": datos.get("temperature")}
+
+
 def temperatura_cpu():
     maximo = None
     base = "/sys/class/thermal"
@@ -256,9 +267,33 @@ def estado_operacion():
     pid, tipo = operacion_actual()
     o = {"tipo": tipo, "en_curso": pid is not None}
     texto = leer(LOG_OP)
-    if texto is not None:
-        o["log"] = ANSI.sub("", texto).strip().splitlines()[-30:]
-        o["fecha"] = int(os.path.getmtime(LOG_OP))
+    if texto is None:
+        return o
+    # git escribe el progreso con \r en la misma línea: de cada línea se queda el último trozo
+    texto = ANSI.sub("", texto)
+    lineas = [l.split("\r")[-1] for l in texto.replace("\r\n", "\n").split("\n")]
+    # De las líneas de progreso seguidas ("Resolving deltas: 81% ...", "82% ...") solo queda la última
+    limpio = []
+    for l in (l.rstrip() for l in lineas if l.strip()):
+        clave = re.split(r"\d", l, maxsplit=1)[0].rstrip()
+        if limpio and "%" in l and "%" in limpio[-1] and re.split(r"\d", limpio[-1], maxsplit=1)[0].rstrip() == clave:
+            limpio[-1] = l
+        else:
+            limpio.append(l)
+    o["log"] = limpio[-30:]
+    o["fecha"] = int(os.path.getmtime(LOG_OP))
+    try:
+        o["inicio"] = int(os.path.getmtime(PID_OP))
+    except OSError:
+        pass
+    # Paso actual ("PASO 3/4: Subiendo a GitHub") y, si lo hay, el último porcentaje desde ese paso
+    pasos = list(PASO.finditer(texto))
+    if pasos:
+        m = pasos[-1]
+        o["paso"], o["pasos"], o["paso_texto"] = int(m.group(1)), int(m.group(2)), m.group(3).strip()
+        pct = re.findall(r"(\d+)%", texto[m.end():])
+        if pct:
+            o["porcentaje"] = int(pct[-1])
     return o
 
 
@@ -333,6 +368,131 @@ def cmd_lanzar(args):
     return 0
 
 
+# --- Cuentas Bedrock -> Java (vinculación local de Floodgate) ---
+def es_bedrock(uuid):
+    return uuid.startswith("00000000-0000-0000-")   # Floodgate: UUID(0, xuid)
+
+
+def config_floodgate():
+    c = {"prefijo": ".", "propia": False}
+    for linea in (leer(os.path.join(FLOODGATE, "config.yml"), "") or "").splitlines():
+        m = re.match(r'\s*username-prefix:\s*"?([^"]*)"?', linea)
+        if m:
+            c["prefijo"] = m.group(1)
+        if re.match(r"\s*enable-own-linking:\s*true", linea):
+            c["propia"] = True
+    return c
+
+
+def vinculos():
+    if not os.path.exists(DB_VINCULOS):
+        return []
+    with sqlite3.connect(DB_VINCULOS, timeout=10) as db:
+        try:
+            filas = db.execute("select bedrockId, javaUniqueId, javaUsername from LinkedPlayers").fetchall()
+        except sqlite3.OperationalError:   # tabla aún sin crear
+            return []
+    return [{"bedrock": b, "java": j, "nombre_java": n} for b, j, n in filas]
+
+
+def jar_vinculos():
+    if not os.path.isdir(FLOODGATE):
+        return None
+    jars = [f for f in os.listdir(FLOODGATE) if f.endswith(".jar") and "database" in f]
+    return jars[0] if jars else None
+
+
+def cmd_cuentas(_):
+    cf = config_floodgate()
+    cuentas = {}
+    try:
+        cache = json.loads(leer(os.path.join(SERVER_DIR, "usercache.json"), "[]") or "[]")
+    except ValueError:
+        cache = []
+    for e in cache:
+        visto = None
+        try:   # expiresOn = última entrada + 1 mes
+            visto = int(time.mktime(time.strptime(e["expiresOn"][:19], "%Y-%m-%d %H:%M:%S"))) - 30 * 86400
+        except (KeyError, ValueError):
+            pass
+        cuentas[e["uuid"]] = {"uuid": e["uuid"], "nombre": e["name"], "visto": visto}
+    datos = os.path.join(SERVER_DIR, "world", "players", "data")
+    for f in os.listdir(datos) if os.path.isdir(datos) else []:
+        u = f.split(".")[0]
+        if UUID.match(u) and u not in cuentas:
+            cuentas[u] = {"uuid": u, "nombre": None, "visto": None}
+    for c in cuentas.values():
+        c["con_datos"] = os.path.exists(os.path.join(datos, c["uuid"] + ".dat"))
+    orden = sorted(cuentas.values(), key=lambda c: -(c["visto"] or 0))
+    jar = jar_vinculos()
+    # Floodgate carga la base de datos al arrancar (y crea linked-players.db): si el jar es posterior
+    # al arranque (fichero de estado de iniciar), falta reiniciar; si falló, lo dice el log
+    estado_srv = os.path.join(SERVER_DIR, ".estado-servidor")
+    cargada = bool(jar) and os.path.exists(DB_VINCULOS) and not (
+        os.path.exists(estado_srv) and os.path.getmtime(os.path.join(FLOODGATE, jar)) > os.path.getmtime(estado_srv))
+    error = next((l.strip() for l in (leer(LOG, "") or "").splitlines()
+                  if "floodgate" in l.lower() and ("ERROR" in l or "SEVERE" in l)
+                  and any(k in l.lower() for k in ("database", "sqlite", "link"))), None)
+    print(json.dumps({
+        "bedrock": [c for c in orden if es_bedrock(c["uuid"])],
+        "java": [c for c in orden if not es_bedrock(c["uuid"])],
+        "vinculos": vinculos(),
+        "prefijo": cf["prefijo"],
+        "conectados": estado_servidor().get("jugadores", []),
+        "activa": {"config": cf["propia"], "jar": jar, "cargada": cargada and not error, "error": error},
+    }, ensure_ascii=False))
+    return 0
+
+
+def copiar_cuenta(uuid, destino):
+    """Copia los ficheros de una cuenta (si los tiene) a la carpeta destino. Devuelve cuántos copió."""
+    copiados = 0
+    rutas = [os.path.join(SERVER_DIR, "world", "players", d, uuid + ext)
+             for d, ext in (("data", ".dat"), ("data", ".dat_old"), ("advancements", ".json"), ("stats", ".json"))]
+    rutas.append(os.path.join(SERVER_DIR, "plugins", "Essentials", "userdata", uuid + ".yml"))
+    for r in rutas:
+        if os.path.exists(r):
+            d = os.path.join(destino, os.path.relpath(os.path.dirname(r), SERVER_DIR))
+            os.makedirs(d, exist_ok=True)
+            shutil.copy2(r, d)
+            copiados += 1
+    return copiados
+
+
+def cmd_vincular(args):
+    b, j, nombre = args.bedrock.lower(), args.java.lower(), args.nombre
+    if not (UUID.match(b) and es_bedrock(b)):
+        print("La cuenta de origen tiene que ser de Bedrock (entra por Geyser).")
+        return 1
+    if not UUID.match(j) or es_bedrock(j) or not re.match(r"^\w{1,16}$", nombre):
+        print("La cuenta de destino tiene que ser una cuenta Java válida.")
+        return 1
+    # Copia previa de las dos cuentas (vincular no toca sus ficheros, pero por si acaso); va en la próxima copia
+    carpeta = os.path.join(COPIAS_CUENTAS, time.strftime("%Y-%m-%d_%H%M%S") + "_" + nombre)
+    copiar_cuenta(b, carpeta)
+    copiar_cuenta(j, carpeta)
+    os.makedirs(carpeta, exist_ok=True)
+    with open(os.path.join(carpeta, "vinculo.txt"), "w", encoding="utf-8") as f:
+        f.write(f"Bedrock {b} -> Java {nombre} ({j}), {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+    os.makedirs(FLOODGATE, exist_ok=True)
+    with sqlite3.connect(DB_VINCULOS, timeout=10) as db:   # una sola transacción: se confirma al salir del with
+        db.execute("create table if not exists LinkedPlayers (bedrockId string, javaUniqueId string, javaUsername string)")
+        db.execute("delete from LinkedPlayers where bedrockId = ? or javaUniqueId = ?", (b, j))
+        db.execute("insert into LinkedPlayers values(?, ?, ?)", (b, j, nombre))
+    print(f"Vinculado: la próxima vez que entre será {nombre}. Copia previa en server 2025/copias-cuentas/.")
+    return 0
+
+
+def cmd_desvincular(args):
+    if not os.path.exists(DB_VINCULOS):
+        print("No hay vínculos.")
+        return 0
+    with sqlite3.connect(DB_VINCULOS, timeout=10) as db:
+        n = db.execute("delete from LinkedPlayers where bedrockId = ?", (args.bedrock.lower(),)).rowcount
+    print("Desvinculado: volverá a entrar con su cuenta de Bedrock." if n else "Esa cuenta no estaba vinculada.")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="Datos para la app de control de Multilocal-craft")
     sub = ap.add_subparsers(dest="orden", required=True)
@@ -345,6 +505,15 @@ def main():
     la = sub.add_parser("lanzar")
     la.add_argument("op", choices=sorted(OPERACIONES))
     la.set_defaults(f=cmd_lanzar)
+    sub.add_parser("cuentas").set_defaults(f=cmd_cuentas)
+    vi = sub.add_parser("vincular")
+    vi.add_argument("bedrock")
+    vi.add_argument("java")
+    vi.add_argument("nombre")
+    vi.set_defaults(f=cmd_vincular)
+    de = sub.add_parser("desvincular")
+    de.add_argument("bedrock")
+    de.set_defaults(f=cmd_desvincular)
     args = ap.parse_args()
     return args.f(args)
 

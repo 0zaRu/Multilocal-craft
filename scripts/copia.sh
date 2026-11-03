@@ -27,6 +27,7 @@ main() {
     info "--- Copia de seguridad: $(date '+%Y-%m-%d %H:%M:%S'), rama $rama ---"
 
     detectar_modo_activo
+    paso 1/4 "Guardando el mundo"
     if [ -n "$MODO_ACTIVO" ]; then
         info "Servidor en marcha ($MODO_ACTIVO): se guarda el mundo sin apagarlo."
         rcon_cmd save-off >/dev/null || { error "El servidor no responde por RCON."; exit 1; }
@@ -35,11 +36,13 @@ main() {
         sleep 3
     fi
 
+    paso 2/4 "Preparando los cambios"
     git add -A
     # La IP del dispositivo nunca se sube: con el servidor en marcha, server.properties se queda fuera
     if git diff --cached -- "server 2025/server.properties" | grep -qE '^[+-]server-ip='; then
         git reset -q -- "server 2025/server.properties"
     fi
+    paso 3/4 "Guardando la copia (commit)"
     if git diff --cached --quiet; then
         info "No hay cambios nuevos en el mundo."
     else
@@ -56,8 +59,10 @@ main() {
     guardado_on
     trap - EXIT
 
+    paso 4/4 "Subiendo a GitHub"
     info "Subiendo a GitHub ($REMOTO/$rama)..."
-    if git push -q "$REMOTO" "$rama" 2>&1; then
+    # --progress: el porcentaje sale en el log aunque no haya terminal (la app lo enseña)
+    if git push --progress "$REMOTO" "$rama" 2>&1; then
         ok "COPIA SUBIDA a GitHub ($rama)."
     else
         error "NO SE PUDO SUBIR (¿falta el token de GitHub en este dispositivo, o alguien subió antes?)."

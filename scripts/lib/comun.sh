@@ -17,6 +17,8 @@ info()  { echo -e "${CYAN}$*${NC}"; }
 ok()    { echo -e "${GREEN}$*${NC}"; }
 aviso() { echo -e "${YELLOW}$*${NC}"; }
 error() { echo -e "${RED}$*${NC}" >&2; }
+# paso "2/4" "texto": marca de progreso que la app de control lee del log (scripts/panel.py)
+paso()  { [ -n "$MLC_SIN_PASOS" ] || info "PASO $1: $2"; }
 
 # preguntar_sn "¿Pregunta?"  -> 0 si responde S/s
 preguntar_sn() {

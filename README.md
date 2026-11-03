@@ -58,7 +58,7 @@ El servidor es **Leaf**, un derivado de Paper con los **mismos plugins y el mism
 - **Jugadores** conectados.
 - **Consola:** el log con colores y para enviar comandos.
 - **Versiones:** lo mismo que `actualizar --check` (versión instalada, última, máxima con todos los plugins y qué plugins bloquean las más nuevas), con el botón **Actualizar servidor**.
-- Botones **Copia de seguridad** (guarda sin apagar y sube a GitHub) y **Reiniciar**.
+- Botones **Copia de seguridad** (guarda sin apagar y sube a GitHub) y **Reiniciar**. Mientras duran, en su sitio sale el progreso: tiempo, paso actual (por ejemplo "4/4 Subiendo a GitHub · 45 %") y barra.
 
 Funciona por SSH, sin procesos fijos en el host:
 
@@ -71,6 +71,18 @@ Puesta en marcha:
 1. Compilar: `bash app-movil/compilar.sh` (SDK de Android + JDK 17+). Sale `app-movil/build/Multilocal.apk`.
 2. En la app: ⚙ → IP del host → **Copiar comando**, y pegarlo una vez en Termux del host (autoriza la clave de esa app).
 3. En el host hace falta `pkg install openssh tmux` (`preparar` lo comprueba). Para que suba a GitHub, el host necesita sus credenciales de git.
+
+### Cuentas Bedrock → Java
+
+En la pestaña **Jugadores** de la app, cualquier cuenta que entra desde Bedrock (las que empiezan por `.`) puede **jugar con el personaje de una cuenta Java**: su inventario, posición, homes y permisos. Por ejemplo, `.Ozaru33` → `OzaRu_`.
+
+- Se elige con **Vincular…** y se quita con **Quitar**. Vale desde la próxima vez que esa persona entre.
+- Vincular no toca los datos de nadie. Antes guarda una copia de los ficheros de las dos cuentas en `server 2025/copias-cuentas/`, que se sube con la siguiente copia.
+- Los datos propios de la cuenta Bedrock se quedan guardados: al quitar el vínculo vuelve a tenerlos tal cual.
+- Si la misma cuenta Java ya está dentro desde Java, uno de los dos se desconecta.
+- Solo se puede vincular una cuenta que entre **por Bedrock**. Asociar en directo una cuenta Java con otra Java necesitaría un plugin dentro del servidor.
+
+Usa la vinculación local de Floodgate: los vínculos están en `server 2025/plugins/floodgate/linked-players.db`, que viaja con el mundo, y la extensión es `floodgate-sqlite-database.jar`, en esa misma carpeta. Para quitar la función basta con borrar ese jar y reiniciar: el servidor sigue igual y cada cuenta Bedrock vuelve a la suya.
 
 ## Actualizar el servidor y los plugins
 

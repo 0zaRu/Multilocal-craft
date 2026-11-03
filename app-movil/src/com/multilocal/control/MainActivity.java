@@ -28,7 +28,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -58,7 +60,13 @@ public class MainActivity extends Activity {
     private Button botonCopia, botonReiniciar;
     private final ArrayDeque<CharSequence> lineas = new ArrayDeque<>();
 
-    private JSONObject estado, versiones;
+    private LinearLayout acciones, tarjetaOp;
+    private TextView opTitulo, opPaso;
+    private Estilo.Progreso opBarra;
+    private long difHora, inicioLocalOp;   // reloj del host menos el del móvil; inicio de la operación según el móvil
+    private boolean pidiendoCuentas;
+
+    private JSONObject estado, versiones, cuentas;
     private Slp.Resultado slp;
     private String errorSsh, errorLog;
 
@@ -118,8 +126,9 @@ public class MainActivity extends Activity {
         for (View v : vistas) contenido.addView(v, new FrameLayout.LayoutParams(-1, -1));
         raiz.addView(contenido, new LinearLayout.LayoutParams(-1, 0, 1));
 
-        // Copia de seguridad y reinicio
-        LinearLayout acciones = new LinearLayout(this);
+        // Copia de seguridad y reinicio (mientras hay una operación, en su sitio sale la tarjeta de progreso)
+        FrameLayout abajo = new FrameLayout(this);
+        acciones = new LinearLayout(this);
         botonCopia = Estilo.boton(this, "Copia de seguridad");
         botonCopia.setOnClickListener(v -> confirmar("copia", "Copia de seguridad",
                 "Se guarda el mundo sin apagar el servidor y se sube a GitHub (rama " + rama() + ").", "Hacer copia"));
@@ -132,9 +141,23 @@ public class MainActivity extends Activity {
         lr.leftMargin = px(6);
         acciones.addView(botonCopia, lc);
         acciones.addView(botonReiniciar, lr);
+        abajo.addView(acciones, new FrameLayout.LayoutParams(-1, -2));
+        tarjetaOp = columna();
+        tarjetaOp.setBackground(Estilo.panel(this));
+        tarjetaOp.setPadding(px(12), px(8), px(12), px(10));
+        opTitulo = Estilo.texto(this, "", 15, Estilo.AMARILLO);
+        opPaso = Estilo.texto(this, "", 12, Estilo.AQUA);
+        opBarra = new Estilo.Progreso(this);
+        tarjetaOp.addView(opTitulo);
+        tarjetaOp.addView(opPaso);
+        LinearLayout.LayoutParams lb = new LinearLayout.LayoutParams(-1, -2);
+        lb.topMargin = px(6);
+        tarjetaOp.addView(opBarra, lb);
+        tarjetaOp.setVisibility(View.GONE);
+        abajo.addView(tarjetaOp, new FrameLayout.LayoutParams(-1, -2));
         LinearLayout.LayoutParams la = new LinearLayout.LayoutParams(-1, -2);
         la.topMargin = px(10);
-        raiz.addView(acciones, la);
+        raiz.addView(abajo, la);
 
         setContentView(raiz);
         elegir(P_ESTADO);
@@ -172,6 +195,7 @@ public class MainActivity extends Activity {
         }
         if (n == P_CONSOLA) { ui.removeCallbacks(tickLog); ui.post(tickLog); }
         if (n == P_VERSIONES && versiones == null) comprobarVersiones();
+        if (n == P_JUGADORES) cargarCuentas();
     }
 
     private View crearConsola() {
@@ -238,13 +262,50 @@ public class MainActivity extends Activity {
                         slp = r;
                         estado = fe;
                         errorSsh = ferr;
+                        if (fe != null) difHora = fe.optLong("hora") - System.currentTimeMillis() / 1000;
                         pintar();
                     });
                 });
             }
-            ui.postDelayed(this, esperandoOp != null ? 3000 : ESTADO_MS);
+            ui.postDelayed(this, tarjetaOp.getVisibility() == View.VISIBLE ? 2000 : ESTADO_MS);
         }
     };
+
+    /** Cuenta los segundos de la operación en la tarjeta de progreso (sin esperar a la siguiente consulta). */
+    private final Runnable reloj = new Runnable() {
+        @Override public void run() {
+            ui.removeCallbacks(this);
+            if (tarjetaOp.getVisibility() != View.VISIBLE) return;
+            JSONObject op = estado != null ? estado.optJSONObject("operacion") : null;
+            long ahora = System.currentTimeMillis() / 1000;
+            long inicio = op != null && op.optBoolean("en_curso") && op.has("inicio") ? op.optLong("inicio") - difHora : inicioLocalOp;
+            String tipo = op != null && op.optBoolean("en_curso") ? op.optString("tipo") : esperandoOp;
+            long s = Math.max(0, ahora - inicio);
+            opTitulo.setText(("copia".equals(tipo) ? "Copia en curso" : "reiniciar".equals(tipo) ? "Reiniciando" : "Actualizando")
+                    + " · " + s / 60 + ":" + String.format(Locale.ROOT, "%02d", s % 60));
+            if (activa) ui.postDelayed(this, 1000);
+        }
+    };
+
+    private void pintarOperacion(JSONObject op, boolean opEnCurso) {
+        boolean visible = opEnCurso || esperandoOp != null;
+        tarjetaOp.setVisibility(visible ? View.VISIBLE : View.GONE);
+        acciones.setVisibility(visible ? View.INVISIBLE : View.VISIBLE);
+        if (!visible) return;
+        if (opEnCurso && op.has("paso")) {
+            int pct = op.has("porcentaje") ? op.optInt("porcentaje") : -1;
+            opPaso.setText(op.optInt("paso") + "/" + op.optInt("pasos") + "  " + op.optString("paso_texto") + (pct >= 0 ? " · " + pct + " %" : "…"));
+            opBarra.poner(op.optInt("pasos"), op.optInt("paso"), pct);
+        } else if (opEnCurso) {
+            opPaso.setText("En marcha…");
+            opBarra.poner(1, 1, -1);
+        } else {
+            // Lanzada desde aquí pero el host aún no responde (p. ej. relanzándose tras un reinicio)
+            opPaso.setText(errorSsh != null ? "Esperando a que el servidor vuelva…" : "Empezando…");
+            opBarra.poner(1, 1, -1);
+        }
+        ui.post(reloj);
+    }
 
     private final Runnable tickLog = new Runnable() {
         @Override public void run() {
@@ -338,6 +399,7 @@ public class MainActivity extends Activity {
 
     private void lanzar(String op) {
         horaPulsadoOp = estado != null ? estado.optLong("hora") : 0;
+        inicioLocalOp = System.currentTimeMillis() / 1000;
         esperandoOp = op;
         pintar();
         hiloLog.execute(() -> {
@@ -531,8 +593,9 @@ public class MainActivity extends Activity {
             }
         }
 
-        // --- Botones y aviso al acabar una operación
+        // --- Botones, tarjeta de progreso y aviso al acabar una operación
         boolean libre = estado != null && !opEnCurso && esperandoOp == null;
+        pintarOperacion(op, opEnCurso);
         Estilo.activar(botonCopia, libre);
         Estilo.activar(botonReiniciar, libre);
         if (esperandoOp != null && op != null && !opEnCurso && esperandoOp.equals(op.optString("tipo"))
@@ -542,6 +605,7 @@ public class MainActivity extends Activity {
             mostrarResultado(hecha, op.optJSONArray("log"));
             Estilo.activar(botonCopia, true);
             Estilo.activar(botonReiniciar, true);
+            pintarOperacion(op, false);
         }
 
         pintarJugadores(srv);
@@ -558,10 +622,8 @@ public class MainActivity extends Activity {
         int online = slp != null && slp.ok ? slp.online : srv != null ? srv.optInt("online") : 0;
         int max = slp != null && slp.ok ? slp.max : srv != null ? srv.optInt("max") : 0;
         seccion(c, "CONECTADOS: " + online + " / " + max);
-        if (nombres.isEmpty()) {
+        if (nombres.isEmpty())
             c.addView(Estilo.texto(this, slp != null && slp.ok ? "No hay nadie conectado." : "El servidor no responde.", 14, Estilo.GRIS));
-            return;
-        }
         for (String n : nombres) {
             LinearLayout f = new LinearLayout(this);
             f.setGravity(Gravity.CENTER_VERTICAL);
@@ -576,6 +638,190 @@ public class MainActivity extends Activity {
             f.addView(Estilo.texto(this, bedrock ? "Bedrock" : "Java", 12, bedrock ? Estilo.AQUA : Estilo.GRIS));
             c.addView(f);
         }
+        pintarCuentas(c);
+    }
+
+    // ------------------------------------------------------------------ cuentas Bedrock -> Java (Floodgate)
+
+    private void cargarCuentas() {
+        if (pidiendoCuentas) return;
+        pidiendoCuentas = true;
+        hiloVersiones.execute(() -> {
+            JSONObject r;
+            try {
+                r = new JSONObject(con.ejecutar(aj, aj.panel("cuentas"), null, 30000));
+            } catch (Throwable ex) {
+                r = new JSONObject();
+                try { r.put("error", Conexion.explicar(ex)); } catch (Exception ignorada) { }
+            }
+            final JSONObject fr = r;
+            ui.post(() -> {
+                pidiendoCuentas = false;
+                cuentas = fr;
+                pintarJugadores(estado != null ? estado.optJSONObject("servidor") : null);
+            });
+        });
+    }
+
+    /** Nombre que se enseña: el de usercache, o el UUID si no se conoce. */
+    private static String nombreCuenta(JSONObject c) {
+        String n = c.optString("nombre", "");
+        return n.isEmpty() || "null".equals(n) ? c.optString("uuid").substring(0, 8) + "…" : n;
+    }
+
+    private void pintarCuentas(LinearLayout c) {
+        seccion(c, "CUENTAS BEDROCK → JAVA");
+        if (cuentas == null) {
+            c.addView(Estilo.texto(this, "Cargando…", 13, Estilo.GRIS));
+            return;
+        }
+        if (cuentas.has("error")) {
+            c.addView(Estilo.texto(this, cuentas.optString("error"), 13, Estilo.ROJO));
+            botonVersiones(c, "Volver a cargar", true, x -> cargarCuentas());
+            return;
+        }
+        c.addView(Estilo.texto(this, "Quien entra desde Bedrock juega con el personaje de la cuenta Java que elijas "
+                + "(inventario, posición, homes…). Vale desde la próxima vez que entre; sus datos de Bedrock se quedan guardados.", 11, Estilo.GRIS));
+        JSONObject activa = cuentas.optJSONObject("activa");
+        if (activa != null && (activa.isNull("jar") || !activa.optBoolean("config"))) {
+            c.addView(Estilo.texto(this, "La vinculación no está activa en el host: falta floodgate-sqlite-database.jar "
+                    + "o enable-own-linking en la configuración de Floodgate.", 12, Estilo.ROJO));
+        } else if (activa != null && !activa.isNull("error")) {
+            c.addView(Estilo.texto(this, "Floodgate no pudo cargar la vinculación: " + activa.optString("error"), 12, Estilo.ROJO));
+        } else if (activa != null && !activa.optBoolean("cargada")) {
+            c.addView(Estilo.texto(this, "Floodgate aún no la ha cargado: hace falta reiniciar el servidor una vez.", 12, Estilo.ORO));
+        }
+
+        Map<String, String> vinculoDe = new HashMap<>();
+        JSONArray vs = cuentas.optJSONArray("vinculos");
+        for (int i = 0; vs != null && i < vs.length(); i++)
+            vinculoDe.put(vs.optJSONObject(i).optString("bedrock"), vs.optJSONObject(i).optString("nombre_java"));
+        JSONArray bedrock = cuentas.optJSONArray("bedrock");
+        if (bedrock == null || bedrock.length() == 0)
+            c.addView(Estilo.texto(this, "Todavía no ha entrado nadie desde Bedrock.", 13, Estilo.GRIS));
+        for (int i = 0; bedrock != null && i < bedrock.length(); i++) {
+            JSONObject b = bedrock.optJSONObject(i);
+            String nombre = nombreCuenta(b), destino = vinculoDe.get(b.optString("uuid"));
+            LinearLayout f = new LinearLayout(this);
+            f.setGravity(Gravity.CENTER_VERTICAL);
+            f.setPadding(0, px(6), 0, px(6));
+            ImageView cara = new ImageView(this);
+            cara.setImageDrawable(Estilo.cara(this, nombre));
+            f.addView(cara, new LinearLayout.LayoutParams(px(28), px(28)));
+            LinearLayout textos = columna();
+            textos.setPadding(px(10), 0, px(6), 0);
+            textos.addView(Estilo.texto(this, nombre, 14, Estilo.AQUA));
+            textos.addView(Estilo.texto(this, destino != null ? "→ juega como " + destino : "sin vincular (su propio personaje)", 12,
+                    destino != null ? Estilo.VERDE : Estilo.GRIS));
+            f.addView(textos, new LinearLayout.LayoutParams(0, -2, 1));
+            Button b1 = Estilo.boton(this, destino != null ? "Cambiar" : "Vincular");
+            b1.setTextSize(12);
+            b1.setMinHeight(0);
+            b1.setPadding(px(8), px(4), px(8), px(6));
+            b1.setOnClickListener(v -> elegirJava(b));
+            f.addView(b1, new LinearLayout.LayoutParams(-2, px(38)));
+            if (destino != null) {
+                Button b2 = Estilo.boton(this, "Quitar");
+                b2.setTextSize(12);
+                b2.setMinHeight(0);
+                b2.setPadding(px(8), px(4), px(8), px(6));
+                b2.setOnClickListener(v -> confirmarDesvincular(b, destino));
+                LinearLayout.LayoutParams lq = new LinearLayout.LayoutParams(-2, px(38));
+                lq.leftMargin = px(4);
+                f.addView(b2, lq);
+            }
+            c.addView(f);
+        }
+        botonVersiones(c, "Actualizar lista", true, x -> cargarCuentas());
+    }
+
+    /** Lista de cuentas Java (con buscador) para elegir el personaje que usará la cuenta de Bedrock. */
+    private void elegirJava(JSONObject bedrock) {
+        JSONArray java = cuentas.optJSONArray("java");
+        LinearLayout c = columna();
+        c.setPadding(px(20), px(6), px(20), 0);
+        EditText buscar = new EditText(this);
+        buscar.setHint("Buscar nombre");
+        buscar.setSingleLine(true);
+        c.addView(buscar);
+        LinearLayout lista = columna();
+        ScrollView s = new ScrollView(this);
+        s.addView(lista);
+        c.addView(s, new LinearLayout.LayoutParams(-1, px(320)));
+        AlertDialog d = new AlertDialog.Builder(this)
+                .setTitle("¿Con qué cuenta Java juega " + nombreCuenta(bedrock) + "?")
+                .setView(c)
+                .setNegativeButton("Cancelar", null)
+                .create();
+        Runnable rellenar = () -> {
+            lista.removeAllViews();
+            String q = buscar.getText().toString().trim().toLowerCase(Locale.ROOT);
+            for (int i = 0; java != null && i < java.length(); i++) {
+                JSONObject j = java.optJSONObject(i);
+                String n = nombreCuenta(j);
+                if (!q.isEmpty() && !n.toLowerCase(Locale.ROOT).contains(q)) continue;
+                long visto = j.optLong("visto");
+                Button b = new Button(this);
+                b.setAllCaps(false);
+                b.setText(n + (visto > 0 ? "   (visto hace " + duracion(System.currentTimeMillis() / 1000 - visto) + ")" : "")
+                        + (j.optBoolean("con_datos") ? "" : "   · sin datos"));
+                b.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
+                b.setEnabled(!j.optString("nombre", "").isEmpty() && !"null".equals(j.optString("nombre")));
+                b.setOnClickListener(v -> { d.dismiss(); confirmarVincular(bedrock, j); });
+                lista.addView(b);
+            }
+        };
+        buscar.addTextChangedListener(new android.text.TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence a, int b, int c2, int d2) {}
+            @Override public void onTextChanged(CharSequence a, int b, int c2, int d2) { rellenar.run(); }
+            @Override public void afterTextChanged(android.text.Editable e) {}
+        });
+        rellenar.run();
+        d.show();
+    }
+
+    private void confirmarVincular(JSONObject bedrock, JSONObject java) {
+        String b = nombreCuenta(bedrock), j = nombreCuenta(java);
+        boolean conectado = false;
+        JSONArray on = cuentas.optJSONArray("conectados");
+        for (int i = 0; on != null && i < on.length(); i++) if (on.optString(i).equals(bedrock.optString("nombre"))) conectado = true;
+        new AlertDialog.Builder(this)
+                .setTitle("Vincular " + b + " → " + j)
+                .setMessage("Cuando " + b + " entre desde Bedrock jugará como " + j + ": su inventario, posición, homes y permisos.\n\n"
+                        + "• Los datos de " + j + " no se tocan (y se guarda una copia antes, por si acaso).\n"
+                        + "• Los datos propios de " + b + " se quedan guardados; si quitas el vínculo vuelve a tenerlos.\n"
+                        + "• Si " + j + " ya está dentro desde Java, uno de los dos se desconecta."
+                        + (conectado ? "\n\n" + b + " está conectado ahora: el cambio vale cuando vuelva a entrar." : ""))
+                .setPositiveButton("Vincular", (d, w) -> ejecutarCuentas("vincular " + bedrock.optString("uuid") + " "
+                        + java.optString("uuid") + " " + java.optString("nombre")))
+                .setNegativeButton("Cancelar", null)
+                .show();
+    }
+
+    private void confirmarDesvincular(JSONObject bedrock, String destino) {
+        new AlertDialog.Builder(this)
+                .setTitle("Quitar el vínculo")
+                .setMessage(nombreCuenta(bedrock) + " dejará de jugar como " + destino + " y volverá a su propio personaje de Bedrock. "
+                        + "No se borra nada.")
+                .setPositiveButton("Quitar", (d, w) -> ejecutarCuentas("desvincular " + bedrock.optString("uuid")))
+                .setNegativeButton("Cancelar", null)
+                .show();
+    }
+
+    private void ejecutarCuentas(String args) {
+        hiloVersiones.execute(() -> {
+            String r;
+            try {
+                r = con.ejecutar(aj, aj.panel(args), null, 30000).trim();
+            } catch (Throwable ex) {
+                r = Conexion.explicar(ex);
+            }
+            final String fr = r;
+            ui.post(() -> {
+                Toast.makeText(this, fr, Toast.LENGTH_LONG).show();
+                cargarCuentas();
+            });
+        });
     }
 
     /** Lo mismo que scripts/actualizar --check, en pantalla, con el botón para actualizar. */
