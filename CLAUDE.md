@@ -79,7 +79,7 @@ Not a software project: it is a **shared Minecraft server whose world is synced 
 - `copia.sh`: hot backup (save-off / save-all flush / commit without `server.properties` if `server-ip` changed / save-on / push). Exits 0 if pushed, 1 if failed, 2 if committed but not pushed.
 - `reiniciar.sh [--actualizar]`:
   - optional `copia.sh`, then stop;
-  - optional `actualizar.py --yes`;
+  - optional `actualizar.py --yes`, and after a successful update a second `copia.sh` once the server is up, because new jars, `.env` and `plugins.json` exist only on the host until then;
   - relaunch with `tmux new-session -d -s mc ... iniciar.sh --terminal --sin-sincronizar <ram>`; RAM comes from the state file.
 - Progress:
   - `copia.sh` and `reiniciar.sh` print `PASO n/m: text` via `paso` in `comun.sh` (`MLC_SIN_PASOS=1` silences them when `reiniciar --actualizar` nests `copia.sh`);

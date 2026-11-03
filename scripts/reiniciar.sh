@@ -64,7 +64,7 @@ main() {
     fi
     ram="$(estado_get ram)"
     [ -z "$ram" ] && { ram=6; [ "$SO" = termux ] && ram=3; }
-    n=2; [ $actualizar = 1 ] && n=4   # pasos que ve la app
+    n=2; [ $actualizar = 1 ] && n=5   # pasos que ve la app
 
     if [ $actualizar = 1 ]; then
         paso "1/$n" "Copia de seguridad"
@@ -89,9 +89,15 @@ main() {
             *) error "LA ACTUALIZACIÓN NO SE HA PODIDO APLICAR (código $rc): se vuelve a lanzar la versión que había." ;;
         esac
     fi
-    paso "$n/$n" "Arrancando el servidor"
+    if [ $actualizar = 1 ]; then paso "4/$n" "Arrancando el servidor"; else paso "$n/$n" "Arrancando el servidor"; fi
     lanzar "$ram" || exit 1
     [ $rc = 0 ] || [ $rc = 3 ] || exit 1
+    if [ $actualizar = 1 ] && [ $rc = 0 ]; then
+        # Los jars nuevos, .env y plugins.json solo están aquí: se suben para que el resto los reciba al sincronizar
+        paso "5/$n" "Subiendo la versión nueva a GitHub"
+        MLC_SIN_PASOS=1 bash "$SCRIPTS_DIR/copia.sh"
+        [ $? = 0 ] || aviso "La versión nueva queda en un commit local; se subirá con la próxima copia."
+    fi
 }
 
 main "$@"; exit $?
