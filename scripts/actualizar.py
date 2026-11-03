@@ -144,9 +144,12 @@ def plugin_dir_for(p):
 
 
 def notify(title, text):
-    """Aviso extra en Termux (además de la consola)."""
+    """Aviso extra en Termux (además de la consola). Sin esperar: si Termux:API está dormida,
+    termux-notification se queda colgado para siempre; a los 20 s se mata su grupo de procesos."""
     if NOTIFICAR and shutil.which("termux-notification"):
-        subprocess.run(["termux-notification", "--title", title, "--content", text], check=False)
+        subprocess.Popen(["sh", "-c", 'termux-notification --title "$1" --content "$2" & sleep 20; kill -KILL 0',
+                          "sh", title, text], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
+                         stderr=subprocess.DEVNULL, start_new_session=True)
 
 
 # ------------------------------------------------------------ Paper
@@ -280,14 +283,22 @@ def java_major(java):
 
 
 def find_java():
+    """El Java más nuevo que haya: $JAVA, $JAVA_HOME, el del PATH y los instalados en paralelo
+    (Termux y Linux pueden tener java-21 en el PATH y java-25 aparte, como busca iniciar)."""
     cands = [os.environ.get("JAVA")]
     if os.environ.get("JAVA_HOME"):
         cands.append(os.path.join(os.environ["JAVA_HOME"], "bin", "java"))
     cands.append(shutil.which("java"))
+    for base in (os.path.join(os.environ.get("PREFIX", ""), "lib", "jvm"), "/usr/lib/jvm"):
+        if os.path.isdir(base):
+            cands += [os.path.join(base, d, "bin", "java") for d in sorted(os.listdir(base))]
+    mejor, mayor = None, 0
     for c in cands:
         if c and (os.path.exists(c) or os.path.exists(c + ".exe")):
-            return c, java_major(c)
-    return None, 0
+            m = java_major(c)
+            if m > mayor:
+                mejor, mayor = c, m
+    return mejor, mayor
 
 
 # ------------------------------------------------------------ prueba de arranque

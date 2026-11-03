@@ -178,7 +178,8 @@ def bateria():
     if edad is None or edad > (300 if datos else 600):
         with open(CACHE_BATERIA, "a"):
             os.utime(CACHE_BATERIA)   # marca la petición ya hecha para no lanzar otra
-        subprocess.Popen(["sh", "-c", 'r=$(timeout 20 termux-battery-status) && printf "%s" "$r" > "$1" || : > "$1"',
+        # En su propio grupo de procesos: a los 20 s se mata entero (timeout dejaba huérfano a termux-api)
+        subprocess.Popen(["sh", "-c", ': > "$1"; (r=$(termux-battery-status) && printf "%s" "$r" > "$1") & sleep 20; kill -KILL 0',
                           "sh", CACHE_BATERIA], stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL,
                          stderr=subprocess.DEVNULL, start_new_session=True)
     if datos.get("percentage") is None:
