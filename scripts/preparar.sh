@@ -20,6 +20,7 @@ check_java()   { buscar_java; }
 check_docker() { command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; }
 check_dockerd(){ docker info >/dev/null 2>&1; }
 check_termuxapi() { command -v termux-wake-lock >/dev/null 2>&1; }
+check_ssh()       { command -v sshd >/dev/null 2>&1 && command -v tmux >/dev/null 2>&1; }
 # Geyser necesita NetherNet (librería nativa solo para glibc): en Android corre dentro de un Debian (proot)
 check_geyserdebian() {
     local r
@@ -49,6 +50,7 @@ cmd_instalar() {
         termux:python)    echo "pkg install -y python" ;;
         termux:java)      echo "pkg install -y openjdk-$v" ;;
         termux:termuxapi) echo "pkg install -y termux-api" ;;
+        termux:ssh)       echo "pkg install -y openssh tmux" ;;
         termux:geyserdebian) echo "pkg install -y proot-distro libandroid-shmem proot && { proot-distro list 2>/dev/null | grep -q '\* debian' || proot-distro install debian; } && proot-distro login debian -- bash -c 'apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-$v-jre-headless'" ;;
         debian:git)       echo "$SUDO apt-get update && $SUDO apt-get install -y git" ;;
         debian:python)    echo "$SUDO apt-get update && $SUDO apt-get install -y python3" ;;
@@ -99,6 +101,7 @@ comprobar() {
         check_python; fila python "Python 3.8+" $? "${PYTHON:+($PYTHON)}"
         check_java;   fila java "Java $JAVA_VERSION+" $? "(encontrado: ${JAVA_MAJOR:-ninguno})"
         [ "$SO" = termux ] && { check_termuxapi; fila termuxapi "termux-api (wake-lock)" $? "(instala también la app Termux:API)"; }
+        [ "$SO" = termux ] && { check_ssh; fila ssh "openssh + tmux (app de control)" $?; }
         [ "$SO" = termux ] && { check_geyserdebian; fila geyserdebian "Debian (proot) para Geyser" $? "(Bedrock actual usa NetherNet: necesita glibc)"; }
     else
         check_docker; fila docker "Docker + docker compose" $?

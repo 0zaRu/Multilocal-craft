@@ -252,6 +252,21 @@ pid_nativo() {
     if [ "$SO" = windows ] && [ -r "/proc/$1/winpid" ]; then cat "/proc/$1/winpid"; else echo "$1"; fi
 }
 
+# --- SSH para la app de control (app-movil/), solo en Termux y solo mientras el servidor está en marcha ---
+arrancar_sshd() {
+    if ! command -v sshd >/dev/null 2>&1; then
+        aviso "Sin openssh: la app de control no podrá conectarse (pkg install openssh)."
+        return
+    fi
+    pgrep -x sshd >/dev/null 2>&1 && return   # ya estaba en marcha antes: no es nuestro y no se para
+    sshd && estado_set sshd_propio 1 && info "App de control: SSH en el puerto 8022 mientras el servidor esté en marcha."
+}
+parar_sshd() {
+    [ "$(estado_get sshd_propio)" = 1 ] || return
+    # Solo el proceso que escucha: las sesiones abiertas (sshd-session) siguen hasta que se cierren
+    kill "$(cat "$PREFIX/var/run/sshd.pid" 2>/dev/null)" 2>/dev/null
+}
+
 # --- Git (siempre la rama actual) ---
 rama_actual() { git -C "$ROOT" rev-parse --abbrev-ref HEAD; }
 

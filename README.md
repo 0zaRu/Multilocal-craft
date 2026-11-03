@@ -50,6 +50,28 @@ El servidor es **Leaf**, un derivado de Paper con los **mismos plugins y el mism
 - **Ordenar inventario y cofres:** cada jugador lo activa una vez con `/chestsort` y elige el atajo (Shift + clic o doble clic en un hueco vacío). Ahí también están la ordenación automática y la transferencia rápida (Chestsort+).
 - **Cargador de chunks:** se fabrica con obsidiana, diamantes y un ojo de Ender; máximo 5 por jugador (ChunkLoader).
 
+## App de control (otro móvil)
+
+`app-movil/` es una app Android para ver y manejar el servidor desde **otro móvil** de la red ZeroTier:
+
+- **Estado:** servidor (TPS, MSPT, RAM, tiempo encendido), móvil host (batería, temperatura, RAM, almacenamiento) y copias en GitHub.
+- **Jugadores** conectados.
+- **Consola:** el log con colores y para enviar comandos.
+- **Versiones:** lo mismo que `actualizar --check` (versión instalada, última, máxima con todos los plugins y qué plugins bloquean las más nuevas), con el botón **Actualizar servidor**.
+- Botones **Copia de seguridad** (guarda sin apagar y sube a GitHub) y **Reiniciar**.
+
+Funciona por SSH, sin procesos fijos en el host:
+
+- `iniciar` arranca el `sshd` de Termux (puerto 8022) solo mientras el servidor está en marcha.
+- La app lanza comandos cortos (`scripts/panel.py`) solo mientras está abierta.
+- Para reiniciar o actualizar, el servidor se relanza dentro de `tmux` (sesión `mc`).
+
+Puesta en marcha:
+
+1. Compilar: `bash app-movil/compilar.sh` (SDK de Android + JDK 17+). Sale `app-movil/build/Multilocal.apk`.
+2. En la app: ⚙ → IP del host → **Copiar comando**, y pegarlo una vez en Termux del host (autoriza la clave de esa app).
+3. En el host hace falta `pkg install openssh tmux` (`preparar` lo comprueba). Para que suba a GitHub, el host necesita sus credenciales de git.
+
 ## Actualizar el servidor y los plugins
 
 ```bash

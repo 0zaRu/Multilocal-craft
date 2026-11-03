@@ -4,12 +4,13 @@
 # Propósito:
 #   Arrancar el servidor (Docker o terminal) con Geyser y la IP de ZeroTier
 #   de este dispositivo. Opcionalmente sincroniza antes el mundo con GitHub.
-# Uso: scripts/iniciar.sh [--docker|--terminal] [GB_RAM]
+# Uso: scripts/iniciar.sh [--docker|--terminal] [--sin-sincronizar] [GB_RAM]
 # ------------------------------------------------------------
 source "$(dirname "$0")/lib/comun.sh"
 
 limpiar_terminal() {
     detener_arbol "$(estado_get pid_geyser)"
+    parar_sshd
     restaurar_ip
     rm -f "$ESTADO"
     [ "$SO" = termux ] && command -v termux-wake-unlock >/dev/null && termux-wake-unlock
@@ -58,6 +59,7 @@ iniciar_terminal() {
 
     estado_set modo terminal
     estado_set ip "$IP"
+    estado_set ram "$ram"   # para relanzar igual desde la app (scripts/reiniciar.sh)
     trap limpiar_terminal EXIT
     trap 'exit 130' INT TERM HUP
     aplicar_ip "$IP" || exit 1
@@ -77,6 +79,7 @@ iniciar_terminal() {
     fi
 
     [ "$SO" = termux ] && command -v termux-wake-lock >/dev/null && termux-wake-lock
+    [ "$SO" = termux ] && arrancar_sshd
     mostrar_ip "$IP"
     aviso "Esta ventana es la consola del servidor: no la cierres. Para apagar: 'stop' aquí o scripts/terminar."
     echo
@@ -90,10 +93,11 @@ iniciar_terminal() {
 }
 
 main() {
-    local modo_arg="" ram=""
+    local modo_arg="" ram="" sincronizar=1
     for a in "$@"; do
         case "$a" in
             --docker|--terminal) modo_arg="$a" ;;
+            --sin-sincronizar) sincronizar=0 ;;
             *) ram="$a" ;;
         esac
     done
@@ -115,7 +119,7 @@ main() {
         error "El modo terminal necesita Python 3. Ejecuta scripts/preparar."
         exit 1
     fi
-    if preguntar_sn "¿Sincronizar el mundo con GitHub antes de empezar (rama $(rama_actual))?"; then
+    if [ $sincronizar = 1 ] && preguntar_sn "¿Sincronizar el mundo con GitHub antes de empezar (rama $(rama_actual))?"; then
         sincronizar
         leer_env   # .env puede haber cambiado (versión nueva)
     fi

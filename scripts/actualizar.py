@@ -12,6 +12,7 @@
 # Uso:
 #   python actualizar.py            comprobar y, si se confirma, aplicar
 #   python actualizar.py --check    solo comprobar (no cambia nada)
+#   python actualizar.py --json     solo comprobar y dar el resultado en JSON (app de control)
 #   python actualizar.py --yes      aplicar sin preguntar
 #   python actualizar.py --no-smoke saltar la prueba de arranque
 #   python actualizar.py --rollback restaurar los jars del último backup
@@ -57,6 +58,8 @@ LEAF = "https://api.leafmc.one/v2/projects/leaf"
 MODRINTH = "https://api.modrinth.com/v2"
 GEYSERMC = "https://download.geysermc.org/v2/projects"
 SMOKE_TIMEOUT = 600
+INFORME = {}       # resultado de la comprobación (--json)
+NOTIFICAR = True   # avisos de Termux (no con --json: la app comprueba a menudo)
 
 C = {"r": "\033[31m", "g": "\033[32m", "y": "\033[33m", "c": "\033[36m", "b": "\033[1m", "n": "\033[0m"}
 if os.name == "nt":
@@ -142,7 +145,7 @@ def plugin_dir_for(p):
 
 def notify(title, text):
     """Aviso extra en Termux (además de la consola)."""
-    if shutil.which("termux-notification"):
+    if NOTIFICAR and shutil.which("termux-notification"):
         subprocess.run(["termux-notification", "--title", title, "--content", text], check=False)
 
 
@@ -458,15 +461,32 @@ def main():
     ap.add_argument("--yes", action="store_true", help="aplicar sin preguntar")
     ap.add_argument("--no-smoke", action="store_true", help="saltar la prueba de arranque")
     ap.add_argument("--rollback", action="store_true", help="restaurar los jars del último backup")
+    ap.add_argument("--json", action="store_true", help="solo comprobar; resultado en JSON")
     args = ap.parse_args()
 
     if args.rollback:
         return rollback()
+    if not args.json:
+        return actualizar(args)
+    global NOTIFICAR
+    NOTIFICAR, args.check = False, True
+    salida, sys.stdout = sys.stdout, open(os.devnull, "w", encoding="utf-8")
+    try:
+        INFORME["codigo"] = actualizar(args)
+    finally:
+        sys.stdout.close()
+        sys.stdout = salida
+    print(json.dumps(INFORME, ensure_ascii=False))
+    return 0
+
+
+def actualizar(args):
 
     cfg = load_cfg()
     cur = cfg["paper"]["installed"]
     say("c", f"{C['b']}--- Actualizador de Multilocal-craft ---")
     srv = cfg["paper"].get("proyecto", "paper").capitalize()
+    INFORME.update(servidor=srv, instalado={"version": cur["version"], "build": cur["build"]}, plugins=[], bloqueadas=[])
     say("c", f"Instalado: {srv} {cur['version']} build {cur['build']} | Geyser en modo '{geyser_mode()}'")
     say("c", f"Buscando versiones de {srv} y comprobando plugins...")
 
@@ -474,10 +494,13 @@ def main():
         cands = server_candidates(cfg["paper"], cur["version"])
     except Exception as e:
         say("r", f"No se pudo consultar las versiones de {srv}: {e}")
+        INFORME["error"] = f"No se pudo consultar las versiones de {srv}: {e}"
         return 2
     if not cands:
         say("r", "PaperMC no devolvió ninguna versión estable.")
+        INFORME["error"] = f"{srv} no devolvió ninguna versión."
         return 2
+    INFORME["ultima"] = {"version": cands[0]["version"], "build": cands[0]["build"]}
 
     blocked = []          # (versión, [motivos]) de versiones más nuevas que no se pueden usar
     target = None
@@ -486,6 +509,8 @@ def main():
         bad = [f"{n}: {r['note']}" for n, r in res.items() if r["status"] in ("bloquea", "error")]
         if bad:
             blocked.append((c, bad))
+            INFORME["bloqueadas"].append({"version": c["version"], "build": c["build"], "plugins": [
+                {"nombre": n, "nota": r["note"]} for n, r in res.items() if r["status"] in ("bloquea", "error")]})
             continue
         target, target_res = c, res
         break
@@ -501,6 +526,7 @@ def main():
         return 1
 
     # Informe
+    INFORME["objetivo"] = {"version": target["version"], "build": target["build"], "java": target["java"]}
     print()
     say("b", f"Versión elegida: Minecraft {target['version']} ({srv} build {target['build']}, "
              f"{target['status']}, Java {target['java']}+)")
@@ -509,6 +535,7 @@ def main():
     print(f"  {srv:<15} {cur['version'] + '-' + str(cur['build']):<28} "
           f"{target['version'] + '-' + str(target['build']):<28} {'igual' if same_paper else 'actualizar'}")
     changes = 0 if same_paper else 1
+    INFORME["servidor_cambia"] = not same_paper
     for p in cfg["plugins"]:
         r = target_res[p["name"]]
         old = (p.get("installed") or {}).get("version", "-")
@@ -520,9 +547,12 @@ def main():
         if not same:
             changes += 1
         print(f"  {p['name']:<15} {old:<28} {r['version']:<28} {state}")
+        INFORME["plugins"].append({"nombre": p["name"], "instalado": old, "nuevo": r["version"],
+                                   "estado": state, "nota": r["note"]})
         if r["note"]:
             say("y", f"  {'':<15} {r['note']}")
 
+    INFORME["cambios"] = changes
     if changes == 0:
         say("g", "\nTodo está al día. No hay nada que hacer.")
         if blocked:
