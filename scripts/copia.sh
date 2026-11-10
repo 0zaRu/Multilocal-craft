@@ -62,6 +62,12 @@ main() {
     trap - EXIT
 
     paso 4/4 "Subiendo a GitHub"
+    # Solo se sube si hay commits que GitHub aún no tiene (esta copia o alguna anterior que no se pudo subir)
+    if git rev-parse -q --verify "$REMOTO/$rama" >/dev/null && \
+       [ "$(git rev-list --count "$REMOTO/$rama..HEAD")" = 0 ]; then
+        ok "Nada nuevo que subir a GitHub ($rama)."
+        return 0
+    fi
     info "Subiendo a GitHub ($REMOTO/$rama)..."
     # --progress: el porcentaje sale en el log aunque no haya terminal (la app lo enseña)
     if git push --progress "$REMOTO" "$rama" 2>&1; then

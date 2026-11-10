@@ -4,6 +4,8 @@
 server 2025/world/
 server 2025/world_nether/
 server 2025/world_the_end/
+# Los registros del servidor tampoco: cambian en cada arranque y harían que siempre hubiera "algo nuevo"
+server 2025/logs/
 # Copias de jars antiguos que guarda actualizar.py
 server 2025/.upgrade-backup/
 # Log de la prueba de arranque de actualizar.py
