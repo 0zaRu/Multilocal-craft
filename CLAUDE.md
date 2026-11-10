@@ -4,7 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-Not a software project: it is a **shared Minecraft server whose world is synced through git**. Each player deploys the server on their own device in turns (PC with Docker or plain Java, or an Android phone with Termux), plays, then commits and pushes the world back. Players connect over a ZeroTier network; there is no lock or "someone is already hosting" check, so players coordinate who hosts. There is no build step. Project text (README, scripts, commit messages) is in Spanish.
+Not a software project: it is a **shared Minecraft server** (scripts, config and plugin data in git). Players connect over a ZeroTier network. There is no build step. Project text (README, scripts, commit messages) is in Spanish.
+
+- **Host since 2026-11-10: the home server "central"** (Debian, Docker mode, repo at `~/minecraft/Multilocal-craft`, branch `try-update`, ZeroTier IP 192.0.2.1). Before, each player hosted in turns (PC with Docker or plain Java, or an Android phone with Termux) and the world travelled through git; the scripts still support that, but there is no lock or "someone is already hosting" check.
+- **The world is NOT in git any more** (`server 2025/world*/` in `.gitignore`; GitHub's terms don't allow using the repo as game storage). `copia.sh` pushes everything else. The world is backed up locally by the host: on central, `~/central/copias/trabajos/minecraft.sh` (nightly, hot save-off/flush, levels daily/weekly/monthly in `~/backups/minecraft`). Older commits still contain worlds; rewriting history was deliberately not done. A new host must get the world from those local backups, not from git.
 
 - Server: **Leaf 26.3** (Paper fork, same plugins/world; `server 2025/plugins.json` → `paper.proyecto: leaf`, accepting `experimental` builds since that's all Leaf ships for 26.x), **Java 25**. Chosen from phone load tests: see `docs/pruebas-movil.md`. spark is built in.
 - Plugins (`server 2025/plugins/`): EssentialsX (dev build: no stable release supports 26.3 yet), Floodgate, LuckPerms, SkinsRestorer, ChunkLoader, OpenShulk, Chestsort+. Geyser runs **outside** Paper as Geyser Standalone (`server 2025/geyser/`).

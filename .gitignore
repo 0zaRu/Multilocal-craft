@@ -1,3 +1,9 @@
+# Los MUNDOS no se suben a GitHub (sus términos no permiten usar el repo como almacén de partidas).
+# Se guarda todo lo demás (configuración, plugins y sus datos). El mundo lo copia el anfitrión en
+# local (en central: copias nocturnas en ~/backups/minecraft, con niveles diaria/semanal/mensual).
+server 2025/world/
+server 2025/world_nether/
+server 2025/world_the_end/
 # Copias de jars antiguos que guarda actualizar.py
 server 2025/.upgrade-backup/
 # Log de la prueba de arranque de actualizar.py

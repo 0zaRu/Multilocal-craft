@@ -121,7 +121,10 @@ def pid_java():
     for d in os.listdir("/proc"):
         if d.isdigit():
             cmd = leer(f"/proc/{d}/cmdline", "") or ""
-            if "-jar\0" in cmd and jar in cmd:
+            # Solo el propio java: en Docker (itzg) también lleva "-jar <jar>" el lanzador que lo envuelve
+            # (mc-server-runner ... -- java ...), y medirlo daba ~12 MB y 7 hilos en vez de los de la JVM.
+            ejecutable = os.path.basename(cmd.split("\0", 1)[0])
+            if ejecutable.startswith("java") and "-jar\0" in cmd and jar in cmd:
                 return int(d)
     return None
 
