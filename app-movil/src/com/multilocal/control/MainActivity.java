@@ -533,7 +533,7 @@ public class MainActivity extends Activity {
             if (proc.has("encendido_s")) fila(c, "Encendido hace", duracion(proc.optLong("encendido_s")), Estilo.BLANCO);
         }
 
-        seccion(c, "MÓVIL HOST");
+        seccion(c, "HOST");
         fila(c, "IP", aj.host, Estilo.BLANCO);
         if (errorSsh != null && esperandoOp == null) {
             TextView t = Estilo.texto(this, errorSsh, 13, Estilo.ROJO);
@@ -941,10 +941,11 @@ public class MainActivity extends Activity {
         c.setPadding(px(20), px(10), px(20), 0);
         EditText host = campo(c, "IP del host (ZeroTier)", aj.host, false);
         EditText pmc = campo(c, "Puerto de Minecraft", String.valueOf(aj.puertoMc), true);
-        EditText pssh = campo(c, "Puerto SSH (Termux)", String.valueOf(aj.puertoSsh), true);
+        EditText pssh = campo(c, "Puerto SSH (22 en central, 8022 en Termux)", String.valueOf(aj.puertoSsh), true);
+        EditText usu = campo(c, "Usuario SSH (en Termux da igual)", aj.usuario, false);
         EditText dir = campo(c, "Carpeta del repo en el host", aj.carpeta, false);
         TextView ayuda = new TextView(this);
-        ayuda.setText("Para autorizar este móvil, pega el comando en Termux del host (una sola vez):");
+        ayuda.setText("Para autorizar este móvil, pega el comando en el terminal del host, por SSH o en Termux (una sola vez):");
         ayuda.setPadding(0, px(14), 0, px(4));
         c.addView(ayuda);
         TextView clave = new TextView(this);
@@ -969,9 +970,10 @@ public class MainActivity extends Activity {
                 clave.setText(fk);
                 copiar.setEnabled(true);
                 copiar.setOnClickListener(v -> {
-                    String cmd = "mkdir -p ~/.ssh && echo '" + fk + "' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys";
+                    // from=: la clave de la app solo vale desde la red ZeroTier de Minecraft
+                    String cmd = "mkdir -p ~/.ssh && echo 'from=\"172.25.0.0/16\" " + fk + "' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys";
                     ((ClipboardManager) getSystemService(CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("Multilocal", cmd));
-                    Toast.makeText(this, "Copiado. Pégalo en Termux del host.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Copiado. Pégalo en el terminal del host.", Toast.LENGTH_LONG).show();
                 });
             });
         });
@@ -982,7 +984,8 @@ public class MainActivity extends Activity {
                 .setPositiveButton("Guardar", (d, w) -> {
                     aj.host = host.getText().toString().trim();
                     aj.puertoMc = entero(pmc, 60068);
-                    aj.puertoSsh = entero(pssh, 8022);
+                    aj.puertoSsh = entero(pssh, Ajustes.SSH_CENTRAL);
+                    aj.usuario = usu.getText().toString().trim();
                     aj.carpeta = dir.getText().toString().trim();
                     aj.guardar();
                     hiloLog.execute(con::cerrar);

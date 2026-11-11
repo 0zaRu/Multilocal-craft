@@ -18,7 +18,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
 /**
- * SSH al dispositivo que hace de servidor (sshd de Termux, puerto 8022). La sesión solo
+ * SSH al dispositivo que hace de servidor (sshd de Termux en el puerto 8022, o el de un Linux en el 22). La sesión solo
  * existe mientras la app está abierta; cada petición es un comando corto (scripts/panel.py).
  */
 final class Conexion {
@@ -46,7 +46,8 @@ final class Conexion {
     }
 
     private synchronized Session sesion(Ajustes a) throws Exception {
-        String d = a.host + ":" + a.puertoSsh;
+        String usuario = a.usuario == null || a.usuario.isEmpty() ? "termux" : a.usuario;
+        String d = usuario + "@" + a.host + ":" + a.puertoSsh;
         if (sesion != null && sesion.isConnected() && d.equals(destino)) return sesion;
         cerrar();
         clavePublica();
@@ -54,7 +55,7 @@ final class Conexion {
         if (!conocidos.exists()) conocidos.createNewFile();
         j.setKnownHosts(conocidos.getPath());
         j.addIdentity(privada.getPath());
-        Session s = j.getSession("termux", a.host, a.puertoSsh);
+        Session s = j.getSession(usuario, a.host, a.puertoSsh);
         // La primera vez se guarda la clave del host (la red ZeroTier ya va cifrada y es privada)
         s.setConfig("StrictHostKeyChecking", "no");
         s.setConfig("PreferredAuthentications", "publickey");
@@ -106,7 +107,7 @@ final class Conexion {
     static String explicar(Throwable e) {
         String m = e.getMessage() == null ? e.toString() : e.getMessage();
         if (e instanceof JSchException && m.contains("Auth fail"))
-            return "Este móvil aún no está autorizado en el host. Ve a Ajustes → «Copiar comando» y pégalo en Termux del host.";
+            return "Este móvil aún no está autorizado en el host. Ve a Ajustes → «Copiar comando» y pégalo en el terminal del host.";
         if (m.contains("ECONNREFUSED") || m.contains("Connection refused"))
             return "El host no acepta SSH: el servidor está apagado o se lanzó sin openssh.";
         if (m.contains("timeout") || m.contains("timed out") || m.contains("EHOSTUNREACH") || m.contains("ENETUNREACH"))
