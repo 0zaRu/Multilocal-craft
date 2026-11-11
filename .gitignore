@@ -36,3 +36,8 @@ server 2025/plugins/floodgate/linked-players.db-journal
 
 # Ajustes propios de cada anfitrión fijo (plantilla: docker-compose.central.ejemplo.yml)
 docker-compose.central.yml
+
+# Datos que guardan IPs de jugadores: se quedan en el anfitrión (y en sus copias locales), nunca en git
+server 2025/plugins/Essentials/userdata/
+server 2025/copias-cuentas/
+server 2025/banned-ips.json
