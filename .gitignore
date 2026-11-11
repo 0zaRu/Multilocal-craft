@@ -41,3 +41,4 @@ docker-compose.central.yml
 server 2025/plugins/Essentials/userdata/
 server 2025/copias-cuentas/
 server 2025/banned-ips.json
+server 2025/plugins/LoginSecurity/
