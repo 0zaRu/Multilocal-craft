@@ -385,28 +385,37 @@ def smoke_test(paper, jars, java_min):
         else:
             return False, [f"Hace falta Java {java_min} (tienes {major or 'ninguno'}) o Docker para la prueba de arranque."]
 
-        proc = subprocess.Popen(cmd, cwd=tmp, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-                                stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace")
-        lines, done = [], threading.Event()
+        def arrancar():
+            proc = subprocess.Popen(cmd, cwd=tmp, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                    stderr=subprocess.STDOUT, text=True, encoding="utf-8", errors="replace")
+            lines, done = [], threading.Event()
 
-        def reader():
-            for line in proc.stdout:
-                lines.append(line.rstrip())
-                if re.search(r"Done \(\d", line):
-                    done.set()
-            done.set()
+            def reader():
+                for line in proc.stdout:
+                    lines.append(line.rstrip())
+                    if re.search(r"Done \(\d", line):
+                        done.set()
+                done.set()
 
-        threading.Thread(target=reader, daemon=True).start()
-        done.wait(SMOKE_TIMEOUT)
-        finished = any(re.search(r"Done \(\d", l) for l in lines)
-        if finished:
-            time.sleep(20)  # deja correr las tareas asíncronas del arranque (comprobaciones, cachés...)
-        try:
-            proc.stdin.write("stop\n")
-            proc.stdin.flush()
-            proc.wait(120)
-        except Exception:
-            proc.kill()
+            threading.Thread(target=reader, daemon=True).start()
+            done.wait(SMOKE_TIMEOUT)
+            finished = any(re.search(r"Done \(\d", l) for l in lines)
+            if finished:
+                time.sleep(20)  # deja correr las tareas asíncronas del arranque (comprobaciones, cachés...)
+            try:
+                proc.stdin.write("stop\n")
+                proc.stdin.flush()
+                proc.wait(120)
+            except Exception:
+                proc.kill()
+            return finished, lines
+
+        finished, lines = arrancar()
+        # Leaf (desde 26.3 build 22, «QuantumLeaper») crea config/leaf-loader.yml en el primer arranque y se
+        # apaga pidiendo arrancar otra vez: en la carpeta de prueba pasa siempre, así que se repite una vez.
+        if not finished and any("start the server again" in l for l in lines):
+            say("c", "  Leaf ha creado su configuración nueva (leaf-loader.yml); se repite la prueba...")
+            finished, lines = arrancar()
 
         problems = []
         if not finished:
