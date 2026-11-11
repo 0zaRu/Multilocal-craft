@@ -1,0 +1,20 @@
+# Plantilla de los ajustes de un anfitrión fijo tipo «central» (Debian + Docker, siempre encendido).
+# Cópiala como docker-compose.central.yml (ese nombre NO se sube: .gitignore) y ajústala a ese equipo.
+# La IP de ZeroTier del anfitrión no se escribe en el repo: se pasa al arrancar.
+# Arranque:
+#   MLC_IP=<IP de ZeroTier del anfitrión> docker compose -f docker-compose.yml -f docker-compose.central.yml up -d --build
+services:
+  mc-server:
+    restart: unless-stopped     # si lo paras a mano, sigue parado tras un corte de luz
+    cpu_shares: 512             # mitad de prioridad de CPU que el resto de contenedores del equipo
+    environment:
+      MAX_MEMORY: "6G"          # tope de RAM del servidor
+    ports:
+      - "127.0.0.1:25575:25575" # RCON solo en local: lo usan scripts/panel.py y la web de control
+  geyser:
+    restart: unless-stopped
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 10.210.2.0/24 # fuera de los rangos de ZeroTier (172.2x): una red de Docker ahí rompe ZeroTier

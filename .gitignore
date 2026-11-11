@@ -33,3 +33,6 @@ app-movil/build/
 server 2025/.panel-bateria
 # Diario temporal de SQLite (la base de vínculos linked-players.db sí se sube: viaja con el mundo)
 server 2025/plugins/floodgate/linked-players.db-journal
+
+# Ajustes propios de cada anfitrión fijo (plantilla: docker-compose.central.ejemplo.yml)
+docker-compose.central.yml

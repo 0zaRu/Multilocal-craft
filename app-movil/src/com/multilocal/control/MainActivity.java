@@ -161,6 +161,7 @@ public class MainActivity extends Activity {
 
         setContentView(raiz);
         elegir(P_ESTADO);
+        if (aj.host.isEmpty()) abrirAjustes();   // primera vez: falta la IP del anfitrión (no viene en el código)
         pintar();
     }
 

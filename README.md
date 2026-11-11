@@ -24,7 +24,7 @@ Primera vez en un equipo nuevo: `scripts/preparar` y después `scripts/iniciar`.
 
 En **Termux (Android)** solo existe el modo terminal: Docker no funciona allí, así que los scripts ni lo preguntan.
 
-- Sincronizar y subir usan siempre **la rama en la que estés** (`main`, `mobile-version`...).
+- Sincronizar y subir usan siempre **la rama en la que estés** (normalmente `main`, la única).
 - Sincronizar descarta los cambios locales que no hayas subido; el script avisa antes.
 - En modo terminal, la ventana de `iniciar` es la consola del servidor; `consola` y `terminar` funcionan desde otra ventana.
 

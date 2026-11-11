@@ -5,13 +5,11 @@ import android.content.SharedPreferences;
 
 /** Dónde está el servidor. Cambia según quién lo lance (la IP de ZeroTier del host). */
 final class Ajustes {
-    // Host por defecto: el servidor "central" (Debian, Docker) en la red ZeroTier de Minecraft
-    static final String HOST_CENTRAL = "192.0.2.1";
+    // Host: la IP de ZeroTier del anfitrión. No va en el repo: se pone en Ajustes (⚙) la primera vez.
+    static final String HOST_CENTRAL = "";
     static final int SSH_CENTRAL = 22;
     static final String USUARIO_CENTRAL = "alberto";
     static final String CARPETA_CENTRAL = "~/minecraft/Multilocal-craft";
-    // Host anterior (móvil con Termux): si la app lo tiene guardado, se pasa a central una sola vez
-    private static final String HOST_MOVIL_ANTIGUO = "192.0.2.1";
 
     String host;
     int puertoMc, puertoSsh;
@@ -21,13 +19,6 @@ final class Ajustes {
 
     Ajustes(Context c) {
         p = c.getSharedPreferences("ajustes", Context.MODE_PRIVATE);
-        if (!p.getBoolean("migrado_central", false)) {
-            SharedPreferences.Editor e = p.edit().putBoolean("migrado_central", true);
-            if (HOST_MOVIL_ANTIGUO.equals(p.getString("host", HOST_MOVIL_ANTIGUO))) {
-                e.remove("host").remove("puertoSsh").remove("usuario").remove("carpeta");
-            }
-            e.apply();
-        }
         host = p.getString("host", HOST_CENTRAL);
         puertoMc = p.getInt("puertoMc", 60068);
         puertoSsh = p.getInt("puertoSsh", SSH_CENTRAL);
