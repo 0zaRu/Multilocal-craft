@@ -131,6 +131,19 @@
         "file": "chestsort-plus-0.6.0.jar",
         "location": "plugin"
       }
+    },
+    {
+      "name": "AuthMe",
+      "source": "modrinth",
+      "project": "authmereloaded",
+      "loaders": [
+        "paper"
+      ],
+      "installed": {
+        "version": "6.0.1",
+        "file": "AuthMe-6.0.1-Paper.jar",
+        "location": "plugin"
+      }
     }
   ]
 }

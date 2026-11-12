@@ -1,0 +1,257 @@
+# Este archivo debe ser ANSI en Windows, o UTF-8 en Linux.
+# Lista de placeholders globales:
+# %nl% - Comienza una nueva línea.
+# %username% - Muestra el nombre del usuario que recibe el mensaje.
+# %displayname% - Muestra el nombre (y colores) del usuario que recibe el mensaje.
+
+# Registration
+registration:
+    disabled: '&cEl registro está desactivado'
+    name_taken: '&cUsuario ya registrado'
+    register_request: '&cPor favor, regístrate con "/register <contraseña> <confirmarContraseña">'
+    command_usage: '&cUso: /register Contraseña ConfirmarContraseña'
+    reg_only: '&f¡Sólo para jugadores registrados! Por favor visita http://www.example.com/ para registrarte'
+    success: '&c¡Registrado correctamente!'
+    kicked_admin_registered: 'Un administrador te acaba de registrar; entra en la cuenta de nuevo'
+
+# Password errors on registration
+password:
+    match_error: '&fLas contraseñas no son iguales'
+    name_in_password: '&cNo puedes utilizar tu nombre como contraseña. Por favor, elija otra...'
+    unsafe_password: '&cLa contraseña elegida no es segura, por favor elija otra...'
+    forbidden_characters: '&cTu contraseña tiene carácteres no admitidos, los cuales son: %valid_chars'
+    wrong_length: '&fTu contraseña es muy larga o muy corta'
+
+# Login
+login:
+    command_usage: '&cUso: /login contraseña'
+    wrong_password: '&cContraseña incorrecta'
+    success: '&c¡Sesión iniciada!'
+    login_request: '&cInicia sesión con "/login contraseña"'
+    timeout_error: '&fTiempo de espera para inicio de sesión excedido'
+
+# Errors
+error:
+    denied_command: '&c¡Para utilizar este comando debes iniciar sesión!'
+    denied_chat: '&c¡Para poder hablar en el chat debes iniciar sesión!'
+    unregistered_user: '&cUsuario no registrado'
+    not_logged_in: '&c¡No has iniciado sesión!'
+    no_permission: '&cNo tienes permiso'
+    unexpected_error: '&fHa ocurrido un error. Por favor contacta al administrador.'
+    max_registration: '&fHas excedido la cantidad máxima de registros para tu cuenta'
+    logged_in: '&c¡Ya has iniciado sesión!'
+    kick_for_vip: '&c¡Un jugador VIP ha ingresado al servidor lleno!'
+    kick_unresolved_hostname: '&cHa ocurrido un error: ¡host del jugador no resuelto!'
+    tempban_max_logins: '&cHas sido expulsado temporalmente por intentar iniciar sesión demasiadas veces.'
+
+# AntiBot
+antibot:
+    kick_antibot: '¡El modo de protección AntiBot está habilitado! Tienes que esperar varios minutos antes de entrar en el servidor.'
+    auto_enabled: '[AuthMe] ¡AntiBotMod activado automáticamente debido a conexiones masivas!'
+    auto_disabled: '[AuthMe] AntiBotMod desactivado automáticamente después de %m minutos. Esperamos que haya terminado.'
+
+# Unregister
+unregister:
+    success: '&c¡Cuenta eliminada del registro!'
+    command_usage: '&cUso: /unregister contraseña'
+
+# Other messages
+misc:
+    account_not_activated: '&fTu cuenta no está activada aún, ¡revisa tu correo!'
+    password_changed: '&c¡Contraseña cambiada!'
+    logout: '&cDesconectado correctamente.'
+    reload: '&fLa configuración y la base de datos han sido recargados'
+    usage_change_password: '&fUso: /changepw contraseñaActual contraseñaNueva'
+    accounts_owned_self: 'Eres propietario de %count cuentas:'
+    accounts_owned_other: 'El jugador %name tiene %count cuentas:'
+
+# Session messages
+session:
+    valid_session: '&cInicio de sesión'
+    invalid_session: '&fLos datos de sesión no corresponden. Por favor espera a terminar la sesión.'
+
+# Error messages when joining
+on_join_validation:
+    same_ip_online: '¡Un jugador con la misma IP ya está en el juego!'
+    same_nick_online: '&fYa hay un usuario con ese nick conectado (posible error)'
+    name_length: '&cTu nombre de usuario es muy largo o muy corto.'
+    characters_in_name: '&cTu usuario tiene carácteres no admitidos, los cuales son: %valid_chars'
+    kick_full_server: '&c¡El servidor está lleno, lo sentimos!'
+    country_banned: '¡Tu país ha sido baneado de este servidor!'
+    not_owner_error: 'No eres el propietario de esta cuenta. ¡Por favor, elije otro nombre!'
+    invalid_name_case: 'Solo puedes unirte mediante el nombre de usuario %valid, no %invalid.'
+    quick_command: '¡Has usado el comando demasiado rápido! Porfavor, entra al servidor de nuevo y espera un poco antes de usar cualquier comando.'
+
+# Email
+email:
+    add_email_request: '&cPor favor agrega tu e-mail con: /email add tuEmail confirmarEmail'
+    usage_email_add: '&fUso: /email add <email> <confirmaEmail> '
+    usage_email_change: '&fUso: /email change <anteriorEmail> <nuevoEmail> '
+    new_email_invalid: '[AuthMe] ¡Nuevo email inválido!'
+    old_email_invalid: '[AuthMe] ¡Email anterior inválido!'
+    invalid: '[AuthMe] ¡Email inválido!'
+    added: '[AuthMe] ¡Email agregado!'
+    add_not_allowed: '&cNo se permite añadir un email.'
+    request_confirmation: '[AuthMe] ¡Confirma tu email!'
+    changed: '[AuthMe] ¡Email cambiado!'
+    change_not_allowed: '&cNo se permite el cambio de email'
+    email_show: '&2Tu dirección de email actual es: &f%email'
+    no_email_for_account: '&2No tienes ningun E-Mail asociado en esta cuenta.'
+    already_used: '&4La dirección email ya está siendo usada.'
+    incomplete_settings: 'Error: no todos los ajustes necesarios se han configurado para poder enviar correos. Por favor, contacta con un administrador.'
+    send_failure: 'No se ha podido enviar el correo electrónico. Por favor, contacta con un administrador.'
+    change_password_expired: 'No puedes cambiar la contraseña utilizando este comando.'
+    email_cooldown_error: '&cEl correo ha sido enviado recientemente. Debes esperar %time antes de volver a enviar uno nuevo.'
+    confirm_code_sent: '&3Se ha enviado un código de verificación a &f%email&3. Usa &f/email confirm <code>&3 para confirmar.'
+    usage_email_confirm: '&cUso: /email confirm <code>'
+    confirm_wrong_code: '&cCódigo de confirmación incorrecto. Por favor, inténtalo de nuevo.'
+    confirm_code_expired: '&cNo se encontró confirmación de email pendiente. Por favor, reinicia el proceso.'
+    confirm_success: '&2¡Dirección de email confirmada y guardada en tu cuenta!'
+
+# Password recovery by email
+recovery:
+    forgot_password_hint: '&c¿Olvidaste tu contraseña? Por favor usa /email recovery <tuEmail>'
+    command_usage: '&fUso: /email recovery <email>'
+    email_sent: '[AuthMe] ¡Correo de recuperación enviado!'
+    code:
+        code_sent: 'El código de recuperación para recuperar tu contraseña se ha enviado a tu correo.'
+        incorrect: '¡El código de recuperación no es correcto! Usa "/email recovery [email]" para generar uno nuevo'
+        tries_exceeded: 'Has excedido el número máximo de intentos para introducir el código de recuperación. Escribe "/email recovery [tuEmail]" para generar uno nuevo.'
+        correct: '¡Código de recuperación introducido correctamente!'
+        change_password: 'Por favor usa el comando "/email setpassword <nuevaContraseña>" para cambiar tu contraseña inmediatamente.'
+
+# Captcha
+captcha:
+    usage_captcha: '&cUso: /captcha %captcha_code'
+    wrong_captcha: '&cCaptcha incorrecto, por favor usa: /captcha %captcha_code'
+    valid_captcha: '&c¡Captcha ingresado correctamente!'
+    captcha_for_registration: 'Para registrarse primero debes resolver el captcha, por favor usa el comando: /captcha %captcha_code'
+    register_captcha_valid: '&2¡Captcha validado! Ahora puedes registrarte usando /register'
+
+# Verification code
+verification:
+    code_required: '&3¡Este comando es privado y requiere una verificación por correo electrónico! Revisa tu bandeja de entrada y sigue las instrucciones del correo electrónico.'
+    command_usage: '&cUso: /verification <código>'
+    incorrect_code: '&cCódigo incorrecto, por favor escribe "/verification <código>" en el chat, utilizando el código que has recibido por correo electrónico.'
+    success: '&2¡Tu identidad ha sido verificada! Ahora puedes ejecutar todos los comandos dentro de la sesión actual.'
+    already_verified: '&2¡Ya puedes ejecutar todos los comandos de seguridad dentro de la sesión actual!'
+    code_expired: '&3¡Tu código ha expirado! Ejecuta otra vez el comando de seguridad para obtener un nuevo código.'
+    email_needed: '&3¡Para verificar tu identidad necesitas añadir tu correo electrónico a tu cuenta!'
+
+# Time units
+
+# Dialog UI
+dialog:
+  login:
+    title: '&6Inicio de sesión'
+    body: '&7Por favor, introduce tu contraseña para continuar.'
+    password: '&fContraseña'
+    recovery_email: '&fCorreo de recuperación (opcional)'
+    recovery_button: '&e¿Olvidaste tu contraseña?'
+    button: '&aIniciar sesión'
+    canceled: '&cYou have canceled the login.'
+  register:
+    title: '&6Registro'
+    body: '&7Crea una cuenta para empezar a jugar en este servidor.'
+    password: '&fContraseña'
+    confirm_password: '&fConfirmar contraseña'
+    email: '&fCorreo electrónico'
+    confirm_email: '&fConfirmar correo electrónico'
+    button: '&aRegistrarse'
+    canceled: '&cYou have canceled the registration.'
+  two_factor:
+    title: '&6Autenticación de dos factores'
+    body: '&7Abre tu aplicación de autenticación e introduce el código de 6 dígitos.'
+    code: '&fCódigo 2FA'
+    button: '&aVerificar'
+  recovery:
+    title: '&6Recuperación de contraseña'
+    body: '&7Introduce tu dirección de correo registrada y se te enviará un código de restablecimiento.'
+    email: '&fDirección de correo'
+    button: '&aEnviar correo de recuperación'
+
+  button:
+    cancel: '&cCancelar'
+
+time:
+    second: 'segundo'
+    seconds: 'segundos'
+    minute: 'minuto'
+    minutes: 'minutos'
+    hour: 'hora'
+    hours: 'horas'
+    day: 'día'
+    days: 'días'
+
+# Two-factor authentication
+two_factor:
+    code_created: '&2Tu código secreto es %code. Lo puedes escanear desde aquí %url'
+    confirmation_required: 'Por favor, confirma tu código con /2fa confirm <código>'
+    code_required: 'Por favor, envía tu código de atenticación de dos factores con /2fa code <código>'
+    already_enabled: '¡La autenticación de dos factores ha sido habilitada para tu cuenta!'
+    enable_error_no_code: 'No se ha generado ninguna clave o código 2fa o ha expirado. Por favor usa /2fa add'
+    enable_success: 'Se ha habilitado correctamente la autenticación de dos factores para tu cuenta'
+    enable_error_wrong_code: 'El código es incorrecto o ha expirado. Por favor usa /2fa add'
+    not_enabled_error: 'La autenticación de dos factores no está habilitada para tu cuenta. Por favor usa /2fa add'
+    removed_success: 'Se ha eliminado correctamente la autenticación de dos factores de tu cuenta'
+    invalid_code: '¡Código incorrecto!'
+
+# Mensajes de validación de comandos
+command:
+    player_only: '&cEste comando es solo para jugadores.'
+    player_only_alternative: '&c¡Solo para jugadores! Por favor usa %alternative en su lugar.'
+    failed_to_parse: '&4¡No se pudo analizar el comando de AuthMe!'
+    unknown: '&4¡Comando desconocido!'
+    incorrect_arguments: '&4¡Argumentos de comando incorrectos!'
+    did_you_mean: '&e¿Quisiste decir &6%cmd&e?'
+    see_help: '&eUsa el comando &6/%cmd&e para ver la ayuda.'
+    detailed_help: '&6Ayuda detallada: &f/%cmd'
+
+# Mensajes de comandos de administrador
+admin:
+    force_login:
+        player_offline: '&c¡El jugador debe estar en línea!'
+        forbidden: '&c¡No puedes forzar el inicio de sesión del jugador %name!'
+        success: '&2¡Inicio de sesión forzado para %name realizado!'
+    accounts:
+        ip_not_found: '&cEsta IP no existe en la base de datos.'
+        single_account: '&2%name es un jugador con una sola cuenta.'
+        no_last_ip: '&cNo se conoce la última dirección IP del jugador.'
+    email_show: '&2Correo de %name: %email'
+    antibot:
+        status: '&2Estado de AntiBot: %status'
+        override_enabled: '&2Anulación manual de AntiBot: ¡habilitada!'
+        override_disabled: '&2Anulación manual de AntiBot: ¡deshabilitada!'
+        invalid_mode: '&c¡Modo de AntiBot inválido!'
+    reload:
+        db_type_change: '&eNota: no se puede cambiar el tipo de base de datos durante /authme reload.'
+        error: '&cSe produjo un error durante la recarga de AuthMe.'
+    spawn:
+        set_success: '&2Nuevo punto de aparición definido correctamente.'
+        set_fail: '&cSetSpawn falló, por favor inténtalo de nuevo.'
+        first_set_success: '&2Nuevo primer punto de aparición definido correctamente.'
+        first_set_fail: '&cSetFirstSpawn falló, por favor inténtalo de nuevo.'
+        not_defined: '&cEl spawn falló, por favor intenta definir el spawn.'
+        first_not_defined: '&cEl primer spawn falló, por favor intenta definir el primer spawn.'
+
+# Modo premium
+premium:
+  feature_disabled: '&cEl modo premium no está activado en este servidor.'
+  account_not_found: '&cNo se encontró ninguna cuenta premium de Minecraft para tu nombre de usuario.'
+  already_enabled: '&eEl modo premium ya está activado para tu cuenta.'
+  enable_success: '&2¡Modo premium activado! Ya no necesitarás autenticarte al iniciar sesión.'
+  not_enabled: '&eEl modo premium no está activado para tu cuenta.'
+  disable_success: '&2Modo premium desactivado. Deberás autenticarte de nuevo.'
+  error: '&cOcurrió un error al verificar tu estado premium. Por favor, inténtalo de nuevo más tarde.'
+  admin:
+    not_registered: '&c%name no está registrado.'
+    already_enabled: '&eEl modo premium ya está activado para %name.'
+    account_not_found: '&cNo se encontró ninguna cuenta de Mojang para %name.'
+    enable_success: '&2Modo premium activado para %name.'
+    not_enabled: '&eEl modo premium no está activado para %name.'
+    disable_success: '&2Modo premium desactivado para %name.'
+    impostor_kicked: '&eUn jugador conectado como %name tenía un UUID diferente y ha sido expulsado.'
+    kick_reason: '&cLa configuración premium de tu cuenta ha sido modificada por un administrador. Por favor, vuelve a conectarte.'
+    pending: '&eVerificación premium pendiente para %name. Deben reconectarse para confirmar la propiedad de la cuenta de Mojang.'
+  pending_kick: '&eVerificación premium solicitada. Por favor, vuelve a conectarte para confirmar la propiedad de tu cuenta de Mojang.'
+  pending_fail: '&cLa verificación premium ha fallado. Por favor, inicia sesión con tu contraseña.'

@@ -42,3 +42,15 @@ server 2025/plugins/Essentials/userdata/
 server 2025/copias-cuentas/
 server 2025/banned-ips.json
 server 2025/plugins/LoginSecurity/
+
+# Seguridad (2026-11-12): nunca a git
+# - Contraseñas de AuthMe (cifradas, pero no se publican) y sus registros (llevan IPs)
+server 2025/plugins/AuthMe/authme.db
+server 2025/plugins/AuthMe/*.db*
+server 2025/plugins/AuthMe/logs/
+server 2025/plugins/AuthMe/authme.log
+# - Clave de Floodgate: con ella cualquiera podría hacerse pasar por un jugador de Bedrock. Cada anfitrión la suya.
+server 2025/plugins/floodgate/key.pem
+server 2025/geyser/key.pem
+# - Ajustes de exposición del anfitrión fijo (central)
+docker-compose.central-publico.yml
