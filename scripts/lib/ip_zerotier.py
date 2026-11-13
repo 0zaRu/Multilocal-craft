@@ -3,13 +3,13 @@
 # Script: lib/ip_zerotier.py
 # Propósito:
 #   Imprimir la IP de este dispositivo dentro de la red ZeroTier del servidor
-#   (por ejemplo 172.25.0.0/16). Sale con código 1 si el dispositivo no está en esa red.
+#   (por ejemplo 172.23.0.0/16). Sale con código 1 si el dispositivo no está en esa red.
 #
 #   Truco portable: un socket UDP "conectado" a una dirección de la red no envía nada,
 #   pero el sistema elige la IP local con la que llegaría. Funciona en Windows, Linux,
 #   Mac y Termux sin permisos de administrador, aunque haya varias redes ZeroTier.
 #
-# Uso: python ip_zerotier.py 172.25.0.0/16
+# Uso: python ip_zerotier.py 172.23.0.0/16
 # ------------------------------------------------------------
 import ipaddress
 import socket
@@ -32,7 +32,7 @@ def ip_en_red(red):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        sys.exit("Uso: ip_zerotier.py <red, p. ej. 172.25.0.0/16>")
+        sys.exit("Uso: ip_zerotier.py <red, p. ej. 172.23.0.0/16>")
     ip = ip_en_red(sys.argv[1])
     if not ip:
         sys.exit(1)

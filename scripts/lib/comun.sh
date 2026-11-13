@@ -51,7 +51,7 @@ preguntar_modo() {
 
 # --- .env (versiones y ajustes comunes) ---
 leer_env() {
-    PAPER_JAR=""; JAVA_VERSION=25; GEYSER_MODE=ondemand; ZEROTIER_RED=172.25.0.0/16; ZEROTIER_ID=""; JAVA_OPTS=""
+    PAPER_JAR=""; JAVA_VERSION=25; GEYSER_MODE=ondemand; ZEROTIER_RED=172.23.0.0/16; ZEROTIER_ID=""; JAVA_OPTS=""
     if [ -f "$ROOT/.env" ]; then
         local k v
         while IFS='=' read -r k v; do

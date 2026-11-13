@@ -52,5 +52,9 @@ server 2025/plugins/AuthMe/authme.log
 # - Clave de Floodgate: con ella cualquiera podría hacerse pasar por un jugador de Bedrock. Cada anfitrión la suya.
 server 2025/plugins/floodgate/key.pem
 server 2025/geyser/key.pem
+# - Ficheros que el contenedor itzg genera con la contraseña de RCON
+server 2025/.rcon-cli.env
+server 2025/.rcon-cli.yaml
 # - Ajustes de exposición del anfitrión fijo (central)
 docker-compose.central-publico.yml
+exponer-minecraft.sh

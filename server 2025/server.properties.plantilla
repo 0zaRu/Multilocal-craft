@@ -1,0 +1,77 @@
+# PLANTILLA de server.properties (sin secretos). En central el server.properties real NO se sube a git
+# (skip-worktree + ganchos): lleva la contraseña de RCON. Para otro anfitrión: copiar a server.properties y
+# cambiar rcon.password. Valores de seguridad: white-list=true, enforce-whitelist=true (lista en whitelist.json),
+# online-mode=false (cuentas no premium: por eso AuthMe exige contraseña), log-ips=true (CrowdSec necesita la IP).
+#Minecraft server properties
+#Thu Nov 12 19:51:29 UTC 2026
+accepts-transfers=false
+allow-flight=true
+broadcast-console-to-ops=true
+broadcast-rcon-to-ops=true
+bug-report-link=
+chat-spam-threshold-seconds=10
+command-spam-threshold-seconds=10
+debug=false
+difficulty=hard
+enable-code-of-conduct=false
+enable-jmx-monitoring=false
+enable-query=false
+enable-rcon=true
+enable-status=true
+enforce-secure-profile=false
+enforce-whitelist=true
+entity-broadcast-range-percentage=100
+force-gamemode=false
+function-permission-level=2
+gamemode=survival
+generate-structures=true
+generator-settings={}
+hardcore=false
+hide-online-players=false
+initial-disabled-packs=
+initial-enabled-packs=vanilla
+level-name=world
+level-seed=-2098004362385192995
+level-type=minecraft\:normal
+log-ips=true
+management-server-allowed-origins=
+management-server-enabled=false
+management-server-host=localhost
+management-server-port=0
+management-server-secret=96yHZ4KWFQyLP5u3QDHVOkzduniGjngKKMUTeH12
+management-server-tls-enabled=true
+management-server-tls-keystore=
+management-server-tls-keystore-password=
+max-chained-neighbor-updates=1000000
+max-players=10
+max-tick-time=60000
+max-world-size=29999984
+motd=Bazinga de cubos
+network-compression-threshold=256
+online-mode=false
+op-permission-level=4
+pause-when-empty-seconds=-1
+player-idle-timeout=0
+prevent-proxy-connections=false
+query.port=60068
+rate-limit=0
+rcon.password=PON_AQUI_UNA_CONTRASENA_PROPIA
+rcon.port=25575
+region-file-compression=deflate
+require-resource-pack=false
+resource-pack=
+resource-pack-id=
+resource-pack-prompt=
+resource-pack-sha1=
+server-ip=
+server-name=Unknown Server
+server-port=60068
+simulation-distance=20
+spawn-protection=1
+status-heartbeat-interval=0
+sync-chunk-writes=false
+text-filtering-config=
+text-filtering-version=0
+use-native-transport=true
+view-distance=32
+white-list=true

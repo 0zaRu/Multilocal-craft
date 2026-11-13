@@ -101,21 +101,26 @@ def debian_proot_con_java():
     return shutil.which("proot-distro") is not None and         any(os.path.lexists(os.path.join(r, "usr", "bin", "java")) for r in raices)
 
 
-def config_generada(workdir, java_address=None, escuchar=None, anunciar=None, transporte=None):
+def config_generada(workdir, java_address=None, escuchar=None, anunciar=None, transporte=None, proxy_protocol=False):
     """Copia de config.yml con la IP de este equipo y la dirección del servidor Java.
 
     - escuchar: IP en la que escucha Geyser (bedrock.address).
     - anunciar: IP que se envía a los clientes NetherNet (bedrock.signaling.advertise-addresses);
       sin ella Geyser anuncia la IP pública que da STUN, que no sirve por ZeroTier.
     - java_address: dónde está el servidor Java (en Docker: 'mc-server').
+    - proxy_protocol: enviar la IP real del jugador con PROXY protocol (cuando Paper lo exige: proxy Gate delante).
     El config.yml de git no se toca.
     """
     with open(os.path.join(workdir, "config.yml"), encoding="utf-8") as f:
         lines = f.readlines()
-    section = None
+    section = sub = None
     for i, line in enumerate(lines):
         if re.match(r"\S", line):                      # clave de primer nivel
-            section = line.split(":")[0]
+            section, sub = line.split(":")[0], None
+        elif re.match(r"  [a-z]", line):               # clave de segundo nivel
+            sub = line.split(":")[0].strip()
+        if section == "advanced" and sub == "java" and proxy_protocol and re.match(r"    use-haproxy-protocol:", line):
+            lines[i] = "    use-haproxy-protocol: true\n"
         elif section == "java" and java_address and re.match(r"  address:", line):
             lines[i] = f"  address: {java_address}\n"
         elif section == "bedrock" and escuchar and re.match(r"  address:", line):
@@ -197,8 +202,9 @@ def run_geyser(args, workdir):
         args.transporte = "raknet" if es_android() and not proot else None
         if args.transporte == "raknet":
             log("AVISO: sin Debian (proot) con Java no hay NetherNet: Bedrock actual no podrá entrar. Ejecuta scripts/preparar.")
-    if args.java_address or args.escuchar or args.anunciar or args.transporte:
-        jvm += ["-c", config_generada(workdir, args.java_address, args.escuchar, args.anunciar, args.transporte)]
+    if args.java_address or args.escuchar or args.anunciar or args.transporte or args.proxy_protocol:
+        jvm += ["-c", config_generada(workdir, args.java_address, args.escuchar, args.anunciar, args.transporte,
+                                      args.proxy_protocol)]
     if proot:
         interno = "cd /geyser && exec java " + " ".join(shlex.quote(a) for a in jvm)
         cmd = ["proot-distro", "login", "debian", "--bind", f"{workdir}:/geyser", "--", "bash", "-c", interno]
@@ -312,6 +318,8 @@ def main():
     ap.add_argument("--java", default=os.environ.get("JAVA", "java"))
     ap.add_argument("--xmx", default="512M", help="memoria máxima de Geyser")
     ap.add_argument("--java-address", help="dirección del servidor Java si no es la de config.yml (Docker: mc-server)")
+    ap.add_argument("--proxy-protocol", action="store_true",
+                    help="enviar la IP real del jugador al servidor Java con PROXY protocol (si Paper lo exige)")
     ap.add_argument("--escuchar", help="IP de este equipo en la que escuchar (la de ZeroTier); por defecto todas")
     ap.add_argument("--anunciar", help="IP que se anuncia a los clientes NetherNet (la de ZeroTier)")
     ap.add_argument("--siempre", action="store_true", help="Geyser siempre encendido (sin bajo demanda)")

@@ -972,7 +972,7 @@ public class MainActivity extends Activity {
                 copiar.setEnabled(true);
                 copiar.setOnClickListener(v -> {
                     // from=: la clave de la app solo vale desde la red ZeroTier de Minecraft
-                    String cmd = "mkdir -p ~/.ssh && echo 'from=\"172.25.0.0/16\" " + fk + "' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys";
+                    String cmd = "mkdir -p ~/.ssh && echo 'from=\"172.23.0.0/16\" " + fk + "' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys";
                     ((ClipboardManager) getSystemService(CLIPBOARD_SERVICE)).setPrimaryClip(ClipData.newPlainText("Multilocal", cmd));
                     Toast.makeText(this, "Copiado. Pégalo en el terminal del host.", Toast.LENGTH_LONG).show();
                 });
